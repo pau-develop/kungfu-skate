@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private int topLimit = +50;
     private int botLimit = -90;
 
+    public bool isGrounded = false;
+
     private Vector2 spriteSize = new Vector2(40,40);
     // Start is called before the first frame update
     void Start()
@@ -28,7 +30,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isGrounded = checkGrounded();
         movePlayer();
+    }
+
+    bool checkGrounded(){
+        if(playerPos.y==botLimit) return true;
+        return false;
     }
 
     void movePlayer(){
