@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
 private PlayerMovement player;
+
     void Start()
     {
         player = GetComponent<PlayerMovement>();
