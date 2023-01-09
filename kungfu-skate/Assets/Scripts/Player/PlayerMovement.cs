@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isShooting = false;
     public bool isSwinging =  false;
     private Vector2 playerPos;
+    private Vector2 playerActualPos;
     public int playerSpeed = 100;
 
     private int leftLimit = -140;
@@ -32,7 +33,15 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = checkGrounded();
         movePlayer();
-        
+        oscillate();
+    }
+
+    void oscillate(){
+		float newY;
+		if(!isGrounded) newY = Mathf.Sin(Time.time * 7);
+		else newY = Mathf.Sin(Time.time * 0);
+		playerActualPos = new Vector2(playerPos.x, playerPos.y+newY);
+		transform.position = playerActualPos;
     }
 
     bool checkGrounded(){
