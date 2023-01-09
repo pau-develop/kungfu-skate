@@ -30,8 +30,8 @@ private PlayerMovement player;
         player.isSwinging = true;
         return;
     }
-    player.isSwinging=false;
-    player.isShooting=false;
+    player.isSwinging = false;
+    player.isShooting = false;
    }
 
     void getVerticalMovement(){

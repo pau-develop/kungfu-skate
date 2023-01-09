@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isShooting = false;
     public bool isSwinging =  false;
     private Vector2 playerPos;
-    private int playerSpeed = 100;
+    public int playerSpeed = 100;
 
     private int leftLimit = -140;
     private int rightLimit = +140;
@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = checkGrounded();
         movePlayer();
+        
     }
 
     bool checkGrounded(){
@@ -58,6 +59,5 @@ public class PlayerMovement : MonoBehaviour
         }
 
         transform.position = playerPos;
-        Debug.Log(transform.position);
     }
 }
