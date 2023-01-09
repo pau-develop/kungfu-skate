@@ -24,10 +24,12 @@ private PlayerMovement player;
    void  getButtonInput(){
     if(Input.GetKey(KeyCode.M)) {
         player.isShooting = true;
+        player.isSwinging = false;
         return;
     }
     if(Input.GetKey(KeyCode.N)){
         player.isSwinging = true;
+        player.isShooting = false;
         return;
     }
     player.isSwinging = false;
