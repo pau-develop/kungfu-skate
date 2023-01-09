@@ -10,11 +10,26 @@ public class SpriteTrace : MonoBehaviour
     private Vector2 tracePos;
     
     private int stackLayer= 0;
+
+    private float traceTimer = 0;
+    private float traceInterval = 0.04f;
     // Start is called before the first frame update
     void Start()
     {
         tracePos = new Vector2(transform.position.x-2,transform.position.y);
-        createTrace();
+        
+    }
+
+    void Update(){
+        instantiateTraces();
+    }
+
+    void instantiateTraces(){
+        traceTimer+= Time.deltaTime;
+        if(traceTimer>= traceInterval){
+            createTrace();
+            traceTimer = 0;
+        }
     }
 
     void createTrace(){
@@ -26,12 +41,12 @@ public class SpriteTrace : MonoBehaviour
               GameObject tempObj = new GameObject();
               tempObj.AddComponent<SpriteRenderer>().sprite = sprites[i].sprite;
               tempObj.transform.SetParent(playerShadow.transform);
-              tempObj.GetComponent<SpriteRenderer>().color = new Color32(30,0,255,255);
+              tempObj.GetComponent<SpriteRenderer>().color = new Color32(30,0,255,125);
               tempObj.GetComponent<SpriteRenderer>().sortingOrder = sprites[i].sortingOrder-5-stackLayer;
               stackLayer++;
         }
         if(stackLayer==10)stackLayer=0;
-        playerShadow.transform.position = tracePos;
+        playerShadow.transform.position = transform.position;
         playerShadow.AddComponent<SpriteTraceMovement>();
         
     }
