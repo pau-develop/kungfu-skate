@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 295569559}
   - component: {fileID: 295569561}
   - component: {fileID: 295569560}
+  - component: {fileID: 295569562}
   m_Layer: 0
   m_Name: arms
   m_TagString: Untagged
@@ -223,6 +224,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &295569562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295569558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpriteSheetName: CHARMELEE2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,6 +331,7 @@ GameObject:
   - component: {fileID: 663024096}
   - component: {fileID: 663024098}
   - component: {fileID: 663024097}
+  - component: {fileID: 663024099}
   m_Layer: 0
   m_Name: legs
   m_TagString: Untagged
@@ -408,6 +423,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &663024099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663024095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpriteSheetName: CHAR2
 --- !u!1 &1445577828
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,6 +527,7 @@ GameObject:
   - component: {fileID: 1939699636}
   - component: {fileID: 1939699638}
   - component: {fileID: 1939699637}
+  - component: {fileID: 1939699639}
   m_Layer: 0
   m_Name: body
   m_TagString: Untagged
@@ -589,3 +618,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1939699639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939699635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpriteSheetName: CHAR2
