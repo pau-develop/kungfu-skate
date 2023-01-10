@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-private PlayerMovement player;
+private PlayerMovement playerMovement;
 
     void Start()
     {
-        player = GetComponent<PlayerMovement>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -23,46 +23,46 @@ private PlayerMovement player;
 
    void  getButtonInput(){
     if(Input.GetKey(KeyCode.M)) {
-        player.isShooting = true;
-        player.isSwinging = false;
+        playerMovement.isShooting = true;
+        playerMovement.isSwinging = false;
         return;
     }
     if(Input.GetKey(KeyCode.N)){
-        player.isSwinging = true;
-        player.isShooting = false;
+        playerMovement.isSwinging = true;
+        playerMovement.isShooting = false;
         return;
     }
-    player.isSwinging = false;
-    player.isShooting = false;
+    playerMovement.isSwinging = false;
+    playerMovement.isShooting = false;
    }
 
     void getVerticalMovement(){
         if(Input.GetKey(KeyCode.W)){
-            player.movingDown = false;
-            player.movingUp=true;
+            playerMovement.movingDown = false;
+            playerMovement.movingUp=true;
             return;
         }
         if(Input.GetKey(KeyCode.S)){
-            player.movingUp = false;
-            player.movingDown = true;
+            playerMovement.movingUp = false;
+            playerMovement.movingDown = true;
             return;
         }
-        player.movingUp = false;
-        player.movingDown = false;
+        playerMovement.movingUp = false;
+        playerMovement.movingDown = false;
     }  
 
     void getHorizontalMovement(){
         if(Input.GetKey(KeyCode.A)){
-            player.movingRight = false;
-            player.movingLeft=true;
+            playerMovement.movingRight = false;
+            playerMovement.movingLeft=true;
             return;
         }
         if(Input.GetKey(KeyCode.D)){
-            player.movingLeft = false;
-            player.movingRight = true;
+            playerMovement.movingLeft = false;
+            playerMovement.movingRight = true;
             return;
         }
-        player.movingLeft = false;
-        player.movingRight = false;
+        playerMovement.movingLeft = false;
+        playerMovement.movingRight = false;
     }  
 }

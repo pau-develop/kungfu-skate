@@ -8,7 +8,7 @@ public class SpriteTraceMovement : MonoBehaviour
     private int traceSpeed = 50;
     public SpriteRenderer[] sprites = new SpriteRenderer[3];
 
-    private int fadeSpeed =10;
+    private int fadeSpeed =8;
 
     byte alpha = 255;
     // Start is called before the first frame update

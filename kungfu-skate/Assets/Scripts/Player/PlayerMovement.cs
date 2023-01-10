@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
         oscillate();
     }
 
+    
+
     void oscillate(){
 		float newY;
 		if(!isGrounded) newY = Mathf.Sin(Time.time * 7);
