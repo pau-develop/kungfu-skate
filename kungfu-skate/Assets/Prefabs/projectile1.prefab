@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5842409861559824445}
   - component: {fileID: 5842409861559824435}
   m_Layer: 0
-  m_Name: projectile
+  m_Name: projectile1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 15, y: 15}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -94,3 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a8d29e610522e74a9fe8e14acf93fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 688938470037794653, guid: 30ccae2cf6213e3468a8412cb9ef7bd9, type: 3}
+  - {fileID: -3125185451868994384, guid: 30ccae2cf6213e3468a8412cb9ef7bd9, type: 3}
+  - {fileID: 2714440333006401032, guid: 30ccae2cf6213e3468a8412cb9ef7bd9, type: 3}
+  rotates: 1

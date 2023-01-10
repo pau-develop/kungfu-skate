@@ -5,6 +5,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private Sprite[] sprites;
+    public char projectileType; 
+    private bool rotates = false;
     private SpriteRenderer projectileRenderer;
     private int animationInterval = 6;
     private int counter = 0;
@@ -17,8 +19,11 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(projectileType=='1') rotates = true;
+        Debug.Log(projectileType);
+
+        sprites = Resources.LoadAll<Sprite>("PROJECTILE/PROJECTILE"+projectileType);
         projectilePos = transform.position;
-        sprites = Resources.LoadAll<Sprite>("PROJECTILE/PROJECTILE1");
         projectileRenderer = GetComponent<SpriteRenderer>();
         transform.localScale = scale;
         projectileRenderer.sprite = sprites[0];
@@ -31,7 +36,7 @@ public class Projectile : MonoBehaviour
     {
         resizeBullet();
         animateProjectile();
-        rotateProjectile();
+        if(rotates) rotateProjectile();
         moveProjectile();
         destroyProjectile();
     }
