@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isGrounded = false;
     public bool isAlive = true;
+    public bool isExploded = false;
     private GameObject playerLegs;
     private GameObject playerArms;
 
@@ -37,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(playerLegs);
         isGrounded = checkGrounded();
         if(isAlive){
             movePlayer();
@@ -47,6 +47,10 @@ public class PlayerMovement : MonoBehaviour
             if(playerArms != null) Destroy(playerArms);
             moveDeadPlayer();
         }
+    }
+
+    void destroyPlayer(){
+        Destroy(this.gameObject);
     }
 
     void moveDeadPlayer(){

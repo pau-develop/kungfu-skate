@@ -20,8 +20,6 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         if(projectileType=='1') rotates = true;
-        Debug.Log(projectileType);
-
         sprites = Resources.LoadAll<Sprite>("PROJECTILE/PROJECTILE"+projectileType);
         projectilePos = transform.position;
         projectileRenderer = GetComponent<SpriteRenderer>();

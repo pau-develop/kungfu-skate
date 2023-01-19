@@ -46,7 +46,6 @@ public class SpriteTrace : MonoBehaviour
     void createTrace(){
         playerShadow = new GameObject("player-trace");
         SpriteRenderer[] sprites = new SpriteRenderer[transform.childCount];
-        Debug.Log(sprites.Length);
         for(int i=0;i< sprites.Length;i++){
               GameObject tempObj = new GameObject();
               tempObj.AddComponent<SpriteRenderer>().sprite = transform.GetChild(i).GetComponent<SpriteRenderer>().sprite;

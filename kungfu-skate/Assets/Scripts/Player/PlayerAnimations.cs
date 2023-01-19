@@ -41,6 +41,7 @@ public class PlayerAnimations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if(player.isAlive){
             checkGrounded();
             checkDirection();
@@ -49,6 +50,7 @@ public class PlayerAnimations : MonoBehaviour
         } else {
             bodyAnimator.SetBool("isAlive",false);
             if(player.isGrounded) bodyAnimator.SetBool("isGrounded",true);
+            if(player.isExploded) bodyAnimator.Play("body-explode");
         }
     }
 
@@ -135,7 +137,6 @@ public class PlayerAnimations : MonoBehaviour
     int checkAnimationState(){
         AnimatorClipInfo[] currentClip = legsAnimator.GetCurrentAnimatorClipInfo(0);
         string currentAnim = currentClip[0].clip.name;
-        Debug.Log(currentAnim);
         if(currentAnim == "legs-land") return 0;
         else if(currentAnim == "legs-jump") return 1;
         else return 2;
