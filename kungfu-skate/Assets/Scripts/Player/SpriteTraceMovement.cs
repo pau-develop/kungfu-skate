@@ -6,15 +6,16 @@ public class SpriteTraceMovement : MonoBehaviour
 {
     private Vector2 tracePos;
     private int traceSpeed = 50;
-    public SpriteRenderer[] sprites = new SpriteRenderer[3];
 
     private int fadeSpeed =8;
+    private SpriteRenderer[] sprites;
 
     byte alpha = 255;
     // Start is called before the first frame update
     void Start()
     {
         tracePos = transform.position;
+         sprites = new SpriteRenderer[transform.childCount];
         for(int i=0; i<sprites.Length;i++){
             sprites[i] = transform.GetChild(i).GetComponent<SpriteRenderer>();
         }

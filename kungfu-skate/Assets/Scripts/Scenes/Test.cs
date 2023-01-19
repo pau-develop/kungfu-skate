@@ -17,17 +17,28 @@ public class Test : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Alpha2)) swapPlayerSprites("2");
         if(Input.GetKeyUp(KeyCode.Alpha3)) swapPlayerSprites("3");
         if(Input.GetKeyUp(KeyCode.B)) blinkPlayer();
+        if(Input.GetKeyUp(KeyCode.F)) killPlayer();
     }
 
     void blinkPlayer(){
         player.transform.Find("body").GetComponent<SwapSprites>().isBlinking =true;
-        player.transform.Find("legs").GetComponent<SwapSprites>().isBlinking =true;
-        player.transform.Find("arms").GetComponent<SwapSprites>().isBlinking =true;
+        if(player.transform.Find("legs") !=null)
+            player.transform.Find("legs").GetComponent<SwapSprites>().isBlinking =true;
+        if(player.transform.Find("arms") !=null)
+            player.transform.Find("arms").GetComponent<SwapSprites>().isBlinking =true;
+    }
+
+    void killPlayer(){
+        if(GameObject.Find("player").GetComponent<PlayerMovement>().isAlive) 
+            GameObject.Find("player").GetComponent<PlayerMovement>().isAlive = false;
+        else GameObject.Find("player").GetComponent<PlayerMovement>().isExploded = true;
     }
 
     void swapPlayerSprites(string spriteSheetNumber){
         player.transform.Find("body").GetComponent<SwapSprites>().spriteSheetName = "CHAR"+spriteSheetNumber; 
-        player.transform.Find("legs").GetComponent<SwapSprites>().spriteSheetName = "CHAR"+spriteSheetNumber;
-        player.transform.Find("arms").GetComponent<SwapSprites>().spriteSheetName = "CHARMELEE"+spriteSheetNumber;
+        if(player.transform.Find("legs") !=null)
+            player.transform.Find("legs").GetComponent<SwapSprites>().spriteSheetName = "CHAR"+spriteSheetNumber;
+        if(player.transform.Find("arms") !=null)
+            player.transform.Find("arms").GetComponent<SwapSprites>().spriteSheetName = "CHARMELEE"+spriteSheetNumber;
     }
 }
