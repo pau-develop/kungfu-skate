@@ -19,7 +19,10 @@ public class PlayerAnimations : MonoBehaviour
 
     private bool justJumped = false;
     private bool justGrounded = false;
-
+    private bool landing = false;
+    private bool jumping = false;
+    private int currentFrame = 0;
+    private int currentPos = 0;
 
 
     // Start is called before the first frame update
@@ -103,9 +106,34 @@ public class PlayerAnimations : MonoBehaviour
     
 
     void moveBodyParts(){
-        setBodyPos(); 
+        int currentState = checkAnimationState();
+        if(currentState == 0) suspensionEffect(-1);
+        else if(currentState == 1) suspensionEffect(1);
+        else {
+            currentFrame = 0;
+            setBodyPos();
+        }
         playerBody.transform.position = bodyDestPos;
         playerArms.transform.position = bodyDestPos;
+    }
+
+
+    void suspensionEffect(int direction){
+        currentFrame+=1;
+        if(currentFrame <=1) bodyDestPos = new Vector2(transform.position.x,transform.position.y+1 * direction);
+        else if(currentFrame > 2) bodyDestPos = new Vector2(transform.position.x,transform.position.y+2 * direction);
+        else if(currentFrame > 3) bodyDestPos = new Vector2(transform.position.x,transform.position.y+3 * direction);
+        else if(currentFrame > 4) bodyDestPos = new Vector2(transform.position.x,transform.position.y+2 * direction);
+        else if(currentFrame > 5) bodyDestPos = new Vector2(transform.position.x,transform.position.y+1 * direction);
+    }
+
+    int checkAnimationState(){
+        AnimatorClipInfo[] currentClip = legsAnimator.GetCurrentAnimatorClipInfo(0);
+        string currentAnim = currentClip[0].clip.name;
+        Debug.Log(currentAnim);
+        if(currentAnim == "legs-land") return 0;
+        else if(currentAnim == "legs-jump") return 1;
+        else return 2;
     }
     
 
