@@ -41,10 +41,15 @@ public class PlayerAnimations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        checkGrounded();
-        checkDirection();
-        checkAction();
-        moveBodyParts();
+        if(player.isAlive){
+            checkGrounded();
+            checkDirection();
+            checkAction();
+            moveBodyParts();
+        } else {
+            bodyAnimator.SetBool("isAlive",false);
+            if(player.isGrounded) bodyAnimator.SetBool("isGrounded",true);
+        }
     }
 
     void checkAction(){

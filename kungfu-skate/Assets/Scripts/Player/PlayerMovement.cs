@@ -20,20 +20,39 @@ public class PlayerMovement : MonoBehaviour
     private int botLimit = -90;
 
     public bool isGrounded = false;
+    public bool isAlive = true;
+    private GameObject playerLegs;
+    private GameObject playerArms;
 
     private Vector2 spriteSize = new Vector2(40,40);
     // Start is called before the first frame update
     void Start()
     {
         playerPos = new Vector2(transform.position.x, transform.position.y);
+        playerLegs = transform.GetChild(1).gameObject;
+        playerArms = transform.GetChild(2).gameObject;
+            
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(playerLegs);
         isGrounded = checkGrounded();
-        movePlayer();
-        oscillate();
+        if(isAlive){
+            movePlayer();
+            oscillate();
+        } else {
+            if(playerLegs != null) Destroy(playerLegs);
+            if(playerArms != null) Destroy(playerArms);
+            moveDeadPlayer();
+        }
+    }
+
+    void moveDeadPlayer(){
+        if(!isGrounded && playerPos.y > botLimit) playerPos.y -= playerSpeed/2*Time.deltaTime;
+        else playerPos.y = botLimit;
+        transform.position = playerPos;
     }
 
     

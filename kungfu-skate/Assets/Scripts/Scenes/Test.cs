@@ -17,6 +17,7 @@ public class Test : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Alpha2)) swapPlayerSprites("2");
         if(Input.GetKeyUp(KeyCode.Alpha3)) swapPlayerSprites("3");
         if(Input.GetKeyUp(KeyCode.B)) blinkPlayer();
+        if(Input.GetKeyUp(KeyCode.F)) killPlayer();
     }
 
     void blinkPlayer(){
@@ -25,9 +26,15 @@ public class Test : MonoBehaviour
         player.transform.Find("arms").GetComponent<SwapSprites>().isBlinking =true;
     }
 
+    void killPlayer(){
+        GameObject.Find("player").GetComponent<PlayerMovement>().isAlive = false;
+    }
+
     void swapPlayerSprites(string spriteSheetNumber){
         player.transform.Find("body").GetComponent<SwapSprites>().spriteSheetName = "CHAR"+spriteSheetNumber; 
-        player.transform.Find("legs").GetComponent<SwapSprites>().spriteSheetName = "CHAR"+spriteSheetNumber;
-        player.transform.Find("arms").GetComponent<SwapSprites>().spriteSheetName = "CHARMELEE"+spriteSheetNumber;
+        if(player.transform.Find("legs") !=null)
+            player.transform.Find("legs").GetComponent<SwapSprites>().spriteSheetName = "CHAR"+spriteSheetNumber;
+        if(player.transform.Find("arms") !=null)
+            player.transform.Find("arms").GetComponent<SwapSprites>().spriteSheetName = "CHARMELEE"+spriteSheetNumber;
     }
 }
