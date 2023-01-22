@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private Sprite[] sprites;
+    public Sprite[] sprites;
     public char projectileType; 
     private bool rotates = false;
     private SpriteRenderer projectileRenderer;
@@ -19,8 +19,6 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(projectileType=='1') rotates = true;
-        sprites = Resources.LoadAll<Sprite>("PROJECTILE/PROJECTILE"+projectileType);
         projectilePos = transform.position;
         projectileRenderer = GetComponent<SpriteRenderer>();
         transform.localScale = scale;
@@ -34,7 +32,7 @@ public class Projectile : MonoBehaviour
     {
         resizeBullet();
         animateProjectile();
-        if(rotates) rotateProjectile();
+        rotateProjectile();
         moveProjectile();
         destroyProjectile();
     }
