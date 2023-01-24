@@ -6,7 +6,6 @@ public class Projectile : MonoBehaviour
 {
     public Sprite[] sprites;
     public char projectileType; 
-    private bool rotates = false;
     private SpriteRenderer projectileRenderer;
     private int animationInterval = 6;
     private int counter = 0;

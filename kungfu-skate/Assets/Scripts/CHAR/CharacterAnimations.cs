@@ -19,8 +19,6 @@ public class CharacterAnimations : MonoBehaviour
 
     private bool justJumped = false;
     private bool justGrounded = false;
-    private bool landing = false;
-    private bool jumping = false;
     
     private int currentPos = 0;
     private int randomNumber;

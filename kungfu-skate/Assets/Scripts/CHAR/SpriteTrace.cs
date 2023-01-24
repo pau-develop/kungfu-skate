@@ -6,7 +6,6 @@ public class SpriteTrace : MonoBehaviour
 {
     
     private GameObject playerShadow;
-    private int traceSpeed = 50;
     private Vector2 tracePos;
     
     private int stackLayer= 0;
