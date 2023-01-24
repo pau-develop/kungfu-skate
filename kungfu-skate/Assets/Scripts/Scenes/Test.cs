@@ -29,9 +29,14 @@ public class Test : MonoBehaviour
     }
 
     void killPlayer(){
-        if(GameObject.Find("player").GetComponent<PlayerMovement>().isAlive) 
+        if(GameObject.Find("player").GetComponent<PlayerMovement>().isAlive){ 
             GameObject.Find("player").GetComponent<PlayerMovement>().isAlive = false;
-        else GameObject.Find("player").GetComponent<PlayerMovement>().isExploded = true;
+            GameObject.Find("ninja").GetComponent<PlayerMovement>().isAlive = false;
+        }
+        else { 
+            GameObject.Find("player").GetComponent<PlayerMovement>().isExploded = true;
+            GameObject.Find("ninja").GetComponent<PlayerMovement>().isExploded = true;
+            }
     }
 
     void swapPlayerSprites(string spriteSheetNumber){
