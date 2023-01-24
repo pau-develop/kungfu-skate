@@ -23,7 +23,7 @@ public class PlayerAnimations : MonoBehaviour
     private bool jumping = false;
     private int currentFrame = 0;
     private int currentPos = 0;
-
+    private int randomNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +48,7 @@ public class PlayerAnimations : MonoBehaviour
             checkAction();
             moveBodyParts();
         } else {
+            
             bodyAnimator.SetBool("isAlive",false);
             if(player.isGrounded) bodyAnimator.SetBool("isGrounded",true);
             if(player.isExploded) bodyAnimator.Play("body-explode");
@@ -93,16 +94,20 @@ public class PlayerAnimations : MonoBehaviour
         if(player.movingLeft) {
             legsAnimator.SetBool("movingBack",true);
             legsAnimator.SetBool("movingForward",false);
+            bodyAnimator.SetBool("movingForward",false);
             return;
         }
         if(player.movingRight) { 
             legsAnimator.SetBool("movingForward",true);
             legsAnimator.SetBool("movingBack",false);
+            bodyAnimator.SetBool("movingForward",true);
             return;
         }
         else {
             legsAnimator.SetBool("movingForward",false);
             legsAnimator.SetBool("movingBack",false);
+            bodyAnimator.SetBool("movingForward",true);
+
         }
     }
 
