@@ -20,7 +20,6 @@ public class CharacterAnimations : MonoBehaviour
     private bool justJumped = false;
     private bool justGrounded = false;
     
-    private int currentPos = 0;
     private int randomNumber;
     public bool isPlayer;
 
@@ -43,7 +42,6 @@ public class CharacterAnimations : MonoBehaviour
         if(player.isAlive){
             checkGrounded();
             checkDirection();
-            checkAction();
         } else { 
             if(isPlayer) bodyAnimator.SetBool("isAlive",false);
             else playRandomDeadAnim();
@@ -60,21 +58,7 @@ public class CharacterAnimations : MonoBehaviour
         }
     }
 
-    void checkAction(){
-        if(player.isShooting) {
-            armsAnimator.SetBool("isShooting",true);
-            armsAnimator.SetBool("isSwinging",false);
-            return;
-        }
-        
-        if(player.isSwinging) {
-            armsAnimator.SetBool("isSwinging",true);
-            armsAnimator.SetBool("isShooting",false);
-            return;
-        }
-        armsAnimator.SetBool("isSwinging",false);
-        armsAnimator.SetBool("isShooting",false);
-    }
+    
 
     void checkGrounded(){
         if(player.isGrounded) {
