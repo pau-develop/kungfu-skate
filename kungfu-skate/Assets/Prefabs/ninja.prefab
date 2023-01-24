@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7985915824582300426}
   - component: {fileID: 7985915824582300425}
   - component: {fileID: 7985915824582300427}
+  - component: {fileID: 1800155318}
   m_Layer: 0
   m_Name: ninja
   m_TagString: Untagged
@@ -110,6 +111,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc76fea4b3e322545a4d8580e654779f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1800155318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7985915824582300429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ec22f5cbceb994ebf4f35b26768e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  suspensionX: ffffffffffffffffffffffffffffffffffffffff
+  suspensionY: 0100000002000000020000000200000001000000
+  backXGround: -1
+  backXAir: 1
+  forwardXGround: 0
+  forwardXAir: 0
+  backYAir: 1
+  backYGround: 2
+  forwardYAir: 0
+  forwardYGround: 1
 --- !u!1 &7985915824907368400
 GameObject:
   m_ObjectHideFlags: 0

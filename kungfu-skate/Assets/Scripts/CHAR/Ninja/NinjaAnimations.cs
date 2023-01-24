@@ -45,7 +45,7 @@ public class NinjaAnimations : MonoBehaviour
         if(ninja.isAlive){
             checkGrounded();
             checkDirection();      
-            moveBodyParts();
+            
             
         } else {
             if(randomNumber == 0){
@@ -98,48 +98,6 @@ public class NinjaAnimations : MonoBehaviour
         }
     }
 
-    void moveBodyParts(){
-        int currentState = checkAnimationState();
-        if(currentState == 0) suspensionEffect(-1);
-        else if(currentState == 1) suspensionEffect(1);
-        else {
-            currentFrame = 0;
-            if(GetComponent<FlipSprite>().isFliped) setBodyPos(-1);
-            else setBodyPos(1);
-        }
-        ninjaBody.transform.position = bodyDestPos;
-        ninjaArms.transform.position = bodyDestPos;
-    }
-
-     void suspensionEffect(int direction){
-        currentFrame+=1;
-        if(currentFrame <=1) bodyDestPos = new Vector2(transform.position.x-1,transform.position.y * direction);
-        else if(currentFrame > 2) bodyDestPos = new Vector2(transform.position.x-1,transform.position.y+1 * direction);
-        else if(currentFrame > 3) bodyDestPos = new Vector2(transform.position.x-1,transform.position.y+2 * direction);
-        else if(currentFrame > 4) bodyDestPos = new Vector2(transform.position.x-1,transform.position.y+2 * direction);
-        else if(currentFrame > 5) bodyDestPos = new Vector2(transform.position.x-1,transform.position.y+1 * direction);
-    }
-    
-    int checkAnimationState(){
-        AnimatorClipInfo[] currentClip = legsAnimator.GetCurrentAnimatorClipInfo(0);
-        string currentAnim = "";
-        if(currentClip.Length>0) currentAnim = currentClip[0].clip.name;
-        if(currentAnim == "legs-land") return 0;
-        else if(currentAnim == "legs-jump") return 1;
-        else return 2;
-    }
-
-    void setBodyPos(int direction){
-        if(legsAnimator.GetBool("isGrounded")){
-            if(legsAnimator.GetBool("movingBack")) bodyDestPos = new Vector2(transform.position.x-1,transform.position.y+2);
-            else if(legsAnimator.GetBool("movingForward")) bodyDestPos = new Vector2(transform.position.x+1*direction,transform.position.y+2); 
-            else bodyDestPos = new Vector2(transform.position.x,transform.position.y+1);
-        }
-        else{
-            if(legsAnimator.GetBool("movingBack")) bodyDestPos = new Vector2(transform.position.x-2*direction,transform.position.y+1);
-            else if(legsAnimator.GetBool("movingForward")) bodyDestPos = new Vector2(transform.position.x+1*direction,transform.position.y);
-            else bodyDestPos = new Vector2(transform.position.x,transform.position.y);
-        }
-    }
+   
     
 }

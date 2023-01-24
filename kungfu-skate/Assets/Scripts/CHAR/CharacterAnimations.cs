@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimations : MonoBehaviour
+public class CharacterAnimations : MonoBehaviour
 {
     private CharacterMovement player;
 
@@ -24,6 +24,7 @@ public class PlayerAnimations : MonoBehaviour
     
     private int currentPos = 0;
     private int randomNumber;
+    public bool isPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -41,15 +42,23 @@ public class PlayerAnimations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if(player.isAlive){
             checkGrounded();
             checkDirection();
             checkAction();
         } else { 
-            bodyAnimator.SetBool("isAlive",false);
+            if(isPlayer) bodyAnimator.SetBool("isAlive",false);
+            else playRandomDeadAnim();
             if(player.isGrounded) bodyAnimator.SetBool("isGrounded",true);
             if(player.isExploded) bodyAnimator.Play("body-explode");
+        }
+    }
+
+    void playRandomDeadAnim(){
+        if(randomNumber == 0){
+            randomNumber = Random.Range(1,3);
+            if(randomNumber==1) bodyAnimator.Play("body-die-1");
+            else bodyAnimator.Play("body-die-2");
         }
     }
 
