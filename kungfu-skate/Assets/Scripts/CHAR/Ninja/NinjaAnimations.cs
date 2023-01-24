@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NinjaAnimations : MonoBehaviour
 {
-    private PlayerMovement ninja;
+    private CharacterMovement ninja;
 
     private GameObject ninjaBody;
     private GameObject ninjaArms;
@@ -28,7 +28,7 @@ public class NinjaAnimations : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ninja = GetComponent<PlayerMovement>();
+        ninja = GetComponent<CharacterMovement>();
         ninjaBody = transform.Find("body").gameObject;
         ninjaArms = transform.Find("arms").gameObject;
         bodyAnimator = ninjaBody.GetComponent<Animator>();

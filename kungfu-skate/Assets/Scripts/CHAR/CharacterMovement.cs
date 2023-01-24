@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class CharacterMovement : MonoBehaviour
 {
     public bool movingUp =false;
     public bool movingDown =false;

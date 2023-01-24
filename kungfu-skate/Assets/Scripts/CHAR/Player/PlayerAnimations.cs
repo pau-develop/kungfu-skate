@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
 {
-    private PlayerMovement player;
+    private CharacterMovement player;
 
     private GameObject playerBody;
     private GameObject playerArms;
@@ -28,7 +28,7 @@ public class PlayerAnimations : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GetComponent<PlayerMovement>();
+        player = GetComponent<CharacterMovement>();
         playerBody = transform.Find("body").gameObject;
         playerArms = transform.Find("arms").gameObject;
         bodyAnimator = playerBody.GetComponent<Animator>();

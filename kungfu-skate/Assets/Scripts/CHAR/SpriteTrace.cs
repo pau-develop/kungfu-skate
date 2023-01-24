@@ -32,7 +32,7 @@ public class SpriteTrace : MonoBehaviour
     }
 
     void Update(){
-        if(!GetComponent<PlayerMovement>().isGrounded) instantiateTraces();
+        if(!GetComponent<CharacterMovement>().isGrounded) instantiateTraces();
     }
 
     void instantiateTraces(){
