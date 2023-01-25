@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ec22f5cbceb994ebf4f35b26768e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  suspensionX: ffffffffffffffffffffffffffffffffffffffff
+  suspensionX: 0100000001000000010000000100000001000000
   suspensionY: 0100000002000000020000000200000001000000
   groundPositions: 02000000020000000000000002000000
   airPositions: 0000000000000000feffffff01000000
