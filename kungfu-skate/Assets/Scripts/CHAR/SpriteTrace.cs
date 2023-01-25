@@ -6,7 +6,6 @@ public class SpriteTrace : MonoBehaviour
 {
     
     private GameObject playerShadow;
-    private int traceSpeed = 50;
     private Vector2 tracePos;
     
     private int stackLayer= 0;
@@ -32,7 +31,7 @@ public class SpriteTrace : MonoBehaviour
     }
 
     void Update(){
-        if(!GetComponent<PlayerMovement>().isGrounded) instantiateTraces();
+        if(!GetComponent<CharacterMovement>().isGrounded) instantiateTraces();
     }
 
     void instantiateTraces(){

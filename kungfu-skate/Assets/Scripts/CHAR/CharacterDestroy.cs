@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDestroy : MonoBehaviour
+public class CharacterDestroy : MonoBehaviour
 {
-    private PlayerMovement player;
+    private CharacterMovement player;
   
 
     void destroyPlayer(){

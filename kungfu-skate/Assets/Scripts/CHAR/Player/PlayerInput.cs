@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-private PlayerMovement playerMovement;
+private CharacterMovement playerMovement;
 
     void Start()
     {
-        playerMovement = GetComponent<PlayerMovement>();
+        playerMovement = GetComponent<CharacterMovement>();
     }
 
     // Update is called once per frame
