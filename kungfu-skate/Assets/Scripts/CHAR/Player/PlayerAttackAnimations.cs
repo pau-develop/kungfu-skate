@@ -19,7 +19,7 @@ public class PlayerAttackAnimations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        checkAction();
+        if(player.isAlive) checkAction();
     }
 
     void checkAction(){

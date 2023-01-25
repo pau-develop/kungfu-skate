@@ -46,11 +46,12 @@ public class CharacterBodyPosition : MonoBehaviour
 
     void suspensionEffect(int direction){
         currentFrame+=1;
-        if(currentFrame <=1) bodyDestPos = new Vector2(transform.position.x+suspensionX[0],transform.position.y+suspensionY[1] * direction);
-        else if(currentFrame > 2) bodyDestPos = new Vector2(transform.position.x+suspensionX[1],transform.position.y+suspensionY[2] * direction);
-        else if(currentFrame > 3) bodyDestPos = new Vector2(transform.position.x+suspensionX[2],transform.position.y+suspensionY[3] * direction);
-        else if(currentFrame > 4) bodyDestPos = new Vector2(transform.position.x+suspensionX[3],transform.position.y+suspensionY[2] * direction);
-        else if(currentFrame > 5) bodyDestPos = new Vector2(transform.position.x+suspensionX[4],transform.position.y+suspensionY[1] * direction);
+        int xDirection = getDirection();
+        if(currentFrame <=1) bodyDestPos = new Vector2(transform.position.x+suspensionX[0]*xDirection,transform.position.y+suspensionY[1] * direction);
+        else if(currentFrame > 2) bodyDestPos = new Vector2(transform.position.x+suspensionX[1]*xDirection,transform.position.y+suspensionY[2] * direction);
+        else if(currentFrame > 3) bodyDestPos = new Vector2(transform.position.x+suspensionX[2]*xDirection,transform.position.y+suspensionY[3] * direction);
+        else if(currentFrame > 4) bodyDestPos = new Vector2(transform.position.x+suspensionX[3]*xDirection,transform.position.y+suspensionY[2] * direction);
+        else if(currentFrame > 5) bodyDestPos = new Vector2(transform.position.x+suspensionX[4]*xDirection,transform.position.y+suspensionY[1] * direction);
     }
 
     int checkAnimationState(){
