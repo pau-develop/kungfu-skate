@@ -80,9 +80,39 @@ public class CharacterAnimations : MonoBehaviour
     }
 
     void checkDirection(){
+        bool fliped = false;
+        if(GetComponent<FlipSprite>()){
+            if(GetComponent<FlipSprite>().isFliped) fliped = true;
+            else fliped = false;
+        } 
+        if(fliped) flipedAnimations();
+        else commonAnimations();
+    }
+
+    void flipedAnimations(){
         if(player.movingLeft) {
-            legsAnimator.SetBool("movingBack",true);
+            legsAnimator.SetBool("movingBack",false);
+            legsAnimator.SetBool("movingForward",true);
+            bodyAnimator.SetBool("movingForward",true);
+            return;
+            }
+            if(player.movingRight) { 
+                legsAnimator.SetBool("movingForward",false);
+                legsAnimator.SetBool("movingBack",true);
+                bodyAnimator.SetBool("movingForward",false);
+                return;
+            }
+            else {
+                legsAnimator.SetBool("movingForward",false);
+                legsAnimator.SetBool("movingBack",true);
+                bodyAnimator.SetBool("movingForward",false);
+            }
+    }
+
+    void commonAnimations(){
+        if(player.movingLeft) {
             legsAnimator.SetBool("movingForward",false);
+            legsAnimator.SetBool("movingBack",true);
             bodyAnimator.SetBool("movingForward",false);
             return;
         }
@@ -93,10 +123,9 @@ public class CharacterAnimations : MonoBehaviour
             return;
         }
         else {
-            legsAnimator.SetBool("movingForward",false);
+            legsAnimator.SetBool("movingForward",true);
             legsAnimator.SetBool("movingBack",false);
             bodyAnimator.SetBool("movingForward",true);
-
         }
     }
 }

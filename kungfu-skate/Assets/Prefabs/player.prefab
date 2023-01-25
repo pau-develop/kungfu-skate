@@ -242,14 +242,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   suspensionX: 0000000000000000000000000000000000000000
   suspensionY: 0100000002000000030000000200000001000000
-  backXGround: -1
-  backXAir: -2
-  forwardXGround: 1
-  forwardXAir: 1
-  backYAir: 1
-  backYGround: 1
-  forwardYAir: 1
-  forwardYGround: 0
+  groundPositions: 0000000002000000feffffff02000000
+  airPositions: 0100000000000000feffffff00000000
 --- !u!114 &7223067700773652351
 MonoBehaviour:
   m_ObjectHideFlags: 0

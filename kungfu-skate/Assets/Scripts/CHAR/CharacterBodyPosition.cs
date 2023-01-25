@@ -12,14 +12,10 @@ public class CharacterBodyPosition : MonoBehaviour
     private Animator legsAnimator;
     public int[] suspensionX;
     public int[] suspensionY;
-    public int backXGround;
-    public int backXAir;
-    public int forwardXGround;
-    public int forwardXAir;
-    public int backYAir;
-    public int backYGround;
-    public int forwardYAir;
-    public int forwardYGround;
+    public int[] groundPositions; //xForward, yForward, xBack, yBack
+    public int[] airPositions; //xForward, yForward, xBack, yBack
+ 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -68,15 +64,26 @@ public class CharacterBodyPosition : MonoBehaviour
     
 
     void setBodyPos(){
+        int direction = getDirection();
         if(legsAnimator.GetBool("isGrounded")){
-            if(legsAnimator.GetBool("movingBack")) bodyDestPos = new Vector2(transform.position.x+backXGround,transform.position.y+backYGround);
-            else if(legsAnimator.GetBool("movingForward")) bodyDestPos = new Vector2(transform.position.x+forwardXGround,transform.position.y+forwardYGround); 
-            else bodyDestPos = new Vector2(transform.position.x,transform.position.y+1);
+            if(legsAnimator.GetBool("movingBack")) bodyDestPos = new Vector2(transform.position.x+groundPositions[2]*direction,transform.position.y+groundPositions[3]);
+            else if(legsAnimator.GetBool("movingForward")) bodyDestPos = new Vector2(transform.position.x+groundPositions[0]*direction,transform.position.y+groundPositions[1]); 
+            else bodyDestPos = new Vector2(transform.position.x*direction,transform.position.y+1);
         }
         else{
-            if(legsAnimator.GetBool("movingBack")) bodyDestPos = new Vector2(transform.position.x+backXAir,transform.position.y+backYAir);
-            else if(legsAnimator.GetBool("movingForward")) bodyDestPos = new Vector2(transform.position.x+forwardXAir,transform.position.y+forwardYAir);
+            if(legsAnimator.GetBool("movingBack")) bodyDestPos = new Vector2(transform.position.x+airPositions[2]*direction,transform.position.y+airPositions[3]);
+            else if(legsAnimator.GetBool("movingForward")) bodyDestPos = new Vector2(transform.position.x+airPositions[0]*direction,transform.position.y+airPositions[1]);
             else bodyDestPos = new Vector2(transform.position.x,transform.position.y);
         }
     }
+
+    int getDirection(){
+        if(GetComponent<FlipSprite>()){
+            if(GetComponent<FlipSprite>().isFliped) return -1;
+            else return 1;
+        }
+        return 1;
+    }
+
+    
 }
