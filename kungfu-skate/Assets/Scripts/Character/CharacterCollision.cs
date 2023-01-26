@@ -14,7 +14,6 @@ public class CharacterCollision : MonoBehaviour
 
     void dealWithCollision(){
         GetComponent<CharacterData>().hitPoints--;
-        Debug.Log(transform.childCount);
         for(int i = 0; i < transform.childCount; i++){
             transform.GetChild(i).GetComponent<SwapSprites>().isBlinking = true;
         }
