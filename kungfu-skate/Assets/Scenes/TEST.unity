@@ -121,6 +121,28 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &51157475 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7985915824907368400, guid: a311e4c69774e9e4cbceb667d2c74e14,
+    type: 3}
+  m_PrefabInstance: {fileID: 715747725}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &51157479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51157475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  folder: NIN/
+  spriteSheetName: NIN1
+  currentColor: _1
+  isBlinking: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,11 +276,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3894327342337525007, guid: a311e4c69774e9e4cbceb667d2c74e14,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7985915824582300429, guid: a311e4c69774e9e4cbceb667d2c74e14,
         type: 3}
       propertyPath: m_Name
@@ -267,7 +284,7 @@ PrefabInstance:
     - target: {fileID: 7985915824582300430, guid: a311e4c69774e9e4cbceb667d2c74e14,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -58.4
+      value: 69.8
       objectReference: {fileID: 0}
     - target: {fileID: 7985915824582300430, guid: a311e4c69774e9e4cbceb667d2c74e14,
         type: 3}
@@ -328,6 +345,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3876005034660367079, guid: b88148746cbf3b44d9e1fcb4c52d21d5,
+        type: 3}
+      propertyPath: folder
+      value: CHAR/
+      objectReference: {fileID: 0}
     - target: {fileID: 3876005035141380404, guid: b88148746cbf3b44d9e1fcb4c52d21d5,
         type: 3}
       propertyPath: m_Name
@@ -388,11 +410,59 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6877659219114117683, guid: b88148746cbf3b44d9e1fcb4c52d21d5,
+    - target: {fileID: 3876005035935993011, guid: b88148746cbf3b44d9e1fcb4c52d21d5,
         type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
+      propertyPath: folder
+      value: CHAR/
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6539842680979328360, guid: b88148746cbf3b44d9e1fcb4c52d21d5, type: 3}
+    - target: {fileID: 3876005036237387210, guid: b88148746cbf3b44d9e1fcb4c52d21d5,
+        type: 3}
+      propertyPath: folder
+      value: CHAR/
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b88148746cbf3b44d9e1fcb4c52d21d5, type: 3}
+--- !u!1 &1371391853 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7985915824955298713, guid: a311e4c69774e9e4cbceb667d2c74e14,
+    type: 3}
+  m_PrefabInstance: {fileID: 715747725}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1371391858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371391853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  folder: NIN/
+  spriteSheetName: NIN1
+  currentColor: _1
+  isBlinking: 0
+--- !u!1 &1577358981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7985915826263547874, guid: a311e4c69774e9e4cbceb667d2c74e14,
+    type: 3}
+  m_PrefabInstance: {fileID: 715747725}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1577358985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577358981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  folder: NIN/
+  spriteSheetName: NINMELEE1
+  currentColor: _1
+  isBlinking: 0
