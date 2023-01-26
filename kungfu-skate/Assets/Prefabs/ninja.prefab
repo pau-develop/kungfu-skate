@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 495074746389998118}
   - component: {fileID: 3894327342337525007}
   - component: {fileID: 491933472476755787}
+  - component: {fileID: 9005453489122455327}
   m_Layer: 0
   m_Name: ninja
   m_TagString: Enemy
@@ -153,7 +154,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -2, y: 18}
@@ -181,6 +182,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6fe52892279214e896e7d7b2f39e87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9005453489122455327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7985915824582300429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928211c1745c40045b290fef6512760c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitPoints: 8
+  explodeThreshold: -5
 --- !u!1 &7985915824907368400
 GameObject:
   m_ObjectHideFlags: 0
