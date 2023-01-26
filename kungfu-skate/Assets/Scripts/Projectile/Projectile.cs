@@ -46,9 +46,6 @@ public class Projectile : MonoBehaviour
         if(transform.position.x> 180) Destroy(this.gameObject);
     }
 
-  
-    
-
     void moveProjectile(){
         projectilePos.x += projectileSpeed*Time.deltaTime;
         transform.position = projectilePos;
