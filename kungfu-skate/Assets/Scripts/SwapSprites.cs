@@ -4,6 +4,7 @@ using System.Linq;
 
 public class SwapSprites : MonoBehaviour
 {
+    public string folder;
     public string spriteSheetName;
     private string LoadedSpriteSheetName;
     private Dictionary<string, Sprite> spriteSheet;
@@ -11,7 +12,7 @@ public class SwapSprites : MonoBehaviour
     public string currentColor = "_1";
     private int blinkCounter = 0;
     public bool isBlinking = false;
-    private int blinkDuration = 10;
+    private int blinkDuration = 1;
     
     private void Start()
     {
@@ -50,7 +51,7 @@ public class SwapSprites : MonoBehaviour
     
     private void LoadSpriteSheet()
     {
-        var sprites = Resources.LoadAll<Sprite>("CHAR/"+this.spriteSheetName+currentColor);
+        var sprites = Resources.LoadAll<Sprite>(folder+this.spriteSheetName+currentColor);
         this.spriteSheet = sprites.ToDictionary(x => x.name, x => x);
         this.LoadedSpriteSheetName = this.spriteSheetName;
     }
