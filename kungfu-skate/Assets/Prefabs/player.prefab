@@ -147,6 +147,8 @@ GameObject:
   - component: {fileID: 7223067700773652351}
   - component: {fileID: 6877659219114117683}
   - component: {fileID: 1661162168643174561}
+  - component: {fileID: 7521511194812097668}
+  - component: {fileID: 9206588104460546292}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -298,6 +300,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 1
   explodeThreshold: -1
+--- !u!114 &7521511194812097668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3876005035141380404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e30dddecb1f8d64418913fd46695a338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &9206588104460546292
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3876005035141380404}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3876005035935992975
 GameObject:
   m_ObjectHideFlags: 0

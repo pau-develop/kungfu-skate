@@ -17,7 +17,6 @@ public class CharacterCollider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(GetComponent<FlipSprite>().isFliped);
         changeColliderPosition();
     }
 
@@ -26,7 +25,6 @@ public class CharacterCollider : MonoBehaviour
             if(GetComponent<FlipSprite>().isFliped) currentOffset = xOffset * -1;
             else currentOffset = xOffset * 1;
         }
-        Debug.Log(xOffset);
         charCollider.offset = new Vector2(currentOffset, charCollider.offset.y);
     }
 }
