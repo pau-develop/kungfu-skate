@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1846975099017365512}
   - component: {fileID: 2910500140261257925}
+  - component: {fileID: 7617231555401333875}
   m_Layer: 0
   m_Name: particle
   m_TagString: Untagged
@@ -69,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 50
   m_Sprite: {fileID: 21300000, guid: af7fd3ff76cc9504fa053826e31b8220, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -81,3 +82,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7617231555401333875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7740503424405670534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6076afeac3d8cd84994df9d4ca0455eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directions:
+  - {x: -6, y: 6}
+  - {x: -6, y: 3}
+  - {x: -6, y: 0}
+  - {x: -6, y: -3}
+  - {x: -6, y: -6}
+  direction: {x: 0, y: 0}
