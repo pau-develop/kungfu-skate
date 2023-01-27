@@ -26,6 +26,8 @@ public class CharacterDamage : MonoBehaviour
 
     void explodeAndRemoveScript(){
         bodyAnimator.Play("body-explode");
+        Destroy(GetComponent<CharacterCollider>());
+        Destroy(GetComponent<BoxCollider2D>());
         trackingState = false;
     }
 }
