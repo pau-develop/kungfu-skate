@@ -6,4 +6,8 @@ public class CharacterData : MonoBehaviour
 {
     public int hitPoints;
     public int explodeThreshold;
+    public AudioClip shoot;
+    public AudioClip swing;
+    public AudioClip die;
+    public AudioClip hit;
 }
