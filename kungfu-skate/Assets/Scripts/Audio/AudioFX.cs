@@ -6,6 +6,9 @@ public class AudioFX : MonoBehaviour
 {
     private AudioSource audioSource;
     public AudioClip char1Shoot;
+    public AudioClip char1Swing;
+    public AudioClip char1Die;
+    public AudioClip char1Hit;
     // Start is called before the first frame update
     void Start()
     {
