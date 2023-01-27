@@ -9,9 +9,6 @@ public class PlayerShoot : MonoBehaviour
     // Start is called before the first frame update
     void shootProjectile(){
         spawnLocation = new Vector2(transform.position.x+15,transform.position.y+20);
-        string character = GetComponent<SwapSprites>().spriteSheetName;
-        char myChar = character[character.Length-1];
         GameObject tempProjectile = Instantiate(projectile,spawnLocation,Quaternion.identity);
-        tempProjectile.GetComponent<Projectile>().projectileType = myChar;
     }
 }
