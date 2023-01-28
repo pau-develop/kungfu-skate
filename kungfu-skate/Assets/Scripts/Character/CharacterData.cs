@@ -10,4 +10,5 @@ public class CharacterData : MonoBehaviour
     public AudioClip swing;
     public AudioClip[] die;
     public AudioClip hit;
+    public AudioClip explode;
 }

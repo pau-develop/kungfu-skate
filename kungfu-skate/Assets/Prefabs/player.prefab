@@ -151,7 +151,6 @@ GameObject:
   - component: {fileID: 7521511194812097668}
   - component: {fileID: 9206588104460546292}
   - component: {fileID: 3487077068829125970}
-  - component: {fileID: 120993450}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -306,8 +305,9 @@ MonoBehaviour:
   shoot: {fileID: 8300000, guid: 0d4313425c712a6449e596d3b11a8cbc, type: 3}
   swing: {fileID: 8300000, guid: bcfc8481768ac504f860a627bfef2a0f, type: 3}
   die:
-  - {fileID: 8300000, guid: 6b278422ae45e834bb5813d1ed0dc5ef, type: 3}
+  - {fileID: 8300000, guid: 2d654b5486be25841a65dbaf49bb126d, type: 3}
   hit: {fileID: 8300000, guid: 67584b6172359c14c8266be2cdaac854, type: 3}
+  explode: {fileID: 0}
 --- !u!114 &7521511194812097668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,26 +353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c4dd0616a525b4abb682ee6882152e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &120993450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3876005035141380404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 928211c1745c40045b290fef6512760c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitPoints: 1
-  explodeThreshold: -1
-  shoot: {fileID: 8300000, guid: 0d4313425c712a6449e596d3b11a8cbc, type: 3}
-  swing: {fileID: 8300000, guid: bcfc8481768ac504f860a627bfef2a0f, type: 3}
-  die:
-  - {fileID: 8300000, guid: 2d654b5486be25841a65dbaf49bb126d, type: 3}
-  - {fileID: 8300000, guid: 6b278422ae45e834bb5813d1ed0dc5ef, type: 3}
-  hit: {fileID: 8300000, guid: 67584b6172359c14c8266be2cdaac854, type: 3}
 --- !u!1 &3876005035935992975
 GameObject:
   m_ObjectHideFlags: 0

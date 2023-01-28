@@ -20,22 +20,23 @@ public class CharacterDamage : MonoBehaviour
     }
 
     void keepTrackHitPoints(){
-        if(GetComponent<CharacterMovement>().isAlive){
-            if(GetComponent<CharacterData>().hitPoints <= 0){
-                Debug.Log(this.GetComponent<CharacterData>().die);
-                Debug.Log(this.GetComponent<CharacterData>().die.Length);
-                audioFX.playRandomSound(GetComponent<CharacterData>().die);
-                GetComponent<CharacterMovement>().isAlive = false;
-            } 
-        }
+        if(GetComponent<CharacterMovement>().isAlive) 
+            if(GetComponent<CharacterData>().hitPoints <= 0) 
+                killPlayer(); 
         if(GetComponent<CharacterData>().hitPoints <= GetComponent<CharacterData>().explodeThreshold)
             explodeAndRemoveScript();
     }
 
     void explodeAndRemoveScript(){
+        audioFX.playSound(GetComponent<CharacterData>().explode);
         bodyAnimator.Play("body-explode");
         Destroy(GetComponent<CharacterCollider>());
         Destroy(GetComponent<BoxCollider2D>());
         trackingState = false;
+    }
+
+    void killPlayer(){
+        audioFX.playRandomSound(GetComponent<CharacterData>().die);
+        GetComponent<CharacterMovement>().isAlive = false;
     }
 }

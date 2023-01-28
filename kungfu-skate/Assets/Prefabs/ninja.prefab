@@ -205,6 +205,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6b278422ae45e834bb5813d1ed0dc5ef, type: 3}
   - {fileID: 8300000, guid: 032fbd3db46e8034c8a65255830e8459, type: 3}
   hit: {fileID: 8300000, guid: 67584b6172359c14c8266be2cdaac854, type: 3}
+  explode: {fileID: 8300000, guid: 51b984c02024b1342bff52ec1f71b756, type: 3}
 --- !u!114 &4707990301360457769
 MonoBehaviour:
   m_ObjectHideFlags: 0
