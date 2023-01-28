@@ -145,7 +145,6 @@ GameObject:
   - component: {fileID: 3876005035141380407}
   - component: {fileID: 753769880}
   - component: {fileID: 753769881}
-  - component: {fileID: 7223067700773652351}
   - component: {fileID: 6877659219114117683}
   - component: {fileID: 1661162168643174561}
   - component: {fileID: 7521511194812097668}
@@ -250,18 +249,6 @@ MonoBehaviour:
   suspensionY: 0100000002000000030000000200000001000000
   groundPositions: 0000000002000000feffffff02000000
   airPositions: 0100000000000000feffffff00000000
---- !u!114 &7223067700773652351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3876005035141380404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aaccec9c7a069547add1a1f887e072c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &6877659219114117683
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -485,6 +472,7 @@ GameObject:
   - component: {fileID: 3876005036237387208}
   - component: {fileID: 3876005036237387210}
   - component: {fileID: 4520461924538077993}
+  - component: {fileID: 2200736089703526524}
   m_Layer: 0
   m_Name: arms
   m_TagString: Untagged
@@ -606,3 +594,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 5842409861559824444, guid: 6e0d55cbf85aaad47ada0edaf5f322e0,
     type: 3}
+--- !u!114 &2200736089703526524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3876005036237387206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aaccec9c7a069547add1a1f887e072c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

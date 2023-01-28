@@ -11,9 +11,8 @@ public class PlayerAttackAnimations : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerArms = transform.Find("arms").gameObject;
-        player = GetComponent<CharacterMovement>();
-        armsAnimator = playerArms.GetComponent<Animator>();
+        player = transform.parent.GetComponent<CharacterMovement>();
+        armsAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
