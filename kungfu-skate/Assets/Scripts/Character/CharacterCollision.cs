@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class CharacterCollision : MonoBehaviour
 {
+    private AudioFX audioFx;
     private BoxCollider2D charCollider;
+    private CharacterData charData;
     void Start(){
+        charData = GetComponent<CharacterData>();
+        audioFx = GameObject.Find("audio-fx").GetComponent<AudioFX>();
         charCollider = GetComponent<BoxCollider2D>();
     }
     void OnTriggerEnter2D(Collider2D collider){
@@ -13,6 +17,7 @@ public class CharacterCollision : MonoBehaviour
     }
 
     void dealWithCollision(){
+        audioFx.playSound(charData.hit);
         GetComponent<CharacterData>().hitPoints--;
         for(int i = 0; i < transform.childCount; i++){
             transform.GetChild(i).GetComponent<SwapSprites>().isBlinking = true;

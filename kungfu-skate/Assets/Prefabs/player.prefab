@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  folder: Sprites/CHAR/
   spriteSheetName: CHAR1
   currentColor: _1
   isBlinking: 0
@@ -301,6 +302,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 1
   explodeThreshold: -1
+  shoot: {fileID: 8300000, guid: 0d4313425c712a6449e596d3b11a8cbc, type: 3}
+  swing: {fileID: 8300000, guid: bcfc8481768ac504f860a627bfef2a0f, type: 3}
+  die:
+  - {fileID: 8300000, guid: 2d654b5486be25841a65dbaf49bb126d, type: 3}
+  hit: {fileID: 8300000, guid: 67584b6172359c14c8266be2cdaac854, type: 3}
+  explode: {fileID: 0}
 --- !u!114 &7521511194812097668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,6 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  folder: Sprites/CHAR/
   spriteSheetName: CHAR1
   currentColor: _1
   isBlinking: 0
@@ -580,6 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  folder: Sprites/CHAR/
   spriteSheetName: CHARMELEE1
   currentColor: _1
   isBlinking: 0
