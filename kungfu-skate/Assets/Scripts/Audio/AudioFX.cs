@@ -13,8 +13,12 @@ public class AudioFX : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void playSound(AudioClip currentAudio)
-    {
+    public void playSound(AudioClip currentAudio){
         audioSource.PlayOneShot(currentAudio);
+    }
+
+    public void playRandomSound(AudioClip[] audios){
+        int randomSound = Random.Range(0,audios.Length);
+        audioSource.PlayOneShot(audios[randomSound]);
     }
 }

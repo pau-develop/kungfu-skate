@@ -201,7 +201,9 @@ MonoBehaviour:
   explodeThreshold: -5
   shoot: {fileID: 8300000, guid: 0d4313425c712a6449e596d3b11a8cbc, type: 3}
   swing: {fileID: 8300000, guid: bcfc8481768ac504f860a627bfef2a0f, type: 3}
-  die: {fileID: 8300000, guid: 2d654b5486be25841a65dbaf49bb126d, type: 3}
+  die:
+  - {fileID: 8300000, guid: 6b278422ae45e834bb5813d1ed0dc5ef, type: 3}
+  - {fileID: 8300000, guid: 032fbd3db46e8034c8a65255830e8459, type: 3}
   hit: {fileID: 8300000, guid: 67584b6172359c14c8266be2cdaac854, type: 3}
 --- !u!114 &4707990301360457769
 MonoBehaviour:
