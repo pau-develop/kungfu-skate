@@ -294,7 +294,8 @@ MonoBehaviour:
   die:
   - {fileID: 8300000, guid: 2d654b5486be25841a65dbaf49bb126d, type: 3}
   hit: {fileID: 8300000, guid: 67584b6172359c14c8266be2cdaac854, type: 3}
-  explode: {fileID: 0}
+  explode: {fileID: 8300000, guid: 51b984c02024b1342bff52ec1f71b756, type: 3}
+  melee: {fileID: 8300000, guid: bcfc8481768ac504f860a627bfef2a0f, type: 3}
 --- !u!114 &7521511194812097668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,9 +474,11 @@ GameObject:
   - component: {fileID: 3876005036237387210}
   - component: {fileID: 4520461924538077993}
   - component: {fileID: 2200736089703526524}
+  - component: {fileID: 4193995909429183802}
+  - component: {fileID: 4650101174984256149}
   m_Layer: 0
   m_Name: arms
-  m_TagString: Untagged
+  m_TagString: PlayerMelee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -606,3 +609,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aaccec9c7a069547add1a1f887e072c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4193995909429183802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3876005036237387206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35b541fbf4b5f3b419ea6ef4604ca1cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &4650101174984256149
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3876005036237387206}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 21.404854, y: 18.035297}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 80, y: 60}
+    newSize: {x: 80, y: 60}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 20.192322, y: 28.513908}
+  m_EdgeRadius: 0
