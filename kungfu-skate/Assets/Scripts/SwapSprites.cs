@@ -4,7 +4,7 @@ using System.Linq;
 
 public class SwapSprites : MonoBehaviour
 {
-    public string folder;
+    private string folder;
     public string spriteSheetName;
     private string LoadedSpriteSheetName;
     private Dictionary<string, Sprite> spriteSheet;
@@ -16,6 +16,10 @@ public class SwapSprites : MonoBehaviour
     
     private void Start()
     {
+        folder = transform.parent.GetComponent<CharacterData>().folder;
+        if(this.gameObject.name=="arms")
+            spriteSheetName = transform.parent.GetComponent<CharacterData>().armSpriteName;
+        else  spriteSheetName = transform.parent.GetComponent<CharacterData>().bodySpriteName;  
         spriteRenderer = GetComponent<SpriteRenderer>();
         LoadSpriteSheet();
     }
