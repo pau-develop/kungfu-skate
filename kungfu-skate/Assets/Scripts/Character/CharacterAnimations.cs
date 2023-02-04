@@ -43,7 +43,9 @@ public class CharacterAnimations : MonoBehaviour
             checkGrounded();
             checkDirection();
         } else { 
-            if(isPlayer) bodyAnimator.SetBool("isAlive",false);
+            if(isPlayer) {
+                bodyAnimator.SetBool("isAlive",false);
+            }
             else playRandomDeadAnim();
             if(player.isGrounded) bodyAnimator.SetBool("isGrounded",true);
             if(player.isExploded) bodyAnimator.Play("body-explode");

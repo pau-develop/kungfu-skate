@@ -21,15 +21,14 @@ public class CharacterDamage : MonoBehaviour
 
     void keepTrackHitPoints(){
         if(GetComponent<CharacterMovement>().isAlive) 
-            if(GetComponent<CharacterData>().hitPoints <= 0) 
-                killPlayer(); 
+            if(GetComponent<CharacterData>().hitPoints <= 0) killPlayer();
         if(GetComponent<CharacterData>().hitPoints <= GetComponent<CharacterData>().explodeThreshold)
             explodeAndRemoveScript();
     }
 
     void explodeAndRemoveScript(){
         audioFX.playSound(GetComponent<CharacterData>().explode);
-        bodyAnimator.Play("body-explode");
+        GetComponent<CharacterMovement>().isExploded = true;
         Destroy(GetComponent<CharacterCollider>());
         Destroy(GetComponent<BoxCollider2D>());
         trackingState = false;

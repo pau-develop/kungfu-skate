@@ -15,7 +15,7 @@ public class TrackPlayerPos : MonoBehaviour
     }
 
     void checkForPlayerOnScene(){
-        if(GameObject.Find("player")!=null) player =  GameObject.Find("player");
+        if(GameObject.FindWithTag("Player")!=null) player =  GameObject.FindWithTag("Player");
         else player = null;
     }
 

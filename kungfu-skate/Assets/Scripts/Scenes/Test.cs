@@ -29,13 +29,13 @@ public class Test : MonoBehaviour
     }
 
     void killPlayer(){
-        if(GameObject.Find("player").GetComponent<CharacterData>().hitPoints > 0){ 
-            GameObject.Find("player").GetComponent<CharacterData>().hitPoints = 0;
-            GameObject.Find("ninja").GetComponent<CharacterData>().hitPoints = 0;
+        if(GameObject.FindWithTag("Player").GetComponent<CharacterData>().hitPoints > 0){ 
+            GameObject.FindWithTag("Player").GetComponent<CharacterData>().hitPoints = 0;
+            GameObject.FindWithTag("Enemy").GetComponent<CharacterData>().hitPoints = 0;
         }
         else { 
-            GameObject.Find("player").GetComponent<CharacterData>().hitPoints = -50;
-            GameObject.Find("ninja").GetComponent<CharacterData>().hitPoints = -50;
+            GameObject.Find("Player").GetComponent<CharacterData>().hitPoints = -50;
+            GameObject.Find("Enemy").GetComponent<CharacterData>().hitPoints = -50;
         }
     }
 

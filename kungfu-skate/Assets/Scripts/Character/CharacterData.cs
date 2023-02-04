@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CharacterData : MonoBehaviour
 {
+    public string bodySpriteName;
+    public string armSpriteName;
+    public string folder;
     public int hitPoints;
     public int explodeThreshold;
     public AudioClip shoot;
@@ -11,4 +14,5 @@ public class CharacterData : MonoBehaviour
     public AudioClip[] die;
     public AudioClip hit;
     public AudioClip explode;
+    public AudioClip melee;
 }
