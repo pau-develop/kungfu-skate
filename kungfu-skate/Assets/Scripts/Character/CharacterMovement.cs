@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    public bool movingUp =false;
+    private bool autoMove = true;
+    public bool movingUp = false;
     public bool movingDown =false;
     public bool movingLeft =false;
     public bool movingRight =false;
@@ -31,8 +32,7 @@ public class CharacterMovement : MonoBehaviour
     {
         playerPos = new Vector2(transform.position.x, transform.position.y);
         playerLegs = transform.GetChild(1).gameObject;
-        playerArms = transform.GetChild(2).gameObject;
-            
+        playerArms = transform.GetChild(2).gameObject;    
     }
 
     // Update is called once per frame
@@ -75,7 +75,19 @@ public class CharacterMovement : MonoBehaviour
     }
 
     void movePlayer(){
-       if(movingUp) {
+       if(autoMove) autoMovePlayer();
+       else controlPlayer();
+
+        transform.position = playerPos;
+    }
+
+    void autoMovePlayer(){
+        if(transform.position.x < -120) playerPos.x += (playerSpeed/2) * Time.deltaTime;
+        else autoMove = false;
+    }
+
+    void controlPlayer(){
+        if(movingUp) {
             if(playerPos.y <topLimit) playerPos.y+= playerSpeed*Time.deltaTime;
             else playerPos.y = topLimit;
        } 
@@ -91,7 +103,5 @@ public class CharacterMovement : MonoBehaviour
             if(playerPos.x < rightLimit) playerPos.x+= playerSpeed*Time.deltaTime;
             else playerPos.x = rightLimit;
         }
-
-        transform.position = playerPos;
     }
 }

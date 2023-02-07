@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 72071817012696631}
   - component: {fileID: 72071817012696634}
   - component: {fileID: 72071817012696628}
-  - component: {fileID: 72071817012696629}
   - component: {fileID: 3803952772790645402}
   - component: {fileID: 3803952772790645403}
   - component: {fileID: 7761954483791013169}
@@ -19,6 +18,7 @@ GameObject:
   - component: {fileID: 6677602877701606278}
   - component: {fileID: 5408266793679904758}
   - component: {fileID: 337432399696200272}
+  - component: {fileID: 29386900056800223}
   m_Layer: 0
   m_Name: char3
   m_TagString: Player
@@ -68,28 +68,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc76fea4b3e322545a4d8580e654779f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &72071817012696629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 72071817012696630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 969b1f4ae16b01d45a912e21036e726d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movingUp: 0
-  movingDown: 0
-  movingLeft: 0
-  movingRight: 0
-  isShooting: 0
-  isSwinging: 0
-  playerSpeed: 100
-  isGrounded: 0
-  isAlive: 1
-  isExploded: 0
 --- !u!114 &3803952772790645402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928211c1745c40045b290fef6512760c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoMove: 1
   bodySpriteName: CHAR3
   armSpriteName: CHARMELEE3
   folder: Sprites/CHAR/
@@ -213,6 +192,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c4dd0616a525b4abb682ee6882152e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &29386900056800223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72071817012696630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969b1f4ae16b01d45a912e21036e726d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movingUp: 0
+  movingDown: 0
+  movingLeft: 0
+  movingRight: 0
+  isShooting: 0
+  isSwinging: 0
+  playerSpeed: 100
+  isGrounded: 0
+  isAlive: 1
+  isExploded: 0
 --- !u!1 &72071817609569761
 GameObject:
   m_ObjectHideFlags: 0

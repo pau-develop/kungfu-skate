@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928211c1745c40045b290fef6512760c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoMove: 1
   bodySpriteName: CHAR2
   armSpriteName: CHARMELEE2
   folder: Sprites/CHAR/

@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 9206588104460546292}
   - component: {fileID: 3487077068829125970}
   m_Layer: 0
-  m_Name: player
+  m_Name: char1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -286,6 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928211c1745c40045b290fef6512760c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoMove: 1
   bodySpriteName: CHAR1
   armSpriteName: CHARMELEE1
   folder: Sprites/CHAR/
