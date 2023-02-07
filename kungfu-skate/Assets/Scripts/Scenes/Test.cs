@@ -5,19 +5,28 @@ using UnityEngine;
 public class Test : MonoBehaviour
 {
     private GameObject player;
+    private Spawner spawner;
     void Start()
     {
         player = GameObject.Find("player");
+        spawner = GameObject.Find("SPAWNER").GetComponent<Spawner>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Alpha1)) swapPlayerSprites("1");
-        if(Input.GetKeyUp(KeyCode.Alpha2)) swapPlayerSprites("2");
-        if(Input.GetKeyUp(KeyCode.Alpha3)) swapPlayerSprites("3");
+        if(Input.GetKeyUp(KeyCode.Alpha1)) spawnPlayer(0);
+        if(Input.GetKeyUp(KeyCode.Alpha2)) spawnPlayer(1);
+        if(Input.GetKeyUp(KeyCode.Alpha3)) spawnPlayer(2);
         if(Input.GetKeyUp(KeyCode.B)) blinkPlayer();
         if(Input.GetKeyUp(KeyCode.F)) killPlayer();
+    }
+
+    void spawnPlayer(int playerNum){
+        player = GameObject.FindWithTag("Player");
+        Vector2 spawnPos = new Vector2(-180,0);
+        if(player != null) player.GetComponent<CharacterData>().hitPoints = -500;
+        spawner.spawnPlayer(playerNum, spawnPos);
     }
 
     void blinkPlayer(){
