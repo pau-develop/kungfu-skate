@@ -197,6 +197,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928211c1745c40045b290fef6512760c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoMove: 1
+  bodySpriteName: 
+  armSpriteName: 
+  folder: 
   hitPoints: 8
   explodeThreshold: -5
   shoot: {fileID: 8300000, guid: 0d4313425c712a6449e596d3b11a8cbc, type: 3}
@@ -206,6 +210,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 032fbd3db46e8034c8a65255830e8459, type: 3}
   hit: {fileID: 8300000, guid: 67584b6172359c14c8266be2cdaac854, type: 3}
   explode: {fileID: 8300000, guid: 51b984c02024b1342bff52ec1f71b756, type: 3}
+  melee: {fileID: 0}
 --- !u!114 &4707990301360457769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,7 +371,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folder: Sprites/NIN/
   spriteSheetName: NIN1
   currentColor: _1
   isBlinking: 0
@@ -486,7 +490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folder: Sprites/NIN/
   spriteSheetName: NIN1
   currentColor: _1
   isBlinking: 0
@@ -514,6 +517,7 @@ GameObject:
   - component: {fileID: 7985915826263547885}
   - component: {fileID: 7985915826263547884}
   - component: {fileID: 485383020244038047}
+  - component: {fileID: 8747230943013894687}
   m_Layer: 0
   m_Name: arms
   m_TagString: Untagged
@@ -617,7 +621,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folder: Sprites/NIN/
   spriteSheetName: NINMELEE1
   currentColor: _1
   isBlinking: 0
+--- !u!114 &8747230943013894687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7985915826263547874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb12593c679b8e47bcf8b86dfa43277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

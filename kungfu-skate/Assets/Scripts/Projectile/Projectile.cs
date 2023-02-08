@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public Sprite[] sprites;
-    public char projectileType; 
+    public int projectileType; // 0 straight 1 target-dir 
     private SpriteRenderer projectileRenderer;
     private int animationInterval = 6;
     private int counter = 0;

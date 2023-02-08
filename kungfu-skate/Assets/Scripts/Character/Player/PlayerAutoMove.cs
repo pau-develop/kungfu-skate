@@ -9,7 +9,6 @@ public class PlayerAutoMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         destPos = new Vector2(transform.position.x+60, transform.position.y);
     }
 

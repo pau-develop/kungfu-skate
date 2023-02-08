@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShoot : MonoBehaviour
+public class CharacterShoot : MonoBehaviour
 {
     public GameObject projectile;
     private Vector2 spawnLocation;
