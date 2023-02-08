@@ -480,6 +480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 5842409861559824444, guid: 6e0d55cbf85aaad47ada0edaf5f322e0,
     type: 3}
+  spawnDistanceFromCenter: {x: 15, y: 20}
 --- !u!114 &3044661174362234750
 MonoBehaviour:
   m_ObjectHideFlags: 0
