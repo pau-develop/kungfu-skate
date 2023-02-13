@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttackAnimations : MonoBehaviour
+public class CharacterAttackAnimations : MonoBehaviour
 {
     private CharacterMovement player;
     private Animator armsAnimator;

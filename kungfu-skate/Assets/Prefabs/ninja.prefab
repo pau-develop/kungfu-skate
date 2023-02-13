@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7985915824582300431}
   - component: {fileID: 7985915824582300424}
   - component: {fileID: 7985915824582300425}
-  - component: {fileID: 7985915824582300427}
   - component: {fileID: 1800155318}
   - component: {fileID: 2882212675411154702}
   - component: {fileID: 495074746389998118}
@@ -22,6 +21,7 @@ GameObject:
   - component: {fileID: 4707990301360457769}
   - component: {fileID: 7702518846523448579}
   - component: {fileID: -123258012032609746}
+  - component: {fileID: 741427017523782769}
   m_Layer: 0
   m_Name: ninja
   m_TagString: Enemy
@@ -94,18 +94,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFliped: 0
---- !u!114 &7985915824582300427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7985915824582300429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc76fea4b3e322545a4d8580e654779f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1800155318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +244,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &741427017523782769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7985915824582300429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123f41e6aee32e844914f4a4293c4fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7985915824907368400
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +518,7 @@ GameObject:
   - component: {fileID: 7985915826263547884}
   - component: {fileID: 485383020244038047}
   - component: {fileID: 860376285148345093}
+  - component: {fileID: 5332331225845657380}
   m_Layer: 0
   m_Name: arms
   m_TagString: Untagged
@@ -639,3 +640,15 @@ MonoBehaviour:
   projectile: {fileID: 7383099495822265382, guid: 5503ca92b3eb2694b903b32ded67bce3,
     type: 3}
   spawnDistanceFromCenter: {x: 15, y: 20}
+--- !u!114 &5332331225845657380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7985915826263547874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aaccec9c7a069547add1a1f887e072c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
