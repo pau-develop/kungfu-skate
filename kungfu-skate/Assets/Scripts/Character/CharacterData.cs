@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterData : MonoBehaviour
 {
+    public bool isPlayer;
     public bool autoMove = true;
     public string bodySpriteName;
     public string armSpriteName;

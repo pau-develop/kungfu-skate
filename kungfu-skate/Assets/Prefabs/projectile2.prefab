@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8794646409964568408}
   m_Layer: 0
   m_Name: projectile2
-  m_TagString: PlayerBullet
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   - {fileID: 5587093928461548673, guid: 35a4a605d1a17734db63b657dcb27a93, type: 3}
   projectileType: 1
   projectileSpeed: 150
+  direction: 1
 --- !u!114 &6673242381340446369
 MonoBehaviour:
   m_ObjectHideFlags: 0
