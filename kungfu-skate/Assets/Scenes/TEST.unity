@@ -376,7 +376,8 @@ PrefabInstance:
       propertyPath: folder
       value: Sprites/NIN/
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5332331225845657380, guid: a311e4c69774e9e4cbceb667d2c74e14, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a311e4c69774e9e4cbceb667d2c74e14, type: 3}
 --- !u!1 &1795913414
 GameObject:

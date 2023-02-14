@@ -16,8 +16,9 @@ public class CharacterShoot : MonoBehaviour
     void shootProjectile(){
         audioFX.playSound(charData.shoot);
         int direction = getDirection();
-        Vector2 spawnLocation = new Vector2(transform.position.x+(spawnDistanceFromCenter.x*direction),transform.position.y+(spawnDistanceFromCenter.y*direction));
+        Vector2 spawnLocation = new Vector2(transform.position.x+(spawnDistanceFromCenter.x*direction),transform.position.y+spawnDistanceFromCenter.y);
         GameObject tempProjectile = Instantiate(projectile,spawnLocation,Quaternion.identity);
+        tempProjectile.GetComponent<Projectile>().direction = direction;
     }
 
     int getDirection(){

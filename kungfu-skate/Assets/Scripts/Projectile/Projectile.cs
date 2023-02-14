@@ -12,8 +12,9 @@ public class Projectile : MonoBehaviour
     private int frame = 0;
     private Vector2 scale =  new Vector2(0.5f,0.5f);
     private Vector2 projectilePos;
-    private int projectileSpeed = 400;
+    public int projectileSpeed;
     private int rotationSpeed = -500;
+    public int direction = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +48,7 @@ public class Projectile : MonoBehaviour
     }
 
     void moveProjectile(){
-        projectilePos.x += projectileSpeed*Time.deltaTime;
+        projectilePos.x += (projectileSpeed * direction)*Time.deltaTime;
         transform.position = projectilePos;
     }
 

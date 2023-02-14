@@ -101,6 +101,7 @@ MonoBehaviour:
   - {fileID: -3125185451868994384, guid: 30ccae2cf6213e3468a8412cb9ef7bd9, type: 3}
   - {fileID: 2714440333006401032, guid: 30ccae2cf6213e3468a8412cb9ef7bd9, type: 3}
   projectileType: 0
+  projectileSpeed: 400
 --- !u!114 &7781797504147272379
 MonoBehaviour:
   m_ObjectHideFlags: 0
