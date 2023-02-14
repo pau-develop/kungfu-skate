@@ -97,6 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a8d29e610522e74a9fe8e14acf93fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileColor:
+    serializedVersion: 2
+    rgba: 4282548735
   sprites:
   - {fileID: -1448053367703039221, guid: 35a4a605d1a17734db63b657dcb27a93, type: 3}
   - {fileID: 3566399287441660613, guid: 35a4a605d1a17734db63b657dcb27a93, type: 3}
@@ -118,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particle: {fileID: 7740503424405670534, guid: a0abac4e54406d2418fce4673a1f1658,
     type: 3}
+  isPlayerBullet: 0
 --- !u!61 &8794646409964568408
 BoxCollider2D:
   m_ObjectHideFlags: 0

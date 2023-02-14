@@ -96,6 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a8d29e610522e74a9fe8e14acf93fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileColor:
+    serializedVersion: 2
+    rgba: 4294941828
   sprites:
   - {fileID: 688938470037794653, guid: 30ccae2cf6213e3468a8412cb9ef7bd9, type: 3}
   - {fileID: -3125185451868994384, guid: 30ccae2cf6213e3468a8412cb9ef7bd9, type: 3}

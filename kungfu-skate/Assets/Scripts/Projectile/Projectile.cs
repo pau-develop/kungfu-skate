@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public Color32 projectileColor;
     public Sprite[] sprites;
     public int projectileType; // 0 straight 1 target-dir 
     private SpriteRenderer projectileRenderer;

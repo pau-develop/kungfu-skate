@@ -7,6 +7,11 @@ public class ProjectileCollision : MonoBehaviour
     [SerializeField] private GameObject particle;
     [SerializeField] private bool isPlayerBullet;
     private int flipDirection;
+    private Color32 particleColor;
+
+    void Start(){
+        particleColor = GetComponent<Projectile>().projectileColor;
+    }
 
     void OnTriggerEnter2D(Collider2D collider){
         if(collider.gameObject.tag =="Enemy" && isPlayerBullet) dealWithCollision(collider);
@@ -28,7 +33,7 @@ public class ProjectileCollision : MonoBehaviour
         Vector2[] directions = particle.GetComponent<ParticleMovement>().directions;
         for(int i = 0; i < directions.Length ; i++){
             GameObject tempParticle = Instantiate(particle, transform.position, Quaternion.identity);
-            tempParticle.GetComponent<SpriteRenderer>().color = new Color32(132,156,255,255);
+            tempParticle.GetComponent<SpriteRenderer>().color = particleColor;
             tempParticle.GetComponent<ParticleMovement>().direction = directions[i];
             tempParticle.GetComponent<ParticleMovement>().flipDirection = flipDirection;
         }
