@@ -5,14 +5,18 @@ using UnityEngine;
 public class ProjectileCollision : MonoBehaviour
 {
     [SerializeField] private GameObject particle;
+    [SerializeField] private bool isPlayerBullet;
     private int flipDirection;
 
     void OnTriggerEnter2D(Collider2D collider){
-        if(collider.gameObject.tag =="Enemy") {
-            flipDirection = getProjectilePosition(collider);
-            generateParticles();
-            Destroy(this.gameObject);
-        }
+        if(collider.gameObject.tag =="Enemy" && isPlayerBullet) dealWithCollision(collider);
+        if(collider.gameObject.tag =="Player" && !isPlayerBullet) dealWithCollision(collider);
+    }
+
+    void dealWithCollision(Collider2D collider){
+        flipDirection = getProjectilePosition(collider);
+        generateParticles();
+        Destroy(this.gameObject);
     }
 
     int getProjectilePosition(Collider2D collider){

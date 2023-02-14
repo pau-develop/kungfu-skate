@@ -102,6 +102,7 @@ MonoBehaviour:
   - {fileID: 2714440333006401032, guid: 30ccae2cf6213e3468a8412cb9ef7bd9, type: 3}
   projectileType: 0
   projectileSpeed: 400
+  direction: 1
 --- !u!114 &7781797504147272379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particle: {fileID: 7740503424405670534, guid: a0abac4e54406d2418fce4673a1f1658,
     type: 3}
+  isPlayerBullet: 1
 --- !u!61 &5579605204552319810
 BoxCollider2D:
   m_ObjectHideFlags: 0
