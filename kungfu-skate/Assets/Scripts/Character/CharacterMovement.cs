@@ -25,11 +25,13 @@ public class CharacterMovement : MonoBehaviour
     public bool isExploded = false;
     private GameObject playerLegs;
     private GameObject playerArms;
+    private bool isPlayer;
 
     private Vector2 spriteSize = new Vector2(40,40);
     // Start is called before the first frame update
     void Start()
     {
+        isPlayer = GetComponent<CharacterData>().isPlayer;
         playerPos = new Vector2(transform.position.x, transform.position.y);
         playerLegs = transform.GetChild(1).gameObject;
         playerArms = transform.GetChild(2).gameObject;    
@@ -76,9 +78,10 @@ public class CharacterMovement : MonoBehaviour
 
     void movePlayer(){
        if(autoMove) autoMovePlayer();
-       else controlPlayer();
-
-        transform.position = playerPos;
+       else {
+        if(isPlayer) controlPlayer();
+        else controlEnemy();
+       }
     }
 
     void autoMovePlayer(){
@@ -86,6 +89,10 @@ public class CharacterMovement : MonoBehaviour
         else autoMove = false;
     }
 
+    void controlEnemy(){
+        Vector2 ninjaPos = GetComponent<NinjaCommands>().ninjaPos;
+        playerPos = ninjaPos;
+    }
     void controlPlayer(){
         if(movingUp) {
             if(playerPos.y <topLimit) playerPos.y+= playerSpeed*Time.deltaTime;
@@ -103,5 +110,6 @@ public class CharacterMovement : MonoBehaviour
             if(playerPos.x < rightLimit) playerPos.x+= playerSpeed*Time.deltaTime;
             else playerPos.x = rightLimit;
         }
+        transform.position = playerPos;
     }
 }

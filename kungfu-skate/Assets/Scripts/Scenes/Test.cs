@@ -43,8 +43,8 @@ public class Test : MonoBehaviour
             GameObject.FindWithTag("Enemy").GetComponent<CharacterData>().hitPoints = 0;
         }
         else { 
-            GameObject.Find("Player").GetComponent<CharacterData>().hitPoints = -50;
-            GameObject.Find("Enemy").GetComponent<CharacterData>().hitPoints = -50;
+            GameObject.FindWithTag("Player").GetComponent<CharacterData>().hitPoints = -50;
+            GameObject.FindWithTag("Enemy").GetComponent<CharacterData>().hitPoints = -50;
         }
     }
 

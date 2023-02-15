@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 7702518846523448579}
   - component: {fileID: -123258012032609746}
   - component: {fileID: 741427017523782769}
+  - component: {fileID: 9196719131342877609}
   m_Layer: 0
   m_Name: ninja
   m_TagString: Enemy
@@ -122,7 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba34ee5fdccc8940a9af4135ca39c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
 --- !u!114 &495074746389998118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,10 +185,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928211c1745c40045b290fef6512760c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   autoMove: 1
-  bodySpriteName: 
-  armSpriteName: 
-  folder: 
+  bodySpriteName: NIN1
+  armSpriteName: NINMELEE1
+  folder: Sprites/NIN/
   hitPoints: 8
   explodeThreshold: -5
   shoot: {fileID: 8300000, guid: 0d4313425c712a6449e596d3b11a8cbc, type: 3}
@@ -256,6 +257,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 123f41e6aee32e844914f4a4293c4fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9196719131342877609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7985915824582300429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fae0549f793ecc44d8aed3a3ba84f4a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialDestPos: {x: 0, y: 0}
 --- !u!1 &7985915824907368400
 GameObject:
   m_ObjectHideFlags: 0

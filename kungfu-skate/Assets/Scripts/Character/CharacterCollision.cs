@@ -13,7 +13,6 @@ public class CharacterCollision : MonoBehaviour
         audioFx = GameObject.Find("audio-fx").GetComponent<AudioFX>();
         charCollider = GetComponent<BoxCollider2D>();
         isPlayer = GetComponent<CharacterData>().isPlayer;
-        Debug.Log(isPlayer);
     }
     void OnTriggerEnter2D(Collider2D collider){
         if(collider.gameObject.tag =="PlayerBullet" && !isPlayer) dealWithCollision(1);
