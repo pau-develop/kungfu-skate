@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: -123258012032609746}
   - component: {fileID: 741427017523782769}
   - component: {fileID: 9196719131342877609}
+  - component: {fileID: 2641692095629879295}
   m_Layer: 0
   m_Name: ninja
   m_TagString: Enemy
@@ -269,7 +270,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fae0549f793ecc44d8aed3a3ba84f4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDestPos: {x: 0, y: 0}
+  ninjaPos: {x: 0, y: 0}
+  reachedInitialDestPos: 0
+  moveType: 0
+--- !u!114 &2641692095629879295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7985915824582300429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fed24313078319498c33e5241926f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7985915824907368400
 GameObject:
   m_ObjectHideFlags: 0
