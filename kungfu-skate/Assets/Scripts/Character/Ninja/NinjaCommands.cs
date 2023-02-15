@@ -5,7 +5,7 @@ using UnityEngine;
 public class NinjaCommands : MonoBehaviour
 {
     public Vector2 ninjaPos;
-    private int initialMoveSpeed = 50;
+    private int initialMoveSpeed = 100;
     private Vector2 initialDestPos = new Vector2(140,40);
     private Vector2 initialMoveDir;
     public bool reachedInitialDestPos = false;
