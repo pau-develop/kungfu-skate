@@ -185,7 +185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba34ee5fdccc8940a9af4135ca39c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 1
 --- !u!114 &3876005035141380406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928211c1745c40045b290fef6512760c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 1
   autoMove: 1
   bodySpriteName: CHAR1
   armSpriteName: CHARMELEE1
@@ -598,6 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 5842409861559824444, guid: 6e0d55cbf85aaad47ada0edaf5f322e0,
     type: 3}
+  spawnDistanceFromCenter: {x: 15, y: 20}
 --- !u!114 &2200736089703526524
 MonoBehaviour:
   m_ObjectHideFlags: 0

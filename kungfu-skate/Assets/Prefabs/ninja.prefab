@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7985915824582300431}
   - component: {fileID: 7985915824582300424}
   - component: {fileID: 7985915824582300425}
-  - component: {fileID: 7985915824582300427}
   - component: {fileID: 1800155318}
   - component: {fileID: 2882212675411154702}
   - component: {fileID: 495074746389998118}
@@ -22,6 +21,9 @@ GameObject:
   - component: {fileID: 4707990301360457769}
   - component: {fileID: 7702518846523448579}
   - component: {fileID: -123258012032609746}
+  - component: {fileID: 741427017523782769}
+  - component: {fileID: 9196719131342877609}
+  - component: {fileID: 2641692095629879295}
   m_Layer: 0
   m_Name: ninja
   m_TagString: Enemy
@@ -94,18 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFliped: 0
---- !u!114 &7985915824582300427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7985915824582300429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc76fea4b3e322545a4d8580e654779f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1800155318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba34ee5fdccc8940a9af4135ca39c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
 --- !u!114 &495074746389998118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +186,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928211c1745c40045b290fef6512760c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  autoMove: 1
+  bodySpriteName: NIN1
+  armSpriteName: NINMELEE1
+  folder: Sprites/NIN/
   hitPoints: 8
   explodeThreshold: -5
   shoot: {fileID: 8300000, guid: 0d4313425c712a6449e596d3b11a8cbc, type: 3}
@@ -206,6 +200,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 032fbd3db46e8034c8a65255830e8459, type: 3}
   hit: {fileID: 8300000, guid: 67584b6172359c14c8266be2cdaac854, type: 3}
   explode: {fileID: 8300000, guid: 51b984c02024b1342bff52ec1f71b756, type: 3}
+  melee: {fileID: 0}
 --- !u!114 &4707990301360457769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +246,45 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &741427017523782769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7985915824582300429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123f41e6aee32e844914f4a4293c4fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9196719131342877609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7985915824582300429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fae0549f793ecc44d8aed3a3ba84f4a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ninjaPos: {x: 0, y: 0}
+  reachedInitialDestPos: 0
+  moveType: 0
+--- !u!114 &2641692095629879295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7985915824582300429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fed24313078319498c33e5241926f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7985915824907368400
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folder: Sprites/NIN/
   spriteSheetName: NIN1
   currentColor: _1
   isBlinking: 0
@@ -486,7 +519,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folder: Sprites/NIN/
   spriteSheetName: NIN1
   currentColor: _1
   isBlinking: 0
@@ -514,6 +546,8 @@ GameObject:
   - component: {fileID: 7985915826263547885}
   - component: {fileID: 7985915826263547884}
   - component: {fileID: 485383020244038047}
+  - component: {fileID: 860376285148345093}
+  - component: {fileID: 5332331225845657380}
   m_Layer: 0
   m_Name: arms
   m_TagString: Untagged
@@ -617,7 +651,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folder: Sprites/NIN/
   spriteSheetName: NINMELEE1
   currentColor: _1
   isBlinking: 0
+--- !u!114 &860376285148345093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7985915826263547874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a377ab94fc2a42345842173038e1adeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 7383099495822265382, guid: 5503ca92b3eb2694b903b32ded67bce3,
+    type: 3}
+  spawnDistanceFromCenter: {x: 15, y: 20}
+--- !u!114 &5332331225845657380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7985915826263547874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aaccec9c7a069547add1a1f887e072c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

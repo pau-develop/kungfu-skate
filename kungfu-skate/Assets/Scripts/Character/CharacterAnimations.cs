@@ -21,7 +21,7 @@ public class CharacterAnimations : MonoBehaviour
     private bool justGrounded = false;
     
     private int randomNumber;
-    public bool isPlayer;
+    private bool isPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +34,7 @@ public class CharacterAnimations : MonoBehaviour
         legsAnimator = transform.Find("legs").GetComponent<Animator>();
         armsPosition = playerArms.transform.position;
         bodyPosition = playerBody.transform.position;
+        isPlayer = GetComponent<CharacterData>().isPlayer;
     }
 
     // Update is called once per frame
