@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NinjaAttack : MonoBehaviour
 {
-    private int attackCooldown = 5;
+    private int attackCooldown = 2;
     private float cooldownTimer = 0;
     private float attackDelay = 1;
     private float delayTimer = 0;
@@ -29,8 +29,7 @@ public class NinjaAttack : MonoBehaviour
         if(cooldownTimer > attackCooldown) prepareShot();
     }
 
-    void prepareShot(){
-        ninjaArmAnimator.SetBool("isShooting",false);
+    void prepareShot(){ 
         ninjaArmAnimator.SetBool("isRaising",true);
         delayTimer += 1 * Time.deltaTime;
         if(delayTimer > attackDelay) ninjaShoot(); 
@@ -38,7 +37,6 @@ public class NinjaAttack : MonoBehaviour
 
     void ninjaShoot(){
         ninjaArmAnimator.SetBool("isRaising",false);
-        ninjaArmAnimator.SetBool("isShooting",true);
         cooldownTimer = 0;
         delayTimer = 0;
     }
