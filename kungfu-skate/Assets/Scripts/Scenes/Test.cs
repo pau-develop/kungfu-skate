@@ -20,6 +20,7 @@ public class Test : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Alpha3)) spawnPlayer(2);
         if(Input.GetKeyUp(KeyCode.B)) blinkPlayer();
         if(Input.GetKeyUp(KeyCode.F)) killPlayer();
+        if(Input.GetKeyUp(KeyCode.Keypad0)) StartCoroutine(spawner.spawnNinjaColumnRoutine(190, 45, 140, 45, 4, -40, 0.5f));
     }
 
     void spawnPlayer(int playerNum){

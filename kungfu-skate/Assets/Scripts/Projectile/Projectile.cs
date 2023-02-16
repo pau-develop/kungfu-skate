@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
     public int projectileSpeed;
     private int rotationSpeed = -500;
     public int direction = 1;
-    private bool isTargetedBullet = true;
+    private bool isTargetedBullet = false;
     private Vector2 moveDirection;
 
     // Start is called before the first frame update
