@@ -6,7 +6,7 @@ public class NinjaAttack : MonoBehaviour
 {
     private int attackCooldown = 2;
     private float cooldownTimer = 0;
-    private float attackDelay = 1;
+    private float attackDelay = 0.5f;
     private float delayTimer = 0;
     private int ammunition = 5;
     private CharacterMovement ninja;

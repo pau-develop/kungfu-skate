@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NinjaCommands : MonoBehaviour
 {
+    private CharacterMovement ninja;
     public Vector2 ninjaPos;
     private int initialMoveSpeed = 100;
     public Vector2 initialDestPos;
@@ -12,9 +13,11 @@ public class NinjaCommands : MonoBehaviour
     public int moveType = 0;
     private int direction = -1;
     private int ninjaSpeed = 80;
+    private float latestXPos;
     // Start is called before the first frame update
     void Start()
     {
+        ninja = GetComponent<CharacterMovement>();
         ninjaPos = transform.position;
         initialMoveDir = (initialDestPos - ninjaPos).normalized;
     }
@@ -23,7 +26,24 @@ public class NinjaCommands : MonoBehaviour
     void Update()
     {
         if(!reachedInitialDestPos) moveToInitialDestPos();
-        else moveNinja();    
+        else moveNinja();
+        setNinjaDirections();    
+    }
+
+    void setNinjaDirections(){
+        if(transform.position.x > latestXPos){
+            ninja.movingLeft = false;
+            ninja.movingRight = true;
+        }
+        else if(transform.position.x < latestXPos){
+            ninja.movingRight = false;
+            ninja.movingLeft = true;
+        } 
+        else{
+            ninja.movingLeft = false;
+            ninja.movingRight = false;
+        }
+        latestXPos = transform.position.x;
     }
 
     void moveToInitialDestPos(){
