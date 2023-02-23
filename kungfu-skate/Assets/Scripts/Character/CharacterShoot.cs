@@ -8,6 +8,7 @@ public class CharacterShoot : MonoBehaviour
     public Vector2 spawnDistanceFromCenter;
     private AudioFX audioFX;
     private CharacterData charData;
+    public bool isTargetedBullet = false;
     // Start is called before the first frame update
     void Start(){
         charData = transform.parent.GetComponent<CharacterData>();
@@ -19,6 +20,7 @@ public class CharacterShoot : MonoBehaviour
         Vector2 spawnLocation = new Vector2(transform.position.x+(spawnDistanceFromCenter.x*direction),transform.position.y+spawnDistanceFromCenter.y);
         GameObject tempProjectile = Instantiate(projectile,spawnLocation,Quaternion.identity);
         tempProjectile.GetComponent<Projectile>().direction = direction;
+        tempProjectile.GetComponent<Projectile>().isTargetedBullet = isTargetedBullet;
     }
 
     int getDirection(){

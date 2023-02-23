@@ -16,14 +16,23 @@ public class Projectile : MonoBehaviour
     public int projectileSpeed;
     private int rotationSpeed = -500;
     public int direction = 1;
+    public bool isTargetedBullet = false;
+    private Vector2 moveDirection;
 
     // Start is called before the first frame update
     void Start()
     {
+        if(isTargetedBullet) moveDirection = getMoveDirection();
         projectilePos = transform.position;
         projectileRenderer = GetComponent<SpriteRenderer>();
         transform.localScale = scale;
         projectileRenderer.sprite = sprites[0];
+    }
+
+    Vector2 getMoveDirection(){
+        Vector2 playerPos = GameObject.FindWithTag("Player").transform.position;
+        Vector2 bulletPos = transform.position;
+        return (playerPos - bulletPos).normalized;
     }
 
     
@@ -49,8 +58,16 @@ public class Projectile : MonoBehaviour
     }
 
     void moveProjectile(){
-        projectilePos.x += (projectileSpeed * direction)*Time.deltaTime;
+        if(!isTargetedBullet) straightProjectileMovement();
+        else targetedProjectileMovement();  
         transform.position = projectilePos;
+    }
+
+    void targetedProjectileMovement(){
+        projectilePos += moveDirection * projectileSpeed *  Time.deltaTime;
+    }
+    void straightProjectileMovement(){
+        projectilePos.x += (projectileSpeed * direction)*Time.deltaTime;
     }
 
     void rotateProjectile(){
