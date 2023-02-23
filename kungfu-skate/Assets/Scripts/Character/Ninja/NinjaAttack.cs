@@ -21,7 +21,14 @@ public class NinjaAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ninja.isAlive) dealWithAttack();
+        GameObject player = GameObject.FindWithTag("Player");
+        if(ninja.isAlive && player!=null) dealWithAttack();
+        if(player == null) cancelAttack();
+    }
+
+    void cancelAttack(){
+        ninjaArmAnimator.SetBool("isRaising",false);
+        ninjaArmAnimator.Play("arms-idle");
     }
 
     void dealWithAttack(){
