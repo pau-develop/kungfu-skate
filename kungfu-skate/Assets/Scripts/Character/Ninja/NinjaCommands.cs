@@ -13,7 +13,7 @@ public class NinjaCommands : MonoBehaviour
     private Vector2 initialMoveDir;
     public bool reachedInitialDestPos = false;
     public int moveType = 0;
-    public int timeOnScreen = 5;
+    public float timeOnScreen = 5;
     private float actualTime = 0;
     public Vector2 exitScreenPosition = new Vector2(140,110);
     private int exitIndex = 0;
@@ -32,15 +32,17 @@ public class NinjaCommands : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!reachedInitialDestPos) moveToInitialDestPos();
-        else {
-            if(!shouldLeave) {
-                moveNinja();
-                countTimeOnScreen();
+        if(ninja.isAlive){
+            if(!reachedInitialDestPos) moveToInitialDestPos();
+            else {
+                if(!shouldLeave) {
+                    moveNinja();
+                    countTimeOnScreen();
+                }
+                else moveToExitPos();
             }
-            else moveToExitPos();
-        }
-        setNinjaDirections();    
+            setNinjaDirections();
+        }    
     }
 
     void countTimeOnScreen(){

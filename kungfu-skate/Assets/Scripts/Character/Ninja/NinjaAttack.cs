@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class NinjaAttack : MonoBehaviour
 {
-    private int attackCooldown = 2;
+    public float attackCooldown = 2;
     private float cooldownTimer = 0;
     private float attackDelay = 0.5f;
     private float delayTimer = 0;
-    private int ammunition = 5;
+    public int ammunition = 5;
     private CharacterMovement ninja;
     private Animator ninjaArmAnimator; 
     // Start is called before the first frame update
@@ -26,7 +26,7 @@ public class NinjaAttack : MonoBehaviour
 
     void dealWithAttack(){
         cooldownTimer += 1 * Time.deltaTime;
-        if(cooldownTimer > attackCooldown) prepareShot();
+        if(cooldownTimer > attackCooldown && ammunition > 0) prepareShot();
     }
 
     void prepareShot(){ 
@@ -37,6 +37,7 @@ public class NinjaAttack : MonoBehaviour
 
     void ninjaShoot(){
         ninjaArmAnimator.SetBool("isRaising",false);
+        ammunition--;
         cooldownTimer = 0;
         delayTimer = 0;
     }

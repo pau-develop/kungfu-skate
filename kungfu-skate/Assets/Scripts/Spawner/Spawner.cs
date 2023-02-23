@@ -11,7 +11,7 @@ public class Spawner : MonoBehaviour
         Instantiate(characters[player], pos, Quaternion.identity);
     }
 
-    public IEnumerator spawnNinjaColumnRoutine(int ninjaXSpawn, int ninjaYSpawn,int ninjaXDest, int ninjaYDest, int ninjaQuantity, int differenceY, float spawnDelay, int ninjaType = 0, int timeOnScreen = 0, string exitType = "top", bool targetedBullet = false){
+    public IEnumerator spawnNinjaColumnRoutine(int ninjaXSpawn, int ninjaYSpawn,int ninjaXDest, int ninjaYDest, int ninjaQuantity, int differenceY, float spawnDelay, int ninjaType = 0, float timeOnScreen = 0, string exitType = "top", bool targetedBullet = false, float attackDelay = 2, int ammunition = 4){
         int actualDifference = 0;
         for(int i=0; i< ninjaQuantity; i++){
             Vector2 spawnLocation = new Vector2(ninjaXSpawn, ninjaYSpawn + actualDifference);
@@ -22,6 +22,8 @@ public class Spawner : MonoBehaviour
             tempNinja.GetComponent<NinjaCommands>().timeOnScreen = timeOnScreen;
             tempNinja.GetComponent<NinjaCommands>().exitType = exitType;
             tempNinja.transform.Find("arms").GetComponent<CharacterShoot>().isTargetedBullet = targetedBullet;
+            tempNinja.GetComponent<NinjaAttack>().attackCooldown = attackDelay;
+            tempNinja.GetComponent<NinjaAttack>().ammunition = ammunition;
             actualDifference += differenceY;
             yield return new WaitForSeconds(spawnDelay);
         }

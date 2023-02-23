@@ -20,13 +20,9 @@ public class Test : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Alpha3)) spawnPlayer(2);
         if(Input.GetKeyUp(KeyCode.B)) blinkPlayer();
         if(Input.GetKeyUp(KeyCode.F)) killPlayer();
-        if(Input.GetKeyUp(KeyCode.Keypad0)) StartCoroutine(spawner.spawnNinjaColumnRoutine(190, 45, 140, 45, 4, -40, 0.5f, 0, 4, "top", true));
-        if(Input.GetKeyUp(KeyCode.Keypad1)) StartCoroutine(spawner.spawnNinjaColumnRoutine(190, -90, 140, -90, 4, +40, 0.5f, 0, 4, "bot-right", true));
-        if(Input.GetKeyUp(KeyCode.Keypad2)) StartCoroutine(spawner.spawnNinjaColumnRoutine(190, -90, 140, -90, 4, +40, 0.5f, 0, 4, "bot-left", true));
-        if(Input.GetKeyUp(KeyCode.Keypad3)) StartCoroutine(spawner.spawnNinjaColumnRoutine(190, 45, 140, 45, 4, -40, 0.5f, 0, 4, "top-right", true));
-        if(Input.GetKeyUp(KeyCode.Keypad4)) StartCoroutine(spawner.spawnNinjaColumnRoutine(190, 45, 140, 45, 4, -40, 0.5f, 0, 4, "top-left", true));
-        if(Input.GetKeyUp(KeyCode.Keypad5)) StartCoroutine(spawner.spawnNinjaColumnRoutine(190, 45, 140, 45, 4, -40, 0.5f, 0, 4, "left", true));
-        if(Input.GetKeyUp(KeyCode.Keypad6)) StartCoroutine(spawner.spawnNinjaColumnRoutine(190, 45, 140, 45, 4, -40, 0.5f, 0, 4, "right", true));
+        if(Input.GetKeyUp(KeyCode.Keypad0)) StartCoroutine(spawner.spawnNinjaColumnRoutine(190, 45, 140, 45, 4, -40, 0.5f, 1, 1.5f, "top", true, 1, 1));
+        if(Input.GetKeyUp(KeyCode.Keypad1)) StartCoroutine(spawner.spawnNinjaColumnRoutine(190, -90, 140, -90, 4, +40, 0.5f, 1, 1.5f, "bot-right", true, 1, 2));
+        if(Input.GetKeyUp(KeyCode.Keypad2)) StartCoroutine(spawner.spawnNinjaColumnRoutine(190, -90, 140, -90, 4, +40, 0.5f, 1, 1.5f, "bot-left", true, 1, 2));
     }
 
     void spawnPlayer(int playerNum){
