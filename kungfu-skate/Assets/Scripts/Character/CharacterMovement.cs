@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    private bool autoMove = true;
+    public bool autoMove = true;
     public bool movingUp = false;
     public bool movingDown =false;
     public bool movingLeft =false;
@@ -91,6 +91,7 @@ public class CharacterMovement : MonoBehaviour
 
     void controlEnemy(){
         Vector2 ninjaPos = GetComponent<NinjaCommands>().ninjaPos;
+        Debug.Log(ninjaPos);
         playerPos = ninjaPos;
     }
     void controlPlayer(){

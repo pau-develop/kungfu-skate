@@ -121,16 +121,18 @@ public class NinjaCommands : MonoBehaviour
     void moveNinja(){
         switch(moveType){
             case 0:
-                idleNinja();
                 break;
             case 1:
                 straightMovement();
                 break;
+            case 2:
+                oscillationMovement();
+                break;
         }
     }
 
-    void idleNinja(){
-        //do nothing
+    void oscillationMovement(){
+        
     }
 
     void straightMovement(){

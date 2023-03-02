@@ -11,7 +11,7 @@ public class Spawner : MonoBehaviour
         Instantiate(characters[player], pos, Quaternion.identity);
     }
 
-    public IEnumerator spawnNinjaColumnRoutine(int ninjaXSpawn, int ninjaYSpawn,int ninjaXDest, int ninjaYDest, int ninjaQuantity, int differenceY, float spawnDelay, int ninjaType = 0, float timeOnScreen = 0, string exitType = "top", bool targetedBullet = false, float attackDelay = 2, int ammunition = 4){
+    public IEnumerator spawnNinjaLineRoutine(int ninjaXSpawn, int ninjaYSpawn,int ninjaXDest, int ninjaYDest, int ninjaQuantity, int differenceX, int differenceY, float spawnDelay, int ninjaType = 0, float timeOnScreen = 0, string exitType = "top", bool targetedBullet = false, float attackDelay = 2, int ammunition = 4){
         int actualDifference = 0;
         for(int i=0; i< ninjaQuantity; i++){
             Vector2 spawnLocation = new Vector2(ninjaXSpawn, ninjaYSpawn + actualDifference);
