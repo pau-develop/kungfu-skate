@@ -23,10 +23,12 @@ public class NinjaEnterExit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!reachedInitialDestPos) moveToInitialDestPos();
-        if(shouldLeave) {
-            if(!gotExitPosition) getExitPosition();
-            moveToExitPos();   
+        if(GetComponent<CharacterMovement>().isAlive){
+            if(!reachedInitialDestPos) moveToInitialDestPos();
+            if(shouldLeave) {
+                if(!gotExitPosition) getExitPosition();
+                moveToExitPos();   
+            }
         }
     }
 
@@ -73,11 +75,13 @@ public class NinjaEnterExit : MonoBehaviour
         float step = initialMoveSpeed * Time.deltaTime;
         ninjaPos = Vector2.MoveTowards(ninjaPos, initialDestPos, step);
         if(ninjaPos == initialDestPos) reachedInitialDestPos = true;
+        GetComponent<CharacterMovement>().ninjaPos = ninjaPos;
     }
 
     void moveToExitPos(){
         float step = ninjaSpeed * Time.deltaTime;
         ninjaPos = Vector2.MoveTowards(ninjaPos, exitPos[exitIndex], step);
         if(ninjaPos == exitPos[exitIndex]) exitIndex++;
+        GetComponent<CharacterMovement>().ninjaPos = ninjaPos;
     }
 }

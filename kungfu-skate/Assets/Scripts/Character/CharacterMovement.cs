@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
+    public Vector2 ninjaPos;
     public bool autoMove = true;
     public bool movingUp = false;
     public bool movingDown =false;
@@ -31,6 +32,7 @@ public class CharacterMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ninjaPos = transform.position;
         isPlayer = GetComponent<CharacterData>().isPlayer;
         playerPos = new Vector2(transform.position.x, transform.position.y);
         playerLegs = transform.GetChild(1).gameObject;
@@ -90,11 +92,7 @@ public class CharacterMovement : MonoBehaviour
     }
 
     void controlEnemy(){
-        Vector2 ninjaPos;
-        if(!GetComponent<NinjaEnterExit>().reachedInitialDestPos||GetComponent<NinjaEnterExit>().shouldLeave){
-            ninjaPos = GetComponent<NinjaEnterExit>().ninjaPos;
-        } 
-        else ninjaPos = GetComponent<NinjaCommands>().ninjaPos;
+        //ninjaPos is changed from NinjaEnterExit and other scripts... 
         playerPos = ninjaPos;
     }
     void controlPlayer(){
