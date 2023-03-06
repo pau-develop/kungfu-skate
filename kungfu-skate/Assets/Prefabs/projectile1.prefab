@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 50
   m_Sprite: {fileID: 688938470037794653, guid: 30ccae2cf6213e3468a8412cb9ef7bd9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -106,6 +106,7 @@ MonoBehaviour:
   projectileType: 0
   projectileSpeed: 400
   direction: 1
+  isTargetedBullet: 0
 --- !u!114 &7781797504147272379
 MonoBehaviour:
   m_ObjectHideFlags: 0

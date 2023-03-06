@@ -5,13 +5,16 @@ using UnityEngine;
 public class FlipSprite : MonoBehaviour
 {
     public bool isFliped;
-    
+    private CharacterMovement ninja;
 
     // Update is called once per frame
     void Update()
     {
-        if(isFliped) flipSprite(true);
-        else flipSprite(false);
+        ninja = GetComponent<CharacterMovement>();
+        if(ninja.isAlive){
+            if(isFliped) flipSprite(true);
+            else flipSprite(false);
+        }
     }
 
     void flipSprite(bool fliped){

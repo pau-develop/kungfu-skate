@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969b1f4ae16b01d45a912e21036e726d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoMove: 1
   movingUp: 0
   movingDown: 0
   movingLeft: 0
@@ -113,8 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ec22f5cbceb994ebf4f35b26768e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  suspensionX: 0000000000000000000000000000000000000000
-  suspensionY: 0100000002000000030000000200000001000000
+  suspensionYLand: -1
+  suspensionYJump: 2
   groundPositions: 0000000002000000feffffff02000000
   airPositions: 0100000000000000feffffff00000000
 --- !u!61 &2675508975667328948
@@ -124,7 +125,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5735718581304542387}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -481,6 +482,7 @@ MonoBehaviour:
   projectile: {fileID: 5842409861559824444, guid: 6e0d55cbf85aaad47ada0edaf5f322e0,
     type: 3}
   spawnDistanceFromCenter: {x: 15, y: 20}
+  isTargetedBullet: 0
 --- !u!114 &7267013688321691131
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969b1f4ae16b01d45a912e21036e726d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoMove: 0
   movingUp: 0
   movingDown: 0
   movingLeft: 0
@@ -108,8 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ec22f5cbceb994ebf4f35b26768e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  suspensionX: 0100000001000000010000000100000001000000
-  suspensionY: 0100000002000000020000000200000001000000
+  suspensionYLand: -1
+  suspensionYJump: 2
   groundPositions: 02000000020000000000000002000000
   airPositions: 0000000000000000feffffff01000000
 --- !u!114 &2882212675411154702
@@ -258,6 +259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 123f41e6aee32e844914f4a4293c4fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackCooldown: 2
+  ammunition: 5
 --- !u!114 &9196719131342877609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,8 +274,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ninjaPos: {x: 0, y: 0}
+  initialDestPos: {x: 0, y: 0}
+  exitPos: []
   reachedInitialDestPos: 0
   moveType: 0
+  timeOnScreen: 5
+  exitScreenPosition: {x: 140, y: 110}
+  exitType: 
 --- !u!114 &2641692095629879295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,6 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fed24313078319498c33e5241926f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  insideBounds: 0
 --- !u!1 &7985915824907368400
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,6 +678,7 @@ MonoBehaviour:
   projectile: {fileID: 7383099495822265382, guid: 5503ca92b3eb2694b903b32ded67bce3,
     type: 3}
   spawnDistanceFromCenter: {x: 15, y: 20}
+  isTargetedBullet: 0
 --- !u!114 &5332331225845657380
 MonoBehaviour:
   m_ObjectHideFlags: 0
