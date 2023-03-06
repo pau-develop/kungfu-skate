@@ -18,7 +18,7 @@ public class NinjaCommands : MonoBehaviour
     public Vector2 exitScreenPosition = new Vector2(140,110);
     private int exitIndex = 0;
     private int direction = -1;
-    private int ninjaSpeed = 80;
+    private int ninjaSpeed = 100;
     private float latestXPos;
     public string exitType;
     // Start is called before the first frame update
@@ -113,7 +113,7 @@ public class NinjaCommands : MonoBehaviour
     }
 
     void moveToExitPos(){
-        float step = initialMoveSpeed * Time.deltaTime;
+        float step = ninjaSpeed * Time.deltaTime;
         ninjaPos = Vector2.MoveTowards(ninjaPos, exitPos[exitIndex], step);
         if(ninjaPos == exitPos[exitIndex]) exitIndex++;
     }

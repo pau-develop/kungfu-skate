@@ -22,6 +22,16 @@
 //column, 4 idle ninjas top to bot, right leave, targeted projectile
 //StartCoroutine(spawner.spawnNinjaLineRoutine(190, 45, 140, 45, 4, 0, -40, 0.5f, 0, 4, "right", true));
 
+//row, 4 idle ninjas left to right, top leave, targeted
+//StartCoroutine(spawner.spawnNinjaLineRoutine(20,90,20,45,4,+40,0,0.5f,0,3,"top",true));
+
+//row, 4 idle ninjas left to right, bot-left leave, targeted
+//StartCoroutine(spawner.spawnNinjaLineRoutine(20,90,20,45,4,+40,0,0.5f,0,3,"top",true));
+
+//row, 8 idle ninjas right to left, top leave, targeted
+
+
+
 //////////////////////////NINJA COLUMN IDLE DELAY
 /////////////////////////FROM THE LEFT
 

@@ -12,10 +12,11 @@ public class Spawner : MonoBehaviour
     }
 
     public IEnumerator spawnNinjaLineRoutine(int ninjaXSpawn, int ninjaYSpawn,int ninjaXDest, int ninjaYDest, int ninjaQuantity, int differenceX, int differenceY, float spawnDelay, int ninjaType = 0, float timeOnScreen = 0, string exitType = "top", bool targetedBullet = false, float attackDelay = 2, int ammunition = 4){
-        int actualDifference = 0;
+        int actualDifferenceY = 0;
+        int actualDifferenceX = 0;
         for(int i=0; i< ninjaQuantity; i++){
-            Vector2 spawnLocation = new Vector2(ninjaXSpawn, ninjaYSpawn + actualDifference);
-            Vector2 destLocation = new Vector2(ninjaXDest, ninjaYDest + actualDifference);
+            Vector2 spawnLocation = new Vector2(ninjaXSpawn + actualDifferenceX, ninjaYSpawn + actualDifferenceY);
+            Vector2 destLocation = new Vector2(ninjaXDest + actualDifferenceX, ninjaYDest + actualDifferenceY);
             GameObject tempNinja = Instantiate(enemies[0], spawnLocation, Quaternion.identity);
             tempNinja.GetComponent<NinjaCommands>().initialDestPos = destLocation;
             tempNinja.GetComponent<NinjaCommands>().moveType = ninjaType;
@@ -24,7 +25,8 @@ public class Spawner : MonoBehaviour
             tempNinja.transform.Find("arms").GetComponent<CharacterShoot>().isTargetedBullet = targetedBullet;
             tempNinja.GetComponent<NinjaAttack>().attackCooldown = attackDelay;
             tempNinja.GetComponent<NinjaAttack>().ammunition = ammunition;
-            actualDifference += differenceY;
+            actualDifferenceY += differenceY;
+            actualDifferenceX += differenceX;
             yield return new WaitForSeconds(spawnDelay);
         }
         StopCoroutine("spawnNinjaColumnRoutine");
