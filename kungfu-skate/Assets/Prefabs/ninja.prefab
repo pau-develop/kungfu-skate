@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969b1f4ae16b01d45a912e21036e726d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ninjaPos: {x: 0, y: 0}
   autoMove: 0
   movingUp: 0
   movingDown: 0
@@ -272,7 +273,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7985915824582300429}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6602f77be19a630499857cc2b68ec8a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 2630110c1b208bc4ab60a02453060c1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ninjaPos: {x: 0, y: 0}
