@@ -90,8 +90,11 @@ public class CharacterMovement : MonoBehaviour
     }
 
     void controlEnemy(){
-        Vector2 ninjaPos = GetComponent<NinjaCommands>().ninjaPos;
-        Debug.Log(ninjaPos);
+        Vector2 ninjaPos;
+        if(!GetComponent<NinjaEnterExit>().reachedInitialDestPos||GetComponent<NinjaEnterExit>().shouldLeave){
+            ninjaPos = GetComponent<NinjaEnterExit>().ninjaPos;
+        } 
+        else ninjaPos = GetComponent<NinjaCommands>().ninjaPos;
         playerPos = ninjaPos;
     }
     void controlPlayer(){

@@ -5,9 +5,9 @@ using UnityEngine;
 public class CharacterBounds : MonoBehaviour
 {
     public bool insideBounds = false;
-    private int leftLimit = -180;
-    private int rightLimit = 180;
-    private int topLimit = 100;
+    private int leftLimit = -181;
+    private int rightLimit = 181;
+    private int topLimit = 101;
     // Start is called before the first frame update
 
     // Update is called once per frame
@@ -18,14 +18,13 @@ public class CharacterBounds : MonoBehaviour
     }
 
     bool getPosition(){
-        if(transform.position.x < leftLimit) return false;
-        if(transform.position.x > rightLimit) return false;
-        if(transform.position.y > topLimit) return false;
+        if(transform.position.x <= leftLimit) return false;
+        if(transform.position.x >= rightLimit) return false;
+        if(transform.position.y >= topLimit) return false;
         return true;
     }
 
     void destroyOutOfBoundsEnemy(){
-        bool reachedInitialDestPos = GetComponent<NinjaCommands>().reachedInitialDestPos;
-        if(!insideBounds && reachedInitialDestPos) Destroy(this.gameObject);
+        if(!insideBounds) Destroy(this.gameObject);
     }
 }

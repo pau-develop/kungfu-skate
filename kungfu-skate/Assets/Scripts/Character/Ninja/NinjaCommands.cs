@@ -18,14 +18,14 @@ public class NinjaCommands : MonoBehaviour
     public Vector2 exitScreenPosition = new Vector2(140,110);
     private int exitIndex = 0;
     private int direction = -1;
-    private int ninjaSpeed = 100;
+    public int ninjaSpeed = 100;
     private float latestXPos;
     public string exitType;
     // Start is called before the first frame update
     void Start()
     {
         ninja = GetComponent<CharacterMovement>();
-        ninjaPos = transform.position;
+        ninjaPos = GetComponent<NinjaEnterExit>().initialDestPos;
         initialMoveDir = (initialDestPos - ninjaPos).normalized;
     }
 
@@ -33,13 +33,10 @@ public class NinjaCommands : MonoBehaviour
     void Update()
     {
         if(ninja.isAlive){
-            if(!reachedInitialDestPos) moveToInitialDestPos();
-            else {
-                if(!shouldLeave) {
-                    moveNinja();
-                    countTimeOnScreen();
-                }
-                else moveToExitPos();
+            if(GetComponent<NinjaEnterExit>().reachedInitialDestPos &&
+            !GetComponent<NinjaEnterExit>().shouldLeave) {
+                moveNinja();
+                countTimeOnScreen();
             }
             setNinjaDirections();
         }    
@@ -48,45 +45,7 @@ public class NinjaCommands : MonoBehaviour
     void countTimeOnScreen(){
         actualTime += 1 * Time.deltaTime;
         if(actualTime > timeOnScreen) {
-            getExitPosition();
-            shouldLeave = true;
-        }
-    }
-
-    void getExitPosition(){
-        switch(exitType){
-            case "top":
-                exitPos = new Vector2[1];
-                exitPos[0] = new Vector2(transform.position.x, 110);
-                break;
-            case "left":
-                exitPos = new Vector2[1];
-                exitPos[0] = new Vector2(-181, transform.position.y);
-                break;
-            case "right":
-                exitPos = new Vector2[1];
-                exitPos[0] = new Vector2(+181, transform.position.y);
-                break;
-            case "top-right":
-                exitPos = new Vector2[2];
-                exitPos[0] = new Vector2(transform.position.x, 45);
-                exitPos[1] = new Vector2(+181, 45);
-                break;
-            case "top-left":
-                exitPos = new Vector2[2];
-                exitPos[0] = new Vector2(transform.position.x, 45);
-                exitPos[1] = new Vector2(-181, 45);
-                break;
-            case "bot-left":
-                exitPos = new Vector2[2];
-                exitPos[0] = new Vector2(transform.position.x, -90);
-                exitPos[1] = new Vector2(-181, -90);
-                break;
-            case "bot-right":
-                exitPos = new Vector2[2];
-                exitPos[0] = new Vector2(transform.position.x, -90);
-                exitPos[1] = new Vector2(181, -90);
-                break;
+            GetComponent<NinjaEnterExit>().shouldLeave = true;
         }
     }
 
@@ -104,18 +63,6 @@ public class NinjaCommands : MonoBehaviour
             ninja.movingRight = false;
         }
         latestXPos = transform.position.x;
-    }
-
-    void moveToInitialDestPos(){
-        float step = initialMoveSpeed * Time.deltaTime;
-        ninjaPos = Vector2.MoveTowards(ninjaPos, initialDestPos, step);
-        if(ninjaPos == initialDestPos) reachedInitialDestPos = true;
-    }
-
-    void moveToExitPos(){
-        float step = ninjaSpeed * Time.deltaTime;
-        ninjaPos = Vector2.MoveTowards(ninjaPos, exitPos[exitIndex], step);
-        if(ninjaPos == exitPos[exitIndex]) exitIndex++;
     }
 
     void moveNinja(){

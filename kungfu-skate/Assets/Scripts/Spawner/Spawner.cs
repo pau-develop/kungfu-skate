@@ -18,10 +18,11 @@ public class Spawner : MonoBehaviour
             Vector2 spawnLocation = new Vector2(ninjaXSpawn + actualDifferenceX, ninjaYSpawn + actualDifferenceY);
             Vector2 destLocation = new Vector2(ninjaXDest + actualDifferenceX, ninjaYDest + actualDifferenceY);
             GameObject tempNinja = Instantiate(enemies[0], spawnLocation, Quaternion.identity);
-            tempNinja.GetComponent<NinjaCommands>().initialDestPos = destLocation;
+            tempNinja.GetComponent<NinjaEnterExit>().initialDestPos = destLocation;
+            tempNinja.GetComponent<NinjaEnterExit>().exitType = exitType;
             tempNinja.GetComponent<NinjaCommands>().moveType = ninjaType;
             tempNinja.GetComponent<NinjaCommands>().timeOnScreen = timeOnScreen;
-            tempNinja.GetComponent<NinjaCommands>().exitType = exitType;
+            
             tempNinja.transform.Find("arms").GetComponent<CharacterShoot>().isTargetedBullet = targetedBullet;
             tempNinja.GetComponent<NinjaAttack>().attackCooldown = attackDelay;
             tempNinja.GetComponent<NinjaAttack>().ammunition = ammunition;
