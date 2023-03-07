@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class NinjaEnterExit : MonoBehaviour
 {
+    private float actualTime = 0;
+    public float timeOnScreen = 5;
     public Vector2 ninjaPos;
-    public bool reachedInitialDestPos = false;
-    public bool shouldLeave = false;
     private int initialMoveSpeed = 100;
     public Vector2 initialDestPos;
     float ninjaSpeed = 100;
@@ -14,9 +14,11 @@ public class NinjaEnterExit : MonoBehaviour
     private Vector2[] exitPos;
     private int exitIndex = 0;
     private bool gotExitPosition = false;
+    private CharacterMovement ninja;
     // Start is called before the first frame update
     void Start()
     {
+        ninja = GetComponent<CharacterMovement>();
         ninjaPos = transform.position;
     }
 
@@ -24,12 +26,18 @@ public class NinjaEnterExit : MonoBehaviour
     void Update()
     {
         if(GetComponent<CharacterMovement>().isAlive){
-            if(!reachedInitialDestPos) moveToInitialDestPos();
-            if(shouldLeave) {
+            if(!GetComponent<CharacterData>().reachedInitialDestPos) moveToInitialDestPos();
+            else countTimeOnScreen();
+            if(GetComponent<CharacterData>().shouldLeave) {
                 if(!gotExitPosition) getExitPosition();
                 moveToExitPos();   
             }
         }
+    }
+
+    void countTimeOnScreen(){
+        actualTime += 1 * Time.deltaTime;
+        if(actualTime > timeOnScreen) GetComponent<CharacterData>().shouldLeave = true;
     }
 
      void getExitPosition(){
@@ -74,14 +82,14 @@ public class NinjaEnterExit : MonoBehaviour
     void moveToInitialDestPos(){
         float step = initialMoveSpeed * Time.deltaTime;
         ninjaPos = Vector2.MoveTowards(ninjaPos, initialDestPos, step);
-        if(ninjaPos == initialDestPos) reachedInitialDestPos = true;
-        GetComponent<CharacterMovement>().ninjaPos = ninjaPos;
+        if(ninjaPos == initialDestPos) GetComponent<CharacterData>().reachedInitialDestPos = true;
+        ninja.ninjaPos = ninjaPos;
     }
 
     void moveToExitPos(){
         float step = ninjaSpeed * Time.deltaTime;
         ninjaPos = Vector2.MoveTowards(ninjaPos, exitPos[exitIndex], step);
         if(ninjaPos == exitPos[exitIndex]) exitIndex++;
-        GetComponent<CharacterMovement>().ninjaPos = ninjaPos;
+        ninja.ninjaPos = ninjaPos;
     }
 }

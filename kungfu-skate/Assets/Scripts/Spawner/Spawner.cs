@@ -21,8 +21,7 @@ public class Spawner : MonoBehaviour
             tempNinja.GetComponent<NinjaEnterExit>().initialDestPos = destLocation;
             tempNinja.GetComponent<NinjaEnterExit>().exitType = exitType;
             tempNinja.GetComponent<NinjaCommands>().moveType = ninjaType;
-            tempNinja.GetComponent<NinjaCommands>().timeOnScreen = timeOnScreen;
-            
+            tempNinja.GetComponent<NinjaEnterExit>().timeOnScreen = timeOnScreen;  
             tempNinja.transform.Find("arms").GetComponent<CharacterShoot>().isTargetedBullet = targetedBullet;
             tempNinja.GetComponent<NinjaAttack>().attackCooldown = attackDelay;
             tempNinja.GetComponent<NinjaAttack>().ammunition = ammunition;
@@ -31,5 +30,19 @@ public class Spawner : MonoBehaviour
             yield return new WaitForSeconds(spawnDelay);
         }
         StopCoroutine("spawnNinjaColumnRoutine");
+    }
+
+    public IEnumerator spawnZigZagNinjasRoutine(int ninjaXSpawn,int ninjaYSpawn, int ninjaQuantity, float spawnDelay, float timeOnScreen, bool targetedBullet = true, float attackDelay = 2, int ammunition = 4){
+        for(int i = 0; i < ninjaQuantity; i++){
+            Vector2 spawnLocation = new Vector2(ninjaXSpawn, ninjaYSpawn);
+            GameObject tempNinja = Instantiate(enemies[0], spawnLocation, Quaternion.identity);
+            tempNinja.GetComponent<NinjaCommands>().moveType = 2;
+            tempNinja.GetComponent<NinjaEnterExit>().initialDestPos = spawnLocation;
+            tempNinja.GetComponent<NinjaEnterExit>().timeOnScreen = timeOnScreen;
+            tempNinja.transform.Find("arms").GetComponent<CharacterShoot>().isTargetedBullet = targetedBullet;
+            tempNinja.GetComponent<NinjaAttack>().attackCooldown = attackDelay;
+            tempNinja.GetComponent<NinjaAttack>().ammunition = ammunition;
+            yield return new WaitForSeconds(spawnDelay);
+        }
     }
 }

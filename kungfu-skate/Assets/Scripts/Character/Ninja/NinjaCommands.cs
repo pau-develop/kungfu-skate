@@ -6,16 +6,19 @@ public class NinjaCommands : MonoBehaviour
 {
     private CharacterMovement ninja;
     public Vector2 ninjaPos;
-    private int initialMoveSpeed = 100;
-    public Vector2[] exitPos;
-    private bool shouldLeave;
     public int moveType = 0;
-    public float timeOnScreen = 5;
-    private float actualTime = 0;
     private int direction = -1;
     public int ninjaSpeed = 100;
-    
-    public string exitType;
+    private Vector2 arcOriginPos;
+    private Vector2 arcDestPos;
+    int arcHeight = 40;
+    int arcLenght = 40;
+    int arcDir = 1;
+    int zigZagSpeed = 2;
+    private string zigZagDirection;
+    private bool resetArc = true;
+    private Vector2 actualArcHeight;
+    private float count = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,17 +30,9 @@ public class NinjaCommands : MonoBehaviour
     void Update()
     {
         if(ninja.isAlive){
-            if(GetComponent<NinjaEnterExit>().reachedInitialDestPos &&
-            !GetComponent<NinjaEnterExit>().shouldLeave) {
-                moveNinja();
-                countTimeOnScreen();
-            }
+            if(GetComponent<CharacterData>().reachedInitialDestPos &&
+            !GetComponent<CharacterData>().shouldLeave) moveNinja();
         }    
-    }
-
-    void countTimeOnScreen(){
-        actualTime += 1 * Time.deltaTime;
-        if(actualTime > timeOnScreen) GetComponent<NinjaEnterExit>().shouldLeave = true;
     }
 
     void moveNinja(){
@@ -48,11 +43,40 @@ public class NinjaCommands : MonoBehaviour
                 straightMovement();
                 break;
             case 2:
+                zigZagMovement();
                 break;
         }
     }
 
     void straightMovement(){
-        ninjaPos.x += (ninjaSpeed * direction) * Time.deltaTime;
+        ninja.ninjaPos.x += (ninjaSpeed * direction) * Time.deltaTime;
     }
-}
+
+    void zigZagMovement(){
+        if(resetArc) getArcInfo();
+        else {
+            if(ninja.ninjaPos.x != arcDestPos.x) moveInArc();
+            else resetVars();
+        }
+    }
+
+    void getArcInfo(){
+        arcDir *= -1;
+        arcOriginPos = ninja.ninjaPos;
+        arcDestPos = new Vector2(arcOriginPos.x+arcLenght,arcOriginPos.y);
+        actualArcHeight = arcOriginPos +(arcDestPos -arcOriginPos)/2 +Vector2.up *(arcHeight*arcDir);
+        resetArc = false;
+    }
+
+    void resetVars(){
+        resetArc = true;
+        count = 0;
+    }
+
+    void moveInArc(){
+        count += zigZagSpeed *Time.deltaTime;
+        Vector2 m1 = Vector2.Lerp( arcOriginPos, actualArcHeight, count );
+        Vector2 m2 = Vector2.Lerp( actualArcHeight, arcDestPos, count );
+        ninja.ninjaPos = Vector2.Lerp(m1, m2, count);
+    }
+}    

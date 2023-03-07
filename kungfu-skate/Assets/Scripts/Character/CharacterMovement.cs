@@ -61,9 +61,7 @@ public class CharacterMovement : MonoBehaviour
         if(!isGrounded && playerPos.y > botLimit) playerPos.y -= playerSpeed/2*Time.deltaTime;
         else playerPos.y = botLimit;
         transform.position = playerPos;
-    }
-
-    
+    }  
 
     void oscillate(){
 		float newY;
@@ -92,8 +90,9 @@ public class CharacterMovement : MonoBehaviour
     }
 
     void controlEnemy(){
-        //ninjaPos is changed from NinjaEnterExit and other scripts... 
-        playerPos = ninjaPos;
+        // ninjaPos = GetComponent<NinjaCommands>().ninjaPos;
+        playerPos = GetComponent<CharacterMovement>().ninjaPos;
+        if(playerPos.y <= botLimit) playerPos.y = botLimit;
     }
     void controlPlayer(){
         if(movingUp) {

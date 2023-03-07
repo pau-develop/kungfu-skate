@@ -17,4 +17,8 @@ public class CharacterData : MonoBehaviour
     public AudioClip hit;
     public AudioClip explode;
     public AudioClip melee;
+    //ENEMY ONLY
+    public Vector2 ninjaPos;
+    public bool shouldLeave = false;
+    public bool reachedInitialDestPos = false;
 }
