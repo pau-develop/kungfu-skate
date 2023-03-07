@@ -20,9 +20,7 @@ public class Test : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Alpha3)) spawnPlayer(2);
         if(Input.GetKeyUp(KeyCode.B)) blinkPlayer();
         if(Input.GetKeyUp(KeyCode.F)) killPlayer();
-        if(Input.GetKeyUp(KeyCode.Keypad0)) StartCoroutine(spawner.spawnNinjaLineRoutine(20,90,20,45,4,+40,0,0.5f,0,3,"top",true));
-        if(Input.GetKeyUp(KeyCode.Keypad1)) StartCoroutine(spawner.spawnNinjaLineRoutine(20,90,20,45,4,+40,0,0.5f,0,3,"bot-left",true));
-        if(Input.GetKeyUp(KeyCode.Keypad2)) StartCoroutine(spawner.spawnNinjaLineRoutine(140,90,140,45,8,-40,0,0.25f,0,1,"top",true,0.5f));
+        if(Input.GetKeyUp(KeyCode.Keypad0)) StartCoroutine(spawner.spawnZigZagNinjasRoutine(180,-20,1,0,100));
     }
 
     void spawnPlayer(int playerNum){

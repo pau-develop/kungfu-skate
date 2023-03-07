@@ -10,11 +10,20 @@ public class NinjaCommands : MonoBehaviour
     public int moveType = 0;
     private int direction = -1;
     public int ninjaSpeed = 100;
+    private bool reachedZigZagEdge = false;
+    private string zigZagDirection;
     // Start is called before the first frame update
     void Start()
     {
+        if(moveType == 2) zigZagDirection = getDirection();
         ninja = GetComponent<CharacterMovement>();
         ninjaPos = GetComponent<NinjaEnterExit>().initialDestPos;
+    }
+
+    string getDirection(){
+        if(transform.position.y >= 100) return "bottom";
+        else if(transform.position.x > 140) return "left";
+        else return "right";
     }
 
     // Update is called once per frame
@@ -34,11 +43,16 @@ public class NinjaCommands : MonoBehaviour
                 straightMovement();
                 break;
             case 2:
+                zigZagMovement();
                 break;
         }
     }
 
     void straightMovement(){
         ninjaPos.x += (ninjaSpeed * direction) * Time.deltaTime;
+    }
+
+    void zigZagMovement(){
+        Debug.Log(zigZagDirection);
     }
 }
