@@ -204,6 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969b1f4ae16b01d45a912e21036e726d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ninjaPos: {x: 0, y: 0}
   autoMove: 1
   movingUp: 0
   movingDown: 0
@@ -420,7 +421,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: -1
   m_Sprite: {fileID: -8674932514864762950, guid: 93344bf091f84234a998ddb5eca5f32e,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -517,7 +518,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 21.404854, y: 18.035297}

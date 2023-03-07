@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NinjaEnterExit : MonoBehaviour
 {
+    private float actualTime = 0;
+    public float timeOnScreen = 5;
     public Vector2 ninjaPos;
     public bool reachedInitialDestPos = false;
     public bool shouldLeave = false;
@@ -25,11 +27,17 @@ public class NinjaEnterExit : MonoBehaviour
     {
         if(GetComponent<CharacterMovement>().isAlive){
             if(!reachedInitialDestPos) moveToInitialDestPos();
+            else countTimeOnScreen();
             if(shouldLeave) {
                 if(!gotExitPosition) getExitPosition();
                 moveToExitPos();   
             }
         }
+    }
+
+    void countTimeOnScreen(){
+        actualTime += 1 * Time.deltaTime;
+        if(actualTime > timeOnScreen) GetComponent<NinjaEnterExit>().shouldLeave = true;
     }
 
      void getExitPosition(){

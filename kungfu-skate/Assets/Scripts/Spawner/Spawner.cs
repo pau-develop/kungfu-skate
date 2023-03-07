@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour
             tempNinja.GetComponent<NinjaEnterExit>().initialDestPos = destLocation;
             tempNinja.GetComponent<NinjaEnterExit>().exitType = exitType;
             tempNinja.GetComponent<NinjaCommands>().moveType = ninjaType;
-            tempNinja.GetComponent<NinjaCommands>().timeOnScreen = timeOnScreen;
+            tempNinja.GetComponent<NinjaEnterExit>().timeOnScreen = timeOnScreen;
             
             tempNinja.transform.Find("arms").GetComponent<CharacterShoot>().isTargetedBullet = targetedBullet;
             tempNinja.GetComponent<NinjaAttack>().attackCooldown = attackDelay;
