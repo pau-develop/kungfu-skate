@@ -92,8 +92,9 @@ public class CharacterMovement : MonoBehaviour
     }
 
     void controlEnemy(){
-        //ninjaPos is changed from NinjaEnterExit and other scripts... 
+        ninjaPos = GetComponent<NinjaCommands>().ninjaPos;
         playerPos = ninjaPos;
+        if(playerPos.y <= botLimit) playerPos.y = botLimit;
     }
     void controlPlayer(){
         if(movingUp) {

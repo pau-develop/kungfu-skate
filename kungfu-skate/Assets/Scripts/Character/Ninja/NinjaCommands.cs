@@ -22,6 +22,7 @@ public class NinjaCommands : MonoBehaviour
 
     string getDirection(){
         if(transform.position.y >= 100) return "bottom";
+        else if(transform.position.y <= -100) return "top";
         else if(transform.position.x > 140) return "left";
         else return "right";
     }
@@ -53,6 +54,16 @@ public class NinjaCommands : MonoBehaviour
     }
 
     void zigZagMovement(){
-        Debug.Log(zigZagDirection);
+        if(zigZagDirection == "left") horizontalZigZag(-1);
+        else if(zigZagDirection == "right") horizontalZigZag(1);
+        else if(zigZagDirection == "bottom") verticalZigZag(-1);
+        else verticalZigZag(1);
+    }
+
+    void horizontalZigZag(int direction){
+        ninjaPos.x += (ninjaSpeed * direction) * Time.deltaTime;
+    }
+    void verticalZigZag(int direction){
+        ninjaPos.y += (ninjaSpeed * direction) * Time.deltaTime;
     }
 }

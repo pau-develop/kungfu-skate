@@ -83,13 +83,13 @@ public class NinjaEnterExit : MonoBehaviour
         float step = initialMoveSpeed * Time.deltaTime;
         ninjaPos = Vector2.MoveTowards(ninjaPos, initialDestPos, step);
         if(ninjaPos == initialDestPos) reachedInitialDestPos = true;
-        GetComponent<CharacterMovement>().ninjaPos = ninjaPos;
+        GetComponent<NinjaCommands>().ninjaPos = ninjaPos;
     }
 
     void moveToExitPos(){
         float step = ninjaSpeed * Time.deltaTime;
         ninjaPos = Vector2.MoveTowards(ninjaPos, exitPos[exitIndex], step);
         if(ninjaPos == exitPos[exitIndex]) exitIndex++;
-        GetComponent<CharacterMovement>().ninjaPos = ninjaPos;
+        GetComponent<NinjaCommands>().ninjaPos = ninjaPos;
     }
 }

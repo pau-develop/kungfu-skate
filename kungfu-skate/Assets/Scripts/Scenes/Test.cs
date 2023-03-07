@@ -21,6 +21,8 @@ public class Test : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.B)) blinkPlayer();
         if(Input.GetKeyUp(KeyCode.F)) killPlayer();
         if(Input.GetKeyUp(KeyCode.Keypad0)) StartCoroutine(spawner.spawnZigZagNinjasRoutine(180,-20,1,0,100));
+        if(Input.GetKeyUp(KeyCode.Keypad1)) StartCoroutine(spawner.spawnZigZagNinjasRoutine(-180,-20,1,0,100));
+        if(Input.GetKeyUp(KeyCode.Keypad2)) StartCoroutine(spawner.spawnZigZagNinjasRoutine(140,100,1,0,100));
     }
 
     void spawnPlayer(int playerNum){
