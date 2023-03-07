@@ -7,8 +7,6 @@ public class NinjaEnterExit : MonoBehaviour
     private float actualTime = 0;
     public float timeOnScreen = 5;
     public Vector2 ninjaPos;
-    public bool reachedInitialDestPos = false;
-    public bool shouldLeave = false;
     private int initialMoveSpeed = 100;
     public Vector2 initialDestPos;
     float ninjaSpeed = 100;
@@ -28,9 +26,9 @@ public class NinjaEnterExit : MonoBehaviour
     void Update()
     {
         if(GetComponent<CharacterMovement>().isAlive){
-            if(!reachedInitialDestPos) moveToInitialDestPos();
+            if(!GetComponent<CharacterData>().reachedInitialDestPos) moveToInitialDestPos();
             else countTimeOnScreen();
-            if(shouldLeave) {
+            if(GetComponent<CharacterData>().shouldLeave) {
                 if(!gotExitPosition) getExitPosition();
                 moveToExitPos();   
             }
@@ -39,7 +37,7 @@ public class NinjaEnterExit : MonoBehaviour
 
     void countTimeOnScreen(){
         actualTime += 1 * Time.deltaTime;
-        if(actualTime > timeOnScreen) GetComponent<NinjaEnterExit>().shouldLeave = true;
+        if(actualTime > timeOnScreen) GetComponent<CharacterData>().shouldLeave = true;
     }
 
      void getExitPosition(){
@@ -84,7 +82,7 @@ public class NinjaEnterExit : MonoBehaviour
     void moveToInitialDestPos(){
         float step = initialMoveSpeed * Time.deltaTime;
         ninjaPos = Vector2.MoveTowards(ninjaPos, initialDestPos, step);
-        if(ninjaPos == initialDestPos) reachedInitialDestPos = true;
+        if(ninjaPos == initialDestPos) GetComponent<CharacterData>().reachedInitialDestPos = true;
         ninja.ninjaPos = ninjaPos;
     }
 

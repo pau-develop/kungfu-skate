@@ -30,8 +30,8 @@ public class NinjaCommands : MonoBehaviour
     void Update()
     {
         if(ninja.isAlive){
-            if(GetComponent<NinjaEnterExit>().reachedInitialDestPos &&
-            !GetComponent<NinjaEnterExit>().shouldLeave) moveNinja();
+            if(GetComponent<CharacterData>().reachedInitialDestPos &&
+            !GetComponent<CharacterData>().shouldLeave) moveNinja();
         }    
     }
 
