@@ -61,9 +61,7 @@ public class CharacterMovement : MonoBehaviour
         if(!isGrounded && playerPos.y > botLimit) playerPos.y -= playerSpeed/2*Time.deltaTime;
         else playerPos.y = botLimit;
         transform.position = playerPos;
-    }
-
-    
+    }  
 
     void oscillate(){
 		float newY;
