@@ -90,8 +90,8 @@ public class CharacterMovement : MonoBehaviour
     }
 
     void controlEnemy(){
-        ninjaPos = GetComponent<NinjaCommands>().ninjaPos;
-        playerPos = ninjaPos;
+        // ninjaPos = GetComponent<NinjaCommands>().ninjaPos;
+        playerPos = GetComponent<CharacterMovement>().ninjaPos;
         if(playerPos.y <= botLimit) playerPos.y = botLimit;
     }
     void controlPlayer(){

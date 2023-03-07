@@ -16,9 +16,11 @@ public class NinjaEnterExit : MonoBehaviour
     private Vector2[] exitPos;
     private int exitIndex = 0;
     private bool gotExitPosition = false;
+    private CharacterMovement ninja;
     // Start is called before the first frame update
     void Start()
     {
+        ninja = GetComponent<CharacterMovement>();
         ninjaPos = transform.position;
     }
 
@@ -83,13 +85,13 @@ public class NinjaEnterExit : MonoBehaviour
         float step = initialMoveSpeed * Time.deltaTime;
         ninjaPos = Vector2.MoveTowards(ninjaPos, initialDestPos, step);
         if(ninjaPos == initialDestPos) reachedInitialDestPos = true;
-        GetComponent<NinjaCommands>().ninjaPos = ninjaPos;
+        ninja.ninjaPos = ninjaPos;
     }
 
     void moveToExitPos(){
         float step = ninjaSpeed * Time.deltaTime;
         ninjaPos = Vector2.MoveTowards(ninjaPos, exitPos[exitIndex], step);
         if(ninjaPos == exitPos[exitIndex]) exitIndex++;
-        GetComponent<NinjaCommands>().ninjaPos = ninjaPos;
+        ninja.ninjaPos = ninjaPos;
     }
 }

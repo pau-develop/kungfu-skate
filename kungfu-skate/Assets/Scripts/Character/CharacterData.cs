@@ -17,4 +17,5 @@ public class CharacterData : MonoBehaviour
     public AudioClip hit;
     public AudioClip explode;
     public AudioClip melee;
+    public Vector2 ninjaPos;
 }

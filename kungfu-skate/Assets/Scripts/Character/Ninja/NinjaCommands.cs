@@ -49,20 +49,20 @@ public class NinjaCommands : MonoBehaviour
     }
 
     void straightMovement(){
-        ninjaPos.x += (ninjaSpeed * direction) * Time.deltaTime;
+        ninja.ninjaPos.x += (ninjaSpeed * direction) * Time.deltaTime;
     }
 
     void zigZagMovement(){
         if(resetArc) getArcInfo();
         else {
-            if(ninjaPos.x != arcDestPos.x) moveInArc();
+            if(ninja.ninjaPos.x != arcDestPos.x) moveInArc();
             else resetVars();
         }
     }
 
     void getArcInfo(){
         arcDir *= -1;
-        arcOriginPos = ninjaPos;
+        arcOriginPos = ninja.ninjaPos;
         arcDestPos = new Vector2(arcOriginPos.x+arcLenght,arcOriginPos.y);
         actualArcHeight = arcOriginPos +(arcDestPos -arcOriginPos)/2 +Vector2.up *(arcHeight*arcDir);
         resetArc = false;
@@ -77,6 +77,6 @@ public class NinjaCommands : MonoBehaviour
         count += zigZagSpeed *Time.deltaTime;
         Vector2 m1 = Vector2.Lerp( arcOriginPos, actualArcHeight, count );
         Vector2 m2 = Vector2.Lerp( actualArcHeight, arcDestPos, count );
-        ninjaPos = Vector2.Lerp(m1, m2, count);
+        ninja.ninjaPos = Vector2.Lerp(m1, m2, count);
     }
 }    
