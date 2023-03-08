@@ -5,8 +5,6 @@ using UnityEngine;
 public class NinjaCommandsZigZag : MonoBehaviour
 {
     private CharacterMovement ninja;
-    public Vector2 ninjaPos;
-    public int ninjaSpeed = 100;
     private Vector2 arcOriginPos;
     private Vector2 arcDestPos;
     public int arcHeight;
@@ -21,7 +19,6 @@ public class NinjaCommandsZigZag : MonoBehaviour
     void Start()
     {
         ninja = GetComponent<CharacterMovement>();
-        ninjaPos = GetComponent<NinjaEnterExit>().initialDestPos;
     }
 
     // Update is called once per frame
