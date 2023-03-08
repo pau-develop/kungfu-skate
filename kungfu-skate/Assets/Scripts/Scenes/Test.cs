@@ -20,9 +20,8 @@ public class Test : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Alpha3)) spawnPlayer(2);
         if(Input.GetKeyUp(KeyCode.B)) blinkPlayer();
         if(Input.GetKeyUp(KeyCode.F)) killPlayer();
-        if(Input.GetKeyUp(KeyCode.Keypad0)) StartCoroutine(spawner.spawnZigZagNinjasRoutine(-180,-80,1,0,100));
-        if(Input.GetKeyUp(KeyCode.Keypad1)) StartCoroutine(spawner.spawnZigZagNinjasRoutine(-180,-20,1,0,100));
-        if(Input.GetKeyUp(KeyCode.Keypad2)) StartCoroutine(spawner.spawnZigZagNinjasRoutine(140,100,1,0,100));
+        if(Input.GetKeyUp(KeyCode.Keypad0)) StartCoroutine(spawner.spawnZigZagNinjasRoutine(180,-80, 40,-80, true,1f, 1,0,100));
+        if(Input.GetKeyUp(KeyCode.Keypad1)) StartCoroutine(spawner.spawnZigZagNinjasRoutine(110,100, 40,-40, false,1.5f, 1,0,100));
         //DONT SPAWN ENEMIES FURTHER THAN +Y100, -Y100, -X180 & +X180!
         //Or they will be outOfBounds & Destroyed
     }

@@ -2,23 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NinjaCommands : MonoBehaviour
+public class NinjaZigZagCommands : MonoBehaviour
 {
     private CharacterMovement ninja;
     public Vector2 ninjaPos;
-    public int moveType = 0;
-    private int direction = -1;
     public int ninjaSpeed = 100;
     private Vector2 arcOriginPos;
     private Vector2 arcDestPos;
-    int arcHeight = 40;
-    int arcLenght = 40;
+    public int arcHeight;
+    public int arcLength;
     int arcDir = 1;
-    int zigZagSpeed = 2;
-    private string zigZagDirection;
     private bool resetArc = true;
     private Vector2 actualArcHeight;
     private float count = 0;
+    public bool horizontalArc;
+    public float zigZagSpeed = 2;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,31 +29,14 @@ public class NinjaCommands : MonoBehaviour
     {
         if(ninja.isAlive){
             if(GetComponent<CharacterData>().reachedInitialDestPos &&
-            !GetComponent<CharacterData>().shouldLeave) moveNinja();
+            !GetComponent<CharacterData>().shouldLeave) zigZagMovement();
         }    
-    }
-
-    void moveNinja(){
-        switch(moveType){
-            case 0:
-                break;
-            case 1:
-                straightMovement();
-                break;
-            case 2:
-                zigZagMovement();
-                break;
-        }
-    }
-
-    void straightMovement(){
-        ninja.ninjaPos.x += (ninjaSpeed * direction) * Time.deltaTime;
     }
 
     void zigZagMovement(){
         if(resetArc) getArcInfo();
         else {
-            if(ninja.ninjaPos.x != arcDestPos.x) moveInArc();
+            if(ninja.ninjaPos != arcDestPos) moveInArc();
             else resetVars();
         }
     }
@@ -63,8 +44,13 @@ public class NinjaCommands : MonoBehaviour
     void getArcInfo(){
         arcDir *= -1;
         arcOriginPos = ninja.ninjaPos;
-        arcDestPos = new Vector2(arcOriginPos.x+arcLenght,arcOriginPos.y);
-        actualArcHeight = arcOriginPos +(arcDestPos -arcOriginPos)/2 +Vector2.up *(arcHeight*arcDir);
+        if(horizontalArc) {
+            arcDestPos = new Vector2(arcOriginPos.x+arcLength,arcOriginPos.y);
+            actualArcHeight = arcOriginPos +(arcDestPos - arcOriginPos)/2 +Vector2.up *(arcHeight*arcDir);
+        } else {
+            arcDestPos = new Vector2(arcOriginPos.x,arcOriginPos.y+arcLength);
+			actualArcHeight = arcOriginPos +(arcDestPos - arcOriginPos)/2 +Vector2.left *(arcHeight*arcDir); 
+        }   
         resetArc = false;
     }
 

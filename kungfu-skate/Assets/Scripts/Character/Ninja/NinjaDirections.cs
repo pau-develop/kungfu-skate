@@ -6,6 +6,7 @@ public class NinjaDirections : MonoBehaviour
 {
     private float latestXPos;
     private CharacterMovement ninja;
+    private float changeCoolDown = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,11 +20,11 @@ public class NinjaDirections : MonoBehaviour
     }
 
     void setNinjaDirections(){
-        if(transform.position.x > latestXPos){
+        if(transform.position.x > latestXPos+0.1f){
             ninja.movingLeft = false;
             ninja.movingRight = true;
         }
-        else if(transform.position.x < latestXPos){
+        else if(transform.position.x < latestXPos-0.1f){
             ninja.movingRight = false;
             ninja.movingLeft = true;
         } 
