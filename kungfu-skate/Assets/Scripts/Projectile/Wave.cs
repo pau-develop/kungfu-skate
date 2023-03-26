@@ -9,10 +9,12 @@ public class Wave : MonoBehaviour
     private int waveSpeed = 150;
     private int leftLimit = -175;
     private int rightLimit = 175;
+    private SwapSprites swapSprites;
     // Start is called before the first frame update
     void Start()
     {
         wavePos = transform.position;
+        swapSprites = GetComponent<SwapSprites>();
     }
 
     // Update is called once per frame
@@ -20,6 +22,11 @@ public class Wave : MonoBehaviour
     {
         moveWave();
         destroyWave();
+        blinkWave();
+    }
+
+    void blinkWave(){
+        if(!swapSprites.isBlinking) swapSprites.isBlinking = true; 
     }
 
     void moveWave(){

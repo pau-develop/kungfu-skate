@@ -307,6 +307,8 @@ GameObject:
   - component: {fileID: 1107201056}
   - component: {fileID: 1107201055}
   - component: {fileID: 1107201054}
+  - component: {fileID: 1107201057}
+  - component: {fileID: 1107201058}
   m_Layer: 0
   m_Name: wave1
   m_TagString: PlayerWave
@@ -392,12 +394,40 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107201053}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.112399, y: 6.042776, z: -9.5625}
+  m_LocalPosition: {x: -111.7, y: 6.042776, z: -9.5625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1107201057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107201053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb8532400175f0489d489f3c1175595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1107201058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107201053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  folder: Sprites/PROJECTILE/
+  spriteSheetName: WAVE1
+  currentColor: _1
+  isBlinking: 0
 --- !u!1001 &1412065954
 PrefabInstance:
   m_ObjectHideFlags: 0
