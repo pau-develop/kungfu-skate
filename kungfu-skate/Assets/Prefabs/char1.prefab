@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  folder: 
   spriteSheetName: CHAR1
   currentColor: _1
   isBlinking: 0
@@ -301,6 +302,9 @@ MonoBehaviour:
   hit: {fileID: 8300000, guid: 67584b6172359c14c8266be2cdaac854, type: 3}
   explode: {fileID: 8300000, guid: 51b984c02024b1342bff52ec1f71b756, type: 3}
   melee: {fileID: 8300000, guid: bcfc8481768ac504f860a627bfef2a0f, type: 3}
+  ninjaPos: {x: 0, y: 0}
+  shouldLeave: 0
+  reachedInitialDestPos: 0
 --- !u!114 &7521511194812097668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,6 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  folder: 
   spriteSheetName: CHAR1
   currentColor: _1
   isBlinking: 0
@@ -480,6 +485,7 @@ GameObject:
   - component: {fileID: 2200736089703526524}
   - component: {fileID: 4193995909429183802}
   - component: {fileID: 4650101174984256149}
+  - component: {fileID: 7582174857286468779}
   m_Layer: 0
   m_Name: arms
   m_TagString: PlayerMelee
@@ -583,6 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  folder: 
   spriteSheetName: CHARMELEE1
   currentColor: _1
   isBlinking: 0
@@ -626,6 +633,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b541fbf4b5f3b419ea6ef4604ca1cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shouldSpawnWave: 0
+  wave: {fileID: 3877310057424618391, guid: dfc76c380349c594d8b1f88db59c4a79, type: 3}
+  spawnDistanceFromCenter: {x: 15, y: 20}
 --- !u!61 &4650101174984256149
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -652,3 +662,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20.192322, y: 28.513908}
   m_EdgeRadius: 0
+--- !u!114 &7582174857286468779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3876005036237387206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01823be08764f104b9ec1faaf1c8c196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
