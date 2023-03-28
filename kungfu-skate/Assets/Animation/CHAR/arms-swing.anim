@@ -107,7 +107,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.1388889
-    functionName: spawnWave
+    functionName: checkWave
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

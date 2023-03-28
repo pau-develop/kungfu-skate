@@ -8,7 +8,7 @@ public class CharacterAttackAnimations : MonoBehaviour
     private Animator armsAnimator;
     private GameObject playerArms;
     private float swingTimer = 0;
-    private float waveTime = 2.5f;
+    private float waveTime = 1.5f;
 
     // Start is called before the first frame update
     void Start()
