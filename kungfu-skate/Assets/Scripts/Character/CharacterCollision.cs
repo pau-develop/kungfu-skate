@@ -17,6 +17,7 @@ public class CharacterCollision : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider){
         if(collider.gameObject.tag =="PlayerBullet" && !isPlayer) dealWithCollision(1);
         if(collider.gameObject.tag =="PlayerMelee" && !isPlayer) dealWithCollision(10);
+        if(collider.gameObject.tag =="PlayerWave" && !isPlayer) dealWithCollision(5);
         if(collider.gameObject.tag =="EnemyBullet" && isPlayer) dealWithCollision(1);
     }
 

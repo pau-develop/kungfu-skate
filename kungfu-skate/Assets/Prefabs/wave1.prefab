@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3877310057424618388}
   - component: {fileID: 3877310057424618411}
   - component: {fileID: 3877310057424618408}
+  - component: {fileID: 6112505930984677411}
   m_Layer: 0
   m_Name: wave1
   m_TagString: PlayerWave
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 50
   m_Sprite: {fileID: -382637538595610193, guid: fde3a4db704b96542a01e0243c9852a6,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -116,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb8532400175f0489d489f3c1175595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerWave: 1
 --- !u!114 &3877310057424618408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,3 +134,39 @@ MonoBehaviour:
   spriteSheetName: WAVE1
   currentColor: _1
   isBlinking: 0
+--- !u!60 &6112505930984677411
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3877310057424618391}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 30, y: 49}
+    newSize: {x: 30, y: 49}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 10.75296, y: 14.539698}
+      - {x: 3.9311066, y: 21.470444}
+      - {x: -15, y: 24.5}
+      - {x: -5.7362595, y: 19.143581}
+      - {x: -5.230339, y: 11.212837}
+      - {x: -5.3799667, y: -17.282097}
+      - {x: -15, y: -24.5}
+      - {x: 1.3966675, y: -22.896116}
+      - {x: 9.615166, y: -15.787163}
+      - {x: 14.287407, y: -6.1537204}
+      - {x: 14.287407, y: 8.183277}

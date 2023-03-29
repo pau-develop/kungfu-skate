@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Wave : MonoBehaviour
 {
+    public bool isPlayerWave;
     private int direction = 1;
     private Vector2 wavePos; 
     private int leftLimit = -175;
@@ -13,9 +14,12 @@ public class Wave : MonoBehaviour
     private float[] waveScale = {0.2f, 0.4f, 0.6f, 0.8f, 1.0f};
     private SwapSprites swapSprites;
     private Vector2 currentScale;
+    private bool stoppedWave = false;
+    private PolygonCollider2D waveCollider;
     // Start is called before the first frame update
     void Start()
     {
+        waveCollider = GetComponent<PolygonCollider2D>();
         wavePos = transform.position;
         currentScale = transform.localScale;
         swapSprites = GetComponent<SwapSprites>();
@@ -33,8 +37,8 @@ public class Wave : MonoBehaviour
 
     void changeWaveScale(){
         if(currentScale.x > waveScale[waveHits]){
-            currentScale.x-= 0.5f * Time.deltaTime;
-            currentScale.y-= 0.5f * Time.deltaTime;
+            currentScale.x-= 1f * Time.deltaTime;
+            currentScale.y-= 1f * Time.deltaTime;
         } else {
             currentScale.x = waveScale[waveHits];
             currentScale.y = waveScale[waveHits];
@@ -47,7 +51,7 @@ public class Wave : MonoBehaviour
     }
 
     void moveWave(){
-        wavePos.x += (waveSpeed[waveHits] * direction) * Time.deltaTime; 
+        if(!stoppedWave) wavePos.x += (waveSpeed[waveHits] * direction) * Time.deltaTime; 
         transform.position = wavePos;
     }
 
@@ -58,5 +62,26 @@ public class Wave : MonoBehaviour
 
     void testWave(){
         if(Input.GetKeyUp(KeyCode.Q) && waveHits > 0) waveHits--;
+    }
+
+    void OnTriggerStay2D(Collider2D collider){
+        if(!stoppedWave){
+            if(collider.gameObject.tag =="Enemy" && isPlayerWave) dealWithCollision(collider);
+            if(collider.gameObject.tag =="Player" && !isPlayerWave) dealWithCollision(collider);
+        }
+    }
+
+    void dealWithCollision(Collider2D collider){
+        if(waveHits > 0) waveHits--;
+        StartCoroutine(waveCollisionRoutine());
+    }
+
+    IEnumerator waveCollisionRoutine(){
+        stoppedWave = true;
+        waveCollider.enabled = false;
+        yield return new WaitForSeconds(0.2f);
+        StopCoroutine(waveCollisionRoutine());
+        stoppedWave = false;
+        waveCollider.enabled = true;
     }
 }
