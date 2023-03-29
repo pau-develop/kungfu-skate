@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3877310057424618411}
   - component: {fileID: 3877310057424618408}
   - component: {fileID: 6112505930984677411}
+  - component: {fileID: -5675811630250496850}
   m_Layer: 0
   m_Name: wave1
   m_TagString: PlayerWave
@@ -170,3 +171,24 @@ PolygonCollider2D:
       - {x: 9.615166, y: -15.787163}
       - {x: 14.287407, y: -6.1537204}
       - {x: 14.287407, y: 8.183277}
+--- !u!50 &-5675811630250496850
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3877310057424618391}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

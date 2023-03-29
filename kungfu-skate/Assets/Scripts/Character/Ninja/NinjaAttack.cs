@@ -23,7 +23,7 @@ public class NinjaAttack : MonoBehaviour
     {
         GameObject player = GameObject.FindWithTag("Player");
         if(ninja.isAlive && player!=null) dealWithAttack();
-        if(player == null) cancelAttack();
+        if(player == null && ninja.isAlive) cancelAttack();
     }
 
     void cancelAttack(){

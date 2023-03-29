@@ -9,9 +9,9 @@ public class Wave : MonoBehaviour
     private Vector2 wavePos; 
     private int leftLimit = -175;
     private int rightLimit = 175;
-    private int waveHits = 4;
-    private int[] waveSpeed = {50, 75, 100, 125, 150};
-    private float[] waveScale = {0.2f, 0.4f, 0.6f, 0.8f, 1.0f};
+    public int waveHits = 9;
+    private int[] waveSpeed = {50, 50, 75, 75, 100, 100, 125, 125, 150, 150};
+    private float[] waveScale = {0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1.0f};
     private SwapSprites swapSprites;
     private Vector2 currentScale;
     private bool stoppedWave = false;
@@ -64,15 +64,16 @@ public class Wave : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Q) && waveHits > 0) waveHits--;
     }
 
-    void OnTriggerStay2D(Collider2D collider){
+    void OnTriggerEnter2D(Collider2D collider){
         if(!stoppedWave){
-            if(collider.gameObject.tag =="Enemy" && isPlayerWave) dealWithCollision(collider);
-            if(collider.gameObject.tag =="Player" && !isPlayerWave) dealWithCollision(collider);
+            if(collider.gameObject.tag =="Enemy" && isPlayerWave) dealWithCollision(collider, 2);
+            if(collider.gameObject.tag =="EnemyBullet" && isPlayerWave) dealWithCollision(collider, 1);
         }
     }
 
-    void dealWithCollision(Collider2D collider){
-        if(waveHits > 0) waveHits--;
+    void dealWithCollision(Collider2D collider, int amount){
+        if(waveHits == 1) waveHits--;
+        if(waveHits > 1) waveHits -= amount;
         StartCoroutine(waveCollisionRoutine());
     }
 
