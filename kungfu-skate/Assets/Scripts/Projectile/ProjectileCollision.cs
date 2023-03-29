@@ -16,6 +16,7 @@ public class ProjectileCollision : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider){
         if(collider.gameObject.tag =="Enemy" && isPlayerBullet) dealWithCollision(collider);
         if(collider.gameObject.tag =="Player" && !isPlayerBullet) dealWithCollision(collider);
+        if(collider.gameObject.tag =="PlayerWave" && !isPlayerBullet) dealWithCollision(collider);
     }
 
     void dealWithCollision(Collider2D collider){

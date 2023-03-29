@@ -171,6 +171,9 @@ MonoBehaviour:
   hit: {fileID: 8300000, guid: 67584b6172359c14c8266be2cdaac854, type: 3}
   explode: {fileID: 8300000, guid: 51b984c02024b1342bff52ec1f71b756, type: 3}
   melee: {fileID: 8300000, guid: bcfc8481768ac504f860a627bfef2a0f, type: 3}
+  ninjaPos: {x: 0, y: 0}
+  shouldLeave: 0
+  reachedInitialDestPos: 0
 --- !u!114 &1311336075572009219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  folder: 
   spriteSheetName: CHAR1
   currentColor: _1
   isBlinking: 0
@@ -465,6 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  folder: 
   spriteSheetName: CHARMELEE1
   currentColor: _1
   isBlinking: 0
@@ -508,6 +513,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b541fbf4b5f3b419ea6ef4604ca1cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shouldSpawnWave: 0
+  wave: {fileID: 3877310057424618391, guid: dfc76c380349c594d8b1f88db59c4a79, type: 3}
+  spawnDistanceFromCenter: {x: 15, y: 20}
 --- !u!61 &4241108559014254354
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -649,6 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  folder: 
   spriteSheetName: CHAR1
   currentColor: _1
   isBlinking: 0
