@@ -7,6 +7,7 @@ public class UI : MonoBehaviour
 {
     private GameObject debugger;
     private TextMeshPro fpsText;
+    private bool isDisplaying = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,14 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        displayDebugger();
         countFrames();   
+    }
+
+    private void displayDebugger(){
+        if(Input.GetKeyUp(KeyCode.Q)) isDisplaying = !isDisplaying;
+        if(isDisplaying) debugger.SetActive(true);
+        else debugger.SetActive(false);
     }
 
     private void countFrames(){
