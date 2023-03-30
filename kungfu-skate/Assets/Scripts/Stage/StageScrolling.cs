@@ -10,6 +10,7 @@ public class StageScrolling : MonoBehaviour
     private int backgroundScrollSpeed = 100;
     private GameObject[] scrollingPieces = new GameObject[3];
     private Vector2[] scrollingPiecesPos = new Vector2[3];
+    private int shiftPos = -500;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,12 +31,31 @@ public class StageScrolling : MonoBehaviour
     void Update()
     {
        moveScrollingPieces();
+       if(scrollingPiecesPos[0].x <= shiftPos) shiftPieces();
     }
 
     private void moveScrollingPieces(){
         for(int i = 0; i < scrollingPieces.Length; i++){
             scrollingPiecesPos[i].x -= backgroundScrollSpeed * Time.deltaTime;
             scrollingPieces[i].transform.position = scrollingPiecesPos[i];
+        }
+    }
+
+    private void shiftPieces(){
+        //move front piece to the back
+        scrollingPiecesPos[0].x = scrollingPiecesPos[2].x + spriteWidth;
+        //hold onto that index
+        GameObject tempPiece = scrollingPieces[0];
+        Vector2 tempPos = scrollingPiecesPos[0];
+        //shiftIndexes
+        for(int i = 0; i < scrollingPieces.Length; i++){
+            if(i < scrollingPieces.Length -1){
+                scrollingPieces[i] = scrollingPieces[i+1];
+                scrollingPiecesPos[i] = scrollingPiecesPos[i+1];
+            } else {
+                scrollingPieces[i] = tempPiece;
+                scrollingPiecesPos[i] = tempPos;
+            }        
         }
     }
 }
