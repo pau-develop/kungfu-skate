@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class StageScrolling : MonoBehaviour
 {
+    public int spriteLayer;
     public Sprite[] sprites;
     private int initialPosition = 160;
     private int spriteWidth = 640;
-    private int backgroundScrollSpeed = 100;
+    public int backgroundScrollSpeed = 100;
     private GameObject[] scrollingPieces = new GameObject[3];
     private Vector2[] scrollingPiecesPos = new Vector2[3];
     private int shiftPos = -500;
@@ -21,7 +22,11 @@ public class StageScrolling : MonoBehaviour
         for(int i = 0; i < scrollingPieces.Length; i++){
             scrollingPieces[i] = new GameObject(i.ToString());
             scrollingPieces[i].transform.parent = this.transform;
-            scrollingPieces[i].AddComponent<SpriteRenderer>().sprite = sprites[i];
+            Sprite currentSprite;
+            if(i <= sprites.Length -1) currentSprite = sprites[i];
+            else currentSprite = sprites[sprites.Length -1];
+            scrollingPieces[i].AddComponent<SpriteRenderer>().sprite = currentSprite;
+            scrollingPieces[i].GetComponent<SpriteRenderer>().sortingOrder = spriteLayer;
             scrollingPieces[i].transform.position = new Vector2(initialPosition + (spriteWidth * i), 0);
             scrollingPiecesPos[i] = scrollingPieces[i].transform.position;
         }
