@@ -12,9 +12,12 @@ public class StageScrolling : MonoBehaviour
     private GameObject[] scrollingPieces = new GameObject[3];
     private Vector2[] scrollingPiecesPos = new Vector2[3];
     private int shiftPos = -500;
+    private float scrollX = 0;
+    private UI ui;
     // Start is called before the first frame update
     void Start()
     {
+        ui = GameObject.Find("UI").GetComponent<UI>();
         createScrollingPieces();
     }
 
@@ -37,6 +40,12 @@ public class StageScrolling : MonoBehaviour
     {
        moveScrollingPieces();
        if(scrollingPiecesPos[0].x <= shiftPos) shiftPieces();
+       if(this.gameObject.name == "Layer1") countXScroll();
+    }
+
+    private void countXScroll(){
+       scrollX += backgroundScrollSpeed * Time.deltaTime;
+       ui.scrollX = ((int)scrollX/40);
     }
 
     private void moveScrollingPieces(){
