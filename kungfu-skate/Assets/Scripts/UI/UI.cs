@@ -13,7 +13,6 @@ public class UI : MonoBehaviour
     {
         debugger = transform.Find("debugger").gameObject;
         fpsText =  debugger.transform.Find("fps").GetComponent<TextMeshPro>();
-        Debug.Log(fpsText);
     }
 
     // Update is called once per frame
