@@ -23,7 +23,7 @@ public class StageScrolling : MonoBehaviour
     }
 
     private void loadAllSprites(){
-        Object[] allSprites = Resources.LoadAll("Sprites/STAGE1",typeof(GameObject));
+        Object[] allSprites = Resources.LoadAll("Sprites/STAGE1OBJ",typeof(GameObject));
         int spriteCounter = 0;
         sprites = new GameObject[allSprites.Length];
         for(int i = 0; i < allSprites.Length; i++) if(allSprites[i].name[3] == this.gameObject.name[5]) spriteCounter++;
