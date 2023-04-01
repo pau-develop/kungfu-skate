@@ -8,12 +8,15 @@ public class StageSprite : MonoBehaviour
     private Color32[] colorArray;
     public Color32[] colorsToChange;
     private List<List<int>> colorIndexes = new List<List<int>>();
+    private ColorList newColors; 
     // Start is called before the first frame update
     void Start()
     {
+        newColors = GetComponent<ColorLister>().colorList;
         originalTexture = GetComponent<SpriteRenderer>().sprite.texture;
 		colorArray = originalTexture.GetPixels32();
         storeColorIndexes();
+        foreach(Color32 color in newColors.colorCycles[0].newColor) Debug.Log(color);
     }
 
     private void storeColorIndexes(){
