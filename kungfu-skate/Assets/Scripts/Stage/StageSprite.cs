@@ -10,11 +10,17 @@ public class StageSprite : MonoBehaviour
     public Color32[] colorsToChange;
     private List<List<int>> colorIndexes = new List<List<int>>();
     private ColorList newColors;
+    private float spriteTimer = 0;
+    private float changeSpriteDelay = 0.25f;
+    private int currentSpriteIndex = 0;
+    private SpriteRenderer spriteRenderer;
+    private bool movingUp = true;
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         newColors = GetComponent<ColorLister>().colorList;
-        originalTexture = GetComponent<SpriteRenderer>().sprite.texture;
+        originalTexture = spriteRenderer.sprite.texture;
         newSprites = new Sprite[newColors.colorCycles.Count + 1];
         colorArray = originalTexture.GetPixels32();
         storeColorIndexes();
@@ -61,6 +67,27 @@ public class StageSprite : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-			//change color on each sprite
+		changeSprite();
+    }
+
+    void changeSprite(){
+        spriteTimer += Time.deltaTime;
+        if(spriteTimer >= changeSpriteDelay){
+            spriteRenderer.sprite = newSprites[currentSpriteIndex];
+            if(movingUp){
+                if(currentSpriteIndex < newSprites.Length -1) currentSpriteIndex++;
+                else {
+                    currentSpriteIndex--;
+                    movingUp = false;
+                }
+            } else {
+                if(currentSpriteIndex > 0) currentSpriteIndex--;
+                else {
+                    currentSpriteIndex++;
+                    movingUp = true;
+                }
+            }
+            spriteTimer = 0;
+        }
     }
 }
