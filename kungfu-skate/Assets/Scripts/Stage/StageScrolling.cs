@@ -18,7 +18,23 @@ public class StageScrolling : MonoBehaviour
     void Start()
     {
         ui = GameObject.Find("UI").GetComponent<UI>();
+        loadAllSprites(); 
         createScrollingPieces();
+    }
+
+    private void loadAllSprites(){
+        Object[] allSprites = Resources.LoadAll("Sprites/STAGE1",typeof(Sprite));
+        int spriteCounter = 0;
+        sprites = new Sprite[allSprites.Length];
+        for(int i = 0; i < allSprites.Length; i++) if(allSprites[i].name[3] == this.gameObject.name[5]) spriteCounter++;
+        sprites = new Sprite[spriteCounter];
+        int currentSprite = 0;
+        for(int i = 0; i < allSprites.Length; i++){
+            if(allSprites[i].name[3] == this.gameObject.name[5]){
+                sprites[currentSprite] = allSprites[i] as Sprite;
+                currentSprite++;
+            } 
+        }  
     }
 
     private void createScrollingPieces(){
