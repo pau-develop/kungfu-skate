@@ -46,6 +46,7 @@ public class StageScrolling : MonoBehaviour
             scrollingPieces[i].transform.parent = this.transform;
             scrollingPieces[i].transform.position = new Vector2(initialPosition + (spriteWidth * i), 0);
             scrollingPiecesPos[i] = scrollingPieces[i].transform.position;
+            scrollingPieces[i].GetComponent<SpriteRenderer>().sortingOrder = spriteLayer;
         }
     }
 
