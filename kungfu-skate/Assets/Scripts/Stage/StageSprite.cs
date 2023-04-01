@@ -5,7 +5,7 @@ using UnityEngine;
 public class StageSprite : MonoBehaviour
 {
     private Texture2D originalTexture;
-    public Sprite[] newSprites; //as many sprites as colorCycles in ColorList
+    private Sprite[] newSprites; //as many sprites as colorCycles in ColorList
     private Color32[] colorArray;
     public Color32[] colorsToChange;
     private List<List<int>> colorIndexes = new List<List<int>>();
@@ -15,7 +15,7 @@ public class StageSprite : MonoBehaviour
     {
         newColors = GetComponent<ColorLister>().colorList;
         originalTexture = GetComponent<SpriteRenderer>().sprite.texture;
-        newSprites = new Sprite[newColors.colorCycles.Count];
+        newSprites = new Sprite[newColors.colorCycles.Count + 1];
         colorArray = originalTexture.GetPixels32();
         storeColorIndexes();
         createTextureWithNewColors();
@@ -38,7 +38,10 @@ public class StageSprite : MonoBehaviour
     }
 
     private void createTextureWithNewColors(){
-        for(int z = 0; z < newSprites.Length; z++){
+        //make copy of original sprite
+        newSprites[0] = Sprite.Create(originalTexture, new Rect(0,0,640,180),new Vector2(0.5f,0.5f),1);
+        //add rest of sprites
+        for(int z = 0; z < newSprites.Length-1; z++){
             for(int i = 0; i < colorIndexes.Count; i++){
                 for(int y = 0; y < colorIndexes[i].Count; y++){
                     colorArray[colorIndexes[i][y]].r = newColors.colorCycles[z].newColor[i].r;
@@ -51,7 +54,7 @@ public class StageSprite : MonoBehaviour
             tempTexture.SetPixels32(colorArray);
             tempTexture.filterMode = FilterMode.Point;
             tempTexture.Apply();
-            newSprites[z] = Sprite.Create(tempTexture, new Rect(0,0,640,180),new Vector2(0.5f,0.5f),1);
+            newSprites[z+1] = Sprite.Create(tempTexture, new Rect(0,0,640,180),new Vector2(0.5f,0.5f),1);
         }   
     }
 
