@@ -5,7 +5,7 @@ using UnityEngine;
 public class StageScrolling : MonoBehaviour
 {
     public int spriteLayer;
-    public Sprite[] sprites;
+    public GameObject[] sprites;
     private int initialPosition = 160;
     private int spriteWidth = 640;
     public int backgroundScrollSpeed = 100;
@@ -23,15 +23,15 @@ public class StageScrolling : MonoBehaviour
     }
 
     private void loadAllSprites(){
-        Object[] allSprites = Resources.LoadAll("Sprites/STAGE1",typeof(Sprite));
+        Object[] allSprites = Resources.LoadAll("Sprites/STAGE1",typeof(GameObject));
         int spriteCounter = 0;
-        sprites = new Sprite[allSprites.Length];
+        sprites = new GameObject[allSprites.Length];
         for(int i = 0; i < allSprites.Length; i++) if(allSprites[i].name[3] == this.gameObject.name[5]) spriteCounter++;
-        sprites = new Sprite[spriteCounter];
+        sprites = new GameObject[spriteCounter];
         int currentSprite = 0;
         for(int i = 0; i < allSprites.Length; i++){
             if(allSprites[i].name[3] == this.gameObject.name[5]){
-                sprites[currentSprite] = allSprites[i] as Sprite;
+                sprites[currentSprite] = allSprites[i] as GameObject;
                 currentSprite++;
             } 
         }  
@@ -39,13 +39,11 @@ public class StageScrolling : MonoBehaviour
 
     private void createScrollingPieces(){
         for(int i = 0; i < scrollingPieces.Length; i++){
-            scrollingPieces[i] = new GameObject(i.ToString());
+            GameObject currentSprite;
+            if(i < sprites.Length) currentSprite = sprites[i];
+            else currentSprite = sprites[sprites.Length-1];
+            scrollingPieces[i] = Instantiate(currentSprite, transform.position, Quaternion.identity);
             scrollingPieces[i].transform.parent = this.transform;
-            Sprite currentSprite;
-            if(i <= sprites.Length -1) currentSprite = sprites[i];
-            else currentSprite = sprites[sprites.Length -1];
-            scrollingPieces[i].AddComponent<SpriteRenderer>().sprite = currentSprite;
-            scrollingPieces[i].GetComponent<SpriteRenderer>().sortingOrder = spriteLayer;
             scrollingPieces[i].transform.position = new Vector2(initialPosition + (spriteWidth * i), 0);
             scrollingPiecesPos[i] = scrollingPieces[i].transform.position;
         }

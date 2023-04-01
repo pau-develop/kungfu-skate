@@ -25,7 +25,6 @@ public class StageSprite : MonoBehaviour
         colorArray = originalTexture.GetPixels32();
         storeColorIndexes();
         createTextureWithNewColors();
-        // foreach(Color32 color in newColors.colorCycles[0].newColor) Debug.Log(color);
     }
 
     private void storeColorIndexes(){
@@ -67,7 +66,7 @@ public class StageSprite : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		changeSprite();
+		if(newColors.colorCycles.Count > 0) changeSprite();
     }
 
     void changeSprite(){
