@@ -700,6 +700,16 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4867821654051964983, guid: 3435ed6ed785e4b43bcc0e009f47ce38,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8203088269497667157, guid: 3435ed6ed785e4b43bcc0e009f47ce38,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3435ed6ed785e4b43bcc0e009f47ce38, type: 3}
 --- !u!1 &1675482955
