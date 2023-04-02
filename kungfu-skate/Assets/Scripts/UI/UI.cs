@@ -36,8 +36,9 @@ public class UI : MonoBehaviour
     void generateTextMesh(){
         int textYPos = 70;
         Vector2 textSize = new Vector2(40,5);
-        Vector3 textPosition = new Vector3(120, textYPos, 0);
+        Vector3 textPosition = new Vector3(110, textYPos, 0);
         stagePieces = new StageScrolling[stageObject.transform.childCount];
+        layersText = new TextMeshPro[stageObject.transform.childCount];
         for(int i = 0; i < stageObject.transform.childCount; i++){
             stagePieces[i] = stageObject.transform.GetChild(i).GetComponent<StageScrolling>();
         }
@@ -45,11 +46,11 @@ public class UI : MonoBehaviour
             GameObject tempObject = new GameObject("layer"+i.ToString());
             tempObject.transform.parent = debugger.transform;
             textPosition.y = textYPos;
-            TextMeshPro tempText = tempObject.AddComponent<TextMeshPro>();
-            tempText.font = font;
-            tempText.fontSize = 54;
-            tempText.color = new Color32(0,255,27,255);
-            tempText.text = "Layer" + i.ToString();
+            layersText[i] = tempObject.AddComponent<TextMeshPro>();
+            layersText[i].font = font;
+            layersText[i].fontSize = 54;
+            layersText[i].color = new Color32(0,255,27,255);
+            layersText[i].text = "Layer" + i.ToString() + ": ";
             tempObject.GetComponent<RectTransform>().anchoredPosition = textPosition;
             tempObject.GetComponent<RectTransform>().sizeDelta = textSize;
             tempObject.GetComponent<RectTransform>().pivot = new Vector2(0,0);
@@ -63,7 +64,15 @@ public class UI : MonoBehaviour
         displayDebugger();
         countFrames();
         displayScrollX();
-        displayTimeOnScene();   
+        displayTimeOnScene();
+        if(stageObject != null) updateLayerData();   
+    }
+
+    private void updateLayerData(){
+        for(int i = 0; i < stagePieces.Length; i++){
+            string newText = "layer" + i.ToString() + ": " + stagePieces[i].spritesShifted;
+            layersText[i].text = newText;
+        }
     }
 
     private void displayDebugger(){
