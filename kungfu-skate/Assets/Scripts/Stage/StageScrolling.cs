@@ -14,6 +14,8 @@ public class StageScrolling : MonoBehaviour
     private int shiftPos = -500;
     private float scrollX = 0;
     private UI ui;
+    public int[] initialBackgroundPieces;
+    public int spritesShifted = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,7 @@ public class StageScrolling : MonoBehaviour
     }
 
     private void loadAllSprites(){
-        Object[] allSprites = Resources.LoadAll("Sprites/STAGE1",typeof(GameObject));
+        Object[] allSprites = Resources.LoadAll("Sprites/STAGE1OBJ",typeof(GameObject));
         int spriteCounter = 0;
         sprites = new GameObject[allSprites.Length];
         for(int i = 0; i < allSprites.Length; i++) if(allSprites[i].name[3] == this.gameObject.name[5]) spriteCounter++;
@@ -39,10 +41,7 @@ public class StageScrolling : MonoBehaviour
 
     private void createScrollingPieces(){
         for(int i = 0; i < scrollingPieces.Length; i++){
-            GameObject currentSprite;
-            if(i < sprites.Length) currentSprite = sprites[i];
-            else currentSprite = sprites[sprites.Length-1];
-            scrollingPieces[i] = Instantiate(currentSprite, transform.position, Quaternion.identity);
+            scrollingPieces[i] = Instantiate(sprites[initialBackgroundPieces[i]], transform.position, Quaternion.identity);
             scrollingPieces[i].transform.parent = this.transform;
             scrollingPieces[i].transform.position = new Vector2(initialPosition + (spriteWidth * i), 0);
             scrollingPiecesPos[i] = scrollingPieces[i].transform.position;
@@ -86,5 +85,6 @@ public class StageScrolling : MonoBehaviour
                 scrollingPiecesPos[i] = tempPos;
             }        
         }
+        spritesShifted++;
     }
 }

@@ -11,14 +11,17 @@ public class StageSprite : MonoBehaviour
     private List<List<int>> colorIndexes = new List<List<int>>();
     private ColorList newColors;
     private float spriteTimer = 0;
-    private float changeSpriteDelay = 0.25f;
+    public float changeSpriteDelay;
     private int currentSpriteIndex = 0;
     private SpriteRenderer spriteRenderer;
     private bool movingUp = true;
+    private Vector2 spriteSize;
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteSize.x = spriteRenderer.sprite.rect.width;
+        spriteSize.y = spriteRenderer.sprite.rect.height;
         newColors = GetComponent<ColorLister>().colorList;
         originalTexture = spriteRenderer.sprite.texture;
         newSprites = new Sprite[newColors.colorCycles.Count + 1];
@@ -44,7 +47,7 @@ public class StageSprite : MonoBehaviour
 
     private void createTextureWithNewColors(){
         //make copy of original sprite
-        newSprites[0] = Sprite.Create(originalTexture, new Rect(0,0,640,180),new Vector2(0.5f,0.5f),1);
+        newSprites[0] = Sprite.Create(originalTexture, new Rect(0,0,spriteSize.x,spriteSize.y),new Vector2(0.5f,0.5f),1);
         //add rest of sprites
         for(int z = 0; z < newSprites.Length-1; z++){
             for(int i = 0; i < colorIndexes.Count; i++){
@@ -59,7 +62,7 @@ public class StageSprite : MonoBehaviour
             tempTexture.SetPixels32(colorArray);
             tempTexture.filterMode = FilterMode.Point;
             tempTexture.Apply();
-            newSprites[z+1] = Sprite.Create(tempTexture, new Rect(0,0,640,180),new Vector2(0.5f,0.5f),1);
+            newSprites[z+1] = Sprite.Create(tempTexture, new Rect(0,0,spriteSize.x,spriteSize.y),new Vector2(0.5f,0.5f),1);
         }   
     }
 
