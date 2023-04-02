@@ -246,7 +246,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cbbbf00bbd8fea340bfe51efee036d74, type: 3}
   - {fileID: 21300000, guid: 5f1bd13ea9098ec4cb47c3f06e1b4b2e, type: 3}
   - {fileID: 21300000, guid: 7299e5b69364e2a4a99861daeb756a57, type: 3}
-  backgroundScrollSpeed: 80
+  backgroundScrollSpeed: 100
 --- !u!1001 &539950509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -367,7 +367,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 295e429204bc9aa489e14259094c410a, type: 3}
   - {fileID: 21300000, guid: 26eb6b8c160c6c243b71d46e2f8efaa7, type: 3}
   - {fileID: 21300000, guid: 97942b088d4953a4998a6651a0b6c398, type: 3}
-  backgroundScrollSpeed: 120
+  backgroundScrollSpeed: 140
 --- !u!1001 &896685339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -492,7 +492,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 78241ec12765d4942b205ee7f0381053, type: 3}
   - {fileID: 21300000, guid: 9e9a18f6bbd26ce4686b5f7c130badbf, type: 3}
   - {fileID: 21300000, guid: c7db20bcc3594e64c8b201359a171b95, type: 3}
-  backgroundScrollSpeed: 100
+  backgroundScrollSpeed: 120
 --- !u!1 &1457161756
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,7 +574,7 @@ MonoBehaviour:
   spriteLayer: -50
   sprites:
   - {fileID: 21300000, guid: ea489c01fa28a7f4694f5c835a822e64, type: 3}
-  backgroundScrollSpeed: 40
+  backgroundScrollSpeed: 60
 --- !u!1 &1533374976
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,7 +621,7 @@ MonoBehaviour:
   spriteLayer: -40
   sprites:
   - {fileID: 21300000, guid: 1fae31bcd8985a94fb7f6a72cbcdb482, type: 3}
-  backgroundScrollSpeed: 60
+  backgroundScrollSpeed: 80
 --- !u!1001 &1537163805
 PrefabInstance:
   m_ObjectHideFlags: 0
