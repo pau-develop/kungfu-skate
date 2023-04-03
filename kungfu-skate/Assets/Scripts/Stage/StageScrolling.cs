@@ -6,6 +6,8 @@ public class StageScrolling : MonoBehaviour
 {
     public int spriteLayer;
     public GameObject[] sprites;
+    public List<GameObject[]> spriteInstances;
+    public GameObject[] spritesOnDisplay;
     private int initialPosition = 160;
     private int spriteWidth = 640;
     public int backgroundScrollSpeed = 100;
@@ -16,11 +18,16 @@ public class StageScrolling : MonoBehaviour
     private UI ui;
     public int[] initialBackgroundPieces;
     public int spritesShifted = 0;
+    private Vector2 outOfScreenPos = new Vector2(-640, 180);
+    private int[] currentPiece = new int[3];
+    private int currentList = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         ui = GameObject.Find("UI").GetComponent<UI>();
         loadAllSprites(); 
+        instantiateAll();
         createScrollingPieces();
     }
 
@@ -39,13 +46,28 @@ public class StageScrolling : MonoBehaviour
         }  
     }
 
-    private void createScrollingPieces(){
-        for(int i = 0; i < scrollingPieces.Length; i++){
-            scrollingPieces[i] = Instantiate(sprites[initialBackgroundPieces[i]], transform.position, Quaternion.identity);
-            scrollingPieces[i].transform.parent = this.transform;
-            scrollingPieces[i].transform.position = new Vector2(initialPosition + (spriteWidth * i), 0);
-            scrollingPiecesPos[i] = scrollingPieces[i].transform.position;
-            scrollingPieces[i].GetComponent<SpriteRenderer>().sortingOrder = spriteLayer;
+    private void instantiateAll(){
+        spriteInstances = new List<GameObject[]>();
+        for(int i = 0; i < 3; i++) spriteInstances.Add(new GameObject[sprites.Length]);
+        for(int i = 0; i < spriteInstances.Count; i++){
+            for(int x = 0; x < spriteInstances[i].Length; x++){
+                spriteInstances[i][x] = Instantiate(sprites[x], transform.position, Quaternion.identity);
+                spriteInstances[i][x].transform.parent = this.transform;
+                spriteInstances[i][x].transform.position = outOfScreenPos;
+                spriteInstances[i][x].GetComponent<SpriteRenderer>().sortingOrder = spriteLayer;
+                spriteInstances[i][x].SetActive(false);
+            }
+        }
+    }
+
+    private void createScrollingPieces(){ 
+        spritesOnDisplay = new GameObject[3];
+        for(int i = 0; i < scrollingPiecesPos.Length; i++){
+            spritesOnDisplay[i] = spriteInstances[i][initialBackgroundPieces[i]];
+            spritesOnDisplay[i].transform.position = new Vector2(initialPosition + (spriteWidth * i), 0);
+            spritesOnDisplay[i].SetActive(true);
+            scrollingPiecesPos[i] = spriteInstances[i][initialBackgroundPieces[i]].transform.position;
+            currentPiece[i] = initialBackgroundPieces[i];
         }
     }
 
@@ -63,25 +85,36 @@ public class StageScrolling : MonoBehaviour
     }
 
     private void moveScrollingPieces(){
-        for(int i = 0; i < scrollingPieces.Length; i++){
+        for(int i = 0; i < scrollingPiecesPos.Length; i++){
             scrollingPiecesPos[i].x -= backgroundScrollSpeed * Time.deltaTime;
-            scrollingPieces[i].transform.position = scrollingPiecesPos[i];
+            spritesOnDisplay[i].transform.position = scrollingPiecesPos[i];
         }
     }
 
     private void shiftPieces(){
+        //remove piece
+        spritesOnDisplay[0].SetActive(false);
+        spritesOnDisplay[0].transform.position = outOfScreenPos;
+        //asign new sprite to piece
+        if(currentPiece[0] < spriteInstances[currentList].Length) currentPiece[0]++;
+        else currentPiece[0] = 0;
+        // Debug.Log(spriteInstances.Count);
+        // Debug.Log(currentList);
+        spritesOnDisplay[0] = spriteInstances[currentList][currentPiece[0]];
+        spritesOnDisplay[0].SetActive(true);
+        if(currentList < 2) currentList++;
+        else currentList = 0;
         //move front piece to the back
         scrollingPiecesPos[0].x = scrollingPiecesPos[2].x + spriteWidth;
-        //hold onto that index
-        GameObject tempPiece = scrollingPieces[0];
         Vector2 tempPos = scrollingPiecesPos[0];
+        GameObject tempSpriteOnDisplay = spritesOnDisplay[0];
         //shiftIndexes
-        for(int i = 0; i < scrollingPieces.Length; i++){
-            if(i < scrollingPieces.Length -1){
-                scrollingPieces[i] = scrollingPieces[i+1];
+        for(int i = 0; i < scrollingPiecesPos.Length; i++){
+            if(i < scrollingPiecesPos.Length -1){
+                spritesOnDisplay[i] = spritesOnDisplay[i+1];
                 scrollingPiecesPos[i] = scrollingPiecesPos[i+1];
             } else {
-                scrollingPieces[i] = tempPiece;
+                spritesOnDisplay[i] = tempSpriteOnDisplay;
                 scrollingPiecesPos[i] = tempPos;
             }        
         }
