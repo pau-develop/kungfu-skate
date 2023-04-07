@@ -248,7 +248,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7299e5b69364e2a4a99861daeb756a57, type: 3}
   spritesOnDisplay: []
   backgroundScrollSpeed: 100
-  initialBackgroundPieces: 000000000000000000000000
+  initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
 --- !u!1001 &539950509
 PrefabInstance:
@@ -372,7 +372,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 97942b088d4953a4998a6651a0b6c398, type: 3}
   spritesOnDisplay: []
   backgroundScrollSpeed: 140
-  initialBackgroundPieces: 000000000000000000000000
+  initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
 --- !u!1001 &896685339
 PrefabInstance:
@@ -500,7 +500,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c7db20bcc3594e64c8b201359a171b95, type: 3}
   spritesOnDisplay: []
   backgroundScrollSpeed: 120
-  initialBackgroundPieces: 000000000000000000000000
+  initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
 --- !u!1 &1457161756
 GameObject:
@@ -585,7 +585,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ea489c01fa28a7f4694f5c835a822e64, type: 3}
   spritesOnDisplay: []
   backgroundScrollSpeed: 60
-  initialBackgroundPieces: 000000000000000000000000
+  initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
 --- !u!1 &1533374976
 GameObject:
@@ -635,7 +635,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1fae31bcd8985a94fb7f6a72cbcdb482, type: 3}
   spritesOnDisplay: []
   backgroundScrollSpeed: 80
-  initialBackgroundPieces: 000000000000000000000000
+  initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
 --- !u!1001 &1537163805
 PrefabInstance:

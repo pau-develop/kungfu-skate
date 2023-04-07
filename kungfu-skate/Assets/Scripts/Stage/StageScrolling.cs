@@ -11,16 +11,15 @@ public class StageScrolling : MonoBehaviour
     private int initialPosition = 160;
     private int spriteWidth = 640;
     public int backgroundScrollSpeed = 100;
-    private GameObject[] scrollingPieces = new GameObject[3];
-    private Vector2[] scrollingPiecesPos = new Vector2[3];
+    private Vector2[] scrollingPiecesPos = new Vector2[2];
     private int shiftPos = -500;
     private float scrollX = 0;
     private UI ui;
     public int[] initialBackgroundPieces;
     public int spritesShifted = 0;
     private Vector2 outOfScreenPos = new Vector2(-640, 180);
-    private int[] currentPiece = new int[3];
     private int currentList = 0;
+    private int nextPiece = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -48,26 +47,24 @@ public class StageScrolling : MonoBehaviour
 
     private void instantiateAll(){
         spriteInstances = new List<GameObject[]>();
-        for(int i = 0; i < 3; i++) spriteInstances.Add(new GameObject[sprites.Length]);
+        for(int i = 0; i < scrollingPiecesPos.Length; i++) spriteInstances.Add(new GameObject[sprites.Length]);
         for(int i = 0; i < spriteInstances.Count; i++){
             for(int x = 0; x < spriteInstances[i].Length; x++){
                 spriteInstances[i][x] = Instantiate(sprites[x], transform.position, Quaternion.identity);
                 spriteInstances[i][x].transform.parent = this.transform;
                 spriteInstances[i][x].transform.position = outOfScreenPos;
                 spriteInstances[i][x].GetComponent<SpriteRenderer>().sortingOrder = spriteLayer;
-                spriteInstances[i][x].SetActive(false);
             }
         }
     }
 
     private void createScrollingPieces(){ 
-        spritesOnDisplay = new GameObject[3];
-        for(int i = 0; i < scrollingPiecesPos.Length; i++){
+        spritesOnDisplay = new GameObject[scrollingPiecesPos.Length];
+        for(int i = 0; i < spritesOnDisplay.Length; i++){
             spritesOnDisplay[i] = spriteInstances[i][initialBackgroundPieces[i]];
             spritesOnDisplay[i].transform.position = new Vector2(initialPosition + (spriteWidth * i), 0);
             spritesOnDisplay[i].SetActive(true);
             scrollingPiecesPos[i] = spriteInstances[i][initialBackgroundPieces[i]].transform.position;
-            currentPiece[i] = initialBackgroundPieces[i];
         }
     }
 
@@ -85,27 +82,22 @@ public class StageScrolling : MonoBehaviour
     }
 
     private void moveScrollingPieces(){
-        for(int i = 0; i < scrollingPiecesPos.Length; i++){
+        for(int i = 0; i < spritesOnDisplay.Length; i++){
             scrollingPiecesPos[i].x -= backgroundScrollSpeed * Time.deltaTime;
             spritesOnDisplay[i].transform.position = scrollingPiecesPos[i];
         }
     }
 
     private void shiftPieces(){
-        //remove piece
-        spritesOnDisplay[0].SetActive(false);
-        spritesOnDisplay[0].transform.position = outOfScreenPos;
-        //asign new sprite to piece
-        if(currentPiece[0] < spriteInstances[currentList].Length) currentPiece[0]++;
-        else currentPiece[0] = 0;
-        // Debug.Log(spriteInstances.Count);
-        // Debug.Log(currentList);
-        spritesOnDisplay[0] = spriteInstances[currentList][currentPiece[0]];
-        spritesOnDisplay[0].SetActive(true);
-        if(currentList < 2) currentList++;
-        else currentList = 0;
         //move front piece to the back
-        scrollingPiecesPos[0].x = scrollingPiecesPos[2].x + spriteWidth;
+        scrollingPiecesPos[0].x = scrollingPiecesPos[scrollingPiecesPos.Length-1].x + spriteWidth;
+        //remove piece
+        spritesOnDisplay[0].transform.position = outOfScreenPos;
+        //change sprite in new piece
+        getNextPiece();
+        spritesOnDisplay[0] = spriteInstances[currentList][nextPiece];
+        if(currentList < 1) currentList++;
+        else currentList = 0;
         Vector2 tempPos = scrollingPiecesPos[0];
         GameObject tempSpriteOnDisplay = spritesOnDisplay[0];
         //shiftIndexes
@@ -119,5 +111,9 @@ public class StageScrolling : MonoBehaviour
             }        
         }
         spritesShifted++;
+    }
+
+    void getNextPiece(){
+
     }
 }
