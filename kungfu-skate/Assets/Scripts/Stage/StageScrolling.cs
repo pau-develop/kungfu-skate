@@ -21,22 +21,22 @@ public class StageScrolling : MonoBehaviour
     private Vector2 outOfScreenPos = new Vector2(-640, 180);
     private int currentList = 0;
     private int nextPiece = 0;
+    public int[] eventSprites;
+    public string[] eventType;
+    private int currentEventIndex = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(transform.GetSiblingIndex() <= 2) tryOutDictionary();
+        getDictionaryInfo();
         ui = GameObject.Find("UI").GetComponent<UI>();
         loadAllSprites(); 
         instantiateAll();
         createScrollingPieces();
     }
 
-    void tryOutDictionary(){
-        stageDictionary = transform.parent.GetComponent<StagePieces>().dictionaries[transform.GetSiblingIndex()];
-        int[] numbers;
-        stageDictionary.TryGetValue("road", out numbers);
-        Debug.Log(numbers.Length);
+    void getDictionaryInfo(){
+        stageDictionary = transform.parent.GetComponent<StagePieces>().dictionaryList[transform.GetSiblingIndex()];
     }
 
     private void loadAllSprites(){
@@ -123,6 +123,23 @@ public class StageScrolling : MonoBehaviour
     }
 
     void getNextPiece(){
-
+        if(eventSprites.Length == 0) {
+            if(nextPiece + 1 < sprites.Length) nextPiece += 1;
+            else nextPiece = 0;
+        } else{
+            if(eventSprites[currentEventIndex] == spritesShifted){
+                int[] numbers;
+                stageDictionary.TryGetValue(eventType[currentEventIndex], out numbers);
+                if(numbers.Length == 1) nextPiece = numbers[0];
+                else getRandomPiece(numbers);
+                if(currentEventIndex + 1 < eventSprites.Length) currentEventIndex++; 
+                Debug.Log(currentEventIndex);
+            }
+        }
+    }
+    void getRandomPiece(int[] pieces){
+        int randomPiece = Random.Range(0,pieces.Length);
+        Debug.Log(randomPiece);
+        nextPiece = pieces[randomPiece];
     }
 }

@@ -26,12 +26,29 @@ public class StagePieces : MonoBehaviour
         {"park-exit", new[]{8}},
         {"park", new[]{9}}
     };
+    private Dictionary<string, int[]> stageOneLayerThreePieces = new Dictionary<string, int[]>(){
+        {"all", new[]{0}}
+    };
+    private Dictionary<string, int[]> stageOneLayerFourPieces = new Dictionary<string, int[]>(){
+        {"all", new[]{0}}
+    };
 
-    public List<Dictionary<string,int[]>> dictionaries = new List<Dictionary<string,int[]>>();
+    public List<Dictionary<string,int[]>> dictionaryList = new List<Dictionary<string,int[]>>();
     
     void Start(){
-        dictionaries.Add(stageOneLayerZeroPieces);
-        dictionaries.Add(stageOneLayerOnePieces);
-        dictionaries.Add(stageOneLayerTwoPieces);
+        createDictionaryList();
+        activateChildObjects();
+    }
+
+    private void createDictionaryList(){
+        dictionaryList.Add(stageOneLayerZeroPieces);
+        dictionaryList.Add(stageOneLayerOnePieces);
+        dictionaryList.Add(stageOneLayerTwoPieces);
+        dictionaryList.Add(stageOneLayerThreePieces);
+        dictionaryList.Add(stageOneLayerFourPieces);
+    }
+
+    private void activateChildObjects(){
+        for(int i = 0; i < transform.childCount; i++) transform.GetChild(i).gameObject.SetActive(true);
     }
 }

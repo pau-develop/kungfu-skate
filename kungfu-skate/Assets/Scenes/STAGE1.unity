@@ -200,14 +200,13 @@ GameObject:
   m_Component:
   - component: {fileID: 376541368}
   - component: {fileID: 376541369}
-  - component: {fileID: 376541370}
   m_Layer: 0
   m_Name: Layer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &376541368
 Transform:
   m_ObjectHideFlags: 0
@@ -251,19 +250,8 @@ MonoBehaviour:
   backgroundScrollSpeed: 100
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
---- !u!114 &376541370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376541367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ecbaf061441cbd4f92501920cdc612a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keySprites: 00000000
+  eventSprites: 
+  eventType: []
 --- !u!1001 &539950509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -343,14 +331,13 @@ GameObject:
   m_Component:
   - component: {fileID: 730751173}
   - component: {fileID: 730751174}
-  - component: {fileID: 730751175}
   m_Layer: 0
   m_Name: Layer0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &730751173
 Transform:
   m_ObjectHideFlags: 0
@@ -389,19 +376,8 @@ MonoBehaviour:
   backgroundScrollSpeed: 140
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
---- !u!114 &730751175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730751172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ecbaf061441cbd4f92501920cdc612a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keySprites: 00000000
+  eventSprites: 
+  eventType: []
 --- !u!1001 &896685339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -481,14 +457,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1441205651}
   - component: {fileID: 1441205652}
-  - component: {fileID: 1441205653}
   m_Layer: 0
   m_Name: Layer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1441205651
 Transform:
   m_ObjectHideFlags: 0
@@ -531,19 +506,13 @@ MonoBehaviour:
   backgroundScrollSpeed: 120
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
---- !u!114 &1441205653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441205650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ecbaf061441cbd4f92501920cdc612a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keySprites: 000000000500000006000000090000000a0000000f000000100000001400000015000000
+  eventSprites: 0000000004000000050000000800000009000000
+  eventType:
+  - road
+  - alley-entrance
+  - alley
+  - alley-exit
+  - road
 --- !u!1 &1457161756
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +522,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1457161757}
+  - component: {fileID: 1457161758}
   m_Layer: 0
   m_Name: Stage
   m_TagString: Untagged
@@ -579,6 +549,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1457161758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457161756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ecbaf061441cbd4f92501920cdc612a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1512799507
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,14 +571,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1512799508}
   - component: {fileID: 1512799509}
-  - component: {fileID: 1512799510}
   m_Layer: 0
   m_Name: Layer4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1512799508
 Transform:
   m_ObjectHideFlags: 0
@@ -630,19 +611,8 @@ MonoBehaviour:
   backgroundScrollSpeed: 60
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
---- !u!114 &1512799510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1512799507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ecbaf061441cbd4f92501920cdc612a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keySprites: 00000000
+  eventSprites: 
+  eventType: []
 --- !u!1 &1533374976
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,14 +623,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1533374977}
   - component: {fileID: 1533374978}
-  - component: {fileID: 1533374979}
   m_Layer: 0
   m_Name: Layer3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1533374977
 Transform:
   m_ObjectHideFlags: 0
@@ -694,19 +663,8 @@ MonoBehaviour:
   backgroundScrollSpeed: 80
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
---- !u!114 &1533374979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533374976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ecbaf061441cbd4f92501920cdc612a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keySprites: 00000000
+  eventSprites: 
+  eventType: []
 --- !u!1001 &1537163805
 PrefabInstance:
   m_ObjectHideFlags: 0
