@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StageScrolling : MonoBehaviour
 {
+    private Dictionary<string, int[]> stageDictionary;
     public int spriteLayer;
     public GameObject[] sprites;
     public List<GameObject[]> spriteInstances;
@@ -24,10 +25,18 @@ public class StageScrolling : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(transform.GetSiblingIndex() <= 2) tryOutDictionary();
         ui = GameObject.Find("UI").GetComponent<UI>();
         loadAllSprites(); 
         instantiateAll();
         createScrollingPieces();
+    }
+
+    void tryOutDictionary(){
+        stageDictionary = transform.parent.GetComponent<StagePieces>().dictionaries[transform.GetSiblingIndex()];
+        int[] numbers;
+        stageDictionary.TryGetValue("road", out numbers);
+        Debug.Log(numbers.Length);
     }
 
     private void loadAllSprites(){
