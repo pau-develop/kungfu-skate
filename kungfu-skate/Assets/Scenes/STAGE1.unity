@@ -126,7 +126,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1517064271}
     m_Modifications:
     - target: {fileID: 7977997475743207589, guid: d43eb5b38616fcc4896ad5c92672b034,
         type: 3}
@@ -146,17 +146,17 @@ PrefabInstance:
     - target: {fileID: 7977997475743207589, guid: d43eb5b38616fcc4896ad5c92672b034,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7977997475743207589, guid: d43eb5b38616fcc4896ad5c92672b034,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7977997475743207589, guid: d43eb5b38616fcc4896ad5c92672b034,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7977997475743207589, guid: d43eb5b38616fcc4896ad5c92672b034,
         type: 3}
@@ -166,7 +166,7 @@ PrefabInstance:
     - target: {fileID: 7977997475743207589, guid: d43eb5b38616fcc4896ad5c92672b034,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7977997475743207589, guid: d43eb5b38616fcc4896ad5c92672b034,
         type: 3}
@@ -264,7 +264,7 @@ MonoBehaviour:
   - park
   - park-exit
   - road
-  speedEvents: b1000000e6000000a5010000ea010000ab020000e2020000210300006b030000e10300001a040000
+  decreaseSpeedFactor: 8
 --- !u!1001 &539950509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
   spritesShifted: 0
   eventSprites: 
   eventType: []
-  speedEvents: 
+  decreaseSpeedFactor: 18
 --- !u!1001 &896685339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -535,7 +535,7 @@ MonoBehaviour:
   - park
   - park-exit
   - road
-  speedEvents: 
+  decreaseSpeedFactor: 16
 --- !u!1 &1457161756
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +546,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1457161757}
   - component: {fileID: 1457161758}
+  - component: {fileID: 1457161759}
   m_Layer: 0
   m_Name: Stage
   m_TagString: Untagged
@@ -570,7 +571,7 @@ Transform:
   - {fileID: 1533374977}
   - {fileID: 1512799508}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1457161758
 MonoBehaviour:
@@ -584,6 +585,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ecbaf061441cbd4f92501920cdc612a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1457161759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457161756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0299c948aa75549bed07a0e02cd9d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldSlowDown: 0
+  inBossFight: 0
+  inCutScene: 0
+  slowDownPos: 941
+  speedEvents: b1000000c900000088010000ae0100006f0200008a020000c9020000f0020000660300007f030000
 --- !u!1 &1512799507
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,7 +654,13 @@ MonoBehaviour:
   spritesShifted: 0
   eventSprites: 
   eventType: []
-  speedEvents: 
+  decreaseSpeedFactor: 2
+--- !u!4 &1517064271 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7089895635724164880, guid: 314e3da8da0248f44a93e639eec689c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7089895636455944869}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1533374976
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,7 +713,7 @@ MonoBehaviour:
   spritesShifted: 0
   eventSprites: 
   eventType: []
-  speedEvents: 
+  decreaseSpeedFactor: 4
 --- !u!1001 &1537163805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -746,7 +770,7 @@ PrefabInstance:
     - target: {fileID: 1002971046759701482, guid: 3435ed6ed785e4b43bcc0e009f47ce38,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1002971046759701482, guid: 3435ed6ed785e4b43bcc0e009f47ce38,
         type: 3}
@@ -835,7 +859,7 @@ PrefabInstance:
     - target: {fileID: 898032667697199740, guid: a5f66101ad564d74d848c231dcc28127,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 898032667697199740, guid: a5f66101ad564d74d848c231dcc28127,
         type: 3}
@@ -968,7 +992,7 @@ PrefabInstance:
     - target: {fileID: 7089895635724164880, guid: 314e3da8da0248f44a93e639eec689c1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7089895635724164880, guid: 314e3da8da0248f44a93e639eec689c1,
         type: 3}

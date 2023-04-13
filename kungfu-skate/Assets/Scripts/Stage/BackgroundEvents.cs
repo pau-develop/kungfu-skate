@@ -9,8 +9,8 @@ public class BackgroundEvents : MonoBehaviour
     public bool inCutScene = false;
     private UI ui;
     private StageScrolling stage;
-    private int groundLayerScrollSpeed;
-    private int backgroundLayerScrollSpeed; 
+    private float groundLayerScrollSpeed;
+    private float backgroundLayerScrollSpeed; 
     public int slowDownPos;
     private float scrollX = 0;
     private int scrollXInt = 0;
@@ -30,6 +30,11 @@ public class BackgroundEvents : MonoBehaviour
     void Update()
     {
         countXScroll();
+        checkForSlowDownEvent();
+    }
+
+    private void checkForSlowDownEvent(){
+        if(scrollXInt == slowDownPos) shouldSlowDown = true;
     }
 
     private void countXScroll(){
@@ -41,7 +46,7 @@ public class BackgroundEvents : MonoBehaviour
     }
 
     private void manageScrollSpeed(){
-        int currentBackgroundScrollSpeed = transform.Find("Layer2").GetComponent<StageScrolling>().backgroundScrollSpeed;
+        float currentBackgroundScrollSpeed = transform.Find("Layer2").GetComponent<StageScrolling>().backgroundScrollSpeed;
         if(speedEvents[currentSpeedEventIndex] == scrollXInt){
             if(currentBackgroundScrollSpeed == groundLayerScrollSpeed) currentBackgroundScrollSpeed = backgroundLayerScrollSpeed;
             else currentBackgroundScrollSpeed = groundLayerScrollSpeed;

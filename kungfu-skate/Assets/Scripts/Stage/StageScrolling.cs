@@ -11,7 +11,7 @@ public class StageScrolling : MonoBehaviour
     public GameObject[] spritesOnDisplay;
     private int initialPosition = 160;
     private int spriteWidth = 640;
-    public int backgroundScrollSpeed;
+    public float backgroundScrollSpeed;
     private Vector2[] scrollingPiecesPos = new Vector2[2];
     private int shiftPos = -500;
     public int[] initialBackgroundPieces;
@@ -24,12 +24,14 @@ public class StageScrolling : MonoBehaviour
     private int currentEventIndex = 0;
     private int originalScrollSpeed;
     private int fastScrollSpeed;
-
+    private BackgroundEvents events;
+    public int decreaseSpeedFactor;
     // Start is called before the first frame update
     void Start()
     {
-        originalScrollSpeed = backgroundScrollSpeed;
-        fastScrollSpeed = backgroundScrollSpeed * 2;
+        events = transform.parent.GetComponent<BackgroundEvents>();
+        originalScrollSpeed = (int)backgroundScrollSpeed;
+        fastScrollSpeed = (int)backgroundScrollSpeed * 2;
         getDictionaryInfo();
         loadAllSprites(); 
         instantiateAll();
@@ -81,12 +83,17 @@ public class StageScrolling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       moveScrollingPieces();
-       if(scrollingPiecesPos[0].x <= shiftPos) shiftPieces();
+        changeBackgroundSpeed();
+        moveScrollingPieces();
+        if(scrollingPiecesPos[0].x <= shiftPos) shiftPieces();
     }
 
-
-    
+    private void changeBackgroundSpeed(){
+        if(events.shouldSlowDown) {
+            if(backgroundScrollSpeed > 0) backgroundScrollSpeed -= decreaseSpeedFactor * Time.deltaTime;
+            else backgroundScrollSpeed = 0;
+        }
+    }
 
     private void moveScrollingPieces(){
         for(int i = 0; i < spritesOnDisplay.Length; i++){
