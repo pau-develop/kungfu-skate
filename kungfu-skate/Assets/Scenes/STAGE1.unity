@@ -235,23 +235,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteLayer: -30
   sprites:
-  - {fileID: 21300000, guid: dc20394fe9ef96b43a8ca74317dca87e, type: 3}
-  - {fileID: 21300000, guid: 50bbc3f041500504394f8085e447c119, type: 3}
-  - {fileID: 21300000, guid: d669b397b00315147bc71ed58919b15b, type: 3}
-  - {fileID: 21300000, guid: 29ef4d36d58d0e74a82fac78bae627db, type: 3}
-  - {fileID: 21300000, guid: 471ef92cbb448554bae954b5e0d189d3, type: 3}
-  - {fileID: 21300000, guid: 870b4743ee03e4d4486e017d2eb3a3ba, type: 3}
-  - {fileID: 21300000, guid: 47b5fe43fcef182488de40f608c13d2e, type: 3}
-  - {fileID: 21300000, guid: a1a0dfcb0159b234995ddc1718317bec, type: 3}
-  - {fileID: 21300000, guid: cbbbf00bbd8fea340bfe51efee036d74, type: 3}
-  - {fileID: 21300000, guid: 5f1bd13ea9098ec4cb47c3f06e1b4b2e, type: 3}
-  - {fileID: 21300000, guid: 7299e5b69364e2a4a99861daeb756a57, type: 3}
+  - {fileID: 21300000, guid: 0fe10fdf7d5564743a453a76c0657f87, type: 3}
+  - {fileID: 21300000, guid: a1e6c1a567937024fb66509c99cb514a, type: 3}
+  - {fileID: 21300000, guid: 99736834f97f40141b2c28afab78ecd0, type: 3}
+  - {fileID: 21300000, guid: 9214f989026ced84f993f114e7e2b928, type: 3}
+  - {fileID: 21300000, guid: a67d156ae3068f44682d139a9cea12c9, type: 3}
+  - {fileID: 21300000, guid: 6e399ede9570f064db9630e4bd59d83b, type: 3}
+  - {fileID: 21300000, guid: 040b1ca36629e3c40b5655092aa463b5, type: 3}
+  - {fileID: 21300000, guid: 78241ec12765d4942b205ee7f0381053, type: 3}
+  - {fileID: 21300000, guid: 9e9a18f6bbd26ce4686b5f7c130badbf, type: 3}
+  - {fileID: 21300000, guid: c7db20bcc3594e64c8b201359a171b95, type: 3}
   spritesOnDisplay: []
-  backgroundScrollSpeed: 100
+  backgroundScrollSpeed: 60
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
-  eventSprites: 
-  eventType: []
+  eventSprites: 0000000001000000020000000500000006000000090000000a0000000b0000000c0000000e0000000f0000001000000011000000
+  eventType:
+  - road
+  - alley-entrance
+  - alley
+  - alley-exit
+  - road
+  - alley-entrance
+  - alley
+  - alley-exit
+  - road
+  - park-entrance
+  - park
+  - park-exit
+  - road
+  speedEvents: b1000000e6000000a5010000ea010000ab020000e2020000210300006b030000e10300001a040000
 --- !u!1001 &539950509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -378,6 +391,7 @@ MonoBehaviour:
   spritesShifted: 0
   eventSprites: 
   eventType: []
+  speedEvents: 
 --- !u!1001 &896685339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -506,13 +520,22 @@ MonoBehaviour:
   backgroundScrollSpeed: 120
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
-  eventSprites: 0000000004000000050000000800000009000000
+  eventSprites: 0000000004000000050000000b0000000c00000012000000130000001500000016000000190000001a0000001d0000001e000000
   eventType:
   - road
   - alley-entrance
   - alley
   - alley-exit
   - road
+  - alley-entrance
+  - alley
+  - alley-exit
+  - road
+  - park-entrance
+  - park
+  - park-exit
+  - road
+  speedEvents: 
 --- !u!1 &1457161756
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,11 +631,12 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: ea489c01fa28a7f4694f5c835a822e64, type: 3}
   spritesOnDisplay: []
-  backgroundScrollSpeed: 60
+  backgroundScrollSpeed: 15
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
   eventSprites: 
   eventType: []
+  speedEvents: 
 --- !u!1 &1533374976
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,11 +684,12 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 1fae31bcd8985a94fb7f6a72cbcdb482, type: 3}
   spritesOnDisplay: []
-  backgroundScrollSpeed: 80
+  backgroundScrollSpeed: 30
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
   eventSprites: 
   eventType: []
+  speedEvents: 
 --- !u!1001 &1537163805
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,10 +11,12 @@ public class StageScrolling : MonoBehaviour
     public GameObject[] spritesOnDisplay;
     private int initialPosition = 160;
     private int spriteWidth = 640;
-    public int backgroundScrollSpeed = 100;
+    public int backgroundScrollSpeed;
     private Vector2[] scrollingPiecesPos = new Vector2[2];
     private int shiftPos = -500;
     private float scrollX = 0;
+    private int scrollXInt = 0;
+    private int scrollXLatest = 0;
     private UI ui;
     public int[] initialBackgroundPieces;
     public int spritesShifted = 0;
@@ -24,10 +26,16 @@ public class StageScrolling : MonoBehaviour
     public int[] eventSprites;
     public string[] eventType;
     private int currentEventIndex = 0;
+    public int[] speedEvents;
+    private int currentSpeedEventIndex = 0;
+    private int originalScrollSpeed;
+    private int fastScrollSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
+        originalScrollSpeed = backgroundScrollSpeed;
+        fastScrollSpeed = backgroundScrollSpeed * 2;
         getDictionaryInfo();
         ui = GameObject.Find("UI").GetComponent<UI>();
         loadAllSprites(); 
@@ -82,12 +90,25 @@ public class StageScrolling : MonoBehaviour
     {
        moveScrollingPieces();
        if(scrollingPiecesPos[0].x <= shiftPos) shiftPieces();
-       if(this.gameObject.name == "Layer1") countXScroll();
+       if(this.gameObject.name == "Layer2") countXScroll();
     }
 
     private void countXScroll(){
        scrollX += backgroundScrollSpeed * Time.deltaTime;
-       ui.scrollX = ((int)scrollX/40);
+       scrollXInt = ((int)scrollX/10);
+       ui.scrollX = scrollXInt;
+       if(scrollXLatest < scrollXInt) manageScrollSpeed();
+       scrollXLatest = scrollXInt;
+    }
+
+    private void manageScrollSpeed(){
+        if(transform.GetSiblingIndex() == 2){
+            if(speedEvents[currentSpeedEventIndex] == scrollXInt){
+                if(backgroundScrollSpeed == originalScrollSpeed) backgroundScrollSpeed = fastScrollSpeed;
+                else backgroundScrollSpeed = originalScrollSpeed;
+                if(currentSpeedEventIndex < speedEvents.Length -1 ) currentSpeedEventIndex++;  
+            }
+        } 
     }
 
     private void moveScrollingPieces(){
@@ -133,13 +154,11 @@ public class StageScrolling : MonoBehaviour
                 if(numbers.Length == 1) nextPiece = numbers[0];
                 else getRandomPiece(numbers);
                 if(currentEventIndex + 1 < eventSprites.Length) currentEventIndex++; 
-                Debug.Log(currentEventIndex);
             }
         }
     }
     void getRandomPiece(int[] pieces){
         int randomPiece = Random.Range(0,pieces.Length);
-        Debug.Log(randomPiece);
         nextPiece = pieces[randomPiece];
     }
 }
