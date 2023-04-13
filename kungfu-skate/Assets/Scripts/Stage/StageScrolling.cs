@@ -14,10 +14,6 @@ public class StageScrolling : MonoBehaviour
     public int backgroundScrollSpeed;
     private Vector2[] scrollingPiecesPos = new Vector2[2];
     private int shiftPos = -500;
-    private float scrollX = 0;
-    private int scrollXInt = 0;
-    private int scrollXLatest = 0;
-    private UI ui;
     public int[] initialBackgroundPieces;
     public int spritesShifted = 0;
     private Vector2 outOfScreenPos = new Vector2(-640, 180);
@@ -26,8 +22,6 @@ public class StageScrolling : MonoBehaviour
     public int[] eventSprites;
     public string[] eventType;
     private int currentEventIndex = 0;
-    public int[] speedEvents;
-    private int currentSpeedEventIndex = 0;
     private int originalScrollSpeed;
     private int fastScrollSpeed;
 
@@ -37,7 +31,6 @@ public class StageScrolling : MonoBehaviour
         originalScrollSpeed = backgroundScrollSpeed;
         fastScrollSpeed = backgroundScrollSpeed * 2;
         getDictionaryInfo();
-        ui = GameObject.Find("UI").GetComponent<UI>();
         loadAllSprites(); 
         instantiateAll();
         createScrollingPieces();
@@ -90,26 +83,10 @@ public class StageScrolling : MonoBehaviour
     {
        moveScrollingPieces();
        if(scrollingPiecesPos[0].x <= shiftPos) shiftPieces();
-       if(this.gameObject.name == "Layer2") countXScroll();
     }
 
-    private void countXScroll(){
-       scrollX += backgroundScrollSpeed * Time.deltaTime;
-       scrollXInt = ((int)scrollX/10);
-       ui.scrollX = scrollXInt;
-       if(scrollXLatest < scrollXInt) manageScrollSpeed();
-       scrollXLatest = scrollXInt;
-    }
 
-    private void manageScrollSpeed(){
-        if(transform.GetSiblingIndex() == 2){
-            if(speedEvents[currentSpeedEventIndex] == scrollXInt){
-                if(backgroundScrollSpeed == originalScrollSpeed) backgroundScrollSpeed = fastScrollSpeed;
-                else backgroundScrollSpeed = originalScrollSpeed;
-                if(currentSpeedEventIndex < speedEvents.Length -1 ) currentSpeedEventIndex++;  
-            }
-        } 
-    }
+    
 
     private void moveScrollingPieces(){
         for(int i = 0; i < spritesOnDisplay.Length; i++){
