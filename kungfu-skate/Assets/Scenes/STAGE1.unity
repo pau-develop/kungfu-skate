@@ -121,12 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &204068565
+--- !u!1001 &328778260
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1517064271}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7977997475743207589, guid: d43eb5b38616fcc4896ad5c92672b034,
         type: 3}
@@ -146,17 +146,17 @@ PrefabInstance:
     - target: {fileID: 7977997475743207589, guid: d43eb5b38616fcc4896ad5c92672b034,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7977997475743207589, guid: d43eb5b38616fcc4896ad5c92672b034,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7977997475743207589, guid: d43eb5b38616fcc4896ad5c92672b034,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7977997475743207589, guid: d43eb5b38616fcc4896ad5c92672b034,
         type: 3}
@@ -166,7 +166,7 @@ PrefabInstance:
     - target: {fileID: 7977997475743207589, guid: d43eb5b38616fcc4896ad5c92672b034,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7977997475743207589, guid: d43eb5b38616fcc4896ad5c92672b034,
         type: 3}
@@ -247,6 +247,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c7db20bcc3594e64c8b201359a171b95, type: 3}
   spritesOnDisplay: []
   backgroundScrollSpeed: 60
+  currentBackgroundScrollSpeed: 0
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
   eventSprites: 0000000001000000020000000500000006000000090000000a0000000b0000000c0000000e0000000f0000001000000011000000
@@ -387,6 +388,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 97942b088d4953a4998a6651a0b6c398, type: 3}
   spritesOnDisplay: []
   backgroundScrollSpeed: 140
+  currentBackgroundScrollSpeed: 0
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
   eventSprites: 
@@ -518,6 +520,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c7db20bcc3594e64c8b201359a171b95, type: 3}
   spritesOnDisplay: []
   backgroundScrollSpeed: 120
+  currentBackgroundScrollSpeed: 0
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
   eventSprites: 0000000004000000050000000b0000000c00000012000000130000001500000016000000190000001a0000001d0000001e000000
@@ -600,8 +603,10 @@ MonoBehaviour:
   shouldSlowDown: 0
   inBossFight: 0
   inCutScene: 0
-  slowDownPos: 941
-  speedEvents: b1000000c900000088010000ae0100006f0200008a020000c9020000f0020000660300007f030000
+  slowDownXPos: 941
+  autoMoveXPos: 950
+  autoMoveDestPos: {x: -115, y: -90}
+  speedEvents: b1000000c900000088010000ae0100006f0200008a020000c9020000f0020000660300007f030000160400002c040000
 --- !u!1 &1512799507
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,17 +655,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ea489c01fa28a7f4694f5c835a822e64, type: 3}
   spritesOnDisplay: []
   backgroundScrollSpeed: 15
+  currentBackgroundScrollSpeed: 0
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
   eventSprites: 
   eventType: []
   decreaseSpeedFactor: 2
---- !u!4 &1517064271 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7089895635724164880, guid: 314e3da8da0248f44a93e639eec689c1,
-    type: 3}
-  m_PrefabInstance: {fileID: 7089895636455944869}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1533374976
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,6 +709,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1fae31bcd8985a94fb7f6a72cbcdb482, type: 3}
   spritesOnDisplay: []
   backgroundScrollSpeed: 30
+  currentBackgroundScrollSpeed: 0
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
   eventSprites: 

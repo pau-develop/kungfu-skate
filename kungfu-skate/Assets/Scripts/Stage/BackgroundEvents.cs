@@ -11,7 +11,9 @@ public class BackgroundEvents : MonoBehaviour
     private StageScrolling stage;
     private float groundLayerScrollSpeed;
     private float backgroundLayerScrollSpeed; 
-    public int slowDownPos;
+    public int slowDownXPos;
+    public int autoMoveXPos;
+    public Vector2 autoMoveDestPos;
     private float scrollX = 0;
     private int scrollXInt = 0;
     private int scrollXLatest = 0;
@@ -31,7 +33,8 @@ public class BackgroundEvents : MonoBehaviour
     void Update()
     {
         if(!inCutScene && !inBossFight && !shouldSlowDown) checkForSlowDownEvent();
-        if(!shouldSlowDown) countXScroll();
+        if(!inCutScene && !inBossFight) checkForAutoMoveEvent();
+        if(!inCutScene) countXScroll();
         if(shouldSlowDown){
             if(!inCutScene){
                 changePiecesSpeed(false);
@@ -43,6 +46,10 @@ public class BackgroundEvents : MonoBehaviour
             checkForEndOfAcceleration();
         } 
         if(inCutScene) checkForEndOfCutScene();
+    }
+
+    private void checkForAutoMoveEvent(){
+         if(scrollXInt == autoMoveXPos) GameObject.FindWithTag("Player").GetComponent<CharacterMovement>().autoMoveCutscene = true;
     }
 
     private void checkForEndOfAcceleration(){
@@ -66,6 +73,7 @@ public class BackgroundEvents : MonoBehaviour
             shouldSlowDown = false;
             shouldAccelerate = true;
             inCutScene = false;
+            GameObject.FindWithTag("Player").GetComponent<CharacterMovement>().autoMoveCutscene = false;
         }
     }
 
@@ -77,7 +85,7 @@ public class BackgroundEvents : MonoBehaviour
         }
     }
     private void checkForSlowDownEvent(){
-        if(scrollXInt == slowDownPos) shouldSlowDown = true;
+        if(scrollXInt == slowDownXPos) shouldSlowDown = true;
     }
 
     private void countXScroll(){
