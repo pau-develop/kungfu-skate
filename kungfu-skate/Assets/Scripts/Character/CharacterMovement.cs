@@ -6,13 +6,15 @@ public class CharacterMovement : MonoBehaviour
 {
     public Vector2 ninjaPos;
     public bool autoMove = true;
+    public bool autoMoveCutscene = false;
+    private Vector2 autoMoveDestPos;
     public bool movingUp = false;
     public bool movingDown =false;
     public bool movingLeft =false;
     public bool movingRight =false;
     public bool isShooting = false;
     public bool isSwinging =  false;
-    private Vector2 playerPos;
+    public Vector2 playerPos;
     private Vector2 playerActualPos;
     public int playerSpeed = 100;
 
@@ -32,6 +34,7 @@ public class CharacterMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        autoMoveDestPos = GameObject.Find("Stage").GetComponent<BackgroundEvents>().autoMoveDestPos;
         ninjaPos = transform.position;
         isPlayer = GetComponent<CharacterData>().isPlayer;
         playerPos = new Vector2(transform.position.x, transform.position.y);
@@ -78,10 +81,18 @@ public class CharacterMovement : MonoBehaviour
 
     void movePlayer(){
        if(autoMove) autoMovePlayer();
+       if(autoMoveCutscene) autoMoveToCutscenePos();
        else {
         if(isPlayer) controlPlayer();
         else controlEnemy();
        }
+    }
+
+    void autoMoveToCutscenePos(){
+        Vector2 moveDirection = (autoMoveDestPos - playerPos).normalized;
+        playerPos += moveDirection * playerSpeed *  Time.deltaTime;
+        if((int)playerPos.x == autoMoveDestPos.x) playerPos.x = autoMoveDestPos.x;
+        if((int)playerPos.y == autoMoveDestPos.y) playerPos.y = autoMoveDestPos.y;
     }
 
     void autoMovePlayer(){

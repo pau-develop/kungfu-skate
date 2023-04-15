@@ -11,7 +11,7 @@ public class UI : MonoBehaviour
     private TextMeshPro timeText;
     private TextMeshPro[] layersText;
     public int scrollX;
-    private bool isDisplaying = false;
+    private bool isDisplaying = true;
     private float timePassed = 0;
     private GameObject stageObject;
     private StageScrolling[] stagePieces;
