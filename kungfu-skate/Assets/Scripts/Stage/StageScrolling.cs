@@ -12,6 +12,7 @@ public class StageScrolling : MonoBehaviour
     private int initialPosition = 160;
     private int spriteWidth = 640;
     public float backgroundScrollSpeed;
+    public float currentBackgroundScrollSpeed;
     private Vector2[] scrollingPiecesPos = new Vector2[2];
     private int shiftPos = -500;
     public int[] initialBackgroundPieces;
@@ -29,6 +30,7 @@ public class StageScrolling : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentBackgroundScrollSpeed = backgroundScrollSpeed;
         events = transform.parent.GetComponent<BackgroundEvents>();
         originalScrollSpeed = (int)backgroundScrollSpeed;
         fastScrollSpeed = (int)backgroundScrollSpeed * 2;
@@ -83,21 +85,23 @@ public class StageScrolling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        changeBackgroundSpeed();
         moveScrollingPieces();
         if(scrollingPiecesPos[0].x <= shiftPos) shiftPieces();
     }
 
-    private void changeBackgroundSpeed(){
-        if(events.shouldSlowDown) {
-            if(backgroundScrollSpeed > 0) backgroundScrollSpeed -= decreaseSpeedFactor * Time.deltaTime;
-            else backgroundScrollSpeed = 0;
+    public void changeBackgroundSpeed(bool accelerate){
+        if(!accelerate) {
+            if(currentBackgroundScrollSpeed > 0) currentBackgroundScrollSpeed -= decreaseSpeedFactor * Time.deltaTime;
+            else currentBackgroundScrollSpeed = 0;
+        } else {
+            if(currentBackgroundScrollSpeed < backgroundScrollSpeed) currentBackgroundScrollSpeed += decreaseSpeedFactor * Time.deltaTime;
+            else currentBackgroundScrollSpeed = backgroundScrollSpeed;
         }
     }
 
     private void moveScrollingPieces(){
         for(int i = 0; i < spritesOnDisplay.Length; i++){
-            scrollingPiecesPos[i].x -= backgroundScrollSpeed * Time.deltaTime;
+            scrollingPiecesPos[i].x -= currentBackgroundScrollSpeed * Time.deltaTime;
             spritesOnDisplay[i].transform.position = scrollingPiecesPos[i];
         }
     }
