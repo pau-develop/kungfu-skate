@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StageSprite : MonoBehaviour
 {
+    private BackgroundEvents events;
     private Texture2D originalTexture;
     
     private Color32[] colorArrayOriginal;
@@ -27,9 +28,13 @@ public class StageSprite : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool movingUp = true;
     private Vector2 spriteSize;
+    private bool hasTransitioned = false;
+    private int transitionCycles;
+    private bool transitionFlag = false;
     // Start is called before the first frame update
     void Start()
     {
+        events = GameObject.Find("Stage").GetComponent<BackgroundEvents>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteSize.x = spriteRenderer.sprite.rect.width;
         spriteSize.y = spriteRenderer.sprite.rect.height;
@@ -52,10 +57,7 @@ public class StageSprite : MonoBehaviour
         colorArrayAfterTransition = newSpritesTransition[newSpritesTransition.Length - 1].texture.GetPixels32();
         storeColorIndexes(afterTransitionColorsToChange, afterTransitionColorIndexes, colorArrayAfterTransition);
         createTextureWithNewColors(newSpritesAfterTransition, afterTransitionColorIndexes, newColorsAfterTransition, colorArrayAfterTransition,true);
-        if(this.gameObject.name == "S1-5-00"){
-            Debug.Log(originalColorIndexes.Count);
-            Debug.Log(transitionColorIndexes.Count);
-        }
+        transitionCycles = newSpritesTransition.Length;
     }
 
     private void storeColorIndexes(Color32[] colorsToChange, List<List<int>> colorIndexes, Color32[] colorArray){
@@ -98,11 +100,29 @@ public class StageSprite : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(newSpritesTransition.Length);
-		if(newColorsAfterTransition.colorCycles.Count > 0) changeSprite(newSpritesAfterTransition);
+        if(events.shouldTransition){
+            if(!transitionFlag){
+                currentSpriteIndex = 0;
+                movingUp = true;
+                transitionFlag = true;
+            } else {
+                if(!hasTransitioned) {
+                    if(newColorsTransition.colorCycles.Count > 0) changeSprite(newSpritesTransition, true);
+            } else {
+                if(newColorsAfterTransition.colorCycles.Count > 0) changeSprite(newSpritesAfterTransition);
+
+            }
+            }
+            
+        } else {
+            if(newColorsOriginal.colorCycles.Count > 0) changeSprite(newSpritesOriginal);
+        }
+		
     }
 
-    void changeSprite(Sprite[] newSprites){
+    void changeSprite(Sprite[] newSprites, bool inTransition = false){
+        if(!inTransition) changeSpriteDelay = 0.1f;
+        else changeSpriteDelay = 1;
         spriteTimer += Time.deltaTime;
         if(spriteTimer >= changeSpriteDelay){
             spriteRenderer.sprite = newSprites[currentSpriteIndex];
@@ -120,6 +140,12 @@ public class StageSprite : MonoBehaviour
                 }
             }
             spriteTimer = 0;
+            if(inTransition && transitionCycles > 0) transitionCycles--;
+            if(inTransition && transitionCycles == 0) {
+                currentSpriteIndex = 0;
+                movingUp = true;
+                hasTransitioned = true;
+            }
         }
     }
 }

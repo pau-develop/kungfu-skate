@@ -601,10 +601,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shouldSlowDown: 0
+  shouldTransition: 0
   inBossFight: 0
   inCutScene: 0
   slowDownXPos: 941
   autoMoveXPos: 950
+  colorTransitionPos: 550
   autoMoveDestPos: {x: -115, y: -90}
   speedEvents: b1000000c900000088010000ae0100006f0200008a020000c9020000f0020000660300007f030000160400002c040000
 --- !u!1 &1512799507
@@ -1009,6 +1011,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089895635724164882, guid: 314e3da8da0248f44a93e639eec689c1,
+        type: 3}
+      propertyPath: changeSpriteDelay
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7089895635724164883, guid: 314e3da8da0248f44a93e639eec689c1,
         type: 3}

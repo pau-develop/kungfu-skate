@@ -5,6 +5,7 @@ using UnityEngine;
 public class BackgroundEvents : MonoBehaviour
 {
     public bool shouldSlowDown = false;
+    public bool shouldTransition = false;
     public bool inBossFight = false;
     public bool inCutScene = false;
     private UI ui;
@@ -13,6 +14,7 @@ public class BackgroundEvents : MonoBehaviour
     private float backgroundLayerScrollSpeed; 
     public int slowDownXPos;
     public int autoMoveXPos;
+    public int colorTransitionPos;
     public Vector2 autoMoveDestPos;
     private float scrollX = 0;
     private int scrollXInt = 0;
@@ -32,6 +34,7 @@ public class BackgroundEvents : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        checkForColorTransition();
         if(!inCutScene && !inBossFight && !shouldSlowDown) checkForSlowDownEvent();
         if(!inCutScene && !inBossFight) checkForAutoMoveEvent();
         if(!inCutScene) countXScroll();
@@ -46,6 +49,10 @@ public class BackgroundEvents : MonoBehaviour
             checkForEndOfAcceleration();
         } 
         if(inCutScene) checkForEndOfCutScene();
+    }
+
+    private void checkForColorTransition(){
+        if(scrollXInt == colorTransitionPos) shouldTransition = true;
     }
 
     private void checkForAutoMoveEvent(){
