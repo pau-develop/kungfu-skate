@@ -5,11 +5,22 @@ using UnityEngine;
 public class StageSprite : MonoBehaviour
 {
     private Texture2D originalTexture;
-    private Sprite[] newSprites; //as many sprites as colorCycles in ColorList
-    private Color32[] colorArray;
-    public Color32[] colorsToChange;
-    private List<List<int>> colorIndexes = new List<List<int>>();
-    private ColorList newColors;
+    
+    private Color32[] colorArrayOriginal;
+    private Color32[] colorArrayTransition;
+    private Color32[] colorArrayAfterTransition;
+    public Color32[] originalColorsToChange;
+    public Color32[] transitionColorsToChange;
+    public Color32[] afterTransitionColorsToChange;
+    public Sprite[] newSpritesOriginal; //as many sprites as colorCycles in ColorList
+    public Sprite[] newSpritesTransition; //as many sprites as colorCycles in ColorList
+    public Sprite[] newSpritesAfterTransition; //as many sprites as colorCycles in ColorList
+    private List<List<int>> originalColorIndexes = new List<List<int>>();
+    private List<List<int>> transitionColorIndexes = new List<List<int>>();
+    private List<List<int>> afterTransitionColorIndexes = new List<List<int>>();
+    private ColorList newColorsOriginal;
+    private ColorList newColorsTransition;
+    private ColorList newColorsAfterTransition;
     private float spriteTimer = 0;
     public float changeSpriteDelay;
     private int currentSpriteIndex = 0;
@@ -22,15 +33,32 @@ public class StageSprite : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteSize.x = spriteRenderer.sprite.rect.width;
         spriteSize.y = spriteRenderer.sprite.rect.height;
-        newColors = GetComponent<ColorLister>().colorList;
         originalTexture = spriteRenderer.sprite.texture;
-        newSprites = new Sprite[newColors.colorCycles.Count + 1];
-        colorArray = originalTexture.GetPixels32();
-        storeColorIndexes();
-        createTextureWithNewColors();
+        newColorsOriginal = GetComponent<ColorLister>().orginalColorCycles;
+        newColorsTransition = GetComponent<ColorLister>().transitionColorCycles;
+        newColorsAfterTransition = GetComponent<ColorLister>().afterTransitionColorCycles;
+        newSpritesOriginal = new Sprite[newColorsOriginal.colorCycles.Count + 1];
+        newSpritesTransition = new Sprite[newColorsTransition.colorCycles.Count + 1];
+        newSpritesAfterTransition = new Sprite[newColorsAfterTransition.colorCycles.Count + 1];
+        colorArrayOriginal = originalTexture.GetPixels32();
+        colorArrayTransition = originalTexture.GetPixels32();
+        originalColorsToChange = GetComponent<ColorLister>().originalColors;
+        transitionColorsToChange = GetComponent<ColorLister>().transitionColors;
+        afterTransitionColorsToChange = GetComponent<ColorLister>().afterTransitionColors;
+        storeColorIndexes(originalColorsToChange, originalColorIndexes, colorArrayOriginal);
+        createTextureWithNewColors(newSpritesOriginal, originalColorIndexes, newColorsOriginal, colorArrayOriginal);
+        storeColorIndexes(transitionColorsToChange, transitionColorIndexes, colorArrayTransition);
+        createTextureWithNewColors(newSpritesTransition, transitionColorIndexes, newColorsTransition, colorArrayTransition);
+        colorArrayAfterTransition = newSpritesTransition[newSpritesTransition.Length - 1].texture.GetPixels32();
+        storeColorIndexes(afterTransitionColorsToChange, afterTransitionColorIndexes, colorArrayAfterTransition);
+        createTextureWithNewColors(newSpritesAfterTransition, afterTransitionColorIndexes, newColorsAfterTransition, colorArrayAfterTransition,true);
+        if(this.gameObject.name == "S1-5-00"){
+            Debug.Log(originalColorIndexes.Count);
+            Debug.Log(transitionColorIndexes.Count);
+        }
     }
 
-    private void storeColorIndexes(){
+    private void storeColorIndexes(Color32[] colorsToChange, List<List<int>> colorIndexes, Color32[] colorArray){
         for(int i = 0; i < colorArray.Length; i++){
             for(int x = 0; x < colorsToChange.Length; x++){
                 colorIndexes.Add(new List<int>());
@@ -45,9 +73,10 @@ public class StageSprite : MonoBehaviour
         }
     }
 
-    private void createTextureWithNewColors(){
+    private void createTextureWithNewColors(Sprite[] newSprites, List<List<int>> colorIndexes, ColorList newColors, Color32[] colorArray, bool afterTransition = false){
         //make copy of original sprite
-        newSprites[0] = Sprite.Create(originalTexture, new Rect(0,0,spriteSize.x,spriteSize.y),new Vector2(0.5f,0.5f),1);
+        if(!afterTransition) newSprites[0] = Sprite.Create(originalTexture, new Rect(0,0,spriteSize.x,spriteSize.y),new Vector2(0.5f,0.5f),1);
+        else newSprites[0] = Sprite.Create(newSpritesTransition[newSpritesTransition.Length - 1].texture, new Rect(0,0,spriteSize.x,spriteSize.y),new Vector2(0.5f,0.5f),1);
         //add rest of sprites
         for(int z = 0; z < newSprites.Length-1; z++){
             for(int i = 0; i < colorIndexes.Count; i++){
@@ -69,10 +98,11 @@ public class StageSprite : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if(newColors.colorCycles.Count > 0) changeSprite();
+        Debug.Log(newSpritesTransition.Length);
+		if(newColorsAfterTransition.colorCycles.Count > 0) changeSprite(newSpritesAfterTransition);
     }
 
-    void changeSprite(){
+    void changeSprite(Sprite[] newSprites){
         spriteTimer += Time.deltaTime;
         if(spriteTimer >= changeSpriteDelay){
             spriteRenderer.sprite = newSprites[currentSpriteIndex];

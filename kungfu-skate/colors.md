@@ -4,9 +4,13 @@
 
 # Sky
 
+# original
+
 6 60 71
 6 48 71
 6 37 71
+
+# original - cycle
 
 6 61 71
 6 49 71
@@ -23,6 +27,8 @@
 6 66 71
 6 54 71
 6 43 71
+
+# transition - cycle
 
 # S1-02
 
