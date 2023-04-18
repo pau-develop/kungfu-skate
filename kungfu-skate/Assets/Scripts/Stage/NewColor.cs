@@ -7,7 +7,7 @@ using UnityEngine;
 [System.Serializable]
 public class NewColor
 {
-    public List<Color32> newColor;
+    public Color32[] newColor;
 }
  
 [System.Serializable]
