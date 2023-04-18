@@ -11,14 +11,18 @@ public class UI : MonoBehaviour
     private TextMeshPro timeText;
     private TextMeshPro[] layersText;
     public int scrollX;
-    private bool isDisplaying = true;
+    private bool displayingDebugger = true;
+    private bool displayingOptions = false;
     private float timePassed = 0;
     private GameObject stageObject;
     private StageScrolling[] stagePieces;
     public TMP_FontAsset font;
+    private GameObject options;
     // Start is called before the first frame update
     void Start()
     {
+        options = transform.Find("options").gameObject;
+        options.SetActive(false);
         debugger = transform.Find("debugger").gameObject;
         fpsText =  debugger.transform.Find("fps").GetComponent<TextMeshPro>();
         scrollXText =  debugger.transform.Find("scrollX").GetComponent<TextMeshPro>();
@@ -34,9 +38,9 @@ public class UI : MonoBehaviour
     }
 
     void generateTextMesh(){
-        int textYPos = 70;
+        int textYPos = 80;
         Vector2 textSize = new Vector2(40,5);
-        Vector3 textPosition = new Vector3(110, textYPos, 0);
+        Vector3 textPosition = new Vector3(120, textYPos, 0);
         stagePieces = new StageScrolling[stageObject.transform.childCount];
         layersText = new TextMeshPro[stageObject.transform.childCount];
         for(int i = 0; i < stageObject.transform.childCount; i++){
@@ -61,7 +65,7 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        displayDebugger();
+        controlUI();
         countFrames();
         displayScrollX();
         displayTimeOnScene();
@@ -75,9 +79,21 @@ public class UI : MonoBehaviour
         }
     }
 
+    private void controlUI(){
+        displayDebugger();
+        displayOptionsMenu();
+    }
+
+    private void displayOptionsMenu(){
+        if(Input.GetKeyUp(KeyCode.Escape)) displayingOptions = !displayingOptions;
+        if(displayingOptions) options.SetActive(true);
+        else options.SetActive(false);
+    }
+    
+
     private void displayDebugger(){
-        if(Input.GetKeyUp(KeyCode.Q)) isDisplaying = !isDisplaying;
-        if(isDisplaying) debugger.SetActive(true);
+        if(Input.GetKeyUp(KeyCode.Q)) displayingDebugger = !displayingDebugger;
+        if(displayingDebugger) debugger.SetActive(true);
         else debugger.SetActive(false);
     }
 
