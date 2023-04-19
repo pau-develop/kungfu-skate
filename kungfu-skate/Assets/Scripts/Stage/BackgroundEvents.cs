@@ -27,6 +27,7 @@ public class BackgroundEvents : MonoBehaviour
     void Start()
     {
         debugger = GameObject.Find("debugger").GetComponent<Debugger>();
+        Debug.Log(debugger);
         groundLayerScrollSpeed = transform.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed;
         backgroundLayerScrollSpeed = transform.Find("Layer2").GetComponent<StageScrolling>().backgroundScrollSpeed;
 
