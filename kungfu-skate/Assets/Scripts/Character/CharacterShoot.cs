@@ -6,13 +6,13 @@ public class CharacterShoot : MonoBehaviour
 {
     public GameObject projectile;
     public Vector2 spawnDistanceFromCenter;
-    private AudioFX audioFX;
+    private AudioController audioFX;
     private CharacterData charData;
     public bool isTargetedBullet = false;
     // Start is called before the first frame update
     void Start(){
         charData = transform.parent.GetComponent<CharacterData>();
-        audioFX = GameObject.Find("audio-fx").GetComponent<AudioFX>();
+        audioFX = GameObject.Find("audio").GetComponent<AudioController>();
     }
     void shootProjectile(){
         audioFX.playSound(charData.shoot);

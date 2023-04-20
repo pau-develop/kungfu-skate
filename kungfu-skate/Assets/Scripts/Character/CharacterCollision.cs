@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CharacterCollision : MonoBehaviour
 {
-    private AudioFX audioFx;
+    private AudioController audioFx;
     private BoxCollider2D charCollider;
     private CharacterData charData;
     private bool isPlayer;
     void Start(){
         charData = GetComponent<CharacterData>();
-        audioFx = GameObject.Find("audio-fx").GetComponent<AudioFX>();
+        audioFx = GameObject.Find("audio").GetComponent<AudioController>();
         charCollider = GetComponent<BoxCollider2D>();
         isPlayer = GetComponent<CharacterData>().isPlayer;
     }

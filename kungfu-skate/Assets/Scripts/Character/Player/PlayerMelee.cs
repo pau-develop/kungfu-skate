@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMelee : MonoBehaviour
 {
     private BoxCollider2D meleeBox; 
-    private AudioFX audioFX;
+    private AudioController audioFX;
     public bool shouldSpawnWave = false;
     public GameObject wave;
     private Vector2 wavePosition;
@@ -15,7 +15,7 @@ public class PlayerMelee : MonoBehaviour
     {
         meleeBox = GetComponent<BoxCollider2D>();
         meleeBox.enabled = false;
-        audioFX = GameObject.Find("audio-fx").GetComponent<AudioFX>();
+        audioFX = GameObject.Find("audio").GetComponent<AudioController>();
     }
 
     void meleeAttack(){

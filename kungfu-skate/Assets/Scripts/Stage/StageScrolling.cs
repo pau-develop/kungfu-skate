@@ -27,6 +27,7 @@ public class StageScrolling : MonoBehaviour
     private int fastScrollSpeed;
     private BackgroundEvents events;
     public int decreaseSpeedFactor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +39,7 @@ public class StageScrolling : MonoBehaviour
         loadAllSprites(); 
         instantiateAll();
         createScrollingPieces();
+        
     }
 
     void getDictionaryInfo(){

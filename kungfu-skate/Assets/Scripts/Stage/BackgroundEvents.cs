@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BackgroundEvents : MonoBehaviour
 {
+    public AudioClip stageMusic;
     public float timePassed = 0;
     public bool shouldSlowDown = false;
     public bool shouldTransition = false;
@@ -23,14 +24,14 @@ public class BackgroundEvents : MonoBehaviour
     public int[] speedEvents;
     private int currentSpeedEventIndex = 0;
     private bool shouldAccelerate =  false;
+    private bool allLoaded = false;
     // Start is called before the first frame update
     void Start()
     {
         debugger = GameObject.Find("debugger").GetComponent<Debugger>();
-        Debug.Log(debugger);
         groundLayerScrollSpeed = transform.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed;
         backgroundLayerScrollSpeed = transform.Find("Layer2").GetComponent<StageScrolling>().backgroundScrollSpeed;
-
+        playStageMusic();   
     }
 
     // Update is called once per frame
@@ -52,6 +53,14 @@ public class BackgroundEvents : MonoBehaviour
             checkForEndOfAcceleration();
         } 
         if(inCutScene) checkForEndOfCutScene();
+    }
+
+    
+
+    public void playStageMusic(){
+        AudioSource audio = GameObject.Find("audio-music").GetComponent<AudioSource>();
+        audio.clip = stageMusic;
+        audio.Play();
     }
 
     private void countStageTime(){
