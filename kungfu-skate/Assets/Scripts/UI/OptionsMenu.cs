@@ -5,6 +5,7 @@ using TMPro;
 
 public class PauseMenu : MonoBehaviour
 {
+    private float musicVolume = 100;
     private GameObject[] menuOptions;
     private int currentMenuIndex = 0;
     private int currentResolutionIndex = 1;
@@ -17,6 +18,7 @@ public class PauseMenu : MonoBehaviour
     {
         menuOptions = new GameObject[this.transform.childCount];
         for(int i = 0; i < menuOptions.Length; i++) menuOptions[i] = transform.GetChild(i).gameObject;
+        updateVolume();
     }
 
     // Update is called once per frame
@@ -24,6 +26,12 @@ public class PauseMenu : MonoBehaviour
     { 
         textBlinkEffect();
         checkForInput();    
+    }
+
+    private void updateVolume(){
+        menuOptions[2].transform.GetChild(0).GetComponent<TextMeshPro>().text = musicVolume.ToString();
+        float musicFloatValue = (musicVolume/10) * 0.1f;
+        GameObject.Find("audio-music").GetComponent<AudioSource>().volume = musicFloatValue;
     }
 
     private void checkForInput(){
@@ -47,6 +55,10 @@ public class PauseMenu : MonoBehaviour
                 else updateText("windowed");
                 Screen.SetResolution(1280, 720, fullScreen);
             }
+            if(currentMenuIndex == 2){
+                if(musicVolume >= 10) musicVolume -= 10;
+                updateVolume();
+            }
         } 
         if(Input.GetKeyUp(KeyCode.D)){
             if(currentMenuIndex == 1) {
@@ -54,6 +66,10 @@ public class PauseMenu : MonoBehaviour
                 if(fullScreen) updateText("full screen");
                 else updateText("windowed");
                 Screen.SetResolution(1280, 720, fullScreen);
+            }
+            if(currentMenuIndex == 2){
+                if(musicVolume <= 90) musicVolume += 10;
+                updateVolume();
             }
         }
     }
