@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class BackgroundEvents : MonoBehaviour
 {
+    public float timePassed = 0;
     public bool shouldSlowDown = false;
     public bool shouldTransition = false;
     public bool inBossFight = false;
     public bool inCutScene = false;
-    private UI ui;
+    private Debugger debugger;
     private StageScrolling stage;
     private float groundLayerScrollSpeed;
     private float backgroundLayerScrollSpeed; 
@@ -25,7 +26,8 @@ public class BackgroundEvents : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ui = GameObject.Find("UI").GetComponent<UI>();
+        debugger = GameObject.Find("debugger").GetComponent<Debugger>();
+        Debug.Log(debugger);
         groundLayerScrollSpeed = transform.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed;
         backgroundLayerScrollSpeed = transform.Find("Layer2").GetComponent<StageScrolling>().backgroundScrollSpeed;
 
@@ -34,6 +36,7 @@ public class BackgroundEvents : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        countStageTime();
         checkForColorTransition();
         if(!inCutScene && !inBossFight && !shouldSlowDown) checkForSlowDownEvent();
         if(!inCutScene && !inBossFight) checkForAutoMoveEvent();
@@ -49,6 +52,10 @@ public class BackgroundEvents : MonoBehaviour
             checkForEndOfAcceleration();
         } 
         if(inCutScene) checkForEndOfCutScene();
+    }
+
+    private void countStageTime(){
+        timePassed += Time.deltaTime;
     }
 
     private void checkForColorTransition(){
@@ -98,7 +105,7 @@ public class BackgroundEvents : MonoBehaviour
     private void countXScroll(){
        scrollX += backgroundLayerScrollSpeed * Time.deltaTime;
        scrollXInt = ((int)scrollX/10);
-       ui.scrollX = scrollXInt;
+       debugger.scrollX = scrollXInt;
        if(scrollXLatest < scrollXInt) manageScrollSpeed();
        scrollXLatest = scrollXInt;
     }
