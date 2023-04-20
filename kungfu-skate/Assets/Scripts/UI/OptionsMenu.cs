@@ -7,7 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     private GameObject[] menuOptions;
     private int currentMenuIndex = 0;
-    private int currentResolutionIndex = 0;
+    private int currentResolutionIndex = 1;
     private Vector2[] resolutions;
     private bool fullScreen = false;
     private float blinkTimer = 0;
@@ -15,11 +15,6 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        resolutions = new Vector2[]{
-            new Vector2(320,180),
-            new Vector2(640,360),
-            new Vector2(1240,720),
-        };
         menuOptions = new GameObject[this.transform.childCount];
         for(int i = 0; i < menuOptions.Length; i++) menuOptions[i] = transform.GetChild(i).gameObject;
         Debug.Log(flashingColor);
@@ -47,29 +42,19 @@ public class PauseMenu : MonoBehaviour
             if(currentMenuIndex == 0) UI.gamePaused = false;
         }
         if(Input.GetKeyUp(KeyCode.A)){
-            if(currentMenuIndex == 2) {
+            if(currentMenuIndex == 1){
                 fullScreen = !fullScreen;
                 if(fullScreen) updateText("full screen");
                 else updateText("windowed");
-            }
-            if(currentMenuIndex == 1){
-                if(currentResolutionIndex == 0) currentResolutionIndex = resolutions.Length -1;
-                else currentResolutionIndex--;
-                string resolutionString = resolutions[currentResolutionIndex].x.ToString()+"x"+resolutions[currentResolutionIndex].y.ToString(); 
-                updateText(resolutionString);
+                Screen.SetResolution(1280, 720, fullScreen);
             }
         } 
         if(Input.GetKeyUp(KeyCode.D)){
-            if(currentMenuIndex == 2) {
+            if(currentMenuIndex == 1) {
                 fullScreen = !fullScreen;
                 if(fullScreen) updateText("full screen");
                 else updateText("windowed");
-            }
-            if(currentMenuIndex == 1){
-                if(currentResolutionIndex == resolutions.Length -1) currentResolutionIndex = 0;
-                else currentResolutionIndex++;
-                string resolutionString = resolutions[currentResolutionIndex].x.ToString()+"x"+resolutions[currentResolutionIndex].y.ToString(); 
-                updateText(resolutionString);
+                Screen.SetResolution(1280, 720, fullScreen);
             }
         }
     }
