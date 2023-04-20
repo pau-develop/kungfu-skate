@@ -59,7 +59,8 @@ public class BackgroundEvents : MonoBehaviour
 
     public void playStageMusic(){
         AudioSource audio = GameObject.Find("audio-music").GetComponent<AudioSource>();
-        audio.PlayOneShot(stageMusic);
+        audio.clip = stageMusic;
+        audio.Play();
     }
 
     private void countStageTime(){
