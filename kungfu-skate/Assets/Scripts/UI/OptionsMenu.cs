@@ -17,7 +17,6 @@ public class PauseMenu : MonoBehaviour
     {
         menuOptions = new GameObject[this.transform.childCount];
         for(int i = 0; i < menuOptions.Length; i++) menuOptions[i] = transform.GetChild(i).gameObject;
-        Debug.Log(flashingColor);
     }
 
     // Update is called once per frame

@@ -6,10 +6,10 @@ public class CharacterDamage : MonoBehaviour
 {
     private Animator bodyAnimator;
     private bool trackingState = true;
-    private AudioFX audioFX;
+    private AudioController audioFX;
     
     void Start(){
-        audioFX = GameObject.Find("audio-fx").GetComponent<AudioFX>();
+        audioFX = GameObject.Find("audio").GetComponent<AudioController>();
         bodyAnimator = transform.Find("body").GetComponent<Animator>();
     }
     
