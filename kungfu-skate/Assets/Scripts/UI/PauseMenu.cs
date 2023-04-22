@@ -6,13 +6,10 @@ using TMPro;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField]private AudioClip testSound;
-    private float musicVolume = 100;
-    private float fxVolume = 100;
     private GameObject[] menuOptions;
     private int currentMenuIndex = 0;
     private int currentResolutionIndex = 1;
     private Vector2[] resolutions;
-    private bool fullScreen = false;
     private float blinkTimer = 0;
     private bool flashingColor = false;
     // Start is called before the first frame update
@@ -52,34 +49,34 @@ public class PauseMenu : MonoBehaviour
         }
         if(Input.GetKeyUp(KeyCode.A)){
             if(currentMenuIndex == 1){
-                fullScreen = !fullScreen;
-                if(fullScreen) updateText("full screen");
+                GlobalData.fullScreen = !GlobalData.fullScreen;
+                if(GlobalData.fullScreen) updateText("full screen");
                 else updateText("windowed");
-                Screen.SetResolution(1280, 720, fullScreen);
+                Screen.SetResolution(1280, 720, GlobalData.fullScreen);
             }
             if(currentMenuIndex == 2){
-                if(musicVolume >= 10) musicVolume -= 10;
-                updateVolume(menuOptions[currentMenuIndex], musicVolume, "audio-music");
+                if(GlobalData.musicVolume >= 10) GlobalData.musicVolume -= 10;
+                updateVolume(menuOptions[currentMenuIndex], GlobalData.musicVolume, "audio-music");
             }
             if(currentMenuIndex == 3){
-                if(fxVolume >= 10) fxVolume -= 10;
-                updateVolume(menuOptions[currentMenuIndex], fxVolume, "audio-fx");
+                if(GlobalData.fxVolume >= 10) GlobalData.fxVolume -= 10;
+                updateVolume(menuOptions[currentMenuIndex], GlobalData.fxVolume, "audio-fx");
             }
         } 
         if(Input.GetKeyUp(KeyCode.D)){
             if(currentMenuIndex == 1) {
-                fullScreen = !fullScreen;
-                if(fullScreen) updateText("full screen");
+                GlobalData.fullScreen = !GlobalData.fullScreen;
+                if(GlobalData.fullScreen) updateText("full screen");
                 else updateText("windowed");
-                Screen.SetResolution(1280, 720, fullScreen);
+                Screen.SetResolution(1280, 720, GlobalData.fullScreen);
             }
             if(currentMenuIndex == 2){
-                if(musicVolume <= 90) musicVolume += 10;
-                updateVolume(menuOptions[currentMenuIndex], musicVolume, "audio-music");
+                if(GlobalData.musicVolume <= 90) GlobalData.musicVolume += 10;
+                updateVolume(menuOptions[currentMenuIndex], GlobalData.musicVolume, "audio-music");
             }
             if(currentMenuIndex == 3){
-                if(fxVolume <= 90) fxVolume += 10;
-                updateVolume(menuOptions[currentMenuIndex], fxVolume, "audio-fx");
+                if(GlobalData.fxVolume <= 90) GlobalData.fxVolume += 10;
+                updateVolume(menuOptions[currentMenuIndex], GlobalData.fxVolume, "audio-fx");
             }
         }
     }
