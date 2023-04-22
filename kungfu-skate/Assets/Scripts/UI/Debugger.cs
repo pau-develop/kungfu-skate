@@ -31,9 +31,9 @@ public class Debugger : MonoBehaviour
     }
 
     void generateTextMesh(){
-        int textYPos = 80;
+        int textYPos = 58;
         Vector2 textSize = new Vector2(60,8);
-        Vector3 textPosition = new Vector3(110, textYPos, 0);
+        Vector3 textPosition = new Vector3(-160, textYPos, 0);
         stagePieces = new StageScrolling[stageObject.transform.childCount];
         layersText = new TextMeshProUGUI[stageObject.transform.childCount];
         for(int i = 0; i < stageObject.transform.childCount; i++){
