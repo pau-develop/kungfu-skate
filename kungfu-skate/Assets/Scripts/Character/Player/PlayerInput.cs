@@ -14,7 +14,7 @@ private CharacterMovement playerMovement;
     // Update is called once per frame
     void Update()
     {
-        if(!UI.gamePaused){
+        if(!GlobalData.gamePaused){
             getVerticalMovement();
             getHorizontalMovement();
             getButtonInput();

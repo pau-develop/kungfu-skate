@@ -6,10 +6,10 @@ using TMPro;
 public class Debugger : MonoBehaviour
 {
     public int scrollX;
-    private TextMeshPro fpsText;
-    private TextMeshPro scrollXText;
-    private TextMeshPro timeText;
-    private TextMeshPro[] layersText;
+    private TextMeshProUGUI fpsText;
+    private TextMeshProUGUI scrollXText;
+    private TextMeshProUGUI timeText;
+    private TextMeshProUGUI[] layersText;
     private GameObject stageObject;
     private StageScrolling[] stagePieces;
     public TMP_FontAsset font;
@@ -17,9 +17,9 @@ public class Debugger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fpsText =  transform.Find("fps").GetComponent<TextMeshPro>();
-        scrollXText =  transform.Find("scrollX").GetComponent<TextMeshPro>();
-        timeText =  transform.Find("time").GetComponent<TextMeshPro>();
+        fpsText =  transform.Find("fps").GetComponent<TextMeshProUGUI>();
+        scrollXText =  transform.Find("scrollX").GetComponent<TextMeshProUGUI>();
+        timeText =  transform.Find("time").GetComponent<TextMeshProUGUI>();
         getHoldOfStageLayers();
     }
 
@@ -31,11 +31,11 @@ public class Debugger : MonoBehaviour
     }
 
     void generateTextMesh(){
-        int textYPos = 80;
-        Vector2 textSize = new Vector2(40,5);
-        Vector3 textPosition = new Vector3(120, textYPos, 0);
+        int textYPos = 58;
+        Vector2 textSize = new Vector2(60,8);
+        Vector3 textPosition = new Vector3(-160, textYPos, 0);
         stagePieces = new StageScrolling[stageObject.transform.childCount];
-        layersText = new TextMeshPro[stageObject.transform.childCount];
+        layersText = new TextMeshProUGUI[stageObject.transform.childCount];
         for(int i = 0; i < stageObject.transform.childCount; i++){
             stagePieces[i] = stageObject.transform.GetChild(i).GetComponent<StageScrolling>();
         }
@@ -43,15 +43,15 @@ public class Debugger : MonoBehaviour
             GameObject tempObject = new GameObject("layer"+i.ToString());
             tempObject.transform.parent = transform;
             textPosition.y = textYPos;
-            layersText[i] = tempObject.AddComponent<TextMeshPro>();
+            layersText[i] = tempObject.AddComponent<TextMeshProUGUI>();
             layersText[i].font = font;
-            layersText[i].fontSize = 54;
-            layersText[i].color = new Color32(0,255,27,255);
+            layersText[i].fontSize = 8;
+            layersText[i].color = new Color32(255,255,255,255);
             layersText[i].text = "Layer" + i.ToString() + ": ";
             tempObject.GetComponent<RectTransform>().anchoredPosition = textPosition;
             tempObject.GetComponent<RectTransform>().sizeDelta = textSize;
             tempObject.GetComponent<RectTransform>().pivot = new Vector2(0,0);
-            textYPos -= 10;
+            textYPos -= 8;
         } 
     }
 
