@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     private void updateVolume(GameObject menu, float volume, string source){
-        menu.transform.GetChild(0).GetComponent<TextMeshPro>().text = volume.ToString();
+        menu.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = volume.ToString();
         float floatValue = (volume/10) * 0.1f;
         GameObject.Find(source).GetComponent<AudioSource>().volume = floatValue;
         if(source == "audio-fx") GameObject.Find("audio").GetComponent<AudioController>().playSound(testSound);
@@ -85,7 +85,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     private void updateText(string text){
-        menuOptions[currentMenuIndex].transform.GetChild(0).GetComponent<TextMeshPro>().text = text;
+        menuOptions[currentMenuIndex].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
     }
 
     private void textBlinkEffect(){
@@ -94,11 +94,11 @@ public class PauseMenu : MonoBehaviour
             flashingColor = !flashingColor;
             blinkTimer = 0;
         }
-        if(!flashingColor) menuOptions[currentMenuIndex].GetComponent<TextMeshPro>().color = new Color32(0,255,150,255);
-        else menuOptions[currentMenuIndex].GetComponent<TextMeshPro>().color = new Color32(255,255,255,255);
+        if(!flashingColor) menuOptions[currentMenuIndex].GetComponent<TextMeshProUGUI>().color = new Color32(0,255,150,255);
+        else menuOptions[currentMenuIndex].GetComponent<TextMeshProUGUI>().color = new Color32(255,255,255,255);
     }
 
     private void stopTextBlinkEffect(int index){
-        menuOptions[index].GetComponent<TextMeshPro>().color = new Color32(0,255,150,255);
+        menuOptions[index].GetComponent<TextMeshProUGUI>().color = new Color32(0,255,150,255);
     }
 }
