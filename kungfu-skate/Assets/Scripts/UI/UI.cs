@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class UI : MonoBehaviour
 {
-    public static bool gamePaused = false;
     private GameObject debugger;
     private bool displayingDebugger = true;
     
@@ -26,13 +25,13 @@ public class UI : MonoBehaviour
     }
 
     private void controlUI(){
+        getInput();
         displayDebugger();
-        displayOptionsMenu();
+        displayPauseMenu();
     }
 
-    private void displayOptionsMenu(){
-        if(Input.GetKeyUp(KeyCode.Escape)) gamePaused = !gamePaused;
-        if(gamePaused) {
+    private void displayPauseMenu(){
+        if(GlobalData.gamePaused) {
             options.SetActive(true);
             Time.timeScale = 0;
         }
@@ -40,6 +39,10 @@ public class UI : MonoBehaviour
             options.SetActive(false);
             Time.timeScale = 1;
         }
+    }
+
+    private void getInput(){
+        if(Input.GetKeyUp(KeyCode.Escape)) GlobalData.gamePaused = !GlobalData.gamePaused;
     }
     
 

@@ -15,8 +15,16 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentMenuIndex = 0;
         menuOptions = new GameObject[this.transform.childCount];
         for(int i = 0; i < menuOptions.Length; i++) menuOptions[i] = transform.GetChild(i).gameObject;
+        updateVolume(menuOptions[2], GlobalData.musicVolume, "audio-music");
+        updateVolume(menuOptions[3], GlobalData.fxVolume, "audio-fx");
+        updateDisplay(GlobalData.fullScreen);
+    }
+
+    void OnEnable(){
+        currentMenuIndex = 0;
     }
 
     // Update is called once per frame
@@ -30,7 +38,6 @@ public class PauseMenu : MonoBehaviour
         menu.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = volume.ToString();
         float floatValue = (volume/10) * 0.1f;
         GameObject.Find(source).GetComponent<AudioSource>().volume = floatValue;
-        if(source == "audio-fx") GameObject.Find("audio").GetComponent<AudioController>().playSound(testSound);
     }
 
     private void checkForInput(){
@@ -45,14 +52,13 @@ public class PauseMenu : MonoBehaviour
             else currentMenuIndex++;
         }
         if(Input.GetKeyUp(KeyCode.M)){
-            if(currentMenuIndex == 0) UI.gamePaused = false;
+            if(currentMenuIndex == 0) GlobalData.gamePaused = false;
         }
         if(Input.GetKeyUp(KeyCode.A)){
             if(currentMenuIndex == 1){
                 GlobalData.fullScreen = !GlobalData.fullScreen;
-                if(GlobalData.fullScreen) updateText("full screen");
-                else updateText("windowed");
-                Screen.SetResolution(1280, 720, GlobalData.fullScreen);
+                if(GlobalData.fullScreen) updateDisplay(GlobalData.fullScreen);
+                else updateDisplay(GlobalData.fullScreen);
             }
             if(currentMenuIndex == 2){
                 if(GlobalData.musicVolume >= 10) GlobalData.musicVolume -= 10;
@@ -61,13 +67,14 @@ public class PauseMenu : MonoBehaviour
             if(currentMenuIndex == 3){
                 if(GlobalData.fxVolume >= 10) GlobalData.fxVolume -= 10;
                 updateVolume(menuOptions[currentMenuIndex], GlobalData.fxVolume, "audio-fx");
+                GameObject.Find("audio").GetComponent<AudioController>().playSound(testSound);
             }
         } 
         if(Input.GetKeyUp(KeyCode.D)){
             if(currentMenuIndex == 1) {
                 GlobalData.fullScreen = !GlobalData.fullScreen;
-                if(GlobalData.fullScreen) updateText("full screen");
-                else updateText("windowed");
+                if(GlobalData.fullScreen) updateDisplay(GlobalData.fullScreen);
+                else updateDisplay(GlobalData.fullScreen);
                 Screen.SetResolution(1280, 720, GlobalData.fullScreen);
             }
             if(currentMenuIndex == 2){
@@ -77,12 +84,17 @@ public class PauseMenu : MonoBehaviour
             if(currentMenuIndex == 3){
                 if(GlobalData.fxVolume <= 90) GlobalData.fxVolume += 10;
                 updateVolume(menuOptions[currentMenuIndex], GlobalData.fxVolume, "audio-fx");
+                GameObject.Find("audio").GetComponent<AudioController>().playSound(testSound);
             }
         }
     }
 
-    private void updateText(string text){
-        menuOptions[currentMenuIndex].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
+    private void updateDisplay(bool fullScreen){
+        string text;
+        if(fullScreen) text = "full screen";
+        else text = "windowed";
+        menuOptions[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
+        Screen.SetResolution(1280, 720, GlobalData.fullScreen);
     }
 
     private void textBlinkEffect(){

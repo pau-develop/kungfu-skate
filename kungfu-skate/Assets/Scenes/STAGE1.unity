@@ -1873,6 +1873,11 @@ PrefabInstance:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2384271644744186848, guid: b3ab8e018a036dd49ae6457995610fd7,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2384271644744186851, guid: b3ab8e018a036dd49ae6457995610fd7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1886,6 +1891,11 @@ PrefabInstance:
     - target: {fileID: 2384271644744186851, guid: b3ab8e018a036dd49ae6457995610fd7,
         type: 3}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2384271644842633229, guid: b3ab8e018a036dd49ae6457995610fd7,
+        type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2384271644842633231, guid: b3ab8e018a036dd49ae6457995610fd7,
