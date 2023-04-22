@@ -32,12 +32,12 @@ public class UI : MonoBehaviour
 
     private void displayPauseMenu(){
         if(GlobalData.gamePaused) {
-            options.SetActive(true);
             Time.timeScale = 0;
+            options.SetActive(true);
         }
         else {
-            options.SetActive(false);
             Time.timeScale = 1;
+            options.SetActive(false);
         }
     }
 

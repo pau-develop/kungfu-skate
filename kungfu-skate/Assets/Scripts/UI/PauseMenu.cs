@@ -12,10 +12,11 @@ public class PauseMenu : MonoBehaviour
     private Vector2[] resolutions;
     private float blinkTimer = 0;
     private bool flashingColor = false;
+    private UIText uiText;
     // Start is called before the first frame update
     void Start()
     {
-        currentMenuIndex = 0;
+        uiText = transform.root.GetComponent<UIText>(); 
         menuOptions = new GameObject[this.transform.childCount];
         for(int i = 0; i < menuOptions.Length; i++) menuOptions[i] = transform.GetChild(i).gameObject;
         updateVolume(menuOptions[2], GlobalData.musicVolume, "audio-music");
@@ -27,11 +28,33 @@ public class PauseMenu : MonoBehaviour
         currentMenuIndex = 0;
     }
 
+    void OnDisable(){
+        stopTextBlinkEffect();
+    }
+
     // Update is called once per frame
     void Update()
     { 
         textBlinkEffect();
         checkForInput();    
+    }
+
+    private void textBlinkEffect(){
+        TextMeshProUGUI text = menuOptions[currentMenuIndex].GetComponent<TextMeshProUGUI>();
+        uiText.textBlinkEffect(text);
+        if(menuOptions[currentMenuIndex].transform.childCount > 0){
+            text = menuOptions[currentMenuIndex].transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            uiText.textBlinkEffect(text);
+        }
+    }
+
+    private void stopTextBlinkEffect(){
+        TextMeshProUGUI text = menuOptions[currentMenuIndex].GetComponent<TextMeshProUGUI>();
+        uiText.stopTextBlinkEffect(text);
+        if(menuOptions[currentMenuIndex].transform.childCount > 0){
+            text = menuOptions[currentMenuIndex].transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            uiText.stopTextBlinkEffect(text);
+        }
     }
 
     private void updateVolume(GameObject menu, float volume, string source){
@@ -42,12 +65,12 @@ public class PauseMenu : MonoBehaviour
 
     private void checkForInput(){
         if(Input.GetKeyUp(KeyCode.W)){
-            stopTextBlinkEffect(currentMenuIndex);
+            stopTextBlinkEffect();
             if(currentMenuIndex == 0) currentMenuIndex = menuOptions.Length-1;
             else currentMenuIndex--;
         }
         if(Input.GetKeyUp(KeyCode.S)){
-            stopTextBlinkEffect(currentMenuIndex);
+            stopTextBlinkEffect();
             if(currentMenuIndex == menuOptions.Length-1) currentMenuIndex = 0;
             else currentMenuIndex++;
         }
@@ -91,23 +114,13 @@ public class PauseMenu : MonoBehaviour
 
     private void updateDisplay(bool fullScreen){
         string text;
-        if(fullScreen) text = "full screen";
-        else text = "windowed";
+        if(fullScreen) text = "full";
+        else text = "window";
         menuOptions[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
         Screen.SetResolution(1280, 720, GlobalData.fullScreen);
     }
 
-    private void textBlinkEffect(){
-        blinkTimer += Time.unscaledDeltaTime;
-        if(blinkTimer >= 0.1f){
-            flashingColor = !flashingColor;
-            blinkTimer = 0;
-        }
-        if(!flashingColor) menuOptions[currentMenuIndex].GetComponent<TextMeshProUGUI>().color = new Color32(0,255,150,255);
-        else menuOptions[currentMenuIndex].GetComponent<TextMeshProUGUI>().color = new Color32(255,255,255,255);
-    }
+    
 
-    private void stopTextBlinkEffect(int index){
-        menuOptions[index].GetComponent<TextMeshProUGUI>().color = new Color32(0,255,150,255);
-    }
+   
 }
