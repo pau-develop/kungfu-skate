@@ -132,12 +132,14 @@ public class StageScrolling : MonoBehaviour
         }
         spritesShifted++;
     }
+    void getNextPieceInArray(){
+        if(nextPiece + 1 < sprites.Length) nextPiece += 1;
+        else nextPiece = 0;
+    }
 
-    void getNextPiece(){
-        if(eventSprites.Length == 0) {
-            if(nextPiece + 1 < sprites.Length) nextPiece += 1;
-            else nextPiece = 0;
-        } else{
+    void getNextRandomPiece(){
+        if(this.gameObject.name == "Layer2" && nextPiece + 1 < sprites.Length) getNextPieceInArray();
+        else{ 
             if(eventSprites[currentEventIndex] == spritesShifted){
                 int[] numbers;
                 stageDictionary.TryGetValue(eventType[currentEventIndex], out numbers);
@@ -146,6 +148,11 @@ public class StageScrolling : MonoBehaviour
                 if(currentEventIndex + 1 < eventSprites.Length) currentEventIndex++; 
             }
         }
+    }
+
+    void getNextPiece(){
+        if(eventSprites.Length == 0) getNextPieceInArray();  
+        else getNextRandomPiece();
     }
     void getRandomPiece(int[] pieces){
         int randomPiece = Random.Range(0,pieces.Length);
