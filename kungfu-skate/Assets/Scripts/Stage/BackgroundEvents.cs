@@ -13,7 +13,7 @@ public class BackgroundEvents : MonoBehaviour
     private Debugger debugger;
     private StageScrolling stage;
     private float groundLayerScrollSpeed;
-    private float backgroundLayerScrollSpeed; 
+    private float[] backgroundLayerScrollSpeed; 
     public int slowDownXPos;
     public int autoMoveXPos;
     public int colorTransitionPos;
@@ -30,8 +30,16 @@ public class BackgroundEvents : MonoBehaviour
     {
         debugger = GameObject.Find("debugger").GetComponent<Debugger>();
         groundLayerScrollSpeed = transform.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed;
-        backgroundLayerScrollSpeed = transform.Find("Layer2").GetComponent<StageScrolling>().backgroundScrollSpeed;
+        backgroundLayerScrollSpeed = getLayersScrollSpeed();
         playStageMusic();   
+    }
+
+    private float[] getLayersScrollSpeed(){
+        float[] tempArray = new float[transform.childCount];
+        for(int i = 0; i < transform.childCount; i++){
+            tempArray[i] = transform.GetChild(i).GetComponent<StageScrolling>().backgroundScrollSpeed;
+        }
+        return tempArray;
     }
 
     // Update is called once per frame
@@ -112,7 +120,7 @@ public class BackgroundEvents : MonoBehaviour
     }
 
     private void countXScroll(){
-       scrollX += backgroundLayerScrollSpeed * Time.deltaTime;
+       scrollX += backgroundLayerScrollSpeed[2] * Time.deltaTime;
        scrollXInt = ((int)scrollX/10);
        debugger.scrollX = scrollXInt;
        if(scrollXLatest < scrollXInt) manageScrollSpeed();
@@ -120,12 +128,16 @@ public class BackgroundEvents : MonoBehaviour
     }
 
     private void manageScrollSpeed(){
-        float currentBackgroundScrollSpeed = transform.Find("Layer2").GetComponent<StageScrolling>().currentBackgroundScrollSpeed;
         if(speedEvents[currentSpeedEventIndex] == scrollXInt){
-            if(currentBackgroundScrollSpeed == groundLayerScrollSpeed) currentBackgroundScrollSpeed = backgroundLayerScrollSpeed;
-            else currentBackgroundScrollSpeed = groundLayerScrollSpeed;
+            for(int i = 0; i < backgroundLayerScrollSpeed.Length; i++){
+                string objectString = "Layer"+ i.ToString();
+                float currentBackgroundScrollSpeed = transform.Find(objectString).GetComponent<StageScrolling>().currentBackgroundScrollSpeed;
+                if(currentBackgroundScrollSpeed == groundLayerScrollSpeed) currentBackgroundScrollSpeed = backgroundLayerScrollSpeed[i];
+                    else currentBackgroundScrollSpeed = groundLayerScrollSpeed;
+                    
+                    transform.Find(objectString).GetComponent<StageScrolling>().currentBackgroundScrollSpeed = currentBackgroundScrollSpeed;  
+            }
             if(currentSpeedEventIndex < speedEvents.Length -1 ) currentSpeedEventIndex++;
-            transform.Find("Layer2").GetComponent<StageScrolling>().currentBackgroundScrollSpeed = currentBackgroundScrollSpeed;  
         }
     } 
 }

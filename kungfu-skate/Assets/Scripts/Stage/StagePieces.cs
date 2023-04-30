@@ -15,16 +15,11 @@ public class StagePieces : MonoBehaviour
         {"alley", new []{3, 4, 5, 6}},
         {"park-entrance", new[]{7}},
         {"park-exit", new[]{8}},
-        {"park", new[]{9}}
+        {"park", new[]{9}},
+        {"road-sunset", new[]{10}}
     };
     private Dictionary<string, int[]> stageOneLayerTwoPieces = new Dictionary<string, int[]>(){
-        {"road", new[]{0, 1, 2, 3, 4}},
-        {"alley-entrance", new[]{5}},
-        {"alley-exit", new[]{6}},
-        {"alley", new []{7}},
-        {"park-entrance", new[]{8}},
-        {"park-exit", new[]{9}},
-        {"park", new[]{10}}
+        {"after-park", new[]{15}}
     };
     private Dictionary<string, int[]> stageOneLayerThreePieces = new Dictionary<string, int[]>(){
         {"all", new[]{0}}
