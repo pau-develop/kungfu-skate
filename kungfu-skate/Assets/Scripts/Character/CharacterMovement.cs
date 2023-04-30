@@ -21,7 +21,7 @@ public class CharacterMovement : MonoBehaviour
     private int leftLimit = -140;
     private int rightLimit = +140;
     private int topLimit = +50;
-    private int botLimit = -90;
+    public int botLimit = -90;
 
     public bool isGrounded = false;
     public bool isAlive = true;

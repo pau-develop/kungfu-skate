@@ -25,7 +25,8 @@ GameObject:
   - component: {fileID: 2641692095629879295}
   - component: {fileID: 5982867249162835294}
   - component: {fileID: 4002732944019602565}
-  m_Layer: 0
+  - component: {fileID: 475314954019875057}
+  m_Layer: 2
   m_Name: ninja
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -63,12 +64,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ninjaPos: {x: 0, y: 0}
   autoMove: 0
+  autoMoveCutscene: 0
   movingUp: 0
   movingDown: 0
   movingLeft: 0
   movingRight: 0
   isShooting: 0
   isSwinging: 0
+  playerPos: {x: 0, y: 0}
   playerSpeed: 100
   isGrounded: 0
   isAlive: 1
@@ -307,6 +310,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9358157d390fa554a84975eb588dbfda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &475314954019875057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7985915824582300429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625ba54e21022da4dab0c1b65b0c8398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftRayXPos: 0
+  rightRayXPos: 0
 --- !u!1 &7985915824907368400
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,7 +336,7 @@ GameObject:
   - component: {fileID: 7985915824907368403}
   - component: {fileID: 7985915824907368402}
   - component: {fileID: 8763769223479061664}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,6 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  folder: 
   spriteSheetName: NIN1
   currentColor: _1
   isBlinking: 0
@@ -438,7 +456,7 @@ GameObject:
   - component: {fileID: 7985915824955298715}
   - component: {fileID: 8577806235954427156}
   - component: {fileID: 1362163724082666486}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,6 +559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  folder: 
   spriteSheetName: NIN1
   currentColor: _1
   isBlinking: 0
@@ -570,7 +589,7 @@ GameObject:
   - component: {fileID: 485383020244038047}
   - component: {fileID: 860376285148345093}
   - component: {fileID: 5332331225845657380}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,6 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e6848da8589d4387271f881479b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  folder: 
   spriteSheetName: NINMELEE1
   currentColor: _1
   isBlinking: 0
