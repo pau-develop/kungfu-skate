@@ -19,7 +19,8 @@ GameObject:
   - component: {fileID: 5408266793679904758}
   - component: {fileID: 337432399696200272}
   - component: {fileID: 29386900056800223}
-  m_Layer: 0
+  - component: {fileID: 2689806566884625869}
+  m_Layer: 2
   m_Name: char3
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -209,16 +210,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ninjaPos: {x: 0, y: 0}
   autoMove: 1
+  autoMoveCutscene: 0
   movingUp: 0
   movingDown: 0
   movingLeft: 0
   movingRight: 0
   isShooting: 0
   isSwinging: 0
+  playerPos: {x: 0, y: 0}
   playerSpeed: 100
   isGrounded: 0
   isAlive: 1
   isExploded: 0
+--- !u!114 &2689806566884625869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72071817012696630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625ba54e21022da4dab0c1b65b0c8398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftRayXPos: 0
+  rightRayXPos: 0
 --- !u!1 &72071817609569761
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +249,7 @@ GameObject:
   - component: {fileID: 72071817609569767}
   - component: {fileID: 72071817609569765}
   - component: {fileID: 3803952774590089805}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +383,7 @@ GameObject:
   - component: {fileID: 3044661174362234750}
   - component: {fileID: 1080384436435298872}
   - component: {fileID: 8377294012615345559}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: arms
   m_TagString: PlayerMelee
   m_Icon: {fileID: 0}
@@ -554,7 +571,7 @@ GameObject:
   - component: {fileID: 72071818885129136}
   - component: {fileID: 72071818885129139}
   - component: {fileID: 72071818885129137}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
