@@ -333,6 +333,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 420335498353785608, guid: b88148746cbf3b44d9e1fcb4c52d21d5,
+        type: 3}
+      propertyPath: leftRayXPos
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 420335498353785608, guid: b88148746cbf3b44d9e1fcb4c52d21d5,
+        type: 3}
+      propertyPath: rightRayXPos
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3876005035141380404, guid: b88148746cbf3b44d9e1fcb4c52d21d5,
         type: 3}
       propertyPath: m_Name
