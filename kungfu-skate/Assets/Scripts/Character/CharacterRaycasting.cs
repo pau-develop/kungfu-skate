@@ -7,6 +7,7 @@ public class CharacterRaycasting : MonoBehaviour
     [SerializeField] private int leftRayXPos;
     [SerializeField] private int rightRayXPos;
     private int rayLength = 20;
+    private int screenBottom = -90;
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +25,12 @@ public class CharacterRaycasting : MonoBehaviour
     private void castRays(){
         int leftBottom = (int)doTheRayCasting(leftRayXPos);
         int rightBottom = (int)doTheRayCasting(rightRayXPos);
-        Debug.Log(leftBottom);
-        Debug.Log(rightBottom);
+        changeCharacterBottomPosition(leftBottom, rightBottom);
+    }
+
+    private void changeCharacterBottomPosition(int leftBottom, int rightBottom){
+        int newBottomLimit = Mathf.Max(leftBottom, rightBottom);
+        transform.GetComponent<CharacterMovement>().botLimit = newBottomLimit;
     }
 
     private float doTheRayCasting(int rayOrigin){
@@ -38,6 +43,6 @@ public class CharacterRaycasting : MonoBehaviour
 
     private float getColliderPosition(Collider2D collider){
         BoxCollider2D boxCollider = collider.GetComponent<BoxCollider2D>();
-        return boxCollider.offset.y;
+        return screenBottom + boxCollider.size.y;
     }
 }
