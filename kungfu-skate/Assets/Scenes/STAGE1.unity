@@ -316,8 +316,15 @@ MonoBehaviour:
   currentBackgroundScrollSpeed: 0
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
-  eventSprites: 
-  eventType: []
+  eventSprites: 0000000005000000090000000e00000012000000170000001a000000
+  eventType:
+  - road
+  - alley
+  - road
+  - alley
+  - road
+  - alley
+  - road
   decreaseSpeedFactor: 18
 --- !u!1001 &896685339
 PrefabInstance:
@@ -533,7 +540,7 @@ MonoBehaviour:
   inCutScene: 0
   slowDownXPos: 746
   autoMoveXPos: 950
-  colorTransitionPos: 550
+  colorTransitionPos: 510
   autoMoveDestPos: {x: -115, y: -90}
   speedEvents: b1000000c90000001801000031010000a2010000cc0100001b0200003502000099020000c00200004a03000068030000
 --- !u!1 &1512799507
