@@ -237,8 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 625ba54e21022da4dab0c1b65b0c8398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftRayXPos: 0
-  rightRayXPos: 0
+  leftRayXPos: -10
+  rightRayXPos: 10
 --- !u!1 &72071817609569761
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,6 +34,7 @@ public class CharacterMovement : MonoBehaviour
     private AudioController audioFx;
     private BoxCollider2D charCollider;
     private CharacterData charData;
+    private bool firstCrashCheck = true;
 
     private Vector2 spriteSize = new Vector2(40,40);
     // Start is called before the first frame update
@@ -82,12 +83,18 @@ public class CharacterMovement : MonoBehaviour
     }
 
     private void checkForCrash(){
-        if(playerActualPos.y < botLimit){
-            audioFx.playSound(charData.hitObstacle);
-            hasCrashed = true;
-            isAlive = false;
-            crashSpeed =  GameObject.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed * 2;
-        } 
+        if(firstCrashCheck){
+            if(playerActualPos.y < botLimit) playerActualPos.y = botLimit;
+            firstCrashCheck = false;
+        }
+        else{
+            if(playerActualPos.y < botLimit){
+                audioFx.playSound(charData.hitObstacle);
+                hasCrashed = true;
+                isAlive = false;
+                crashSpeed =  GameObject.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed * 2;
+            } 
+        }
     }
 
     void destroyPlayer(){
