@@ -14,7 +14,8 @@ public class CharacterData : MonoBehaviour
     public AudioClip shoot;
     public AudioClip swing;
     public AudioClip[] die;
-    public AudioClip hit;
+    public AudioClip hitProjectile;
+    public AudioClip hitObstacle;
     public AudioClip explode;
     public AudioClip melee;
     //ENEMY ONLY

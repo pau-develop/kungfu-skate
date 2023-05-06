@@ -30,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876005035141380405}
   m_RootOrder: 0
@@ -45,10 +46,12 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -86,7 +89,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &3876005034660367077
 Animator:
-  serializedVersion: 3
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -99,10 +102,12 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &3876005034660367079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +173,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3876005034660367076}
   - {fileID: 3876005035935993008}
@@ -222,6 +228,7 @@ MonoBehaviour:
   isSwinging: 0
   playerPos: {x: 0, y: 0}
   playerSpeed: 100
+  botLimit: -90
   isGrounded: 0
   isAlive: 1
   isExploded: 0
@@ -302,7 +309,8 @@ MonoBehaviour:
   swing: {fileID: 8300000, guid: bcfc8481768ac504f860a627bfef2a0f, type: 3}
   die:
   - {fileID: 8300000, guid: 2d654b5486be25841a65dbaf49bb126d, type: 3}
-  hit: {fileID: 8300000, guid: 67584b6172359c14c8266be2cdaac854, type: 3}
+  hitProjectile: {fileID: 8300000, guid: 67584b6172359c14c8266be2cdaac854, type: 3}
+  hitObstacle: {fileID: 8300000, guid: f5ae6abffd7c5b94783d777dce7c3dc8, type: 3}
   explode: {fileID: 8300000, guid: 51b984c02024b1342bff52ec1f71b756, type: 3}
   melee: {fileID: 8300000, guid: bcfc8481768ac504f860a627bfef2a0f, type: 3}
   ninjaPos: {x: 0, y: 0}
@@ -365,8 +373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 625ba54e21022da4dab0c1b65b0c8398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftRayXPos: 0
-  rightRayXPos: 0
+  leftRayXPos: -10
+  rightRayXPos: 10
 --- !u!1 &3876005035935992975
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +404,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876005035141380405}
   m_RootOrder: 1
@@ -411,10 +420,12 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -453,7 +464,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &3876005035935993009
 Animator:
-  serializedVersion: 3
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -466,10 +477,12 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &3876005035935993011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,6 +533,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876005035141380405}
   m_RootOrder: 2
@@ -535,10 +549,12 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -577,7 +593,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &3876005036237387208
 Animator:
-  serializedVersion: 3
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -590,10 +606,12 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &3876005036237387210
 MonoBehaviour:
   m_ObjectHideFlags: 0
