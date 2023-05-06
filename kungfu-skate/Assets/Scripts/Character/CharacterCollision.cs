@@ -21,6 +21,16 @@ public class CharacterCollision : MonoBehaviour
         if(collider.gameObject.tag =="EnemyBullet" && isPlayer) dealWithCollision(1);
     }
 
+    void OnTriggerStay2D(Collider2D collider){
+        if(collider.gameObject.tag == "Obstacle") dealWithLayerTrigger(collider);
+    }
+
+    void dealWithLayerTrigger(Collider2D collider){
+        int obstacleXPos = (int)collider.gameObject.transform.position.x;
+        if(transform.position.x <= obstacleXPos) GetComponent<CharacterLayer>().leftLayer = true;
+        else GetComponent<CharacterLayer>().leftLayer = false;
+    }
+
     void dealWithCollision(int damage){
         audioFx.playSound(charData.hitProjectile);
         GetComponent<CharacterData>().hitPoints-= damage;
