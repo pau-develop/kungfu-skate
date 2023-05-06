@@ -9,6 +9,7 @@ TagManager:
   - PlayerMelee
   - EnemyBullet
   - PlayerWave
+  - Obstacle
   layers:
   - Default
   - TransparentFX

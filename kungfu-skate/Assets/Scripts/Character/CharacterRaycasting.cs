@@ -11,7 +11,7 @@ public class CharacterRaycasting : MonoBehaviour
     private int spaceBetweenRays = 4;
     private int rayLength = 20;
     private int screenBottom = -90;
-
+    public bool leftCrash = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +50,8 @@ public class CharacterRaycasting : MonoBehaviour
         for(int i = 0; i < allBotPositions.Length -1; i++){
             if(allBotPositions[i + 1] > allBotPositions[i]) currentHighestValue = allBotPositions[i + 1];
         }
+        if(currentHighestValue == allBotPositions[0]) leftCrash = true;
+        if(currentHighestValue == allBotPositions[allBotPositions.Length -1]) leftCrash = false;
         transform.GetComponent<CharacterMovement>().botLimit = currentHighestValue;
     }
 
