@@ -30,11 +30,17 @@ public class CharacterMovement : MonoBehaviour
     private GameObject playerArms;
     private bool isPlayer;
     private bool hasCrashed = false;
+    private float crashSpeed = 0;
+    private AudioController audioFx;
+    private BoxCollider2D charCollider;
+    private CharacterData charData;
 
     private Vector2 spriteSize = new Vector2(40,40);
     // Start is called before the first frame update
     void Start()
     {
+        charData = GetComponent<CharacterData>();
+        audioFx = GameObject.Find("audio").GetComponent<AudioController>();
         latestBotLimit = botLimit;
         autoMoveDestPos = GameObject.Find("Stage").GetComponent<BackgroundEvents>().autoMoveDestPos;
         ninjaPos = transform.position;
@@ -55,8 +61,19 @@ public class CharacterMovement : MonoBehaviour
         } else {
             if(playerLegs != null) Destroy(playerLegs);
             if(playerArms != null) Destroy(playerArms);
-            moveDeadPlayer();
+            if(hasCrashed) moveCrashedPlayer();
+            else moveDeadPlayer();
         }
+    }
+
+    private void moveCrashedPlayer(){
+        float backgroundScrollSpeed = GameObject.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed;
+        if(!isGrounded && playerPos.y > botLimit) playerPos.y -= playerSpeed/2*Time.deltaTime;
+        else playerPos.y = botLimit;
+        if(crashSpeed > backgroundScrollSpeed) crashSpeed -= 120 * Time.deltaTime;
+        else crashSpeed = backgroundScrollSpeed;
+        playerPos.x -= crashSpeed * Time.deltaTime;
+        transform.position = playerPos;
     }
 
     private void checkForChangesInBotLimit(){
@@ -65,7 +82,12 @@ public class CharacterMovement : MonoBehaviour
     }
 
     private void checkForCrash(){
-        if(playerActualPos.y < botLimit) isAlive = false; 
+        if(playerActualPos.y < botLimit){
+            audioFx.playSound(charData.hitObstacle);
+            hasCrashed = true;
+            isAlive = false;
+            crashSpeed =  GameObject.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed * 2;
+        } 
     }
 
     void destroyPlayer(){

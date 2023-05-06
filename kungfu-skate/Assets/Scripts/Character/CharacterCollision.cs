@@ -22,7 +22,7 @@ public class CharacterCollision : MonoBehaviour
     }
 
     void dealWithCollision(int damage){
-        audioFx.playSound(charData.hit);
+        audioFx.playSound(charData.hitProjectile);
         GetComponent<CharacterData>().hitPoints-= damage;
         for(int i = 0; i < transform.childCount; i++)
             transform.GetChild(i).GetComponent<SwapSprites>().isBlinking = true;
