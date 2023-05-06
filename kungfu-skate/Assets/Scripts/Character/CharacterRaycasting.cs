@@ -6,13 +6,29 @@ public class CharacterRaycasting : MonoBehaviour
 {
     [SerializeField] private int leftRayXPos;
     [SerializeField] private int rightRayXPos;
+    private int[] allRays;
+    private int[] allBotPositions;
+    private int spaceBetweenRays = 4;
     private int rayLength = 20;
     private int screenBottom = -90;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        createRayPositions(leftRayXPos, rightRayXPos);
+    }
+
+    private void createRayPositions(int leftRay, int rightRay){
+        int distanceBetweenRayPositions = Mathf.Max(leftRay, rightRay) - Mathf.Min(leftRay, rightRay);
+        int raysToBeAdded = (int)Mathf.Round(distanceBetweenRayPositions / spaceBetweenRays);
+        allRays = new int[raysToBeAdded + 1];
+        allBotPositions = new int[allRays.Length];
+        int newDistance = 0;
+        for(int i = 0; i < allRays.Length; i++){
+            if(i == allRays.Length -1) allRays[i] = rightRayXPos;
+            else allRays[i] = leftRayXPos + newDistance;
+            newDistance += spaceBetweenRays;
+        }
     }
 
     // Update is called once per frame
@@ -23,14 +39,18 @@ public class CharacterRaycasting : MonoBehaviour
 
 
     private void castRays(){
-        int leftBottom = (int)doTheRayCasting(leftRayXPos);
-        int rightBottom = (int)doTheRayCasting(rightRayXPos);
-        changeCharacterBottomPosition(leftBottom, rightBottom);
+        for(int i = 0; i < allBotPositions.Length; i++){
+            allBotPositions[i] = (int)doTheRayCasting(allRays[i]);
+        } 
+        changeCharacterBottomPosition(allBotPositions);
     }
 
-    private void changeCharacterBottomPosition(int leftBottom, int rightBottom){
-        int newBottomLimit = Mathf.Max(leftBottom, rightBottom);
-        transform.GetComponent<CharacterMovement>().botLimit = newBottomLimit;
+    private void changeCharacterBottomPosition(int[] allBotPositions){
+        int currentHighestValue = allBotPositions[0];
+        for(int i = 0; i < allBotPositions.Length -1; i++){
+            if(allBotPositions[i + 1] > allBotPositions[i]) currentHighestValue = allBotPositions[i + 1];
+        }
+        transform.GetComponent<CharacterMovement>().botLimit = currentHighestValue;
     }
 
     private float doTheRayCasting(int rayOrigin){
