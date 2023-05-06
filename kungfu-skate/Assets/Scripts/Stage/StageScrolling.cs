@@ -14,7 +14,7 @@ public class StageScrolling : MonoBehaviour
     public float backgroundScrollSpeed;
     public float currentBackgroundScrollSpeed;
     private Vector2[] scrollingPiecesPos = new Vector2[2];
-    private int shiftPos = -500;
+    private int shiftPos = -750;
     public int[] initialBackgroundPieces;
     public int spritesShifted = 0;
     private Vector2 outOfScreenPos = new Vector2(-640, 180);

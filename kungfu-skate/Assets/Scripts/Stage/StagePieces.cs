@@ -12,10 +12,13 @@ public class StagePieces : MonoBehaviour
         {"road", new[]{0}},
         {"alley-entrance", new[]{1}},
         {"alley-exit", new[]{2}},
-        {"alley", new []{3, 4, 5, 6}},
+        {"alley", new []{3, 4}},
+        {"alley-fence", new []{5}},
+        {"alley-pingpong", new []{6}},
         {"park-entrance", new[]{7}},
         {"park-exit", new[]{8}},
         {"park", new[]{9}},
+        {"park-rail", new[]{11}},
         {"road-sunset", new[]{10}}
     };
     private Dictionary<string, int[]> stageOneLayerTwoPieces = new Dictionary<string, int[]>(){

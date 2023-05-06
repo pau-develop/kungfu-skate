@@ -35,7 +35,9 @@ public class CharacterMovement : MonoBehaviour
     private BoxCollider2D charCollider;
     private CharacterData charData;
     private bool firstCrashCheck = true;
-
+    private float detectionDelayAfterCrash = 0.5f;
+    private float crashTimer = 0;
+    private bool leftCrash;
     private Vector2 spriteSize = new Vector2(40,40);
     // Start is called before the first frame update
     void Start()
@@ -54,11 +56,11 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        checkForChangesInBotLimit();
         isGrounded = checkGrounded();
         if(isAlive){
             movePlayer();
             oscillate();
-            checkForChangesInBotLimit();
         } else {
             if(playerLegs != null) Destroy(playerLegs);
             if(playerArms != null) Destroy(playerArms);
@@ -68,12 +70,23 @@ public class CharacterMovement : MonoBehaviour
     }
 
     private void moveCrashedPlayer(){
+        crashTimer += Time.deltaTime;
         float backgroundScrollSpeed = GameObject.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed;
-        if(!isGrounded && playerPos.y > botLimit) playerPos.y -= playerSpeed/2*Time.deltaTime;
-        else playerPos.y = botLimit;
-        if(crashSpeed > backgroundScrollSpeed) crashSpeed -= 120 * Time.deltaTime;
-        else crashSpeed = backgroundScrollSpeed;
-        playerPos.x -= crashSpeed * Time.deltaTime;
+        //horizontal movement right
+        if(!leftCrash){
+            if(crashSpeed > backgroundScrollSpeed) crashSpeed -= 120 * Time.deltaTime;
+            else crashSpeed = backgroundScrollSpeed;
+            playerPos.x -= crashSpeed * Time.deltaTime;
+        } else {
+            if(crashSpeed < backgroundScrollSpeed) crashSpeed += 360 * Time.deltaTime;
+            else crashSpeed = backgroundScrollSpeed;
+            playerPos.x -= crashSpeed * Time.deltaTime;
+        }
+        //vertical movement
+        if(crashTimer > detectionDelayAfterCrash){
+            if(!isGrounded && playerPos.y > botLimit) playerPos.y -= playerSpeed/2*Time.deltaTime;
+            else playerPos.y = botLimit;
+        }
         transform.position = playerPos;
     }
 
@@ -84,15 +97,17 @@ public class CharacterMovement : MonoBehaviour
 
     private void checkForCrash(){
         if(firstCrashCheck){
-            if(playerActualPos.y < botLimit) playerActualPos.y = botLimit;
+            if(playerPos.y < botLimit) playerPos.y = botLimit;
             firstCrashCheck = false;
         }
         else{
-            if(playerActualPos.y < botLimit){
+            if(playerPos.y < botLimit){
+                leftCrash = GetComponent<CharacterRaycasting>().leftCrash;
                 audioFx.playSound(charData.hitObstacle);
                 hasCrashed = true;
                 isAlive = false;
-                crashSpeed =  GameObject.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed * 2;
+                if(!leftCrash) crashSpeed =  GameObject.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed * 2;
+                else crashSpeed =  GameObject.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed * -2;
             } 
         }
     }
@@ -120,7 +135,7 @@ public class CharacterMovement : MonoBehaviour
     }
 
     bool checkGrounded(){
-        if(playerPos.y==botLimit) return true;
+        if(playerPos.y == botLimit) return true;
         return false;
     }
 
