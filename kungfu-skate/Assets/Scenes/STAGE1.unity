@@ -350,12 +350,12 @@ PrefabInstance:
     - target: {fileID: 3876005035141380405, guid: b88148746cbf3b44d9e1fcb4c52d21d5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -137.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3876005035141380405, guid: b88148746cbf3b44d9e1fcb4c52d21d5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 30.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3876005035141380405, guid: b88148746cbf3b44d9e1fcb4c52d21d5,
         type: 3}
@@ -504,18 +504,21 @@ MonoBehaviour:
   currentBackgroundScrollSpeed: 0
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
-  eventSprites: 00000000040000000500000007000000080000000c0000000d0000000f0000001000000013000000140000001700000018000000
+  eventSprites: 0000000004000000050000000600000007000000080000000c0000000d0000000e0000000f000000100000001300000014000000150000001700000018000000
   eventType:
   - road
   - alley-entrance
+  - alley-fence
   - alley
   - alley-exit
   - road
   - alley-entrance
-  - alley
+  - alley-fence
+  - alley-pingpong
   - alley-exit
   - road-sunset
   - park-entrance
+  - park-rail
   - park
   - park-exit
   - road-sunset
