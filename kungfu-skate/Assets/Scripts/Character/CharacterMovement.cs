@@ -22,18 +22,20 @@ public class CharacterMovement : MonoBehaviour
     private int rightLimit = +140;
     private int topLimit = +50;
     public int botLimit = -90;
-
+    private int latestBotLimit;
     public bool isGrounded = false;
     public bool isAlive = true;
     public bool isExploded = false;
     private GameObject playerLegs;
     private GameObject playerArms;
     private bool isPlayer;
+    private bool hasCrashed = false;
 
     private Vector2 spriteSize = new Vector2(40,40);
     // Start is called before the first frame update
     void Start()
     {
+        latestBotLimit = botLimit;
         autoMoveDestPos = GameObject.Find("Stage").GetComponent<BackgroundEvents>().autoMoveDestPos;
         ninjaPos = transform.position;
         isPlayer = GetComponent<CharacterData>().isPlayer;
@@ -49,6 +51,7 @@ public class CharacterMovement : MonoBehaviour
         if(isAlive){
             movePlayer();
             oscillate();
+            checkForChangesInBotLimit();
         } else {
             if(playerLegs != null) Destroy(playerLegs);
             if(playerArms != null) Destroy(playerArms);
@@ -56,13 +59,26 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    private void checkForChangesInBotLimit(){
+        if(latestBotLimit != botLimit) checkForCrash();
+        latestBotLimit = botLimit;
+    }
+
+    private void checkForCrash(){
+        if(playerActualPos.y < botLimit) isAlive = false; 
+    }
+
     void destroyPlayer(){
         Destroy(this.gameObject);
     }
 
     void moveDeadPlayer(){
+        float backgroundScrollSpeed = GameObject.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed;
         if(!isGrounded && playerPos.y > botLimit) playerPos.y -= playerSpeed/2*Time.deltaTime;
-        else playerPos.y = botLimit;
+        else {
+            playerPos.y = botLimit;
+            playerPos.x -= backgroundScrollSpeed * Time.deltaTime;
+        }
         transform.position = playerPos;
     }  
 
