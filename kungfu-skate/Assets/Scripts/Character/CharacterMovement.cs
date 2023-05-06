@@ -35,6 +35,8 @@ public class CharacterMovement : MonoBehaviour
     private BoxCollider2D charCollider;
     private CharacterData charData;
     private bool firstCrashCheck = true;
+    private float detectionDelayAfterCrash = 0.3f;
+    private float crashTimer = 0;
 
     private Vector2 spriteSize = new Vector2(40,40);
     // Start is called before the first frame update
@@ -68,11 +70,16 @@ public class CharacterMovement : MonoBehaviour
     }
 
     private void moveCrashedPlayer(){
+        crashTimer += Time.deltaTime;
         float backgroundScrollSpeed = GameObject.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed;
-        if(!isGrounded && playerPos.y > botLimit) playerPos.y -= playerSpeed/2*Time.deltaTime;
-        else playerPos.y = botLimit;
+        //horizontal movement
         if(crashSpeed > backgroundScrollSpeed) crashSpeed -= 120 * Time.deltaTime;
         else crashSpeed = backgroundScrollSpeed;
+        //vertical movement
+        if(crashTimer > detectionDelayAfterCrash){
+            if(!isGrounded && playerPos.y > botLimit) playerPos.y -= playerSpeed/2*Time.deltaTime;
+            else playerPos.y = botLimit;
+        }
         playerPos.x -= crashSpeed * Time.deltaTime;
         transform.position = playerPos;
     }
@@ -120,7 +127,7 @@ public class CharacterMovement : MonoBehaviour
     }
 
     bool checkGrounded(){
-        if(playerPos.y==botLimit) return true;
+        if(playerPos.y == botLimit) return true;
         return false;
     }
 
