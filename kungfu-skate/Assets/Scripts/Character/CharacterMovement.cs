@@ -39,6 +39,7 @@ public class CharacterMovement : MonoBehaviour
     private float crashTimer = 0;
     private bool leftCrash;
     private Vector2 spriteSize = new Vector2(40,40);
+    public bool onGrindableObject = false;
     // Start is called before the first frame update
     void Start()
     {

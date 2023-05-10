@@ -47,12 +47,24 @@ public class CharacterRaycasting : MonoBehaviour
 
     private void changeCharacterBottomPosition(int[] allBotPositions){
         int currentHighestValue = allBotPositions[0];
+        int currentHighestValueIndex = 0;
         for(int i = 0; i < allBotPositions.Length -1; i++){
-            if(allBotPositions[i + 1] > allBotPositions[i]) currentHighestValue = allBotPositions[i + 1];
+            if(allBotPositions[i + 1] > allBotPositions[i]) {
+                currentHighestValue = allBotPositions[i + 1];
+                currentHighestValueIndex = i + 1;
+            }
         }
         if(currentHighestValue == allBotPositions[0]) leftCrash = true;
         if(currentHighestValue == allBotPositions[allBotPositions.Length -1]) leftCrash = false;
         transform.GetComponent<CharacterMovement>().botLimit = currentHighestValue;
+        checkTagOnHighestCollider(allRays[currentHighestValueIndex]);
+    }
+
+    private void checkTagOnHighestCollider(int rayOrigin){
+        Vector2 rayPos = new Vector2(transform.position.x + rayOrigin, transform.position.y + 5);
+        RaycastHit2D hit = Physics2D.Raycast(rayPos, Vector2.down, rayLength);
+        if(hit.collider != null && hit.collider.tag == "Grindable") GetComponent<CharacterMovement>().onGrindableObject = true;
+        else GetComponent<CharacterMovement>().onGrindableObject = false;
     }
 
     private float doTheRayCasting(int rayOrigin){
