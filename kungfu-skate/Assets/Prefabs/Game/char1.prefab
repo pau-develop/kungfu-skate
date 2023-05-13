@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 3487077068829125970}
   - component: {fileID: 420335498353785608}
   - component: {fileID: -4395340055000625108}
+  - component: {fileID: 5365377404257849309}
   m_Layer: 2
   m_Name: char1
   m_TagString: Player
@@ -391,6 +392,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftLayer: 1
+--- !u!114 &5365377404257849309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3876005035141380404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f17c79a89133a044db1c1e145571c00d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 7740503424405670534, guid: a0abac4e54406d2418fce4673a1f1658,
+    type: 3}
+  particleSpawnPos: {x: -5, y: 5}
 --- !u!1 &3876005035935992975
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +547,6 @@ GameObject:
   - component: {fileID: 2200736089703526524}
   - component: {fileID: 4193995909429183802}
   - component: {fileID: 4650101174984256149}
-  - component: {fileID: 3610847878898411173}
   m_Layer: 2
   m_Name: arms
   m_TagString: PlayerMelee
@@ -713,17 +728,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20.192322, y: 28.513908}
   m_EdgeRadius: 0
---- !u!114 &3610847878898411173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3876005036237387206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f17c79a89133a044db1c1e145571c00d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particle: {fileID: 0}
-  particleSpawnPos: {x: -5, y: 5}

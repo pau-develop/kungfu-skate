@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 4002732944019602565}
   - component: {fileID: 475314954019875057}
   - component: {fileID: 7268226672558309209}
+  - component: {fileID: 78741539953446805}
   m_Layer: 2
   m_Name: ninja
   m_TagString: Enemy
@@ -79,6 +80,7 @@ MonoBehaviour:
   isGrounded: 0
   isAlive: 1
   isExploded: 0
+  onGrindableObject: 0
 --- !u!114 &7985915824582300424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,6 +344,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftLayer: 1
+--- !u!114 &78741539953446805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7985915824582300429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f17c79a89133a044db1c1e145571c00d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 7740503424405670534, guid: a0abac4e54406d2418fce4673a1f1658,
+    type: 3}
+  particleSpawnPos: {x: -5, y: 5}
 --- !u!1 &7985915824907368400
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +432,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -914150717
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 19
   m_Sprite: {fileID: 8510226486468036386, guid: 70fe23184e2c53047a3a7cc870a60af5,
     type: 3}
@@ -540,7 +557,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -914150717
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 20
   m_Sprite: {fileID: 6255575898393167063, guid: 70fe23184e2c53047a3a7cc870a60af5,
     type: 3}
@@ -678,7 +695,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -914150717
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 21
   m_Sprite: {fileID: -5787854933755484150, guid: 2da90600d8322634da76d1ceeb031518,
     type: 3}

@@ -53,7 +53,7 @@ public class CharacterGrindEffect : MonoBehaviour
         tempParticle.GetComponent<ParticleMovement>().flipDirection = flipDirection;
         tempParticle.GetComponent<ParticleMovement>().resizeSpeed = 2f;
         tempParticle.GetComponent<SpriteRenderer>().sortingLayerName = transform.GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName;
-        tempParticle.GetComponent<SpriteRenderer>().sortingOrder = 50;
+        tempParticle.GetComponent<SpriteRenderer>().sortingOrder = 0;
     }
 
     private int getDirection(){
