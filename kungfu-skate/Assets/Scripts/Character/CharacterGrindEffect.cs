@@ -7,11 +7,14 @@ public class CharacterGrindEffect : MonoBehaviour
     [SerializeField] private GameObject particle;
     private CharacterMovement charMovement;
     private float particleTimer;
-    private float timerLimit = 0.1f;
+    private float timerLimit = 0.05f;
     private Color32[] particleColors = new Color32[]{
         new Color32(255, 215, 0, 255),
         new Color32(255, 103, 0, 255),
         new Color32(255, 0, 94, 255),
+    };
+    private float[] particleSizes = new float[]{
+        1, 1.5f, 2
     };
     private int flipDirection = 1;
     public Vector2 particleSpawnPos;
@@ -57,6 +60,7 @@ public class CharacterGrindEffect : MonoBehaviour
         tempParticle.GetComponent<ParticleMovement>().resizeSpeed = 2f;
         tempParticle.GetComponent<SpriteRenderer>().sortingLayerName = transform.GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName;
         tempParticle.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        tempParticle.GetComponent<ParticleMovement>().particleSize = particleSizes[Random.Range(0, particleSizes.Length)];
     }
 
     private int getDirection(){

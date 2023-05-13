@@ -12,10 +12,12 @@ public class ParticleMovement : MonoBehaviour
     private Vector2 currentPos;
     public int flipDirection;
     public float resizeSpeed = 5f;
+    public float particleSize = 1;
 
     // Start is called before the first frame update
     void Start()
     {
+        transform.localScale = new Vector2(particleSize, particleSize);
         currentPos = transform.position;
         originPos = transform.position;
         destPos = new Vector2(transform.position.x+direction.x*flipDirection, transform.position.y+direction.y);
