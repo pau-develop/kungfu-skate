@@ -6,12 +6,12 @@ using UnityEngine;
 public class UI : MonoBehaviour
 {
     private GameObject debugger;
-    private bool displayingDebugger = true;
-    
+    private bool displayingDebugger = true;    
     private GameObject options;
     // Start is called before the first frame update
     void Start()
     {
+
         options = transform.Find("options").gameObject;
         options.SetActive(false);
         debugger = transform.Find("debugger").gameObject;
@@ -28,6 +28,10 @@ public class UI : MonoBehaviour
         getInput();
         displayDebugger();
         displayPauseMenu();
+    }
+
+    private void updateScore(){
+
     }
 
     private void displayPauseMenu(){
