@@ -22,11 +22,11 @@ public class CharacterCollision : MonoBehaviour
     }
 
     void OnTriggerStay2D(Collider2D collider){
-        if(collider.gameObject.tag == "Obstacle") dealWithLayerTrigger(collider);
+        if(collider.gameObject.tag == "ObstacleTrigger") dealWithLayerTrigger(collider);
     }
 
     void OnTriggerExit2D(Collider2D collider){
-        if(collider.gameObject.tag == "Obstacle") GetComponent<CharacterLayer>().leftLayer = true;
+        if(collider.gameObject.tag == "ObstacleTrigger") GetComponent<CharacterLayer>().leftLayer = true;
     }
 
     void dealWithLayerTrigger(Collider2D collider){
