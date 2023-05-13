@@ -54,7 +54,7 @@ public class CharacterGrindEffect : MonoBehaviour
     private void scorePoints(){
         scoreTimer += Time.deltaTime;
         if(scoreTimer >= scoreTimerLimit){
-            GlobalData.playerOneScore += 5;
+            GlobalData.playerOneScore += 25;
             scoreTimer = 0;
         } 
     }
