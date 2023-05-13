@@ -1,0 +1,66 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CharacterGrindEffect : MonoBehaviour
+{
+    [SerializeField] private GameObject particle;
+    private CharacterMovement charMovement;
+    private float particleTimer;
+    private float timerLimit = 0.1f;
+    private Color32 particleColor = new Color32(255, 215, 0, 255);
+    private int flipDirection = 1;
+    public Vector2 particleSpawnPos;
+    private Vector2[] directions = new Vector2[]{
+        new Vector2(6, 0),
+        new Vector2(6,-4),
+        new Vector2(6,-2),
+        new Vector2(4, 0),
+        new Vector2(4,-4),
+        new Vector2(4,-2),
+        new Vector2(2, 0),
+        new Vector2(4, 0),
+        new Vector2(6, 0),
+    };
+    // Start is called before the first frame update
+    void Start()
+    {
+        charMovement = GetComponent<CharacterMovement>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(charMovement.isGrounded && charMovement.onGrindableObject) generateGrindParticles();
+        else particleTimer = 0;
+    }
+
+    private void generateGrindParticles(){
+        particleTimer += Time.deltaTime;
+        if(particleTimer >= timerLimit){
+            generateParticles();
+            particleTimer = 0;
+        }
+    }
+
+    private void generateParticles(){
+        Vector2 particleOrigin = new Vector2(transform.position.x + particleSpawnPos.x, transform.position.y + particleSpawnPos.y);
+        GameObject tempParticle = Instantiate(particle, particleOrigin, Quaternion.identity);
+        tempParticle.GetComponent<ParticleMovement>().particleParent = this.gameObject; 
+        tempParticle.GetComponent<SpriteRenderer>().color = particleColor;
+        tempParticle.GetComponent<ParticleMovement>().direction = directions[Random.Range(0, directions.Length)];
+        flipDirection = getDirection();
+        tempParticle.GetComponent<ParticleMovement>().flipDirection = flipDirection;
+        tempParticle.GetComponent<ParticleMovement>().resizeSpeed = 2f;
+        tempParticle.GetComponent<SpriteRenderer>().sortingLayerName = transform.GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName;
+        tempParticle.GetComponent<SpriteRenderer>().sortingOrder = 50;
+    }
+
+    private int getDirection(){
+        if(GetComponent<FlipSprite>() != null){
+            if(GetComponent<FlipSprite>().isFliped) return -1;
+            return 1;
+        } 
+        else return 1;
+    }
+}

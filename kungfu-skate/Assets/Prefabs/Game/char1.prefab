@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -914150717
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 20
   m_Sprite: {fileID: 219142133917984584, guid: 977a3b42868c82c46a1be08a75d78441, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -233,6 +233,7 @@ MonoBehaviour:
   isGrounded: 0
   isAlive: 1
   isExploded: 0
+  onGrindableObject: 0
 --- !u!114 &753769880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,7 +464,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -914150717
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 19
   m_Sprite: {fileID: 1830591072526408690, guid: 977a3b42868c82c46a1be08a75d78441,
     type: 3}
@@ -530,7 +531,7 @@ GameObject:
   - component: {fileID: 2200736089703526524}
   - component: {fileID: 4193995909429183802}
   - component: {fileID: 4650101174984256149}
-  - component: {fileID: 7582174857286468779}
+  - component: {fileID: 3610847878898411173}
   m_Layer: 2
   m_Name: arms
   m_TagString: PlayerMelee
@@ -592,7 +593,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -914150717
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 21
   m_Sprite: {fileID: -8674932514864762950, guid: f4b59edc40f308a43adf3200f6cf5f87,
     type: 3}
@@ -712,7 +713,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20.192322, y: 28.513908}
   m_EdgeRadius: 0
---- !u!114 &7582174857286468779
+--- !u!114 &3610847878898411173
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -721,6 +722,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3876005036237387206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01823be08764f104b9ec1faaf1c8c196, type: 3}
+  m_Script: {fileID: 11500000, guid: f17c79a89133a044db1c1e145571c00d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particle: {fileID: 0}
+  particleSpawnPos: {x: -5, y: 5}

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ParticleMovement : MonoBehaviour
 {
+    public GameObject particleParent;
     public Vector2[] directions;
     public Vector2 direction;
     private Vector2 originPos;
@@ -11,6 +12,7 @@ public class ParticleMovement : MonoBehaviour
     private Vector2 moveDir;
     private Vector2 currentPos;
     public int flipDirection;
+    public float resizeSpeed = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +38,7 @@ public class ParticleMovement : MonoBehaviour
 
     private void resizeParticle(){
 		if(transform.localScale.x > 0)
-			transform.localScale += new Vector3(-5*Time.deltaTime,-5*Time.deltaTime,1);
+			transform.localScale += new Vector3(-resizeSpeed*Time.deltaTime,-resizeSpeed*Time.deltaTime,1);
 		else Destroy(this.gameObject);
 	}
 }
