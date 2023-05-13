@@ -8,7 +8,11 @@ public class CharacterGrindEffect : MonoBehaviour
     private CharacterMovement charMovement;
     private float particleTimer;
     private float timerLimit = 0.1f;
-    private Color32 particleColor = new Color32(255, 215, 0, 255);
+    private Color32[] particleColors = new Color32[]{
+        new Color32(255, 215, 0, 255),
+        new Color32(255, 103, 0, 255),
+        new Color32(255, 0, 94, 255),
+    };
     private int flipDirection = 1;
     public Vector2 particleSpawnPos;
     private Vector2[] directions = new Vector2[]{
@@ -44,12 +48,11 @@ public class CharacterGrindEffect : MonoBehaviour
     }
 
     private void generateParticles(){
-        Vector2 particleOrigin = new Vector2(transform.position.x + particleSpawnPos.x, transform.position.y + particleSpawnPos.y);
-        GameObject tempParticle = Instantiate(particle, particleOrigin, Quaternion.identity);
-        tempParticle.GetComponent<ParticleMovement>().particleParent = this.gameObject; 
-        tempParticle.GetComponent<SpriteRenderer>().color = particleColor;
-        tempParticle.GetComponent<ParticleMovement>().direction = directions[Random.Range(0, directions.Length)];
         flipDirection = getDirection();
+        Vector2 particleOrigin = new Vector2(transform.position.x + particleSpawnPos.x * flipDirection, transform.position.y + particleSpawnPos.y);
+        GameObject tempParticle = Instantiate(particle, particleOrigin, Quaternion.identity);
+        tempParticle.GetComponent<SpriteRenderer>().color = particleColors[Random.Range(0, particleColors.Length)];
+        tempParticle.GetComponent<ParticleMovement>().direction = directions[Random.Range(0, directions.Length)];
         tempParticle.GetComponent<ParticleMovement>().flipDirection = flipDirection;
         tempParticle.GetComponent<ParticleMovement>().resizeSpeed = 2f;
         tempParticle.GetComponent<SpriteRenderer>().sortingLayerName = transform.GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName;
