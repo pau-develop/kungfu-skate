@@ -15,10 +15,21 @@ public class CharacterCollision : MonoBehaviour
         isPlayer = GetComponent<CharacterData>().isPlayer;
     }
     void OnTriggerEnter2D(Collider2D collider){
-        if(collider.gameObject.tag =="PlayerBullet" && !isPlayer) dealWithCollision(1);
-        if(collider.gameObject.tag =="PlayerMelee" && !isPlayer) dealWithCollision(10);
+        if(collider.gameObject.tag =="PlayerBullet" && !isPlayer) {
+            dealWithCollision(1);
+            addPoints(false);
+        }
+        if(collider.gameObject.tag =="PlayerMelee" && !isPlayer){
+            dealWithCollision(10);
+            addPoints(true);
+        } 
         if(collider.gameObject.tag =="PlayerWave" && !isPlayer) dealWithCollision(5);
         if(collider.gameObject.tag =="EnemyBullet" && isPlayer) dealWithCollision(1);
+    }
+
+    void addPoints(bool isMeleeAttack){
+        if(isMeleeAttack) GlobalData.playerOneScore += 50;
+        else GlobalData.playerOneScore += 25;
     }
 
     void OnTriggerStay2D(Collider2D collider){
