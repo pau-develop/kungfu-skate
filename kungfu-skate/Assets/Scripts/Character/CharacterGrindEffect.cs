@@ -7,7 +7,10 @@ public class CharacterGrindEffect : MonoBehaviour
     [SerializeField] private GameObject particle;
     private CharacterMovement charMovement;
     private float particleTimer;
-    private float timerLimit = 0.05f;
+    private float particleTimerLimit = 0.05f;
+    private float scoreTimer = 0.1f;
+    private float scoreTimerLimit = 0.1f;
+
     private Color32[] particleColors = new Color32[]{
         new Color32(255, 215, 0, 255),
         new Color32(255, 103, 0, 255),
@@ -38,13 +41,27 @@ public class CharacterGrindEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(charMovement.isGrounded && charMovement.onGrindableObject) generateGrindParticles();
-        else particleTimer = 0;
+        if(charMovement.isGrounded && charMovement.onGrindableObject) {
+            generateGrindParticles();
+            if(GetComponent<CharacterData>().isPlayer) scorePoints();
+        }
+        else {
+            particleTimer = 0;
+            scoreTimer = 0;
+        }
+    }
+
+    private void scorePoints(){
+        scoreTimer += Time.deltaTime;
+        if(scoreTimer >= scoreTimerLimit){
+            GlobalData.playerOneScore += 25;
+            scoreTimer = 0;
+        } 
     }
 
     private void generateGrindParticles(){
         particleTimer += Time.deltaTime;
-        if(particleTimer >= timerLimit){
+        if(particleTimer >= particleTimerLimit){
             generateParticles();
             particleTimer = 0;
         }

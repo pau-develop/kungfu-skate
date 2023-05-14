@@ -31,11 +31,13 @@ public class CharacterDamage : MonoBehaviour
         GetComponent<CharacterMovement>().isExploded = true;
         Destroy(GetComponent<CharacterCollider>());
         Destroy(GetComponent<BoxCollider2D>());
+        GlobalData.playerOneScore += 200;
         trackingState = false;
     }
 
     void killPlayer(){
         audioFX.playRandomSound(GetComponent<CharacterData>().die);
         GetComponent<CharacterMovement>().isAlive = false;
+        GlobalData.playerOneScore += 50;
     }
 }
