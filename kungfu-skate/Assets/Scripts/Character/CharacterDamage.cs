@@ -31,8 +31,11 @@ public class CharacterDamage : MonoBehaviour
         GetComponent<CharacterMovement>().isExploded = true;
         Destroy(GetComponent<CharacterCollider>());
         Destroy(GetComponent<BoxCollider2D>());
-        GlobalData.playerOneScore += 200;
         trackingState = false;
+        if(!GetComponent<CharacterData>().isPlayer){
+            GlobalData.playerOneScore += 200;
+            GameObject.Find("screen-info").GetComponent<UIScore>().InstantiateFloatingPoints(200, transform.position);
+        }
     }
 
     void killPlayer(){

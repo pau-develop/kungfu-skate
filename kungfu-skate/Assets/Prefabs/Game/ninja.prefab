@@ -202,8 +202,8 @@ MonoBehaviour:
   bodySpriteName: NIN1
   armSpriteName: NINMELEE1
   folder: Sprites/NIN/
-  hitPoints: 8
-  explodeThreshold: -5
+  hitPoints: 5
+  explodeThreshold: -3
   shoot: {fileID: 8300000, guid: 0d4313425c712a6449e596d3b11a8cbc, type: 3}
   swing: {fileID: 8300000, guid: bcfc8481768ac504f860a627bfef2a0f, type: 3}
   die:
