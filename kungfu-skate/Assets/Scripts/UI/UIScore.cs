@@ -43,12 +43,13 @@ public class UIScore : MonoBehaviour
         GameObject floatingPoints = new GameObject();
         floatingPoints.AddComponent<TextMeshProUGUI>();
         TextMeshProUGUI floatingPointsText = floatingPoints.GetComponent<TextMeshProUGUI>();
-        floatingPointsText.text = points.ToString();
+        floatingPointsText.text = points.ToString() + "$";
         floatingPointsText.color = originalScoreFontColor;
         floatingPointsText.fontSize = 8;
         floatingPointsText.font = font;
         RectTransform floatingPointsRect = floatingPoints.GetComponent<RectTransform>();
-        floatingPointsRect.position = spawnLocation;
+        floatingPointsRect.position = new Vector2(spawnLocation.x + 100, spawnLocation.y);
         floatingPointsRect.SetParent(GameObject.Find("screen-info").gameObject.transform);
+        floatingPoints.AddComponent<UIFloatingPoints>();
     }
 }
