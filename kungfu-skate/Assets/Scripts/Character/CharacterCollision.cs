@@ -37,13 +37,13 @@ public class CharacterCollision : MonoBehaviour
     }
 
     void OnTriggerExit2D(Collider2D collider){
-        if(collider.gameObject.tag == "ObstacleTrigger") GetComponent<CharacterLayer>().leftLayer = true;
+        if(collider.gameObject.tag == "ObstacleTrigger") GetComponent<SpriteLayer>().leftLayer = true;
     }
 
     void dealWithLayerTrigger(Collider2D collider){
         int obstacleXPos = (int)collider.gameObject.transform.position.x;
-        if(transform.position.x <= obstacleXPos) GetComponent<CharacterLayer>().leftLayer = true;
-        else GetComponent<CharacterLayer>().leftLayer = false;
+        if(transform.position.x <= obstacleXPos) GetComponent<SpriteLayer>().leftLayer = true;
+        else GetComponent<SpriteLayer>().leftLayer = false;
     }
 
     void dealWithCollision(int damage){

@@ -26,8 +26,8 @@ GameObject:
   - component: {fileID: 5982867249162835294}
   - component: {fileID: 4002732944019602565}
   - component: {fileID: 475314954019875057}
-  - component: {fileID: 7268226672558309209}
   - component: {fileID: 78741539953446805}
+  - component: {fileID: -2535169747376096008}
   m_Layer: 2
   m_Name: ninja
   m_TagString: Enemy
@@ -331,19 +331,6 @@ MonoBehaviour:
   leftRayXPos: -10
   rightRayXPos: 10
   leftCrash: 0
---- !u!114 &7268226672558309209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7985915824582300429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9d888360c675d24a805ccfc8aed59c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftLayer: 1
 --- !u!114 &78741539953446805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +346,19 @@ MonoBehaviour:
   particle: {fileID: 7740503424405670534, guid: a0abac4e54406d2418fce4673a1f1658,
     type: 3}
   particleSpawnPos: {x: -5, y: 5}
+--- !u!114 &-2535169747376096008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7985915824582300429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fde6f347c496e548816eba53cea40c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftLayer: 1
 --- !u!1 &7985915824907368400
 GameObject:
   m_ObjectHideFlags: 0
