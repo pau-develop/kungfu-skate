@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7383099495822265385}
   - component: {fileID: 6673242381340446369}
   - component: {fileID: 8794646409964568408}
+  - component: {fileID: 310523698980171205}
   m_Layer: 0
   m_Name: projectile2
   m_TagString: EnemyBullet
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -914150717
   m_SortingLayer: 2
-  m_SortingOrder: 50
+  m_SortingOrder: 20
   m_Sprite: {fileID: -1448053367703039221, guid: 35a4a605d1a17734db63b657dcb27a93,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -126,6 +127,8 @@ MonoBehaviour:
   particle: {fileID: 7740503424405670534, guid: a0abac4e54406d2418fce4673a1f1658,
     type: 3}
   isPlayerBullet: 0
+  projectileHitObstacle: {fileID: 8300000, guid: 9e687f2699f75c84593a859d0946035d,
+    type: 3}
 --- !u!61 &8794646409964568408
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -152,3 +155,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 13, y: 13}
   m_EdgeRadius: 0
+--- !u!50 &310523698980171205
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7383099495822265382}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

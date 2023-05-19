@@ -10,7 +10,7 @@ public class SpriteLayer : MonoBehaviour
     // Start is called before the first frame update
 
     void Start(){
-        if(transform.GetChild(0) != null) getChildSprites();
+        if(transform.GetComponent<SpriteRenderer>() == null) getChildSprites();
         else getSprite();
     }
 
