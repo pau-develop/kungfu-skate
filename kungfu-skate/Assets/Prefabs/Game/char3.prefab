@@ -20,8 +20,8 @@ GameObject:
   - component: {fileID: 337432399696200272}
   - component: {fileID: 29386900056800223}
   - component: {fileID: 2689806566884625869}
-  - component: {fileID: -6186319485387815672}
   - component: {fileID: 3163403156159135889}
+  - component: {fileID: 8895506911384659752}
   m_Layer: 2
   m_Name: char3
   m_TagString: Player
@@ -243,19 +243,6 @@ MonoBehaviour:
   leftRayXPos: -10
   rightRayXPos: 10
   leftCrash: 0
---- !u!114 &-6186319485387815672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 72071817012696630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9d888360c675d24a805ccfc8aed59c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftLayer: 1
 --- !u!114 &3163403156159135889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +258,19 @@ MonoBehaviour:
   particle: {fileID: 7740503424405670534, guid: a0abac4e54406d2418fce4673a1f1658,
     type: 3}
   particleSpawnPos: {x: -5, y: 5}
+--- !u!114 &8895506911384659752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72071817012696630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fde6f347c496e548816eba53cea40c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftLayer: 1
 --- !u!1 &72071817609569761
 GameObject:
   m_ObjectHideFlags: 0

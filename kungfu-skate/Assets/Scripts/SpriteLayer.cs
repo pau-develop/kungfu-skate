@@ -2,14 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterLayer : MonoBehaviour
+public class SpriteLayer : MonoBehaviour
 {
     public bool leftLayer = true;
     private SpriteRenderer[] childSprites;
+    private SpriteRenderer sprite;
     // Start is called before the first frame update
 
     void Start(){
-        getChildSprites();
+        if(transform.GetComponent<SpriteRenderer>() == null) getChildSprites();
+        else getSprite();
+    }
+
+    private void getSprite(){
+        childSprites = new SpriteRenderer[1];
+        childSprites[0] = GetComponent<SpriteRenderer>();
     }
 
     private void getChildSprites(){
