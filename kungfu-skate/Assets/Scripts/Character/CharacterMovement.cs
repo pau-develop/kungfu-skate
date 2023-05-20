@@ -139,6 +139,7 @@ public class CharacterMovement : MonoBehaviour
 
     bool checkGrounded(){
         if(playerPos.y == botLimit) return true;
+        if(rampedUp) return true;
         return false;
     }
 
@@ -146,9 +147,19 @@ public class CharacterMovement : MonoBehaviour
        if(autoMove) autoMovePlayer();
        if(autoMoveCutscene) autoMoveToCutscenePos();
        else {
-        if(isPlayer) controlPlayer();
-        else controlEnemy();
+        if(rampedUp) autoMoveInRamp(1);
+        else if(rampedDown) autoMoveInRamp(-1);
+        else{
+            if(isPlayer) controlPlayer();
+            else controlEnemy();
+        }
        }
+    }
+
+    void autoMoveInRamp(int direction){
+        float backgroundSpeed = GameObject.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed;
+        playerPos.y += ((backgroundSpeed/2) * direction) * Time.deltaTime;
+        transform.position = playerPos;
     }
 
     void autoMoveToCutscenePos(){
