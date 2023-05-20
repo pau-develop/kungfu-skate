@@ -31,10 +31,12 @@ public class NinjaCommandsZigZag : MonoBehaviour
     }
 
     void zigZagMovement(){
-        if(resetArc) getArcInfo();
-        else {
-            if(ninja.ninjaPos != arcDestPos) moveInArc();
-            else resetVars();
+        if(!GetComponent<CharacterMovement>().rampedUp && !GetComponent<CharacterMovement>().rampedDown){
+            if(resetArc) getArcInfo();
+            else {
+                if(ninja.ninjaPos != arcDestPos) moveInArc();
+                else resetVars();
+            }
         }
     }
 

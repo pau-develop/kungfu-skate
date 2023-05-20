@@ -158,8 +158,15 @@ public class CharacterMovement : MonoBehaviour
 
     void autoMoveInRamp(int direction){
         float backgroundSpeed = GameObject.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed;
-        playerPos.y += ((backgroundSpeed/2) * direction) * Time.deltaTime;
-        transform.position = playerPos;
+        if(GetComponent<CharacterData>().isPlayer){
+            playerPos.y += ((backgroundSpeed/2) * direction) * Time.deltaTime;
+            transform.position = playerPos;
+        }
+        else {
+            ninjaPos.y += ((backgroundSpeed/2) * direction) * Time.deltaTime;
+            transform.position = ninjaPos;
+            playerPos = ninjaPos;
+        }
     }
 
     void autoMoveToCutscenePos(){

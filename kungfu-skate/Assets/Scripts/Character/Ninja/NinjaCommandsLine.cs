@@ -35,9 +35,11 @@ public class NinjaCommandsLine : MonoBehaviour
     }
 
     void lineMovement(){
-        if(horizontalMovement) ninja.ninjaPos.x += (ninjaSpeed * direction) * Time.deltaTime;
-        else ninja.ninjaPos.y += (ninjaSpeed * direction) * Time.deltaTime;
+        if(!GetComponent<CharacterMovement>().rampedUp && !GetComponent<CharacterMovement>().rampedDown){
+            if(horizontalMovement) ninja.ninjaPos.x += (ninjaSpeed * direction) * Time.deltaTime;
+            else ninja.ninjaPos.y += (ninjaSpeed * direction) * Time.deltaTime;
 
-        if(!horizontalMovement & GetComponent<CharacterMovement>().isGrounded) GetComponent<CharacterData>().shouldLeave = true;
+            if(!horizontalMovement & GetComponent<CharacterMovement>().isGrounded) GetComponent<CharacterData>().shouldLeave = true;
+        }
     }
 }
