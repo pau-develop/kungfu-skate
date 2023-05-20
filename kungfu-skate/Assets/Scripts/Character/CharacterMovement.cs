@@ -40,6 +40,8 @@ public class CharacterMovement : MonoBehaviour
     private bool leftCrash;
     private Vector2 spriteSize = new Vector2(40,40);
     public bool onGrindableObject = false;
+    public bool rampedUp = false;
+    public bool rampedDown = false;
     // Start is called before the first frame update
     void Start()
     {

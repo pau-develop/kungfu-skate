@@ -12,6 +12,7 @@ TagManager:
   - Obstacle
   - ObstacleTrigger
   - Grindable
+  - RampUpwards
   layers:
   - Default
   - TransparentFX
