@@ -139,7 +139,7 @@ public class CharacterMovement : MonoBehaviour
 
     bool checkGrounded(){
         if(playerPos.y == botLimit) return true;
-        if(rampedUp) return true;
+        if(rampedUp || rampedDown) return true;
         return false;
     }
 
@@ -159,7 +159,10 @@ public class CharacterMovement : MonoBehaviour
     void autoMoveInRamp(int direction){
         float backgroundSpeed = GameObject.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed;
         if(GetComponent<CharacterData>().isPlayer){
-            playerPos.y += ((backgroundSpeed/2) * direction) * Time.deltaTime;
+            if(direction == -1){
+                if(playerPos.y > botLimit) playerPos.y += ((backgroundSpeed/2) * direction) * Time.deltaTime;
+                else playerPos.y = botLimit;
+            } else playerPos.y += ((backgroundSpeed/2) * direction) * Time.deltaTime;
             transform.position = playerPos;
         }
         else {
