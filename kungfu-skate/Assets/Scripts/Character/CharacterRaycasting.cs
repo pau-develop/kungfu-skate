@@ -84,4 +84,18 @@ public class CharacterRaycasting : MonoBehaviour
         BoxCollider2D boxCollider = collider.GetComponent<BoxCollider2D>();
         return screenBottom + boxCollider.size.y;
     }
+
+    public int castRayInvertedRamp(){
+        Vector2 rayPos = new Vector2(transform.position.x + allRays[allRays.Length-1], transform.position.y + 5);
+        RaycastHit2D hit = Physics2D.Raycast(rayPos, Vector2.down, rayLength);
+        Debug.DrawRay(rayPos, Vector2.down * rayLength, Color.blue);
+        if(hit.collider.gameObject.tag == "RampDownwards") return checkCharPosComparedToRamp(hit);
+        else return 5;
+    }
+
+    private int checkCharPosComparedToRamp(RaycastHit2D hit){
+        int targetDistance = 1;
+        int actualDistance = (int)Mathf.Abs(hit.point.y - transform.position.y); 
+        return actualDistance - targetDistance;
+    }
 }

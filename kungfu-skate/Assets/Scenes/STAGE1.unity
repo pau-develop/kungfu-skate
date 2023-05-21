@@ -504,7 +504,7 @@ MonoBehaviour:
   currentBackgroundScrollSpeed: 0
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
-  eventSprites: 0000000004000000050000000600000007000000080000000c0000000d0000000e0000000f000000100000001300000014000000150000001700000018000000
+  eventSprites: 0000000004000000050000000600000007000000080000000c0000000d0000000e0000000f00000010000000130000001400000015000000160000001700000018000000
   eventType:
   - road
   - alley-entrance
@@ -513,12 +513,13 @@ MonoBehaviour:
   - alley-exit
   - road
   - alley-entrance
-  - alley-fence
+  - alley-ramps
   - alley-pingpong
   - alley-exit
   - road-sunset
   - park-entrance
   - park-rail
+  - park-box
   - park
   - park-exit
   - road-sunset
