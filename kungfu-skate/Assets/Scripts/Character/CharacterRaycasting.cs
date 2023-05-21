@@ -95,9 +95,7 @@ public class CharacterRaycasting : MonoBehaviour
 
     private int checkCharPosComparedToRamp(RaycastHit2D hit){
         int targetDistance = 1;
-        Debug.Log("HIT POINT " + hit.point.y + ", PLAYERYPOS" + transform.position.y);
         int actualDistance = (int)Mathf.Abs(hit.point.y - transform.position.y); 
         return actualDistance - targetDistance;
-
     }
 }
