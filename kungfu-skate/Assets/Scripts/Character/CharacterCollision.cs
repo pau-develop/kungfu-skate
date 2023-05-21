@@ -34,10 +34,14 @@ public class CharacterCollision : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collider){
         if(collider.gameObject.tag == "ObstacleTrigger") dealWithLayerTrigger(collider);
+        if(collider.gameObject.tag == "RampUpwards") GetComponent<CharacterMovement>().rampedUp = true;
+        if(collider.gameObject.tag == "RampDownwards") GetComponent<CharacterMovement>().rampedDown = true;
     }
 
     void OnTriggerExit2D(Collider2D collider){
         if(collider.gameObject.tag == "ObstacleTrigger") GetComponent<SpriteLayer>().leftLayer = true;
+        if(collider.gameObject.tag == "RampUpwards") GetComponent<CharacterMovement>().rampedUp = false;
+        if(collider.gameObject.tag == "RampDownwards") GetComponent<CharacterMovement>().rampedDown = false;
     }
 
     void dealWithLayerTrigger(Collider2D collider){

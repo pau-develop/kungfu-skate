@@ -71,7 +71,12 @@ public class CharacterRaycasting : MonoBehaviour
         Vector2 rayPos = new Vector2(transform.position.x + rayOrigin, transform.position.y + 5);
         RaycastHit2D hit = Physics2D.Raycast(rayPos, Vector2.down, rayLength);
         Debug.DrawRay(rayPos, Vector2.down * rayLength, Color.green);
-        if(hit.collider != null) return getColliderPosition(hit.collider);
+        if(hit.collider != null){
+            if(hit.collider.gameObject.tag == "Obstacle"
+            || hit.collider.gameObject.tag == "Grindable")
+                return getColliderPosition(hit.collider);
+            else return -160;
+        } 
         else return -160;
     }
 

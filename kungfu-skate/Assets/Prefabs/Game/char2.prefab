@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 3700582246905509230}
   - component: {fileID: 501187880083213512}
   - component: {fileID: 6638294320539817095}
+  - component: {fileID: 1899813800602062158}
   m_Layer: 2
   m_Name: char2
   m_TagString: Player
@@ -99,6 +100,8 @@ MonoBehaviour:
   isAlive: 1
   isExploded: 0
   onGrindableObject: 0
+  rampedUp: 0
+  rampedDown: 0
 --- !u!114 &8814401686468845599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +143,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2, y: 17}
+  m_Offset: {x: 0, y: 17}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -151,7 +154,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 22, y: 30}
+  m_Size: {x: 17, y: 30}
   m_EdgeRadius: 0
 --- !u!114 &7880922845850811686
 MonoBehaviour:
@@ -271,6 +274,18 @@ MonoBehaviour:
   particle: {fileID: 7740503424405670534, guid: a0abac4e54406d2418fce4673a1f1658,
     type: 3}
   particleSpawnPos: {x: -5, y: 5}
+--- !u!114 &1899813800602062158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5735718581304542387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6964bac08d879854e9cc8e5c5b72c2cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5735718581937076068
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 475314954019875057}
   - component: {fileID: 78741539953446805}
   - component: {fileID: -2535169747376096008}
+  - component: {fileID: 9063345135638799434}
   m_Layer: 2
   m_Name: ninja
   m_TagString: Enemy
@@ -81,6 +82,8 @@ MonoBehaviour:
   isAlive: 1
   isExploded: 0
   onGrindableObject: 0
+  rampedUp: 0
+  rampedDown: 0
 --- !u!114 &7985915824582300424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +163,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2, y: 18}
+  m_Offset: {x: 0, y: 17}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -171,7 +174,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 22, y: 32}
+  m_Size: {x: 17, y: 30}
   m_EdgeRadius: 0
 --- !u!114 &491933472476755787
 MonoBehaviour:
@@ -359,6 +362,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftLayer: 1
+--- !u!114 &9063345135638799434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7985915824582300429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6964bac08d879854e9cc8e5c5b72c2cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7985915824907368400
 GameObject:
   m_ObjectHideFlags: 0
