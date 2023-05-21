@@ -20,7 +20,10 @@ public class ProjectileCollision : MonoBehaviour
         if(collider.gameObject.tag =="Enemy" && isPlayerBullet) dealWithCollision(collider);
         if(collider.gameObject.tag =="Player" && !isPlayerBullet) dealWithCollision(collider);
         if(collider.gameObject.tag =="PlayerWave" && !isPlayerBullet) dealWithCollision(collider);
-        if(collider.gameObject.tag =="Obstacle" || collider.gameObject.tag == "Grindable") {
+        if(collider.gameObject.tag =="Obstacle" 
+        || collider.gameObject.tag == "Grindable"
+        || collider.gameObject.tag == "RampUpwards"
+        || collider.gameObject.tag == "RampDownwards") {
             dealWithCollision(collider);
             audioFX.playSound(projectileHitObstacle);
         }
