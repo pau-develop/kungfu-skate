@@ -8,7 +8,9 @@ public class CharacterCollision : MonoBehaviour
     private BoxCollider2D charCollider;
     private CharacterData charData;
     private bool isPlayer;
+    private Animator legsAnimator;
     void Start(){
+        legsAnimator = transform.Find("legs").GetComponent<Animator>();
         charData = GetComponent<CharacterData>();
         audioFx = GameObject.Find("audio").GetComponent<AudioController>();
         charCollider = GetComponent<BoxCollider2D>();
@@ -25,6 +27,8 @@ public class CharacterCollision : MonoBehaviour
         } 
         if(collider.gameObject.tag =="PlayerWave" && !isPlayer) dealWithCollision(5);
         if(collider.gameObject.tag =="EnemyBullet" && isPlayer) dealWithCollision(1);
+        if(collider.gameObject.tag == "RampUpwards" && GetComponent<CharacterMovement>().isGrounded)
+            legsAnimator.Play("legs-land");
     }
 
     void addPoints(bool isMeleeAttack){
@@ -41,7 +45,10 @@ public class CharacterCollision : MonoBehaviour
     void OnTriggerExit2D(Collider2D collider){
         if(collider.gameObject.tag == "ObstacleTrigger") GetComponent<SpriteLayer>().leftLayer = true;
         if(collider.gameObject.tag == "RampUpwards") GetComponent<CharacterMovement>().rampedUp = false;
-        if(collider.gameObject.tag == "RampDownwards") GetComponent<CharacterMovement>().rampedDown = false;
+        if(collider.gameObject.tag == "RampDownwards") {
+            GetComponent<CharacterMovement>().rampedDown = false;
+            if(GetComponent<CharacterMovement>().isGrounded) legsAnimator.Play("legs-land");
+        }
     }
 
     void dealWithLayerTrigger(Collider2D collider){
