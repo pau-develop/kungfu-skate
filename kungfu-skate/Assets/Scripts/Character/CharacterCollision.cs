@@ -29,6 +29,11 @@ public class CharacterCollision : MonoBehaviour
         if(collider.gameObject.tag =="EnemyBullet" && isPlayer) dealWithCollision(1);
         if(collider.gameObject.tag == "RampUpwards" && GetComponent<CharacterMovement>().isGrounded)
             legsAnimator.Play("legs-land");
+        if(collider.gameObject.tag == "RampDownwards") {
+            int distanceToMove = GetComponent<CharacterRaycasting>().castRayInvertedRamp();
+            //correcting playerPos in inverted ramp
+            GetComponent<CharacterMovement>().playerPos.y -= distanceToMove;
+        }
     }
 
     void addPoints(bool isMeleeAttack){
@@ -44,7 +49,10 @@ public class CharacterCollision : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collider){
         if(collider.gameObject.tag == "ObstacleTrigger") GetComponent<SpriteLayer>().leftLayer = true;
-        if(collider.gameObject.tag == "RampUpwards") GetComponent<CharacterMovement>().rampedUp = false;
+        if(collider.gameObject.tag == "RampUpwards") {
+            GetComponent<CharacterMovement>().rampedUp = false;
+            GetComponent<CharacterMovement>().playerPos.y += 6;
+        }
         if(collider.gameObject.tag == "RampDownwards") {
             GetComponent<CharacterMovement>().rampedDown = false;
             if(GetComponent<CharacterMovement>().isGrounded) legsAnimator.Play("legs-land");

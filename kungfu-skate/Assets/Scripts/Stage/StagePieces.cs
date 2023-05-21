@@ -15,6 +15,7 @@ public class StagePieces : MonoBehaviour
         {"alley", new []{3, 4}},
         {"alley-fence", new []{5}},
         {"alley-pingpong", new []{6}},
+        {"alley-ramps", new[]{12}},
         {"park-entrance", new[]{7}},
         {"park-exit", new[]{8}},
         {"park", new[]{9}},
