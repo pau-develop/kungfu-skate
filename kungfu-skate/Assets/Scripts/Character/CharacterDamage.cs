@@ -32,6 +32,7 @@ public class CharacterDamage : MonoBehaviour
         Destroy(GetComponent<CharacterCollider>());
         Destroy(GetComponent<BoxCollider2D>());
         trackingState = false;
+        GetComponent<SpriteShadow>().shouldDestroyShadow = true;
         if(!GetComponent<CharacterData>().isPlayer){
             GlobalData.playerOneScore += 200;
             GameObject.Find("screen-info").GetComponent<UIScore>().InstantiateFloatingPoints(200, transform.position);
