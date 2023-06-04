@@ -9,7 +9,7 @@ public class CharacterRaycasting : MonoBehaviour
     private int[] allRays;
     private int[] allBotPositions;
     private int spaceBetweenRays = 4;
-    private int rayLength = 20;
+    private int rayLength = 180;
     private int screenBottom = -90;
     public bool leftCrash = false;
     // Start is called before the first frame update
