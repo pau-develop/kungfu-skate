@@ -70,7 +70,7 @@ public class CharacterRaycasting : MonoBehaviour
     private float doTheRayCasting(int rayOrigin){
         Vector2 rayPos = new Vector2(transform.position.x + rayOrigin, transform.position.y + 5);
         RaycastHit2D hit = Physics2D.Raycast(rayPos, Vector2.down, rayLength);
-        Debug.DrawRay(rayPos, Vector2.down * rayLength, Color.green);
+        // Debug.DrawRay(rayPos, Vector2.down * rayLength, Color.green);
         if(hit.collider != null){
             if(hit.collider.gameObject.tag == "Obstacle"
             || hit.collider.gameObject.tag == "Grindable")
@@ -88,7 +88,7 @@ public class CharacterRaycasting : MonoBehaviour
     public int castRayInvertedRamp(){
         Vector2 rayPos = new Vector2(transform.position.x + allRays[allRays.Length-1], transform.position.y + 5);
         RaycastHit2D hit = Physics2D.Raycast(rayPos, Vector2.down, rayLength);
-        Debug.DrawRay(rayPos, Vector2.down * rayLength, Color.blue);
+        // Debug.DrawRay(rayPos, Vector2.down * rayLength, Color.blue);
         if(hit.collider.gameObject.tag == "RampDownwards") return checkCharPosComparedToRamp(hit);
         else return 5;
     }
