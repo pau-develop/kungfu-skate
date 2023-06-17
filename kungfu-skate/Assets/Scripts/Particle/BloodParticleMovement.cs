@@ -17,6 +17,7 @@ public class BloodParticleMovement : MonoBehaviour
     public bool isFliped = false;
     private bool hasFallen = false;
     private int botPosition;
+    private float backgroundSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class BloodParticleMovement : MonoBehaviour
         initialDestPos = getInitialDestPos();
         height = initialOriginPos +(initialDestPos - initialOriginPos)/2 + Vector2.up *Random.Range(1.0f,40.0f);
         botPosition = getBottomPosition();
+        
     }
 
     private int getBottomPosition(){
@@ -63,6 +65,13 @@ public class BloodParticleMovement : MonoBehaviour
     {
         if(!reachedInitialDestPos) particleInitialMovement();
         if(reachedInitialDestPos && !hasFallen) particleFallMovement();
+        if(hasFallen) moveAlongGround();
+    }
+
+    private void moveAlongGround(){
+        backgroundSpeed = GameObject.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed;
+        bloodPos.x -= backgroundSpeed * Time.deltaTime;
+        transform.position = bloodPos;
     }
 
     private void particleFallMovement(){
