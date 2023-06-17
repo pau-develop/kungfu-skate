@@ -18,6 +18,7 @@ public class BloodParticleMovement : MonoBehaviour
     private bool hasFallen = false;
     private int botPosition;
     private float backgroundSpeed;
+    private int xLimit = -170;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +67,11 @@ public class BloodParticleMovement : MonoBehaviour
         if(!reachedInitialDestPos) particleInitialMovement();
         if(reachedInitialDestPos && !hasFallen) particleFallMovement();
         if(hasFallen) moveAlongGround();
+        destroyParticle();
+    }
+
+    private void destroyParticle(){
+        if(transform.position.x < xLimit) Destroy(this.gameObject);
     }
 
     private void moveAlongGround(){
