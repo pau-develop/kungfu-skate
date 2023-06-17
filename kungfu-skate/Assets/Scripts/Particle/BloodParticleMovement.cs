@@ -25,6 +25,7 @@ public class BloodParticleMovement : MonoBehaviour
         bloodRenderer = GetComponent<SpriteRenderer>();
 		fallSpeed = Random.Range(10,40) * 10;
 		dropSize = Random.Range(1.0f,2.0f);
+        transform.localScale = new Vector3(dropSize, dropSize, 0);
         setColor();
         initialOriginPos = transform.position;
         initialDestPos = getInitialDestPos();

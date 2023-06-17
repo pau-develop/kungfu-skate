@@ -8,7 +8,7 @@ public class CharacterBloodParticles : MonoBehaviour
     // Start is called before the first frame update
     public void spawnBloodParticles(){
         Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y + 20);
-        int bloodDensity = Random.Range(100,200);
+        int bloodDensity = Random.Range(50,100);
         GameObject tempParticle;
         for(int i = 0; i < bloodDensity; i++){
             tempParticle = Instantiate(bloodParticle, spawnPosition, Quaternion.identity);

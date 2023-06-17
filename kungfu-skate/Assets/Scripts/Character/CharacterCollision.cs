@@ -68,6 +68,7 @@ public class CharacterCollision : MonoBehaviour
     void dealWithCollision(int damage){
         audioFx.playSound(charData.hitProjectile);
         GetComponent<CharacterData>().hitPoints-= damage;
+        GetComponent<CharacterBloodParticles>().spawnBloodParticles();
         for(int i = 0; i < transform.childCount; i++)
             transform.GetChild(i).GetComponent<SwapSprites>().isBlinking = true;
     }
