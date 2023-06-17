@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1846975099017365512}
   - component: {fileID: 2910500140261257925}
   - component: {fileID: 6695948520424188941}
+  - component: {fileID: 4991240042217854352}
   m_Layer: 0
   m_Name: blood-particle
   m_TagString: Untagged
@@ -98,3 +99,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftLayer: 1
+--- !u!114 &4991240042217854352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7740503424405670534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8971bcdaa20b6541ac8d64ed609fbda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
