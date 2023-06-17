@@ -9,7 +9,8 @@ public class SpriteShadow : MonoBehaviour
     private Vector2 shadowScale;
     public bool shouldDestroyShadow = false;
     private int[] raysPosition = new int[]{10, -10};
-    private int[] botPositions = new int[2];
+    private float[] botPositions = new float[2];
+    private bool[] isRamped = new bool[2]{false, false};
     private Transform[] shadows = new Transform[2];
     private SpriteMask[] masks = new SpriteMask[2];
     private Vector2[] shadowScales = new Vector2[]{
@@ -42,24 +43,58 @@ public class SpriteShadow : MonoBehaviour
         Debug.DrawRay(rayPos, Vector2.down * rayLength, Color.green);
         RaycastHit2D hit = Physics2D.Raycast(rayPos, Vector2.down, rayLength);
         if(hit.collider != null)
-            if(hit.collider.tag == "Obstacle"||hit.collider.tag == "Grindable")
-                if(hit.transform.Find("shadow-mask") != null) {
-                    masks[index] = hit.transform.Find("shadow-mask").GetComponent<SpriteMask>();
-                    getBottomPosition(index, hit.collider);
+            if(hit.transform.Find("shadow-mask") != null)
+                if(hit.collider.tag == "Obstacle"||hit.collider.tag == "Grindable") {
+                    if(hit.transform.Find("shadow-mask").GetComponent<SpriteMask>() != masks[index]){
+                        masks[index] = hit.transform.Find("shadow-mask").GetComponent<SpriteMask>();
+                        getBottomPosition(index, hit.collider);
+                    }
+                }
+                if(hit.collider.tag == "RampUpwards"){
+                    if(hit.transform.Find("shadow-mask").GetComponent<SpriteMask>() != masks[index]){
+                        masks[index] = hit.transform.Find("shadow-mask").GetComponent<SpriteMask>();
+                        getRampBottomPosition(index, hit.collider);
+                    }
                 } 
+    }
+
+    private void getRampBottomPosition(int index, Collider2D collider){
+        if(index == 0) botPositions[index] = (int)collider.transform.position.y + 10;
+        else botPositions[index] = (int)collider.transform.position.y + 20;
+        shadows[index].transform.localEulerAngles = new Vector3(0, 0, 25);
+        shadows[index].GetComponent<SpriteRenderer>().sortingOrder = masks[index].frontSortingOrder;
+        isRamped[index] = true;
     }
 
     private void getBottomPosition(int index, Collider2D collider){
         float screenBottom = -90;
         BoxCollider2D boxCollider = collider.GetComponent<BoxCollider2D>();
+        shadows[index].transform.localEulerAngles = new Vector3(0, 0, 0);
         botPositions[index] = (int)(screenBottom + boxCollider.size.y + 3);
         shadows[index].GetComponent<SpriteRenderer>().sortingOrder = masks[index].frontSortingOrder;
+        isRamped[index] = false;
     }
 
     
 
     private void updateShadowPosition(int index){
-        shadows[index].position = new Vector2(transform.position.x, botPositions[index]);
+        if(isRamped[index] == false)
+            shadows[index].position = new Vector2(transform.position.x, botPositions[index]);
+        if(isRamped[index] == true){
+            float backgroundSpeed = GameObject.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed;
+            if(!GetComponent<CharacterMovement>().rampedUp){
+                if(GetComponent<CharacterMovement>().movingLeft) 
+                    botPositions[index] = botPositions[index] += backgroundSpeed/11 * Time.deltaTime;
+                else if(GetComponent<CharacterMovement>().movingRight)
+                    botPositions[index] = botPositions[index] += backgroundSpeed/1.2f * Time.deltaTime;
+                else {
+                    botPositions[index] = botPositions[index] += backgroundSpeed/2 * Time.deltaTime;
+                }
+            } else {
+                botPositions[index] = GetComponent<CharacterMovement>().playerPos.y + 5;
+            }
+            shadows[index].position = new Vector2(transform.position.x, botPositions[index]);
+        }
     }
 
     public void destroyShadow(int index){
