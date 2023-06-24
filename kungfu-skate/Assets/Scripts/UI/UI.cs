@@ -24,6 +24,8 @@ public class UI : MonoBehaviour
         controlUI();   
     }
 
+    
+
     private void controlUI(){
         getInput();
         displayDebugger();
