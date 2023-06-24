@@ -33,6 +33,9 @@ private CharacterMovement playerMovement;
         playerMovement.isShooting = false;
         return;
     }
+    if(Input.GetKeyUp(KeyCode.E)){
+        GetComponent<CharacterBloodParticles>().spawnBloodParticles();
+    }
     playerMovement.isSwinging = false;
     playerMovement.isShooting = false;
    }
