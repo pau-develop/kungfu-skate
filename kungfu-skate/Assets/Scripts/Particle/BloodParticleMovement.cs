@@ -19,6 +19,8 @@ public class BloodParticleMovement : MonoBehaviour
     private int botPosition;
     private float backgroundSpeed;
     private int xLimit = -170;
+    private float rayTimer = 0;
+    private float rayTimerLimit = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,16 +40,17 @@ public class BloodParticleMovement : MonoBehaviour
         //PENDING
         int rayLength = 180;
         Vector2 rayPos = transform.position;
-        Debug.DrawRay(rayPos, Vector2.down * rayLength, Color.green);
         RaycastHit2D hit = Physics2D.Raycast(rayPos, Vector2.down, rayLength);
-        if(hit.collider != null && hit.collider.tag == "Obstacle"){
-            float screenBottom = -90;
-            BoxCollider2D boxCollider = hit.collider.GetComponent<BoxCollider2D>();
-            int originalBottomPosition = (int)(screenBottom + boxCollider.size.y + 3);
-            int threshold = 10;
-            return Random.Range(originalBottomPosition + threshold, originalBottomPosition - threshold);
-        }
-        return -180;
+        if(hit.collider != null)
+            if(hit.collider.tag == "Obstacle"||hit.collider.tag == "Grindable"){
+                float screenBottom = -90;
+                BoxCollider2D boxCollider = hit.collider.GetComponent<BoxCollider2D>();
+                int originalBottomPosition = (int)(screenBottom + boxCollider.size.y + 3);
+                int threshold = 10;
+                bloodRenderer.sortingOrder = hit.transform.Find("shadow-mask").GetComponent<SpriteMask>().frontSortingOrder;
+                return Random.Range(originalBottomPosition + threshold, originalBottomPosition - threshold);
+            } else return -180;
+        else return -180;
     }
 
     private void setColor(){
@@ -66,9 +69,20 @@ public class BloodParticleMovement : MonoBehaviour
     void Update()
     {
         if(!reachedInitialDestPos) particleInitialMovement();
-        if(reachedInitialDestPos && !hasFallen) particleFallMovement();
+        if(reachedInitialDestPos && !hasFallen) {
+            particleFallMovement();
+            castRays();
+        }
         if(hasFallen) moveAlongGround();
         destroyParticle();
+    }
+
+    private void castRays(){
+        rayTimer += Time.deltaTime;
+        if(rayTimer > rayTimerLimit){
+            botPosition = getBottomPosition();
+            rayTimer = 0;
+        }
     }
 
     private void destroyParticle(){
@@ -87,7 +101,12 @@ public class BloodParticleMovement : MonoBehaviour
 			bloodPos.y -= fallSpeed * Time.deltaTime;
 			bloodPos.x -= fallSpeed/10* Time.deltaTime;
 			transform.position = bloodPos;
-		} else hasFallen = true;
+		} else {
+            bloodRenderer.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+            bloodRenderer.sortingLayerName = "RightLayer";
+            Destroy(GetComponent<SpriteLayer>());
+            hasFallen = true;
+        }
     }
 
     private void particleInitialMovement(){
