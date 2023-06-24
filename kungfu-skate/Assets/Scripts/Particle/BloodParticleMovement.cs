@@ -49,8 +49,29 @@ public class BloodParticleMovement : MonoBehaviour
                 int threshold = 10;
                 bloodRenderer.sortingOrder = hit.transform.Find("shadow-mask").GetComponent<SpriteMask>().frontSortingOrder;
                 return Random.Range(originalBottomPosition + threshold, originalBottomPosition - threshold);
-            } else return -180;
+            } else if(hit.collider.tag == "RampUpwards"){
+                float screenBottom = -90;
+                PolygonCollider2D polyCollider = hit.collider.GetComponent<PolygonCollider2D>();
+                //get lowest and highest point
+                int[] points = getLowestAndHighestPoint(polyCollider);
+                int midPoint = Mathf.Abs(points[0] - points[1]);
+                int originalBottomPosition = (int)(screenBottom + midPoint + 3);
+                int threshold = 10;
+                bloodRenderer.sortingOrder = hit.transform.Find("shadow-mask").GetComponent<SpriteMask>().frontSortingOrder;
+                return Random.Range(originalBottomPosition + threshold, originalBottomPosition - threshold);
+            }
+            else return -180;
         else return -180;
+    }
+
+    private int[] getLowestAndHighestPoint(PolygonCollider2D polyCollider){
+        float lowestPoint = 0;
+        float highestPoint = 0;
+        for(int i = 0; i < polyCollider.points.Length; i++){
+            if(polyCollider.points[i].y < lowestPoint) lowestPoint = polyCollider.points[i].y;
+            if(polyCollider.points[i].y > highestPoint) highestPoint = polyCollider.points[i].y;
+        }
+        return new int[]{(int)lowestPoint, (int)highestPoint};
     }
 
     private void setColor(float value){
