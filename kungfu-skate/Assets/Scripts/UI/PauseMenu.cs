@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class PauseMenu : MonoBehaviour
         uiText = transform.root.GetComponent<UIText>(); 
         menuOptions = new GameObject[this.transform.childCount];
         for(int i = 0; i < menuOptions.Length; i++) menuOptions[i] = transform.GetChild(i).gameObject;
+        if(SceneManager.GetActiveScene().name == "MAIN") menuOptions[0].GetComponent<TextMeshProUGUI>().text = "Back";
+        else menuOptions[0].GetComponent<TextMeshProUGUI>().text = "Resume";
         updateVolume(menuOptions[2], GlobalData.musicVolume, "audio-music");
         updateVolume(menuOptions[3], GlobalData.fxVolume, "audio-fx");
         updateDisplay(GlobalData.fullScreen);
@@ -75,7 +78,14 @@ public class PauseMenu : MonoBehaviour
             else currentMenuIndex++;
         }
         if(Input.GetKeyUp(KeyCode.M)){
-            if(currentMenuIndex == 0) GlobalData.gamePaused = false;
+            if(currentMenuIndex == 0){
+                if(SceneManager.GetActiveScene().name == "MAIN")
+                    this.transform.parent.GetComponent<UIMainMenu>().isMainMenu = true;
+                else GlobalData.gamePaused = false;
+            }
+            if(currentMenuIndex == 4){
+                SceneManager.LoadScene(0);
+            }
         }
         if(Input.GetKeyUp(KeyCode.A)){
             if(currentMenuIndex == 1){
