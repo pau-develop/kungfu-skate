@@ -28,7 +28,7 @@ public class BloodParticleMovement : MonoBehaviour
 		fallSpeed = Random.Range(10,40) * 10;
 		dropSize = Random.Range(1.0f,2.0f);
         transform.localScale = new Vector3(dropSize, dropSize, 0);
-        setColor();
+        setColor(Random.Range(0.5f,1f));
         initialOriginPos = transform.position;
         initialDestPos = getInitialDestPos();
         height = initialOriginPos +(initialDestPos - initialOriginPos)/2 + Vector2.up *Random.Range(1.0f,40.0f);
@@ -53,8 +53,8 @@ public class BloodParticleMovement : MonoBehaviour
         else return -180;
     }
 
-    private void setColor(){
-        Color32 bloodColor = new Color(Random.Range(0.5f,1f),0,0);
+    private void setColor(float value){
+        Color32 bloodColor = new Color(value,0,0);
 		bloodRenderer.color = bloodColor;
     }
 
@@ -106,6 +106,8 @@ public class BloodParticleMovement : MonoBehaviour
             bloodRenderer.sortingLayerName = "RightLayer";
             Destroy(GetComponent<SpriteLayer>());
             hasFallen = true;
+            setColor(0.75f);
+            bloodPos = new Vector2((int)bloodPos.x, (int)bloodPos.y);
         }
     }
 
