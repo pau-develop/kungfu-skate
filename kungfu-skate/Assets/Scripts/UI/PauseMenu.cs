@@ -80,7 +80,7 @@ public class PauseMenu : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.M)){
             if(currentMenuIndex == 0){
                 if(SceneManager.GetActiveScene().name == "MAIN")
-                    this.transform.parent.GetComponent<UIMainMenu>().isMainMenu = true;
+                    this.transform.parent.GetComponent<UIMainMenu>().currentMenu = 1;
                 else GlobalData.gamePaused = false;
             }
             if(currentMenuIndex == 4){
