@@ -5,6 +5,8 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class UIMainMenu : MonoBehaviour
 {
+    private RectTransform[] menuDots = new RectTransform[2];
+    private int[] dotsVerticalPos;
     private GameObject[] menuOptions;
     private GameObject[] optionsMenuOptions;
     private GameObject startMenu;
@@ -25,6 +27,18 @@ public class UIMainMenu : MonoBehaviour
         for(int i = 0; i < optionsMenuOptions.Length; i++) 
             optionsMenuOptions[i] = this.transform.Find("options").transform.GetChild(i).gameObject;
         this.transform.Find("options").gameObject.SetActive(false);
+        generateDots();
+    }
+
+    private void generateDots(){
+        for(int i = 0; i < menuDots.Length; i++){ 
+            menuDots[i] = this.gameObject.transform.Find("menu-dot" + i.ToString()).GetComponent<RectTransform>();
+            menuDots[i].gameObject.SetActive(true);
+        } 
+        dotsVerticalPos = new int[menuOptions.Length];
+        for(int i = 0; i < dotsVerticalPos.Length; i++){
+            dotsVerticalPos[i] = (int) menuOptions[i].GetComponent<RectTransform>().position.y;
+        }
     }
 
     void OnEnable(){
@@ -38,14 +52,19 @@ public class UIMainMenu : MonoBehaviour
     {
         getInput();
         if(currentMenu == 0){
+            this.transform.Find("menu-dot0").gameObject.SetActive(false);
+            this.transform.Find("menu-dot1").gameObject.SetActive(false);
             this.transform.Find("press-start").gameObject.SetActive(true);
             this.transform.Find("options").gameObject.SetActive(false);
             this.transform.Find("menu-options").gameObject.SetActive(false);
         }
         else if(currentMenu == 1)  {
+            this.transform.Find("menu-dot0").gameObject.SetActive(true);
+            this.transform.Find("menu-dot1").gameObject.SetActive(true);
             this.transform.Find("press-start").gameObject.SetActive(false);
             this.transform.Find("options").gameObject.SetActive(false);
             this.transform.Find("menu-options").gameObject.SetActive(true);
+            changeDotPosition();
         }
         else{
             this.transform.Find("press-start").gameObject.SetActive(false);
@@ -59,6 +78,15 @@ public class UIMainMenu : MonoBehaviour
         }   
     }
 
+    private void changeDotPosition(){
+        int dotXPos = 24;
+        int direction;
+        for(int i = 0; i < menuDots.Length; i++){
+            if(i == 0) direction = -1;
+            else direction = 1;
+            menuDots[i].localPosition = new Vector2(dotXPos * direction, dotsVerticalPos[currentMenuIndex] + 1); 
+        }
+    }
     private void getInput(){
         if(Input.GetKeyUp(KeyCode.Escape)){
             stopTextBlinkEffect();
