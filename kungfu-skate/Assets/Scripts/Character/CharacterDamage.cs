@@ -36,12 +36,14 @@ public class CharacterDamage : MonoBehaviour
         if(!GetComponent<CharacterData>().isPlayer){
             GlobalData.playerOneScore += 200;
             GameObject.Find("screen-info").GetComponent<UIScore>().InstantiateFloatingPoints(200, transform.position);
-        }
+        } 
     }
 
     void killPlayer(){
         audioFX.playRandomSound(GetComponent<CharacterData>().die);
         GetComponent<CharacterMovement>().isAlive = false;
         GlobalData.playerOneScore += 50;
+        if(GetComponent<CharacterData>().isPlayer) 
+            GetComponent<PlayerTries>().substactTry();
     }
 }

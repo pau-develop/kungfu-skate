@@ -67,7 +67,10 @@ public class CharacterMovement : MonoBehaviour
         } else {
             if(playerLegs != null) Destroy(playerLegs);
             if(playerArms != null) Destroy(playerArms);
-            if(hasCrashed) moveCrashedPlayer();
+            if(hasCrashed) {
+                moveCrashedPlayer();
+                
+                }
             else moveDeadPlayer();
         }
     }
@@ -109,6 +112,7 @@ public class CharacterMovement : MonoBehaviour
                 audioFx.playSound(charData.hitObstacle);
                 hasCrashed = true;
                 isAlive = false;
+                GetComponent<PlayerTries>().substactTry();
                 if(!leftCrash) crashSpeed =  GameObject.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed * 2;
                 else crashSpeed =  GameObject.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed * -2;
             } 

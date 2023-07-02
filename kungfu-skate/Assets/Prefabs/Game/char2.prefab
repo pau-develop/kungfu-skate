@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 1899813800602062158}
   - component: {fileID: -501281740786072957}
   - component: {fileID: 6099059100182424695}
+  - component: {fileID: -3000714013943222467}
   m_Layer: 2
   m_Name: char2
   m_TagString: Player
@@ -317,6 +318,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bloodParticle: {fileID: 7740503424405670534, guid: ace1225b599f62843ab53f820adb9843,
     type: 3}
+--- !u!114 &-3000714013943222467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5735718581304542387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1822a79be781c0e45b9beb7bcb1706a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5735718581937076068
 GameObject:
   m_ObjectHideFlags: 0
