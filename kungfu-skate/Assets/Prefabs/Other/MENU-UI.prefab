@@ -2247,6 +2247,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b5ee78e8ec6c9a4bbd5bc6d25e3504c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dotSprites:
+  - {fileID: 21300000, guid: 821ff4670d0b5a34da4416012c83862b, type: 3}
+  - {fileID: 21300000, guid: 2e2d06e582e060d4f9b4db27bc845273, type: 3}
   testSound: {fileID: 8300000, guid: d6e67fd6122128d49b5f470a12b6853b, type: 3}
 --- !u!1 &7340924330581490767
 GameObject:

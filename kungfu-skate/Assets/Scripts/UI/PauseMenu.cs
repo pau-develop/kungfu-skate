@@ -76,6 +76,7 @@ public class PauseMenu : MonoBehaviour
     private void textBlinkEffect(){
         TextMeshProUGUI text = menuOptions[currentMenuIndex].GetComponent<TextMeshProUGUI>();
         uiText.textBlinkEffect(text);
+        uiText.dotBlinkEffect(menuDots);
         if(menuOptions[currentMenuIndex].transform.childCount > 0){
             text = menuOptions[currentMenuIndex].transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             uiText.textBlinkEffect(text);
@@ -85,6 +86,7 @@ public class PauseMenu : MonoBehaviour
     private void stopTextBlinkEffect(){
         TextMeshProUGUI text = menuOptions[currentMenuIndex].GetComponent<TextMeshProUGUI>();
         uiText.stopTextBlinkEffect(text);
+        uiText.stopDotBlinkEffect(menuDots);
         if(menuOptions[currentMenuIndex].transform.childCount > 0){
             text = menuOptions[currentMenuIndex].transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             uiText.stopTextBlinkEffect(text);
