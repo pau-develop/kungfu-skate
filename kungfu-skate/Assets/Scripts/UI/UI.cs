@@ -14,8 +14,7 @@ public class UI : MonoBehaviour
 
         options = transform.Find("options").gameObject;
         options.SetActive(false);
-        debugger = transform.Find("debugger").gameObject;
-        
+        debugger = transform.Find("debugger").gameObject;        
     }
 
     // Update is called once per frame

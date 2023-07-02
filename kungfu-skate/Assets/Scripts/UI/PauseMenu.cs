@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
-{
+{   
+    private RectTransform[] menuDots = new RectTransform[2];
+    private int[] dotsVerticalPos;
     [SerializeField]private AudioClip testSound;
     private GameObject[] menuOptions;
     private int currentMenuIndex = 0;
@@ -14,6 +17,7 @@ public class PauseMenu : MonoBehaviour
     private float blinkTimer = 0;
     private bool flashingColor = false;
     private UIText uiText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,13 +29,29 @@ public class PauseMenu : MonoBehaviour
         updateVolume(menuOptions[2], GlobalData.musicVolume, "audio-music");
         updateVolume(menuOptions[3], GlobalData.fxVolume, "audio-fx");
         updateDisplay(GlobalData.fullScreen);
+        generateDots();
+    }
+
+    private void generateDots(){
+        for(int i = 0; i < menuDots.Length; i++){ 
+            menuDots[i] = this.gameObject.transform.parent.Find("menu-dot" + i.ToString()).GetComponent<RectTransform>();
+            menuDots[i].gameObject.SetActive(true);
+        } 
+        dotsVerticalPos = new int[menuOptions.Length];
+        for(int i = 0; i < dotsVerticalPos.Length; i++){
+            dotsVerticalPos[i] = (int) menuOptions[i].GetComponent<RectTransform>().position.y;
+        }
     }
 
     void OnEnable(){
+        if(menuDots[0] !=null)
+            for(int i = 0; i < menuDots.Length; i++) 
+                menuDots[i].gameObject.SetActive(true);
         currentMenuIndex = 0;
     }
 
     void OnDisable(){
+        for(int i = 0; i < menuDots.Length; i++) menuDots[i].gameObject.SetActive(false);
         stopTextBlinkEffect();
     }
 
@@ -40,11 +60,23 @@ public class PauseMenu : MonoBehaviour
     { 
         textBlinkEffect();
         checkForInput();    
+        changeDotPosition();
+    }
+
+    private void changeDotPosition(){
+        int dotXPos = 42;
+        int direction;
+        for(int i = 0; i < menuDots.Length; i++){
+            if(i == 0) direction = -1;
+            else direction = 1;
+            menuDots[i].localPosition = new Vector2(dotXPos * direction, dotsVerticalPos[currentMenuIndex] + 1); 
+        }
     }
 
     private void textBlinkEffect(){
         TextMeshProUGUI text = menuOptions[currentMenuIndex].GetComponent<TextMeshProUGUI>();
         uiText.textBlinkEffect(text);
+        uiText.dotBlinkEffect(menuDots);
         if(menuOptions[currentMenuIndex].transform.childCount > 0){
             text = menuOptions[currentMenuIndex].transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             uiText.textBlinkEffect(text);
@@ -54,11 +86,14 @@ public class PauseMenu : MonoBehaviour
     private void stopTextBlinkEffect(){
         TextMeshProUGUI text = menuOptions[currentMenuIndex].GetComponent<TextMeshProUGUI>();
         uiText.stopTextBlinkEffect(text);
+        uiText.stopDotBlinkEffect(menuDots);
         if(menuOptions[currentMenuIndex].transform.childCount > 0){
             text = menuOptions[currentMenuIndex].transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             uiText.stopTextBlinkEffect(text);
         }
     }
+
+
 
     private void updateVolume(GameObject menu, float volume, string source){
         menu.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = volume.ToString();
@@ -80,7 +115,7 @@ public class PauseMenu : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.M)){
             if(currentMenuIndex == 0){
                 if(SceneManager.GetActiveScene().name == "MAIN")
-                    this.transform.parent.GetComponent<UIMainMenu>().isMainMenu = true;
+                    this.transform.parent.GetComponent<UIMainMenu>().currentMenu = 1;
                 else GlobalData.gamePaused = false;
             }
             if(currentMenuIndex == 4){
