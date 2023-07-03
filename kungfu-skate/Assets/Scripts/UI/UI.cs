@@ -8,12 +8,15 @@ public class UI : MonoBehaviour
     private GameObject debugger;
     private bool displayingDebugger = true;    
     private GameObject options;
+    private GameObject continueScreen;
     // Start is called before the first frame update
     void Start()
     {
 
         options = transform.Find("options").gameObject;
+        continueScreen = transform.Find("continue-screen").gameObject;
         options.SetActive(false);
+        continueScreen.SetActive(false);
         debugger = transform.Find("debugger").gameObject;        
     }
 
@@ -29,10 +32,18 @@ public class UI : MonoBehaviour
         getInput();
         displayDebugger();
         displayPauseMenu();
+        displayContinueMenu();
     }
 
-    private void updateScore(){
-
+    private void displayContinueMenu(){
+        if(GlobalData.inContinueScreen) {
+            Time.timeScale = 0;
+            continueScreen.SetActive(true);
+        }
+        else {
+            Time.timeScale = 1;
+            continueScreen.SetActive(false);
+        }
     }
 
     private void displayPauseMenu(){

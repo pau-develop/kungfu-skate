@@ -11,4 +11,5 @@ public class GlobalData : MonoBehaviour
     public static int playerOneScore = 0;
     public static int playerOneTries = 3;
     public static int playerOneCharacter = 0;
+    public static bool inContinueScreen = false;
 }
