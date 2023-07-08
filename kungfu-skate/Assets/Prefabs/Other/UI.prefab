@@ -167,7 +167,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 1
+  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1979727222
 MonoBehaviour:
@@ -189,13 +189,25 @@ MonoBehaviour:
   - serializedVersion: 2
     rgba: 4294281319
   - serializedVersion: 2
-    rgba: 4294930539
+    rgba: 4293029965
   - serializedVersion: 2
     rgba: 4291645224
   - serializedVersion: 2
     rgba: 4289411350
   - serializedVersion: 2
     rgba: 4288359177
+  - serializedVersion: 2
+    rgba: 4290986522
+  - serializedVersion: 2
+    rgba: 4293024815
+  - serializedVersion: 2
+    rgba: 4294017626
+  - serializedVersion: 2
+    rgba: 4294680184
+  - serializedVersion: 2
+    rgba: 4294952878
+  - serializedVersion: 2
+    rgba: 4294959314
 --- !u!1 &1729936323
 GameObject:
   m_ObjectHideFlags: 0

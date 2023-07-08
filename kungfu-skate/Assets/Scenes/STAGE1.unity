@@ -776,9 +776,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1979727222, guid: 3435ed6ed785e4b43bcc0e009f47ce38, type: 3}
-      propertyPath: colorsInSprite.Array.data[3].rgba
-      value: 4293029965
+    - target: {fileID: 1501529381, guid: 3435ed6ed785e4b43bcc0e009f47ce38, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1002971046759701483, guid: 3435ed6ed785e4b43bcc0e009f47ce38,
         type: 3}

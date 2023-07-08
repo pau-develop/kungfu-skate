@@ -8,15 +8,20 @@ public class SpriteColorSwitcher : MonoBehaviour
     private List<int[]> colorIndexesList = new List<int[]>();
     private Texture2D spriteTexture;
     private Color32[] colorArray;
+    private SpriteRenderer spriteRenderer;
     private int totalNumberOfColors;
     private Sprite[] newSprites;
     private Vector2 spriteSize;
+    private float colorTimerLimit = 0.1f;
+    private float colorTimer;
+    private int currentCycle;
     // Start is called before the first frame update
     void Start()
     {
-        spriteTexture = GetComponent<SpriteRenderer>().sprite.texture;
-        spriteSize.x = GetComponent<SpriteRenderer>().sprite.rect.width;
-        spriteSize.y = GetComponent<SpriteRenderer>().sprite.rect.height;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteTexture = spriteRenderer.sprite.texture;
+        spriteSize.x = spriteRenderer.sprite.rect.width;
+        spriteSize.y = spriteRenderer.sprite.rect.height;
         colorArray = spriteTexture.GetPixels32();
         foreach(Color32 color in colorsInSprite) getColorIndexes(color);
         newSprites = new Sprite[colorsInSprite.Length];
@@ -55,7 +60,7 @@ public class SpriteColorSwitcher : MonoBehaviour
             for(int x = 0; x < colorIndexesList[i].Length; x++){
                 tempColorArray[colorIndexesList[i][x]] = colorsInSprite[currentColor];
             }
-            if(currentColor < 6) currentColor += 1;
+            if(currentColor < colorsInSprite.Length -1) currentColor += 1;
             else currentColor = 0;
         }
         Texture2D tempTexture = new Texture2D(spriteTexture.width, spriteTexture.height, TextureFormat.RGBA32, true);
@@ -63,11 +68,6 @@ public class SpriteColorSwitcher : MonoBehaviour
         tempTexture.filterMode = FilterMode.Point;
         tempTexture.Apply();
         newSprites[originalCurrentColor] = Sprite.Create(tempTexture, new Rect(0,0,spriteSize.x,spriteSize.y),new Vector2(0.5f,0.5f),1);
-        GameObject tempObject = new GameObject();
-        tempObject.transform.parent = this.transform;
-        tempObject.AddComponent<SpriteRenderer>();
-        Debug.Log(originalCurrentColor);
-        tempObject.GetComponent<SpriteRenderer>().sprite = newSprites[originalCurrentColor]; 
     }
 
     
@@ -75,8 +75,16 @@ public class SpriteColorSwitcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        colorCycling();
     }
 
-    
+    private void colorCycling(){
+        colorTimer += Time.unscaledDeltaTime;
+        if(colorTimer >= colorTimerLimit){
+            spriteRenderer.sprite = newSprites[currentCycle];
+            if(currentCycle < colorsInSprite.Length -1) currentCycle++;
+            else currentCycle = 0;
+            colorTimer = 0;
+        }
+    }  
 }
