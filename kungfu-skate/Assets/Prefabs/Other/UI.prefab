@@ -167,7 +167,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!114 &1979727222
 MonoBehaviour:
@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf20a667592cdba4da5f3191112b63c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  continueMusic: {fileID: 8300000, guid: c6600abc543bb7d409cae43a6c71c1cb, type: 3}
   numbersShadows:
   - {fileID: 21300000, guid: 7a65893320796db42b0e9fef41738881, type: 3}
   - {fileID: 21300000, guid: decf6d3dec91bfb40809c9de1b404081, type: 3}

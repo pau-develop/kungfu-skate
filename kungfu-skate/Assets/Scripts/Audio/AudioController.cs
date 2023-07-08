@@ -12,8 +12,6 @@ public class AudioController : MonoBehaviour
     {
         fxSource = transform.Find("audio-fx").GetComponent<AudioSource>();
         musicSource = transform.Find("audio-music").GetComponent<AudioSource>();
-        Debug.Log(fxSource);
-        Debug.Log(musicSource);
     }
 
     // Update is called once per frame
@@ -27,7 +25,7 @@ public class AudioController : MonoBehaviour
     }
 
     public void playMusic(AudioClip currentClip){
-        Debug.Log(musicSource);
+        Debug.Log(currentClip);
         musicSource.clip = currentClip;
         musicSource.loop = true;
         musicSource.Play();

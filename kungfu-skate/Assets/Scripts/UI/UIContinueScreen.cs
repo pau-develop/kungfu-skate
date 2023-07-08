@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIContinueScreen : MonoBehaviour
 {
     public AudioClip continueMusic;
+    private AudioClip stageMusic;
     private AudioController audioController;
     private AudioSource audioMusic;
     [SerializeField] private Sprite[] numbersShadows;
@@ -18,6 +19,7 @@ public class UIContinueScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start(){
         audioController = GameObject.Find("audio").GetComponent<AudioController>();
+        stageMusic = GameObject.Find("Stage").GetComponent<BackgroundEvents>().stageMusic;
     }
 
     void OnEnable(){
@@ -25,10 +27,8 @@ public class UIContinueScreen : MonoBehaviour
         scalingUp = true;
         numberScale = new Vector2(0, 1);
         generateNumber(currentNumber);
-    }
-
-    void onDisable(){
-        Destroy(currentNumberObject);
+        audioController.playMusic(continueMusic);
+        
     }
 
     
@@ -42,6 +42,7 @@ public class UIContinueScreen : MonoBehaviour
 
     private void dealWithContinue(){
         Destroy(currentNumberObject);
+        audioController.playMusic(stageMusic);
         GlobalData.inContinueScreen = false;
     }
 
