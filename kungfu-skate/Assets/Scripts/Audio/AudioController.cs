@@ -25,7 +25,6 @@ public class AudioController : MonoBehaviour
     }
 
     public void playMusic(AudioClip currentClip){
-        Debug.Log(currentClip);
         musicSource.clip = currentClip;
         musicSource.loop = true;
         musicSource.Play();
