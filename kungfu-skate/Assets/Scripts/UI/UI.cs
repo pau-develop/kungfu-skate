@@ -41,8 +41,10 @@ public class UI : MonoBehaviour
             continueScreen.SetActive(true);
         }
         else {
-            Time.timeScale = 1;
-            continueScreen.SetActive(false);
+            if(!GlobalData.gamePaused){
+                Time.timeScale = 1;
+                continueScreen.SetActive(false);
+            }
         }
     }
 
@@ -58,7 +60,8 @@ public class UI : MonoBehaviour
     }
 
     private void getInput(){
-        if(Input.GetKeyUp(KeyCode.Escape)) GlobalData.gamePaused = !GlobalData.gamePaused;
+        if(Input.GetKeyUp(KeyCode.Escape) && !GlobalData.inContinueScreen) 
+            GlobalData.gamePaused = !GlobalData.gamePaused;
     }
     
 
