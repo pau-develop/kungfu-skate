@@ -33,11 +33,11 @@ public class UIText : MonoBehaviour
             dotBlinkTimer = 0;
         }
         if(!isFlashing) {
-            menuDots[0].GetComponent<Image>().sprite = dotSprites[1];
-            menuDots[1].GetComponent<Image>().sprite = dotSprites[1];
-        } else {
             menuDots[0].GetComponent<Image>().sprite = dotSprites[0];
             menuDots[1].GetComponent<Image>().sprite = dotSprites[0];
+        } else {
+            menuDots[0].GetComponent<Image>().sprite = dotSprites[1];
+            menuDots[1].GetComponent<Image>().sprite = dotSprites[1];
         }
     }
 
