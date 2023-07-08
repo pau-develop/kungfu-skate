@@ -25,9 +25,11 @@ public class BackgroundEvents : MonoBehaviour
     private int currentSpeedEventIndex = 0;
     private bool shouldAccelerate =  false;
     private bool allLoaded = false;
+    private AudioController audio;
     // Start is called before the first frame update
     void Start()
     {
+        audio = GameObject.Find("audio").GetComponent<AudioController>();
         debugger = GameObject.Find("debugger").GetComponent<Debugger>();
         groundLayerScrollSpeed = transform.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed;
         backgroundLayerScrollSpeed = getLayersScrollSpeed();
@@ -66,9 +68,7 @@ public class BackgroundEvents : MonoBehaviour
     
 
     public void playStageMusic(){
-        AudioSource audio = GameObject.Find("audio-music").GetComponent<AudioSource>();
-        audio.clip = stageMusic;
-        audio.Play();
+        audio.playMusic(stageMusic);
     }
 
     private void countStageTime(){

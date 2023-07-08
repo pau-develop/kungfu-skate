@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class UIContinueScreen : MonoBehaviour
 {
-    private AudioController audioFx;
+    public AudioClip continueMusic;
+    private AudioController audioController;
+    private AudioSource audioMusic;
     [SerializeField] private Sprite[] numbersShadows;
     [SerializeField] private Sprite[] numbersMasks;
     [SerializeField] private AudioClip[] numbersSounds;
@@ -15,7 +17,7 @@ public class UIContinueScreen : MonoBehaviour
     private int currentNumber = 9;
     // Start is called before the first frame update
     void Start(){
-        audioFx = GameObject.Find("audio").GetComponent<AudioController>();
+        audioController = GameObject.Find("audio").GetComponent<AudioController>();
     }
 
     void OnEnable(){
@@ -54,7 +56,7 @@ public class UIContinueScreen : MonoBehaviour
         currentRenderer.sortingOrder = 1000;
         SpriteMask currentMask = currentNumberObject.AddComponent<SpriteMask>();
         currentMask.sprite = numbersMasks[numberIndex - 1];
-        audioFx.playSound(numbersSounds[numberIndex - 1]);
+        audioController.playSound(numbersSounds[numberIndex - 1]);
     }
 
     private void doTheCountDown(){
