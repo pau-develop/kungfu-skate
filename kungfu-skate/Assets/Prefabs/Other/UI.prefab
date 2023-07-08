@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1501529382}
   - component: {fileID: 1501529381}
+  - component: {fileID: 1979727222}
   m_Layer: 0
   m_Name: continue-font-background
   m_TagString: Untagged
@@ -109,7 +110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501529380}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 60, y: -1, z: 0}
+  m_LocalPosition: {x: 60, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -168,6 +169,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1979727222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501529380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdd67ec2e0304224abe8f7bea3c09b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorsInSprite:
+  - serializedVersion: 2
+    rgba: 4294953658
+  - serializedVersion: 2
+    rgba: 4294946711
+  - serializedVersion: 2
+    rgba: 4294281319
+  - serializedVersion: 2
+    rgba: 4294930539
+  - serializedVersion: 2
+    rgba: 4291645224
+  - serializedVersion: 2
+    rgba: 4289411350
+  - serializedVersion: 2
+    rgba: 4288359177
 --- !u!1 &1729936323
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229082421484049938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 60, y: 43, z: 0}
+  m_LocalPosition: {x: 60, y: 48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

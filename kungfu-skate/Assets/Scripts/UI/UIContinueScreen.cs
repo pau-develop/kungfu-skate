@@ -8,7 +8,7 @@ public class UIContinueScreen : MonoBehaviour
     [SerializeField] private Sprite[] numbersShadows;
     [SerializeField] private Sprite[] numbersMasks;
     [SerializeField] private AudioClip[] numbersSounds;
-    private Vector2 numberPosition = new Vector2(70, -18);
+    private Vector2 numberPosition = new Vector2(64, -13);
     private GameObject currentNumberObject;
     private Vector2 numberScale = new Vector2(0, 1);
     private bool scalingUp = true;
