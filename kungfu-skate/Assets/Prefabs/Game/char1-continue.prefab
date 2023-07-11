@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1418361503777833030}
   - component: {fileID: 3043474858475134550}
   - component: {fileID: 2998555753791611707}
+  - component: {fileID: 7805709242527708283}
   m_Layer: 0
   m_Name: char1-continue
   m_TagString: Untagged
@@ -98,6 +99,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 953429fe7848c0148bc562f3dd1ae0c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &7805709242527708283
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3916154987733628246}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 17e2db05fb7422449aea773186563f42, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6140892237095467109
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,6 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7113166435843925377}
   - component: {fileID: 4555843573738248261}
+  - component: {fileID: 2001694126900282323}
   m_Layer: 0
   m_Name: char1-continue-head
   m_TagString: Untagged
@@ -182,3 +205,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2001694126900282323
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6140892237095467109}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e6b1afe2f36b2fd4893e24c87894a87e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
