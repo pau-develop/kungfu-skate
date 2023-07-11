@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class UIContinueScreen : MonoBehaviour
 {
+    [SerializeField] private GameObject[] continueCharacter;
+    private Vector2 characterLocation = new Vector2(-35, -11);
+    private GameObject currentCharacter;
     public AudioClip continueMusic;
     private AudioClip stageMusic;
     private AudioController audioController;
@@ -47,10 +50,18 @@ public class UIContinueScreen : MonoBehaviour
     {
         dealWithMenuScale();
         if(isOpen){
-            if(noNumber) generateNumber(currentNumber);
+            if(noNumber) {
+                generateNumber(currentNumber);
+                generateCharacter();
+            }
             if(currentNumberObject != null) doTheCountDown();
             if(Input.GetKeyUp(KeyCode.Space)) scalingDownMenu = true;
         }
+    }
+
+    private void generateCharacter(){
+        currentCharacter = Instantiate(continueCharacter[0], characterLocation, Quaternion.identity);
+        currentCharacter.transform.parent = this.gameObject.transform;
     }
 
     private void dealWithMenuScale(){
@@ -79,6 +90,7 @@ public class UIContinueScreen : MonoBehaviour
 
     private void dealWithContinue(){
         Destroy(currentNumberObject);
+        Destroy(currentCharacter);
         audioController.playMusic(stageMusic);
         GlobalData.inContinueScreen = false;
     }
