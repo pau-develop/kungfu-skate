@@ -27,10 +27,13 @@ public class UIContinueScreen : MonoBehaviour
     private bool noNumber = true;
     private GameObject continueBox;
     private GameObject continueShadow;
+    private GameObject gameOverShadow;
     private GameObject letsGoShadow;
     private bool isGameOver = false;
     // Start is called before the first frame update
     void Start(){
+        gameOverShadow = transform.Find("game-over-shadow").gameObject;
+        gameOverShadow.SetActive(false);
         continueBox = transform.Find("continue-box").gameObject;
         continueShadow = continueBox.transform.Find("continue-shadow").gameObject;
         letsGoShadow = continueBox.transform.Find("lets-go-shadow").gameObject;
@@ -45,6 +48,7 @@ public class UIContinueScreen : MonoBehaviour
         numberScale = new Vector2(0, 1);
         continueShadow.SetActive(true);
         letsGoShadow.SetActive(false);
+        gameOverShadow.SetActive(false);
         isOpen = false;
         noNumber = true;
         scalingDownMenu = false;
@@ -84,6 +88,8 @@ public class UIContinueScreen : MonoBehaviour
         letsGoShadow.SetActive(false);
         currentCharacter.GetComponent<PlayerContinueAnimations>().hasDied = true;
         yield return new WaitForSecondsRealtime(1);
+        gameOverShadow.SetActive(true);
+        scalingDownMenu = true;
         StopCoroutine(delayBeforeClosingRoutine());
     }
 
@@ -110,7 +116,8 @@ public class UIContinueScreen : MonoBehaviour
             } else {
                 continueScreenScale.x = 0;
                 continueScreenScale.y = 0;
-                dealWithContinue();
+                if(!isGameOver) dealWithContinue();
+                else dealWithGameOver();
             }
         }
         continueBox.transform.localScale = continueScreenScale;
@@ -120,6 +127,10 @@ public class UIContinueScreen : MonoBehaviour
         Destroy(currentCharacter);
         audioController.playMusic(stageMusic);
         GlobalData.inContinueScreen = false;
+    }
+
+    private void dealWithGameOver(){
+        Destroy(currentCharacter);
     }
 
     private void generateNumber(int numberIndex){
