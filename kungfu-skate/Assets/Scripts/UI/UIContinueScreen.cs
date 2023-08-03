@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIContinueScreen : MonoBehaviour
-{
+{   
     [SerializeField] private GameObject[] continueCharacter;
     private Vector2 characterLocation = new Vector2(-55, 10);
     private GameObject currentCharacter;
@@ -117,7 +118,7 @@ public class UIContinueScreen : MonoBehaviour
                 continueScreenScale.x = 0;
                 continueScreenScale.y = 0;
                 if(!isGameOver) dealWithContinue();
-                else dealWithGameOver();
+                else StartCoroutine(dealWithGameOverRoutine());
             }
         }
         continueBox.transform.localScale = continueScreenScale;
@@ -129,8 +130,10 @@ public class UIContinueScreen : MonoBehaviour
         GlobalData.inContinueScreen = false;
     }
 
-    private void dealWithGameOver(){
+    private IEnumerator dealWithGameOverRoutine(){
         Destroy(currentCharacter);
+        yield return new WaitForSecondsRealtime(2);
+        SceneManager.LoadScene(0);
     }
 
     private void generateNumber(int numberIndex){

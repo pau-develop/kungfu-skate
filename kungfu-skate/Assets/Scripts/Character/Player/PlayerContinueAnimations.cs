@@ -30,7 +30,6 @@ public class PlayerContinueAnimations : MonoBehaviour
             if(!headAnimator.GetCurrentAnimatorStateInfo(0).IsName("continue-head-ok"))
                 headAnimator.Play(headAnimationsNames[2]);
         } else if(hasDied){
-            Debug.Log("holA!");
             if(!headAnimator.GetCurrentAnimatorStateInfo(0).IsName("continue-head-die"))
                 headAnimator.Play(headAnimationsNames[3]);
         }
