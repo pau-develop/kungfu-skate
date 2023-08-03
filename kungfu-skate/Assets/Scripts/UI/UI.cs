@@ -6,7 +6,7 @@ using UnityEngine;
 public class UI : MonoBehaviour
 {
     private GameObject debugger;
-    private bool displayingDebugger = true;    
+    private bool displayingDebugger = false;    
     private GameObject options;
     private GameObject continueScreen;
     // Start is called before the first frame update

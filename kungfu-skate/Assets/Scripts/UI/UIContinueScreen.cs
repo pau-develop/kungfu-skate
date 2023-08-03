@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIContinueScreen : MonoBehaviour
-{
+{   
+    [SerializeField] private GameObject[] continueCharacter;
+    private Vector2 characterLocation = new Vector2(-55, 10);
+    private GameObject currentCharacter;
     public AudioClip continueMusic;
     private AudioClip stageMusic;
     private AudioController audioController;
@@ -22,24 +26,37 @@ public class UIContinueScreen : MonoBehaviour
     private int scaleSpeed = 1;
     private bool isOpen = false;
     private bool noNumber = true;
+    private GameObject continueBox;
+    private GameObject continueShadow;
+    private GameObject gameOverShadow;
+    private GameObject letsGoShadow;
+    private bool isGameOver = false;
     // Start is called before the first frame update
     void Start(){
+        gameOverShadow = transform.Find("game-over-shadow").gameObject;
+        gameOverShadow.SetActive(false);
+        continueBox = transform.Find("continue-box").gameObject;
+        continueShadow = continueBox.transform.Find("continue-shadow").gameObject;
+        letsGoShadow = continueBox.transform.Find("lets-go-shadow").gameObject;
+        letsGoShadow.SetActive(false);
         audioController = GameObject.Find("audio").GetComponent<AudioController>();
         stageMusic = GameObject.Find("Stage").GetComponent<BackgroundEvents>().stageMusic;
-        transform.localScale = new Vector2(0, 0);
+        continueBox.transform.localScale = new Vector2(0, 0);
         continueScreenScale = new Vector2(0, 0);
     }
 
     void OnEnable(){
+        numberScale = new Vector2(0, 1);
+        continueShadow.SetActive(true);
+        letsGoShadow.SetActive(false);
+        gameOverShadow.SetActive(false);
         isOpen = false;
         noNumber = true;
         scalingDownMenu = false;
         scalingUpMenu = true;
-        numberScale = new Vector2(0, 1);
         currentNumber = 9;
         audioController.playMusic(continueMusic);
     }
-
     
 
     // Update is called once per frame
@@ -47,10 +64,39 @@ public class UIContinueScreen : MonoBehaviour
     {
         dealWithMenuScale();
         if(isOpen){
-            if(noNumber) generateNumber(currentNumber);
+            if(noNumber) {
+                generateNumber(currentNumber);
+                generateCharacter();
+            }
             if(currentNumberObject != null) doTheCountDown();
-            if(Input.GetKeyUp(KeyCode.Space)) scalingDownMenu = true;
+            if(Input.GetKeyUp(KeyCode.Space) && !isGameOver) StartCoroutine(delayBeforeClosingRoutine());
         }
+    }
+
+    private IEnumerator delayBeforeClosingRoutine(){
+        continueShadow.SetActive(false);
+        letsGoShadow.SetActive(true);
+        Destroy(currentNumberObject);
+        currentCharacter.GetComponent<PlayerContinueAnimations>().pressedContinue = true;
+        yield return new WaitForSecondsRealtime(1);
+        scalingDownMenu = true;
+        StopCoroutine(delayBeforeClosingRoutine());
+    }
+
+    private IEnumerator delayBeforeGameOverRoutine(){
+        isGameOver = true;
+        continueShadow.SetActive(false);
+        letsGoShadow.SetActive(false);
+        currentCharacter.GetComponent<PlayerContinueAnimations>().hasDied = true;
+        yield return new WaitForSecondsRealtime(1);
+        gameOverShadow.SetActive(true);
+        scalingDownMenu = true;
+        StopCoroutine(delayBeforeClosingRoutine());
+    }
+
+    private void generateCharacter(){
+        currentCharacter = Instantiate(continueCharacter[0], characterLocation, Quaternion.identity);
+        currentCharacter.transform.parent = continueBox.transform;
     }
 
     private void dealWithMenuScale(){
@@ -71,21 +117,28 @@ public class UIContinueScreen : MonoBehaviour
             } else {
                 continueScreenScale.x = 0;
                 continueScreenScale.y = 0;
-                dealWithContinue();
+                if(!isGameOver) dealWithContinue();
+                else StartCoroutine(dealWithGameOverRoutine());
             }
         }
-        transform.localScale = continueScreenScale;
+        continueBox.transform.localScale = continueScreenScale;
     }
 
     private void dealWithContinue(){
-        Destroy(currentNumberObject);
+        Destroy(currentCharacter);
         audioController.playMusic(stageMusic);
         GlobalData.inContinueScreen = false;
     }
 
+    private IEnumerator dealWithGameOverRoutine(){
+        Destroy(currentCharacter);
+        yield return new WaitForSecondsRealtime(2);
+        SceneManager.LoadScene(0);
+    }
+
     private void generateNumber(int numberIndex){
         currentNumberObject = new GameObject();
-        currentNumberObject.transform.parent = this.gameObject.transform; 
+        currentNumberObject.transform.parent = continueBox.transform; 
         currentNumberObject.gameObject.name = numberIndex.ToString();
         currentNumberObject.transform.position = numberPosition;
         SpriteRenderer currentRenderer = currentNumberObject.AddComponent<SpriteRenderer>();
@@ -106,7 +159,6 @@ public class UIContinueScreen : MonoBehaviour
             if(numberScale.x > 0) numberScale.x -= 1 * Time.unscaledDeltaTime;
             else switchNumber();
         }
-
         currentNumberObject.transform.localScale = numberScale;    
     }
 
@@ -116,6 +168,8 @@ public class UIContinueScreen : MonoBehaviour
         if(currentNumber > 1){
             currentNumber--;
             generateNumber(currentNumber);
+        } else {
+            StartCoroutine(delayBeforeGameOverRoutine());
         }
     }
 }
