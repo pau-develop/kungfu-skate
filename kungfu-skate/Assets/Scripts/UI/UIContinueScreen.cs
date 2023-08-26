@@ -30,6 +30,7 @@ public class UIContinueScreen : MonoBehaviour
     private GameObject continueShadow;
     private GameObject gameOverShadow;
     private GameObject letsGoShadow;
+    private GameObject noCreditsShadow;
     private bool isGameOver = false;
     // Start is called before the first frame update
     void Start(){
@@ -39,6 +40,8 @@ public class UIContinueScreen : MonoBehaviour
         continueShadow = continueBox.transform.Find("continue-shadow").gameObject;
         letsGoShadow = continueBox.transform.Find("lets-go-shadow").gameObject;
         letsGoShadow.SetActive(false);
+        noCreditsShadow = continueBox.transform.Find("no-credits-shadow").gameObject;
+        noCreditsShadow.SetActive(false);
         audioController = GameObject.Find("audio").GetComponent<AudioController>();
         stageMusic = GameObject.Find("Stage").GetComponent<BackgroundEvents>().stageMusic;
         continueBox.transform.localScale = new Vector2(0, 0);
@@ -50,6 +53,7 @@ public class UIContinueScreen : MonoBehaviour
         continueShadow.SetActive(true);
         letsGoShadow.SetActive(false);
         gameOverShadow.SetActive(false);
+        noCreditsShadow.SetActive(false);
         isOpen = false;
         noNumber = true;
         scalingDownMenu = false;
@@ -69,9 +73,15 @@ public class UIContinueScreen : MonoBehaviour
                 generateCharacter();
             }
             if(currentNumberObject != null) doTheCountDown();
-            if(Input.GetKeyUp(KeyCode.Space) && !isGameOver && GlobalData.playerOneCredits > 0) 
-                StartCoroutine(delayBeforeClosingRoutine());
+            if(Input.GetKeyUp(KeyCode.Space) && !isGameOver) 
+                if(GlobalData.playerOneCredits > 0) StartCoroutine(delayBeforeClosingRoutine());
+                else displayNoCreditsMessage();
         }
+    }
+
+    private void displayNoCreditsMessage(){
+        continueShadow.SetActive(false);
+        noCreditsShadow.SetActive(true);
     }
 
     private IEnumerator delayBeforeClosingRoutine(){
