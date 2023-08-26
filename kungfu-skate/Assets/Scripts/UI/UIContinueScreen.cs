@@ -75,10 +75,16 @@ public class UIContinueScreen : MonoBehaviour
                 generateCharacter();
             }
             if(currentNumberObject != null) doTheCountDown();
-            if(Input.GetKeyUp(KeyCode.Space) && !isGameOver) 
-                if(GlobalData.playerOneCredits > 0) StartCoroutine(delayBeforeClosingRoutine());
-                else displayNoCreditsMessage();
+            dealWithInput();
         }
+    }
+
+    private void dealWithInput(){
+        if(Input.GetKeyUp(KeyCode.Space) && !isGameOver){
+            if(GlobalData.playerOneCredits > 0) StartCoroutine(delayBeforeClosingRoutine());
+            else displayNoCreditsMessage();
+        }
+        if(Input.GetKeyUp(KeyCode.M) && !isGameOver) numberSpeed = 8;
     }
 
     private void displayNoCreditsMessage(){
@@ -179,6 +185,7 @@ public class UIContinueScreen : MonoBehaviour
     }
 
     private void switchNumber(){
+        if(!isGameOver) numberSpeed = 1;
         scalingUp = true;
         Destroy(currentNumberObject);
         if(currentNumber > 1){
