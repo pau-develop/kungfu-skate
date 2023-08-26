@@ -157,7 +157,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -914150717
   m_SortingLayer: 2
-  m_SortingOrder: 1000
+  m_SortingOrder: 1003
   m_Sprite: {fileID: 21300000, guid: 2b894b128543cdc4a819fa1486b63f42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -259,6 +259,7 @@ MonoBehaviour:
   - {fileID: 3916154987733628246, guid: d91846d2f0c63b6408702c07905cebd4, type: 3}
   continueMusic: {fileID: 8300000, guid: c6600abc543bb7d409cae43a6c71c1cb, type: 3}
   numbersShadows:
+  - {fileID: 21300000, guid: 8def1836172bbc740abb469362a80aaa, type: 3}
   - {fileID: 21300000, guid: 7a65893320796db42b0e9fef41738881, type: 3}
   - {fileID: 21300000, guid: decf6d3dec91bfb40809c9de1b404081, type: 3}
   - {fileID: 21300000, guid: 0a28118b03e4d864c9ae43b9078bc4d9, type: 3}
@@ -269,6 +270,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b4e785e438f5b944d8870be9b507f2a9, type: 3}
   - {fileID: 21300000, guid: ebd3337e125d8f240a93580cd883c84c, type: 3}
   numbersMasks:
+  - {fileID: 21300000, guid: 256554d38cade7f448f5b471dc1da405, type: 3}
   - {fileID: 21300000, guid: 3243f0c0bb3479943bee433fb6a60454, type: 3}
   - {fileID: 21300000, guid: 44a71514147ec1d49a1f4a52096c272f, type: 3}
   - {fileID: 21300000, guid: 627f728503bc5b44d999b33306a15a04, type: 3}
@@ -2556,7 +2558,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -914150717
   m_SortingLayer: 2
-  m_SortingOrder: 1000
+  m_SortingOrder: 1002
   m_Sprite: {fileID: 21300000, guid: ed93fb5a782e82246a78d649611b7a0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
