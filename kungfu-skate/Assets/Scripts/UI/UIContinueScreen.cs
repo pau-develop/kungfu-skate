@@ -19,7 +19,7 @@ public class UIContinueScreen : MonoBehaviour
     private GameObject currentNumberObject;
     private Vector2 numberScale = new Vector2(0, 1);
     private bool scalingUp = true;
-    private int currentNumber = 10;
+    public int currentNumber = 10;
     private Vector2 continueScreenScale;
     private bool scalingUpMenu = true;
     private bool scalingDownMenu = false;
