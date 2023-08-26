@@ -29,8 +29,8 @@ public class SpriteShadow : MonoBehaviour
     {
         castRays(0);
         castRays(1); 
-        updateShadowPosition(0);
-        updateShadowPosition(1);
+        if(shadows[0] != null) updateShadowPosition(0);
+        if(shadows[1] != null) updateShadowPosition(1);
         if(shouldDestroyShadow){
             if(shadows[0] != null) destroyShadow(0);
             if(shadows[1] != null) destroyShadow(1);
@@ -104,8 +104,7 @@ public class SpriteShadow : MonoBehaviour
         } else {
             shadowScales[index].x = 0;
             shadowScales[index].y = 0;
-            Destroy(shadows[index]);
-            // Destroy(GetComponent<SpriteShadow>());
+            Destroy(shadows[index].gameObject);
         }
         shadows[index].localScale = shadowScale; 
     }
