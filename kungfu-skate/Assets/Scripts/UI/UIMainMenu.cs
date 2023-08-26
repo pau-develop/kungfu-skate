@@ -34,6 +34,7 @@ public class UIMainMenu : MonoBehaviour
         GlobalData.gamePaused = false;
         GlobalData.inContinueScreen = false;
         GlobalData.playerOneCredits = 2;
+        GlobalData.playerOneTries = 3;
     }
 
     private void generateDots(){
@@ -122,15 +123,17 @@ public class UIMainMenu : MonoBehaviour
     }
 
     private void checkForInput(){
-        if(Input.GetKeyUp(KeyCode.W)){
-            stopTextBlinkEffect();
-            if(currentMenuIndex == 0) currentMenuIndex = menuOptions.Length-1;
-            else currentMenuIndex--;
-        }
-        if(Input.GetKeyUp(KeyCode.S)){
-            stopTextBlinkEffect();
-            if(currentMenuIndex == menuOptions.Length-1) currentMenuIndex = 0;
-            else currentMenuIndex++;
+        if(currentMenu != 0){
+            if(Input.GetKeyUp(KeyCode.W)){
+                stopTextBlinkEffect();
+                if(currentMenuIndex == 0) currentMenuIndex = menuOptions.Length-1;
+                else currentMenuIndex--;
+            }
+            if(Input.GetKeyUp(KeyCode.S)){
+                stopTextBlinkEffect();
+                if(currentMenuIndex == menuOptions.Length-1) currentMenuIndex = 0;
+                else currentMenuIndex++;
+            }
         }
         if(Input.GetKeyUp(KeyCode.M)){
             if(currentMenu == 0) currentMenu = 1;

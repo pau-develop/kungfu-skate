@@ -26,6 +26,7 @@ public class UIContinueScreen : MonoBehaviour
     private int scaleSpeed = 1;
     private bool isOpen = false;
     private bool noNumber = true;
+    private bool hasNoCredits = false;
     private GameObject continueBox;
     private GameObject continueShadow;
     private GameObject gameOverShadow;
@@ -50,18 +51,19 @@ public class UIContinueScreen : MonoBehaviour
     }
 
     void OnEnable(){
+        if(continueShadow != null) continueShadow.SetActive(true);
+        if(letsGoShadow != null) letsGoShadow.SetActive(false);
+        if(gameOverShadow != null) gameOverShadow.SetActive(false);
+        if(noCreditsShadow != null) noCreditsShadow.SetActive(false);
+        if(audioController != null) audioController.playMusic(continueMusic);
         numberScale = new Vector2(0, 1);
-        continueShadow.SetActive(true);
-        letsGoShadow.SetActive(false);
-        gameOverShadow.SetActive(false);
-        noCreditsShadow.SetActive(false);
         isOpen = false;
         noNumber = true;
         scalingDownMenu = false;
         scalingUpMenu = true;
         currentNumber = 10;
-        audioController.playMusic(continueMusic);
         numberSpeed = 1;
+        hasNoCredits = false;
     }
     
 
@@ -88,6 +90,7 @@ public class UIContinueScreen : MonoBehaviour
     }
 
     private void displayNoCreditsMessage(){
+        hasNoCredits = true;
         continueShadow.SetActive(false);
         noCreditsShadow.SetActive(true);
         numberSpeed = 8;
@@ -185,7 +188,7 @@ public class UIContinueScreen : MonoBehaviour
     }
 
     private void switchNumber(){
-        if(!isGameOver) numberSpeed = 1;
+        if(!hasNoCredits) numberSpeed = 1;
         scalingUp = true;
         Destroy(currentNumberObject);
         if(currentNumber > 1){
