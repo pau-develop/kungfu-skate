@@ -34,6 +34,7 @@ public class UIMainMenu : MonoBehaviour
         GlobalData.gamePaused = false;
         GlobalData.inContinueScreen = false;
         GlobalData.playerOneCredits = 2;
+        GlobalData.playerOneTries = 3;
     }
 
     private void generateDots(){
