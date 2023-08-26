@@ -6,7 +6,6 @@ public class CharacterBodyPosition : MonoBehaviour
 {
     private CharacterMovement player;
     private GameObject playerArms;
-    private int currentFrame = 0;
     private GameObject playerBody;
     private Vector2 bodyDestPos;
     private Animator legsAnimator;
@@ -36,10 +35,7 @@ public class CharacterBodyPosition : MonoBehaviour
         int currentState = checkAnimationState();
         if(currentState == 0) suspensionEffect(suspensionYLand);
         else if(currentState == 1) suspensionEffect(suspensionYJump);
-        else {
-            currentFrame = 0;
-            setBodyPosVertical();
-        }
+        else setBodyPosVertical();
         playerBody.transform.position = bodyDestPos;
         playerArms.transform.position = bodyDestPos;
     }

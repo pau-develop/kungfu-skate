@@ -12,10 +12,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]private AudioClip testSound;
     private GameObject[] menuOptions;
     private int currentMenuIndex = 0;
-    private int currentResolutionIndex = 1;
-    private Vector2[] resolutions;
-    private float blinkTimer = 0;
-    private bool flashingColor = false;
     private UIText uiText;
 
     // Start is called before the first frame update

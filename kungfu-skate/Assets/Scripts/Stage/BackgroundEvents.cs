@@ -24,7 +24,6 @@ public class BackgroundEvents : MonoBehaviour
     public int[] speedEvents;
     private int currentSpeedEventIndex = 0;
     private bool shouldAccelerate =  false;
-    private bool allLoaded = false;
     private AudioController audio;
     // Start is called before the first frame update
     void Start()

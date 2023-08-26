@@ -6,7 +6,6 @@ public class NinjaDirections : MonoBehaviour
 {
     private float latestXPos;
     private CharacterMovement ninja;
-    private float changeCoolDown = 0.5f;
     // Start is called before the first frame update
     void Start()
     {

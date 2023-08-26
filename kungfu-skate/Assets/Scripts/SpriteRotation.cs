@@ -8,7 +8,6 @@ public class SpriteRotation : MonoBehaviour
     private int rotationSpeed = 300;
     private bool frontRotation = false;
     private bool backRotation = false;
-    private int currentRotationValue = 25;
     // Start is called before the first frame update
     void Start()
     {
