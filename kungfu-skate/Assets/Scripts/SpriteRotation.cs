@@ -38,8 +38,7 @@ public class SpriteRotation : MonoBehaviour
     }
 
     private void hardResetTransforms(){
-        for(int i = 0; i < childTransforms.Length; i++) 
-            childTransforms[i].localEulerAngles = new Vector3(0, 0, 0);
+        childTransforms[0].localEulerAngles = new Vector3(0, 0, 0);
     }
 
     private void resetTransforms(int direction){
