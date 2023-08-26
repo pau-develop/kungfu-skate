@@ -776,50 +776,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1729936325, guid: 3435ed6ed785e4b43bcc0e009f47ce38, type: 3}
-      propertyPath: numbersSounds.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1729936325, guid: 3435ed6ed785e4b43bcc0e009f47ce38, type: 3}
-      propertyPath: numbersSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1729936325, guid: 3435ed6ed785e4b43bcc0e009f47ce38, type: 3}
-      propertyPath: numbersSounds.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 207ecacd9e8692b47a7e08362c6ccbba, type: 3}
-    - target: {fileID: 1729936325, guid: 3435ed6ed785e4b43bcc0e009f47ce38, type: 3}
-      propertyPath: numbersSounds.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: af1094849143c6c4d8ff7458a0b45719, type: 3}
-    - target: {fileID: 1729936325, guid: 3435ed6ed785e4b43bcc0e009f47ce38, type: 3}
-      propertyPath: numbersSounds.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 944daa7f8a51cd443993b71860dcabdb, type: 3}
-    - target: {fileID: 1729936325, guid: 3435ed6ed785e4b43bcc0e009f47ce38, type: 3}
-      propertyPath: numbersSounds.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 78c9a025110b4054da40e0bd2dc6a9f2, type: 3}
-    - target: {fileID: 1729936325, guid: 3435ed6ed785e4b43bcc0e009f47ce38, type: 3}
-      propertyPath: numbersSounds.Array.data[5]
-      value: 
-      objectReference: {fileID: 8300000, guid: 1f38efc8c3a3ed544abe0a59cf61a27f, type: 3}
-    - target: {fileID: 1729936325, guid: 3435ed6ed785e4b43bcc0e009f47ce38, type: 3}
-      propertyPath: numbersSounds.Array.data[6]
-      value: 
-      objectReference: {fileID: 8300000, guid: b40ac1c7f4a236a4d9a599f572d58fa4, type: 3}
-    - target: {fileID: 1729936325, guid: 3435ed6ed785e4b43bcc0e009f47ce38, type: 3}
-      propertyPath: numbersSounds.Array.data[7]
-      value: 
-      objectReference: {fileID: 8300000, guid: 5911273da1a6f6a4da0e4b5806f27184, type: 3}
-    - target: {fileID: 1729936325, guid: 3435ed6ed785e4b43bcc0e009f47ce38, type: 3}
-      propertyPath: numbersSounds.Array.data[8]
-      value: 
-      objectReference: {fileID: 8300000, guid: e7fadd421ff99224887847301db38891, type: 3}
-    - target: {fileID: 1729936325, guid: 3435ed6ed785e4b43bcc0e009f47ce38, type: 3}
-      propertyPath: numbersSounds.Array.data[9]
-      value: 
-      objectReference: {fileID: 8300000, guid: 708ed8962c5c2244495700c679ba1259, type: 3}
     - target: {fileID: 1002971046759701483, guid: 3435ed6ed785e4b43bcc0e009f47ce38,
         type: 3}
       propertyPath: m_Name
