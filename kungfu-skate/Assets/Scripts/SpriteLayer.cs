@@ -33,6 +33,7 @@ public class SpriteLayer : MonoBehaviour
         string layerName;
         if(leftLayer) layerName = "LeftLayer";
         else layerName = "RightLayer";
-        for(int i = 0; i < childSprites.Length; i++) childSprites[i].sortingLayerName = layerName; 
+        for(int i = 0; i < childSprites.Length; i++) 
+            if(childSprites[i] != null) childSprites[i].sortingLayerName = layerName; 
     }
 }
