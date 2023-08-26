@@ -32,6 +32,7 @@ public class UIContinueScreen : MonoBehaviour
     private GameObject letsGoShadow;
     private GameObject noCreditsShadow;
     private bool isGameOver = false;
+    private int numberSpeed = 1;
     // Start is called before the first frame update
     void Start(){
         gameOverShadow = transform.Find("game-over-shadow").gameObject;
@@ -60,6 +61,7 @@ public class UIContinueScreen : MonoBehaviour
         scalingUpMenu = true;
         currentNumber = 10;
         audioController.playMusic(continueMusic);
+        numberSpeed = 1;
     }
     
 
@@ -82,6 +84,7 @@ public class UIContinueScreen : MonoBehaviour
     private void displayNoCreditsMessage(){
         continueShadow.SetActive(false);
         noCreditsShadow.SetActive(true);
+        numberSpeed = 8;
     }
 
     private IEnumerator delayBeforeClosingRoutine(){
@@ -99,6 +102,7 @@ public class UIContinueScreen : MonoBehaviour
         isGameOver = true;
         continueShadow.SetActive(false);
         letsGoShadow.SetActive(false);
+        noCreditsShadow.SetActive(false);
         currentCharacter.GetComponent<PlayerContinueAnimations>().hasDied = true;
         yield return new WaitForSecondsRealtime(1);
         gameOverShadow.SetActive(true);
@@ -165,10 +169,10 @@ public class UIContinueScreen : MonoBehaviour
 
     private void doTheCountDown(){
         if(scalingUp){
-            if(numberScale.x < 1) numberScale.x += 1 * Time.unscaledDeltaTime;
+            if(numberScale.x < 1) numberScale.x += numberSpeed * Time.unscaledDeltaTime;
             else scalingUp = false;
         } else{
-            if(numberScale.x > 0) numberScale.x -= 1 * Time.unscaledDeltaTime;
+            if(numberScale.x > 0) numberScale.x -= numberSpeed * Time.unscaledDeltaTime;
             else switchNumber();
         }
         currentNumberObject.transform.localScale = numberScale;    
