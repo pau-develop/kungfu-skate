@@ -50,17 +50,17 @@ public class UIContinueScreen : MonoBehaviour
     }
 
     void OnEnable(){
+        if(continueShadow != null) continueShadow.SetActive(true);
+        if(letsGoShadow != null) letsGoShadow.SetActive(false);
+        if(gameOverShadow != null) gameOverShadow.SetActive(false);
+        if(noCreditsShadow != null) noCreditsShadow.SetActive(false);
+        if(audioController != null) audioController.playMusic(continueMusic);
         numberScale = new Vector2(0, 1);
-        continueShadow.SetActive(true);
-        letsGoShadow.SetActive(false);
-        gameOverShadow.SetActive(false);
-        noCreditsShadow.SetActive(false);
         isOpen = false;
         noNumber = true;
         scalingDownMenu = false;
         scalingUpMenu = true;
         currentNumber = 10;
-        audioController.playMusic(continueMusic);
         numberSpeed = 1;
     }
     
