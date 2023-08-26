@@ -19,7 +19,7 @@ public class UIContinueScreen : MonoBehaviour
     private GameObject currentNumberObject;
     private Vector2 numberScale = new Vector2(0, 1);
     private bool scalingUp = true;
-    private int currentNumber = 9;
+    public int currentNumber = 10;
     private Vector2 continueScreenScale;
     private bool scalingUpMenu = true;
     private bool scalingDownMenu = false;
@@ -30,7 +30,9 @@ public class UIContinueScreen : MonoBehaviour
     private GameObject continueShadow;
     private GameObject gameOverShadow;
     private GameObject letsGoShadow;
+    private GameObject noCreditsShadow;
     private bool isGameOver = false;
+    private int numberSpeed = 1;
     // Start is called before the first frame update
     void Start(){
         gameOverShadow = transform.Find("game-over-shadow").gameObject;
@@ -39,6 +41,8 @@ public class UIContinueScreen : MonoBehaviour
         continueShadow = continueBox.transform.Find("continue-shadow").gameObject;
         letsGoShadow = continueBox.transform.Find("lets-go-shadow").gameObject;
         letsGoShadow.SetActive(false);
+        noCreditsShadow = continueBox.transform.Find("no-credits-shadow").gameObject;
+        noCreditsShadow.SetActive(false);
         audioController = GameObject.Find("audio").GetComponent<AudioController>();
         stageMusic = GameObject.Find("Stage").GetComponent<BackgroundEvents>().stageMusic;
         continueBox.transform.localScale = new Vector2(0, 0);
@@ -50,12 +54,14 @@ public class UIContinueScreen : MonoBehaviour
         continueShadow.SetActive(true);
         letsGoShadow.SetActive(false);
         gameOverShadow.SetActive(false);
+        noCreditsShadow.SetActive(false);
         isOpen = false;
         noNumber = true;
         scalingDownMenu = false;
         scalingUpMenu = true;
-        currentNumber = 9;
+        currentNumber = 10;
         audioController.playMusic(continueMusic);
+        numberSpeed = 1;
     }
     
 
@@ -69,11 +75,26 @@ public class UIContinueScreen : MonoBehaviour
                 generateCharacter();
             }
             if(currentNumberObject != null) doTheCountDown();
-            if(Input.GetKeyUp(KeyCode.Space) && !isGameOver) StartCoroutine(delayBeforeClosingRoutine());
+            dealWithInput();
         }
     }
 
+    private void dealWithInput(){
+        if(Input.GetKeyUp(KeyCode.Space) && !isGameOver){
+            if(GlobalData.playerOneCredits > 0) StartCoroutine(delayBeforeClosingRoutine());
+            else displayNoCreditsMessage();
+        }
+        if(Input.GetKeyUp(KeyCode.M) && !isGameOver) numberSpeed = 8;
+    }
+
+    private void displayNoCreditsMessage(){
+        continueShadow.SetActive(false);
+        noCreditsShadow.SetActive(true);
+        numberSpeed = 8;
+    }
+
     private IEnumerator delayBeforeClosingRoutine(){
+        GlobalData.playerOneCredits--;
         continueShadow.SetActive(false);
         letsGoShadow.SetActive(true);
         Destroy(currentNumberObject);
@@ -87,6 +108,7 @@ public class UIContinueScreen : MonoBehaviour
         isGameOver = true;
         continueShadow.SetActive(false);
         letsGoShadow.SetActive(false);
+        noCreditsShadow.SetActive(false);
         currentCharacter.GetComponent<PlayerContinueAnimations>().hasDied = true;
         yield return new WaitForSecondsRealtime(1);
         gameOverShadow.SetActive(true);
@@ -153,16 +175,17 @@ public class UIContinueScreen : MonoBehaviour
 
     private void doTheCountDown(){
         if(scalingUp){
-            if(numberScale.x < 1) numberScale.x += 1 * Time.unscaledDeltaTime;
+            if(numberScale.x < 1) numberScale.x += numberSpeed * Time.unscaledDeltaTime;
             else scalingUp = false;
         } else{
-            if(numberScale.x > 0) numberScale.x -= 1 * Time.unscaledDeltaTime;
+            if(numberScale.x > 0) numberScale.x -= numberSpeed * Time.unscaledDeltaTime;
             else switchNumber();
         }
         currentNumberObject.transform.localScale = numberScale;    
     }
 
     private void switchNumber(){
+        if(!isGameOver) numberSpeed = 1;
         scalingUp = true;
         Destroy(currentNumberObject);
         if(currentNumber > 1){

@@ -17,7 +17,7 @@ public class UIMainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GlobalData.gamePaused = false;
+        resetVariables();
         uiText = transform.root.GetComponent<UIText>(); 
         menuOptions = new GameObject[this.transform.Find("menu-options").transform.childCount];
         optionsMenuOptions = new GameObject[this.transform.Find("options").transform.childCount];
@@ -28,6 +28,12 @@ public class UIMainMenu : MonoBehaviour
             optionsMenuOptions[i] = this.transform.Find("options").transform.GetChild(i).gameObject;
         this.transform.Find("options").gameObject.SetActive(false);
         generateDots();
+    }
+
+    private void resetVariables(){
+        GlobalData.gamePaused = false;
+        GlobalData.inContinueScreen = false;
+        GlobalData.playerOneCredits = 2;
     }
 
     private void generateDots(){
