@@ -69,11 +69,13 @@ public class UIContinueScreen : MonoBehaviour
                 generateCharacter();
             }
             if(currentNumberObject != null) doTheCountDown();
-            if(Input.GetKeyUp(KeyCode.Space) && !isGameOver) StartCoroutine(delayBeforeClosingRoutine());
+            if(Input.GetKeyUp(KeyCode.Space) && !isGameOver && GlobalData.playerOneCredits > 0) 
+                StartCoroutine(delayBeforeClosingRoutine());
         }
     }
 
     private IEnumerator delayBeforeClosingRoutine(){
+        GlobalData.playerOneCredits--;
         continueShadow.SetActive(false);
         letsGoShadow.SetActive(true);
         Destroy(currentNumberObject);
