@@ -61,9 +61,9 @@ public class StageSprite : MonoBehaviour
     }
 
     private void storeColorIndexes(Color32[] colorsToChange, List<List<int>> colorIndexes, Color32[] colorArray){
+        foreach(Color32 color in colorsToChange) colorIndexes.Add(new List<int>());
         for(int i = 0; i < colorArray.Length; i++){
             for(int x = 0; x < colorsToChange.Length; x++){
-                colorIndexes.Add(new List<int>());
                 if(
                     colorArray[i].r == colorsToChange[x].r
                     &&colorArray[i].g == colorsToChange[x].g
@@ -80,7 +80,7 @@ public class StageSprite : MonoBehaviour
         if(!afterTransition) newSprites[0] = Sprite.Create(originalTexture, new Rect(0,0,spriteSize.x,spriteSize.y),new Vector2(0.5f,0.5f),1);
         else newSprites[0] = Sprite.Create(newSpritesTransition[newSpritesTransition.Length - 1].texture, new Rect(0,0,spriteSize.x,spriteSize.y),new Vector2(0.5f,0.5f),1);
         //add rest of sprites
-        for(int z = 0; z < newSprites.Length-1; z++){
+        for(int z = 0; z < newSprites.Length - 1; z++){
             for(int i = 0; i < colorIndexes.Count; i++){
                 for(int y = 0; y < colorIndexes[i].Count; y++){
                     colorArray[colorIndexes[i][y]].r = newColors.colorCycles[z].newColor[i].r;
@@ -94,6 +94,10 @@ public class StageSprite : MonoBehaviour
             tempTexture.filterMode = FilterMode.Point;
             tempTexture.Apply();
             newSprites[z+1] = Sprite.Create(tempTexture, new Rect(0,0,spriteSize.x,spriteSize.y),new Vector2(0.5f,0.5f),1);
+            // if(this.transform.parent.name == "Layer4" && transform.GetSiblingIndex() == 0){
+            //     GameObject tempSprite = new GameObject();
+            //     tempSprite.AddComponent<SpriteRenderer>().sprite = newSprites[z+1];
+            // }
         }   
     }
 
@@ -122,7 +126,7 @@ public class StageSprite : MonoBehaviour
 
     void changeSprite(Sprite[] newSprites, bool inTransition = false){
         if(!inTransition) changeSpriteDelay = 0.1f;
-        else changeSpriteDelay = 1;
+        else changeSpriteDelay = 0.75f;
         spriteTimer += Time.deltaTime;
         if(spriteTimer >= changeSpriteDelay){
             spriteRenderer.sprite = newSprites[currentSpriteIndex];

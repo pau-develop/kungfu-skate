@@ -594,7 +594,7 @@ MonoBehaviour:
   inCutScene: 0
   slowDownXPos: 746
   autoMoveXPos: 950
-  colorTransitionPos: 510
+  colorTransitionPos: 535
   autoMoveDestPos: {x: -115, y: -90}
   speedEvents: b1000000c90000001801000031010000a2010000cc0100001b0200003502000099020000c00200004a03000068030000
 --- !u!1 &1512799507
@@ -1251,6 +1251,16 @@ PrefabInstance:
         type: 3}
       propertyPath: orginalColorCycles.colorCycles.Array.data[3].newColor.Array.data[2].rgba
       value: 4664070
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089895635724164883, guid: 314e3da8da0248f44a93e639eec689c1,
+        type: 3}
+      propertyPath: transitionColorCycles.colorCycles.Array.data[4].newColor.Array.data[1].rgba
+      value: 1450831
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089895635724164883, guid: 314e3da8da0248f44a93e639eec689c1,
+        type: 3}
+      propertyPath: transitionColorCycles.colorCycles.Array.data[4].newColor.Array.data[2].rgba
+      value: 3021636
       objectReference: {fileID: 0}
     - target: {fileID: 7089895635724164886, guid: 314e3da8da0248f44a93e639eec689c1,
         type: 3}
