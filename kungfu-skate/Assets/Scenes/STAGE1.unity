@@ -263,6 +263,7 @@ MonoBehaviour:
   eventType:
   - after-park
   decreaseSpeedFactor: 8
+  isEndStage: 0
 --- !u!1 &730751172
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +321,7 @@ MonoBehaviour:
   currentBackgroundScrollSpeed: 0
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
-  eventSprites: 0000000005000000090000000e00000012000000170000001a000000
+  eventSprites: 0000000005000000090000000e00000012000000170000001b000000
   eventType:
   - road
   - alley
@@ -330,6 +331,7 @@ MonoBehaviour:
   - alley
   - road
   decreaseSpeedFactor: 18
+  isEndStage: 0
 --- !u!1 &1323958048
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +526,7 @@ MonoBehaviour:
   - park-exit
   - road-sunset
   decreaseSpeedFactor: 16
+  isEndStage: 0
 --- !u!1 &1457161756
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +600,7 @@ MonoBehaviour:
   colorTransitionPos: 535
   autoMoveDestPos: {x: -115, y: -90}
   speedEvents: b1000000c90000001801000031010000a2010000cc0100001b0200003502000099020000c00200004a03000068030000
+  endScrollXPos: 1235
 --- !u!1 &1512799507
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,6 +656,7 @@ MonoBehaviour:
   eventSprites: 
   eventType: []
   decreaseSpeedFactor: 2
+  isEndStage: 0
 --- !u!1 &1533374976
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,6 +712,7 @@ MonoBehaviour:
   eventSprites: 
   eventType: []
   decreaseSpeedFactor: 4
+  isEndStage: 0
 --- !u!850595691 &1641965563
 LightingSettings:
   m_ObjectHideFlags: 0

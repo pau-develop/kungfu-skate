@@ -25,6 +25,7 @@ public class BackgroundEvents : MonoBehaviour
     private int currentSpeedEventIndex = 0;
     private bool shouldAccelerate =  false;
     private AudioController audioComp;
+    public int endScrollXPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +49,7 @@ public class BackgroundEvents : MonoBehaviour
     {
         countStageTime();
         checkForColorTransition();
+        checkForStageEnd();
         if(!inCutScene && !inBossFight && !shouldSlowDown) checkForSlowDownEvent();
         if(!inCutScene && !inBossFight) checkForAutoMoveEvent();
         if(!inCutScene) countXScroll();
@@ -60,10 +62,16 @@ public class BackgroundEvents : MonoBehaviour
         if(shouldAccelerate){
             changePiecesSpeed(true);
             checkForEndOfAcceleration();
-        } 
+        }
         if(inCutScene) checkForEndOfCutScene();
     }
 
+    private void checkForStageEnd(){
+        if(scrollXInt == endScrollXPos){
+           for(int i = 0; i < transform.childCount; i++)
+                transform.GetChild(i).GetComponent<StageScrolling>().isEndStage = true;
+        }
+    }
     
 
     public void playStageMusic(){

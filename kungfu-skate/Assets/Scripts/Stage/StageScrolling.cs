@@ -27,7 +27,7 @@ public class StageScrolling : MonoBehaviour
     private int fastScrollSpeed;
     private BackgroundEvents events;
     public int decreaseSpeedFactor;
-
+    public bool isEndStage = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -87,7 +87,7 @@ public class StageScrolling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveScrollingPieces();
+        if(!isEndStage) moveScrollingPieces();
         if(scrollingPiecesPos[0].x <= shiftPos) shiftPieces();
     }
 
