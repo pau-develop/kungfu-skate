@@ -374,7 +374,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1325606557
 PrefabInstance:
@@ -391,7 +391,7 @@ PrefabInstance:
     - target: {fileID: 3876005035141380405, guid: b88148746cbf3b44d9e1fcb4c52d21d5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3876005035141380405, guid: b88148746cbf3b44d9e1fcb4c52d21d5,
         type: 3}
@@ -563,7 +563,7 @@ Transform:
   - {fileID: 1533374977}
   - {fileID: 1512799508}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1457161758
 MonoBehaviour:
@@ -601,6 +601,7 @@ MonoBehaviour:
   autoMoveDestPos: {x: -115, y: -90}
   speedEvents: b1000000c90000001801000031010000a2010000cc0100001b0200003502000099020000c00200004a03000068030000
   endScrollXPos: 1235
+  sun: {fileID: 288386254519529613, guid: c972cbcddf5d2d44c901bfed0665cf50, type: 3}
 --- !u!1 &1512799507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,7 +1117,7 @@ PrefabInstance:
     - target: {fileID: 7089895635724164880, guid: 314e3da8da0248f44a93e639eec689c1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7089895635724164880, guid: 314e3da8da0248f44a93e639eec689c1,
         type: 3}
