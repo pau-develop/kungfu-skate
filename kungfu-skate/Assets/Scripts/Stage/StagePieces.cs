@@ -27,7 +27,9 @@ public class StagePieces : MonoBehaviour
         {"after-park", new[]{15}}
     };
     private Dictionary<string, int[]> stageOneLayerThreePieces = new Dictionary<string, int[]>(){
-        {"all", new[]{0}}
+        {"houses", new[]{0}},
+        {"flats1", new[]{1}},
+        {"flats2", new[]{2}},
     };
     private Dictionary<string, int[]> stageOneLayerFourPieces = new Dictionary<string, int[]>(){
         {"all", new[]{0}}

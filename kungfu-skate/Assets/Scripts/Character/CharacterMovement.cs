@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -42,6 +43,8 @@ public class CharacterMovement : MonoBehaviour
     public bool onGrindableObject = false;
     public bool rampedUp = false;
     public bool rampedDown = false;
+    private int xOut = 200;
+    private bool autoMoveOut = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +62,7 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        checkForStageEnd();
         checkForChangesInBotLimit();
         isGrounded = checkGrounded();
         if(isAlive){
@@ -73,6 +77,10 @@ public class CharacterMovement : MonoBehaviour
                 }
             else moveDeadPlayer();
         }
+    }
+
+    private void checkForStageEnd(){
+        if(GameObject.Find("Stage").transform.GetChild(0).GetComponent<StageScrolling>().isEndStage) autoMoveOut = true;
     }
 
     private void moveCrashedPlayer(){
@@ -149,7 +157,8 @@ public class CharacterMovement : MonoBehaviour
 
     void movePlayer(){
        if(autoMove) autoMovePlayer();
-       if(autoMoveCutscene) autoMoveToCutscenePos();
+       else if(autoMoveCutscene) autoMoveToCutscenePos();
+       else if(autoMoveOut) autoMoveOutOfScreen();
        else {
         if(rampedUp) autoMoveInRamp(1);
         else if(rampedDown) autoMoveInRamp(-1);
@@ -158,6 +167,11 @@ public class CharacterMovement : MonoBehaviour
             else controlEnemy();
         }
        }
+    }
+
+    private void autoMoveOutOfScreen(){
+        if(transform.position.x <= xOut) playerPos.x += playerSpeed * Time.deltaTime;
+        else SceneManager.LoadScene(0);
     }
 
     void autoMoveInRamp(int direction){

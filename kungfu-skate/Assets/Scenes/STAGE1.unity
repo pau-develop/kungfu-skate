@@ -263,6 +263,7 @@ MonoBehaviour:
   eventType:
   - after-park
   decreaseSpeedFactor: 8
+  isEndStage: 0
 --- !u!1 &730751172
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +321,7 @@ MonoBehaviour:
   currentBackgroundScrollSpeed: 0
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
-  eventSprites: 0000000005000000090000000e00000012000000170000001a000000
+  eventSprites: 0000000005000000090000000e00000012000000170000001b000000
   eventType:
   - road
   - alley
@@ -330,6 +331,7 @@ MonoBehaviour:
   - alley
   - road
   decreaseSpeedFactor: 18
+  isEndStage: 0
 --- !u!1 &1323958048
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +374,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1325606557
 PrefabInstance:
@@ -389,7 +391,7 @@ PrefabInstance:
     - target: {fileID: 3876005035141380405, guid: b88148746cbf3b44d9e1fcb4c52d21d5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3876005035141380405, guid: b88148746cbf3b44d9e1fcb4c52d21d5,
         type: 3}
@@ -524,6 +526,7 @@ MonoBehaviour:
   - park-exit
   - road-sunset
   decreaseSpeedFactor: 16
+  isEndStage: 0
 --- !u!1 &1457161756
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +563,7 @@ Transform:
   - {fileID: 1533374977}
   - {fileID: 1512799508}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1457161758
 MonoBehaviour:
@@ -594,9 +597,11 @@ MonoBehaviour:
   inCutScene: 0
   slowDownXPos: 746
   autoMoveXPos: 950
-  colorTransitionPos: 510
+  colorTransitionPos: 535
   autoMoveDestPos: {x: -115, y: -90}
   speedEvents: b1000000c90000001801000031010000a2010000cc0100001b0200003502000099020000c00200004a03000068030000
+  endScrollXPos: 1235
+  sun: {fileID: 288386254519529613, guid: c972cbcddf5d2d44c901bfed0665cf50, type: 3}
 --- !u!1 &1512799507
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,6 +657,7 @@ MonoBehaviour:
   eventSprites: 
   eventType: []
   decreaseSpeedFactor: 2
+  isEndStage: 0
 --- !u!1 &1533374976
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,9 +710,13 @@ MonoBehaviour:
   currentBackgroundScrollSpeed: 0
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
-  eventSprites: 
-  eventType: []
+  eventSprites: 000000000b0000000c000000
+  eventType:
+  - houses
+  - flats1
+  - flats2
   decreaseSpeedFactor: 4
+  isEndStage: 0
 --- !u!850595691 &1641965563
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1110,7 +1120,7 @@ PrefabInstance:
     - target: {fileID: 7089895635724164880, guid: 314e3da8da0248f44a93e639eec689c1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7089895635724164880, guid: 314e3da8da0248f44a93e639eec689c1,
         type: 3}
@@ -1251,6 +1261,16 @@ PrefabInstance:
         type: 3}
       propertyPath: orginalColorCycles.colorCycles.Array.data[3].newColor.Array.data[2].rgba
       value: 4664070
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089895635724164883, guid: 314e3da8da0248f44a93e639eec689c1,
+        type: 3}
+      propertyPath: transitionColorCycles.colorCycles.Array.data[4].newColor.Array.data[1].rgba
+      value: 1450831
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089895635724164883, guid: 314e3da8da0248f44a93e639eec689c1,
+        type: 3}
+      propertyPath: transitionColorCycles.colorCycles.Array.data[4].newColor.Array.data[2].rgba
+      value: 3021636
       objectReference: {fileID: 0}
     - target: {fileID: 7089895635724164886, guid: 314e3da8da0248f44a93e639eec689c1,
         type: 3}

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerAutoMove : MonoBehaviour
 {
     private Vector2 destPos;
     private Vector2 playerPos;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +21,9 @@ public class PlayerAutoMove : MonoBehaviour
         else Destroy(GetComponent<PlayerAutoMove>());   
     }
 
-    void autoMovePlayer(){
+    private void autoMovePlayer(){
         if(transform.position.x < destPos.x) playerPos.x += 100 * Time.deltaTime;
         else GetComponent<CharacterData>().autoMove =  false;
     }
+
 }

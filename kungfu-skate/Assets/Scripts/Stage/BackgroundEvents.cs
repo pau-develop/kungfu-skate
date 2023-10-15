@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BackgroundEvents : MonoBehaviour
 {
@@ -25,6 +26,12 @@ public class BackgroundEvents : MonoBehaviour
     private int currentSpeedEventIndex = 0;
     private bool shouldAccelerate =  false;
     private AudioController audioComp;
+    public int endScrollXPos;
+    [SerializeField] private GameObject sun;
+    private bool spawnedSun = false;
+    private int sunSpawnPos = 560;
+    private int sunDestroyPos = 1160;
+    private int currentScene;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +40,7 @@ public class BackgroundEvents : MonoBehaviour
         groundLayerScrollSpeed = transform.Find("Layer1").GetComponent<StageScrolling>().backgroundScrollSpeed;
         backgroundLayerScrollSpeed = getLayersScrollSpeed();
         playStageMusic();   
+        currentScene = SceneManager.GetActiveScene().buildIndex;
     }
 
     private float[] getLayersScrollSpeed(){
@@ -46,8 +54,10 @@ public class BackgroundEvents : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        stageEvents(currentScene);
         countStageTime();
         checkForColorTransition();
+        checkForStageEnd();
         if(!inCutScene && !inBossFight && !shouldSlowDown) checkForSlowDownEvent();
         if(!inCutScene && !inBossFight) checkForAutoMoveEvent();
         if(!inCutScene) countXScroll();
@@ -60,12 +70,32 @@ public class BackgroundEvents : MonoBehaviour
         if(shouldAccelerate){
             changePiecesSpeed(true);
             checkForEndOfAcceleration();
-        } 
+        }
         if(inCutScene) checkForEndOfCutScene();
     }
 
+    private void checkForStageEnd(){
+        if(scrollXInt == endScrollXPos){
+           for(int i = 0; i < transform.childCount; i++)
+                transform.GetChild(i).GetComponent<StageScrolling>().isEndStage = true;
+                if(currentScene == 1) GameObject.Find("SUN(Clone)").GetComponent<SunMovement>().isEndStage = true;
+        }
+    }
     
+    private void stageEvents(int currentScene){
+        if(currentScene == 1 && !spawnedSun) spawnSun();
+        if(currentScene == 1 && scrollXInt == sunDestroyPos) {
+            sunDestroyPos = 0;
+            Destroy(GameObject.Find("SUN(Clone)").gameObject);
+        }
+    }
 
+    private void spawnSun(){
+        if(scrollXInt == sunSpawnPos){
+            Instantiate(sun, new Vector2(235, 14), Quaternion.identity);
+            spawnedSun = true;
+        }
+    }
     public void playStageMusic(){
         audioComp.playMusic(stageMusic);
     }
@@ -86,14 +116,21 @@ public class BackgroundEvents : MonoBehaviour
         StageScrolling[] children = transform.GetComponentsInChildren<StageScrolling>();
         for(int i = 0; i < children.Length; i++){
             if(children[i].currentBackgroundScrollSpeed != children[i].backgroundScrollSpeed) return;
+            if(currentScene == 1){
+                SunMovement tempSun = GameObject.Find("SUN(Clone)").GetComponent<SunMovement>();
+                tempSun.backgroundScrollSpeed = 2;
+                if(tempSun.currentBackgroundScrollSpeed != tempSun.backgroundScrollSpeed) return;
+            }
             shouldAccelerate = false;
         }
+        
     }
 
     private void changePiecesSpeed(bool accelerate){
         StageScrolling[] children = transform.GetComponentsInChildren<StageScrolling>();
         for(int i = 0; i < children.Length; i++){
             children[i].changeBackgroundSpeed(accelerate);
+            if(currentScene == 1) GameObject.Find("SUN(Clone)").GetComponent<SunMovement>().changeBackgroundSpeed(accelerate);
         }
     }
 
