@@ -710,8 +710,11 @@ MonoBehaviour:
   currentBackgroundScrollSpeed: 0
   initialBackgroundPieces: 0000000000000000
   spritesShifted: 0
-  eventSprites: 
-  eventType: []
+  eventSprites: 000000000b0000000c000000
+  eventType:
+  - houses
+  - flats1
+  - flats2
   decreaseSpeedFactor: 4
   isEndStage: 0
 --- !u!850595691 &1641965563

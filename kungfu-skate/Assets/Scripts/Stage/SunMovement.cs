@@ -33,7 +33,6 @@ public class SunMovement : MonoBehaviour
     }
 
     private void moveSun(){
-        Debug.Log(currentBackgroundScrollSpeed);
         sunPos.x -= currentBackgroundScrollSpeed * Time.deltaTime;
         transform.position = sunPos;
     }
